@@ -2,6 +2,6 @@
 {
     public class Paciente : Pessoa
     {
-        public string Telefone_Res { get; set; }
+        public string TelefoneRes { get; set; }
     }
 }

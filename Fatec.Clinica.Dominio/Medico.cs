@@ -4,6 +4,6 @@
     {
         public int Crm { get; set; }
         public int IdEspecialidade { get; set; }
-        public string Telefone_Com { get; set; }
+        public char StatusAtividade { get; set; }
     }
 }

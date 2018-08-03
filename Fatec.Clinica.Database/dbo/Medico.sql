@@ -9,7 +9,6 @@
 [StatusAtividade] CHAR(1) NOT NULL,
 [Genero] CHAR(1) NOT NULL,
 [Celular] VARCHAR(11) NOT NULL,
-[TelFixo] VARCHAR(10),
 [IdEspecialidade] INTEGER NOT NULL,
 CONSTRAINT [FK_Medico_Especialidade] FOREIGN KEY(IdEspecialidade) REFERENCES [Especialidade] ([Id])
 )

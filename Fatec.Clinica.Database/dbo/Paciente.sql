@@ -7,5 +7,5 @@
 [DataNasc] DATETIME NOT NULL,
 [Genero] CHAR(1) NOT NULL,
 [Celular] VARCHAR(11) NOT NULL,
-[TelFixo] VARCHAR(10)
+[TelefoneRes] VARCHAR(10)
 )
