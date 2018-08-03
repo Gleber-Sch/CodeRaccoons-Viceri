@@ -13,6 +13,6 @@ namespace Fatec.Clinica.Dominio
         public string Logradouro { get; set; }
         public int Numero { get; set; }
         public string Complemento { get; set; }
-        public Clinica Clinica { get; set; }
+        public Clinicas Clinica { get; set; }
     }
 }

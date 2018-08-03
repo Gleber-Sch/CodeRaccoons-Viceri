@@ -58,16 +58,24 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="dbo" />
+    <Folder Include="dbo\Tabelas" />
+    <Folder Include="dbo\View" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\Especialidade.sql" />
-    <Build Include="dbo\Medico.sql" />
-    <Build Include="dbo\TipoExame.sql" />
-    <Build Include="dbo\Exame.sql" />
-    <Build Include="dbo\Clinica.sql" />
-    <Build Include="dbo\Paciente.sql" />
-    <Build Include="dbo\Consulta.sql" />
-    <Build Include="dbo\Endereco.sql" />
-    <Build Include="dbo\Atendimento.sql" />
+    <Build Include="dbo\Tabelas\Atendimento.sql" />
+    <Build Include="dbo\Tabelas\Clinica.sql" />
+    <Build Include="dbo\Tabelas\Consulta.sql" />
+    <Build Include="dbo\Tabelas\Endereco.sql" />
+    <Build Include="dbo\Tabelas\Especialidade.sql" />
+    <Build Include="dbo\View\ViewAtendimentos.sql" />
+    <Build Include="dbo\View\ViewConsultas.sql" />
+    <Build Include="dbo\View\ViewEnderecos.sql" />
+    <Build Include="dbo\View\ViewClinicas.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tabelas\Exame.sql" />
+    <Build Include="dbo\Tabelas\Medico.sql" />
+    <Build Include="dbo\Tabelas\Paciente.sql" />
+    <Build Include="dbo\Tabelas\TipoExame.sql" />
   </ItemGroup>
 </Project>

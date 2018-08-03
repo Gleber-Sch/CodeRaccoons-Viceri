@@ -1,0 +1,65 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[Endereco]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The column [dbo].[Clinica].[Nome] is being dropped, data loss could occur.
+       The column [dbo].[Clinica].[TelefoneCom] on table [dbo].[Clinica] must be added, but the column has no default value and
+         does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must
+         either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults
+         as a deployment option.
+       The column [dbo].[Endereco].[Rua] is being dropped, data loss could occur.
+       The column [dbo].[Endereco].[Cidade] on table [dbo].[Endereco] must be added, but the column has no default value and
+         does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must
+         either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults
+         as a deployment option.
+       The column [dbo].[Endereco].[Estado] on table [dbo].[Endereco] must be added, but the column has no default value and
+         does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must
+         either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults
+         as a deployment option.
+       The column [dbo].[Endereco].[Logradouro] on table [dbo].[Endereco] must be added, but the column has no default value
+         and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must
+         either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults
+         as a deployment option.
+       The column [dbo].[Endereco].[Numero] on table [dbo].[Endereco] must be added, but the column has no default value and
+         does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must
+         either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults
+         as a deployment option.
+       The column [dbo].[Medico].[TelFixo] is being dropped, data loss could occur.
+       The column [dbo].[Paciente].[TelFixo] is being dropped, data loss could occur.
+
+** User actions
+     Alter
+       [dbo].[Clinica] (Table)
+       [dbo].[Medico] (Table)
+       [dbo].[Paciente] (Table)
+     Table rebuild
+       [dbo].[Endereco] (Table)
+
+** Supporting actions
+     Drop
+       [dbo].[FK_Endereco_Clinica] (Foreign Key)
+     Create
+       [dbo].[FK_Endereco_Clinica] (Foreign Key)
+
+The column [dbo].[Clinica].[Nome] is being dropped, data loss could occur.
+The column [dbo].[Clinica].[TelefoneCom] on table [dbo].[Clinica] must be added, but the column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+The column [dbo].[Endereco].[Rua] is being dropped, data loss could occur.
+The column [dbo].[Endereco].[Cidade] on table [dbo].[Endereco] must be added, but the column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+The column [dbo].[Endereco].[Estado] on table [dbo].[Endereco] must be added, but the column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+The column [dbo].[Endereco].[Logradouro] on table [dbo].[Endereco] must be added, but the column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+The column [dbo].[Endereco].[Numero] on table [dbo].[Endereco] must be added, but the column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+The column [dbo].[Medico].[TelFixo] is being dropped, data loss could occur.
+The column [dbo].[Paciente].[TelFixo] is being dropped, data loss could occur.
+If this deployment is executed, changes to [dbo].[Clinica] might introduce run-time errors in [dbo].[att].
+If this deployment is executed, changes to [dbo].[Clinica] might introduce run-time errors in [dbo].[Enderecos].
+If this deployment is executed, changes to [dbo].[Clinica] might introduce run-time errors in [dbo].[ViewAtendimentos].
+If this deployment is executed, changes to [dbo].[Endereco] might introduce run-time errors in [dbo].[Enderecos].
+If this deployment is executed, changes to [dbo].[Medico] might introduce run-time errors in [dbo].[att].
+If this deployment is executed, changes to [dbo].[Medico] might introduce run-time errors in [dbo].[SelecionarConsultas].
+If this deployment is executed, changes to [dbo].[Medico] might introduce run-time errors in [dbo].[ViewAtendimentos].
+If this deployment is executed, changes to [dbo].[Paciente] might introduce run-time errors in [dbo].[SelecionarConsultas].
+

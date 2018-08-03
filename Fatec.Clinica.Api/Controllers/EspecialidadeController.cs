@@ -25,7 +25,7 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que obtem uma lista de especialidades.
+        /// Método que obtem uma lista de especialidades
         /// </summary>
         /// <returns></returns>
         [HttpGet]

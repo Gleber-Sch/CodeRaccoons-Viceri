@@ -21,11 +21,7 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var lista = connection.Query<Consulta>($"SELECT C.Id, C.Data_consulta, C.Historico," +
-                                                       $"C.Id_Medico, C.Id_Paciente, M.Nome, P.Nome" +
-                                                       $"FROM [Consulta] C" +
-                                                       $"JOIN [Medico] M ON C.Id_Medico = M.Id" +
-                                                       $"JOIN [Paciente] P ON C.Id_Paciente = P.Id");
+                var lista = connection.Query<Consulta>($"SELECT *From ViewConsultas");
 
                 return lista;
             }
@@ -39,12 +35,8 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var obj = connection.QueryFirstOrDefault<Consulta>($"SELECT C.Id, C.Data_consulta, C.Historico," +
-                                                       $"C.Id_Medico, C.Id_Paciente, M.Nome, P.Nome" +
-                                                       $"FROM [Consulta] C" +
-                                                       $"JOIN [Medico] M ON C.Id_Medico = M.Id" +
-                                                       $"JOIN [Paciente] P ON C.Id_Paciente = P.Id" +
-                                                       $"WHERE C.Id = {id} ");
+                var obj = connection.QueryFirstOrDefault<Consulta>($"SELECT *FROM ViewConsultas,"+
+                                                                   $"WHERE C.Id = {id} ");
 
                 return obj;
             }
@@ -63,9 +55,9 @@ namespace Fatec.Clinica.Dado
                                                    $"INSERT INTO [Consulta] " +
                                                    $"(Historico, Data_Consulta, Id_Paciente, Id_Medico) " +
                                                    $"VALUES ('{entity.Historico}'," +
-                                                   $" '{entity.Data}'," +
+                                                   $" '{entity.DataHora}'," +
                                                    $" '{entity.Paciente.Id}'," +
-                                                   $" '{entity.Medico.Id}'" +
+                                                   $" '{entity.Atendimento.Id}'" +
                                                    $"SET @ID = SCOPE_IDENTITY();" +
                                                    $"SELECT @ID");
             }
@@ -81,9 +73,9 @@ namespace Fatec.Clinica.Dado
             {
                 connection.Execute($"UPDATE [Consulta] " +
                                    $"SET Historico = '{entity.Historico}'," +
-                                   $"Data_Consulta = '{entity.Data}'," +
+                                   $"Data_Consulta = '{entity.DataHora}'," +
                                    $"Id_Paciente = '{entity.Paciente.Id}', " +
-                                   $"Id_Medico = '{entity.Medico.Id}' " +
+                                   $"Id_Medico = '{entity.Atendimento.Medico}' " +
                                    $"WHERE Id = {entity.Id}");
             }
         }
@@ -91,7 +83,7 @@ namespace Fatec.Clinica.Dado
         /// <summary>
         /// Deleta uma Consulta do Database
         /// </summary>
-        /// <param name="id">Usado para selecionar a consulta no Database.</param>
+        /// <param name="id">Usado para Deletar um consulta no Database.</param>
         public void Deletar(int id)
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
