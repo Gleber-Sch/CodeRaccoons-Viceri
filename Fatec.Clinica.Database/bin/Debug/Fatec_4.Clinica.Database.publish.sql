@@ -15,8 +15,13 @@ SET NUMERIC_ROUNDABORT OFF;
 GO
 :setvar DatabaseName "ClinicaDB"
 :setvar DefaultFilePrefix "ClinicaDB"
+<<<<<<< HEAD
 :setvar DefaultDataPath "C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\"
 :setvar DefaultLogPath "C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\"
+=======
+:setvar DefaultDataPath "C:\Program Files\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\DATA\"
+:setvar DefaultLogPath "C:\Program Files\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\DATA\"
+>>>>>>> 76bd581b7257586894d1de385c087f66d5145ee7
 
 GO
 :on error exit
@@ -40,6 +45,7 @@ USE [$(DatabaseName)];
 
 
 GO
+<<<<<<< HEAD
 /*
 The column [dbo].[Clinica].[Nome] is being dropped, data loss could occur.
 
@@ -166,6 +172,181 @@ ALTER TABLE [dbo].[Paciente] DROP COLUMN [TelFixo];
 GO
 ALTER TABLE [dbo].[Paciente]
     ADD [TelefoneRes] VARCHAR (10) NULL;
+=======
+PRINT N'Creating [dbo].[Atendimento]...';
+
+
+GO
+CREATE TABLE [dbo].[Atendimento] (
+    [Id]        INT IDENTITY (1, 1) NOT NULL,
+    [IdClinica] INT NOT NULL,
+    [IdMedico]  INT NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[Clinica]...';
+
+
+GO
+CREATE TABLE [dbo].[Clinica] (
+    [Id]              INT          IDENTITY (1, 1) NOT NULL,
+    [Cnpj]            VARCHAR (14) NOT NULL,
+    [StatusAtividade] CHAR (1)     NOT NULL,
+    [TelefoneCom]     VARCHAR (10) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[Consulta]...';
+
+
+GO
+CREATE TABLE [dbo].[Consulta] (
+    [Id]            INT           IDENTITY (1, 1) NOT NULL,
+    [Historico]     VARCHAR (300) NOT NULL,
+    [Nota]          DECIMAL (10)  NOT NULL,
+    [DataHora]      DATETIME      NOT NULL,
+    [IdPaciente]    INT           NOT NULL,
+    [IdAtendimento] INT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[Endereco]...';
+
+
+GO
+CREATE TABLE [dbo].[Endereco] (
+    [Id]          INT          IDENTITY (1, 1) NOT NULL,
+    [Estado]      CHAR (2)     NOT NULL,
+    [Cidade]      VARCHAR (50) NOT NULL,
+    [Bairro]      VARCHAR (50) NOT NULL,
+    [Logradouro]  VARCHAR (50) NOT NULL,
+    [Numero]      INT          NOT NULL,
+    [Complemento] VARCHAR (50) NULL,
+    [IdClinica]   INT          NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[Especialidade]...';
+
+
+GO
+CREATE TABLE [dbo].[Especialidade] (
+    [Id]   INT          IDENTITY (1, 1) NOT NULL,
+    [Nome] VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[Exame]...';
+
+
+GO
+CREATE TABLE [dbo].[Exame] (
+    [Id]            INT      IDENTITY (1, 1) NOT NULL,
+    [DataHora]      DATETIME NOT NULL,
+    [IdAtendimento] INT      NOT NULL,
+    [IdConsulta]    INT      NOT NULL,
+    [IdTipoExame]   INT      NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[Medico]...';
+
+
+GO
+CREATE TABLE [dbo].[Medico] (
+    [Id]              INT          IDENTITY (1, 1) NOT NULL,
+    [Nome]            VARCHAR (50) NOT NULL,
+    [Cpf]             VARCHAR (11) NOT NULL,
+    [Crm]             VARCHAR (10) NOT NULL,
+    [Email]           VARCHAR (50) NOT NULL,
+    [Senha]           VARCHAR (20) NOT NULL,
+    [DataNasc]        DATETIME     NOT NULL,
+    [StatusAtividade] CHAR (1)     NOT NULL,
+    [Genero]          CHAR (1)     NOT NULL,
+    [Celular]         VARCHAR (11) NOT NULL,
+    [IdEspecialidade] INT          NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[Paciente]...';
+
+
+GO
+CREATE TABLE [dbo].[Paciente] (
+    [Id]          INT          IDENTITY (1, 1) NOT NULL,
+    [Nome]        VARCHAR (50) NOT NULL,
+    [Cpf]         VARCHAR (11) NOT NULL,
+    [Email]       VARCHAR (50) NOT NULL,
+    [Senha]       VARCHAR (20) NOT NULL,
+    [DataNasc]    DATETIME     NOT NULL,
+    [Genero]      CHAR (1)     NOT NULL,
+    [Celular]     VARCHAR (11) NOT NULL,
+    [TelefoneRes] VARCHAR (10) NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[TipoExame]...';
+
+
+GO
+CREATE TABLE [dbo].[TipoExame] (
+    [Id]   INT          IDENTITY (1, 1) NOT NULL,
+    [Nome] VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[FK_Atendimento_Clinica]...';
+
+
+GO
+ALTER TABLE [dbo].[Atendimento] WITH NOCHECK
+    ADD CONSTRAINT [FK_Atendimento_Clinica] FOREIGN KEY ([IdClinica]) REFERENCES [dbo].[Clinica] ([Id]);
+
+
+GO
+PRINT N'Creating [dbo].[FK_Atendimento_Medico]...';
+
+
+GO
+ALTER TABLE [dbo].[Atendimento] WITH NOCHECK
+    ADD CONSTRAINT [FK_Atendimento_Medico] FOREIGN KEY ([IdMedico]) REFERENCES [dbo].[Medico] ([Id]);
+
+
+GO
+PRINT N'Creating [dbo].[FK_Consulta_Paciente]...';
+
+
+GO
+ALTER TABLE [dbo].[Consulta] WITH NOCHECK
+    ADD CONSTRAINT [FK_Consulta_Paciente] FOREIGN KEY ([IdPaciente]) REFERENCES [dbo].[Paciente] ([Id]);
+
+
+GO
+PRINT N'Creating [dbo].[FK_Consulta_Atendimento]...';
+
+
+GO
+ALTER TABLE [dbo].[Consulta] WITH NOCHECK
+    ADD CONSTRAINT [FK_Consulta_Atendimento] FOREIGN KEY ([IdAtendimento]) REFERENCES [dbo].[Atendimento] ([Id]);
+>>>>>>> 76bd581b7257586894d1de385c087f66d5145ee7
 
 
 GO
@@ -178,6 +359,45 @@ ALTER TABLE [dbo].[Endereco] WITH NOCHECK
 
 
 GO
+<<<<<<< HEAD
+=======
+PRINT N'Creating [dbo].[FK_Exame_TipoExame]...';
+
+
+GO
+ALTER TABLE [dbo].[Exame] WITH NOCHECK
+    ADD CONSTRAINT [FK_Exame_TipoExame] FOREIGN KEY ([IdTipoExame]) REFERENCES [dbo].[TipoExame] ([Id]);
+
+
+GO
+PRINT N'Creating [dbo].[FK_Exame_Atendimento]...';
+
+
+GO
+ALTER TABLE [dbo].[Exame] WITH NOCHECK
+    ADD CONSTRAINT [FK_Exame_Atendimento] FOREIGN KEY ([IdAtendimento]) REFERENCES [dbo].[Atendimento] ([Id]);
+
+
+GO
+PRINT N'Creating [dbo].[FK_Exame_Consulta]...';
+
+
+GO
+ALTER TABLE [dbo].[Exame] WITH NOCHECK
+    ADD CONSTRAINT [FK_Exame_Consulta] FOREIGN KEY ([IdConsulta]) REFERENCES [dbo].[Consulta] ([Id]);
+
+
+GO
+PRINT N'Creating [dbo].[FK_Medico_Especialidade]...';
+
+
+GO
+ALTER TABLE [dbo].[Medico] WITH NOCHECK
+    ADD CONSTRAINT [FK_Medico_Especialidade] FOREIGN KEY ([IdEspecialidade]) REFERENCES [dbo].[Especialidade] ([Id]);
+
+
+GO
+>>>>>>> 76bd581b7257586894d1de385c087f66d5145ee7
 PRINT N'Checking existing data against newly created constraints';
 
 
@@ -186,8 +406,29 @@ USE [$(DatabaseName)];
 
 
 GO
+<<<<<<< HEAD
 ALTER TABLE [dbo].[Endereco] WITH CHECK CHECK CONSTRAINT [FK_Endereco_Clinica];
 
+=======
+ALTER TABLE [dbo].[Atendimento] WITH CHECK CHECK CONSTRAINT [FK_Atendimento_Clinica];
+
+ALTER TABLE [dbo].[Atendimento] WITH CHECK CHECK CONSTRAINT [FK_Atendimento_Medico];
+
+ALTER TABLE [dbo].[Consulta] WITH CHECK CHECK CONSTRAINT [FK_Consulta_Paciente];
+
+ALTER TABLE [dbo].[Consulta] WITH CHECK CHECK CONSTRAINT [FK_Consulta_Atendimento];
+
+ALTER TABLE [dbo].[Endereco] WITH CHECK CHECK CONSTRAINT [FK_Endereco_Clinica];
+
+ALTER TABLE [dbo].[Exame] WITH CHECK CHECK CONSTRAINT [FK_Exame_TipoExame];
+
+ALTER TABLE [dbo].[Exame] WITH CHECK CHECK CONSTRAINT [FK_Exame_Atendimento];
+
+ALTER TABLE [dbo].[Exame] WITH CHECK CHECK CONSTRAINT [FK_Exame_Consulta];
+
+ALTER TABLE [dbo].[Medico] WITH CHECK CHECK CONSTRAINT [FK_Medico_Especialidade];
+
+>>>>>>> 76bd581b7257586894d1de385c087f66d5145ee7
 
 GO
 PRINT N'Update complete.';

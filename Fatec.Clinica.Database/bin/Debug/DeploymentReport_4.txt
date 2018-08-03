@@ -1,11 +1,16 @@
 ﻿** Highlights
      Tables that will be rebuilt
+<<<<<<< HEAD
        [dbo].[Endereco]
+=======
+       None
+>>>>>>> 76bd581b7257586894d1de385c087f66d5145ee7
      Clustered indexes that will be dropped
        None
      Clustered indexes that will be created
        None
      Possible data issues
+<<<<<<< HEAD
        The column [dbo].[Clinica].[Nome] is being dropped, data loss could occur.
        The column [dbo].[Clinica].[TelefoneCom] on table [dbo].[Clinica] must be added, but the column has no default value and
          does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must
@@ -63,3 +68,29 @@ If this deployment is executed, changes to [dbo].[Medico] might introduce run-ti
 If this deployment is executed, changes to [dbo].[Medico] might introduce run-time errors in [dbo].[ViewAtendimentos].
 If this deployment is executed, changes to [dbo].[Paciente] might introduce run-time errors in [dbo].[SelecionarConsultas].
 
+=======
+       None
+
+** User actions
+     Create
+       [dbo].[Atendimento] (Table)
+       [dbo].[Clinica] (Table)
+       [dbo].[Consulta] (Table)
+       [dbo].[Endereco] (Table)
+       [dbo].[Especialidade] (Table)
+       [dbo].[Exame] (Table)
+       [dbo].[Medico] (Table)
+       [dbo].[Paciente] (Table)
+       [dbo].[TipoExame] (Table)
+       [dbo].[FK_Atendimento_Clinica] (Foreign Key)
+       [dbo].[FK_Atendimento_Medico] (Foreign Key)
+       [dbo].[FK_Consulta_Paciente] (Foreign Key)
+       [dbo].[FK_Consulta_Atendimento] (Foreign Key)
+       [dbo].[FK_Endereco_Clinica] (Foreign Key)
+       [dbo].[FK_Exame_TipoExame] (Foreign Key)
+       [dbo].[FK_Exame_Atendimento] (Foreign Key)
+       [dbo].[FK_Exame_Consulta] (Foreign Key)
+       [dbo].[FK_Medico_Especialidade] (Foreign Key)
+
+** Supporting actions
+>>>>>>> 76bd581b7257586894d1de385c087f66d5145ee7

@@ -10,7 +10,7 @@ using Fatec.Clinica.Dominio.Excecoes;
 namespace Fatec.Clinica.Negocio
 {
     /// <summary>
-    /// Regras de Negócio sobre o Paciente
+    /// Regras de Negócio sobre o Paciente.
     /// </summary>
     class PacienteNegocio : Validacao, INegocioBase<Paciente>
     {

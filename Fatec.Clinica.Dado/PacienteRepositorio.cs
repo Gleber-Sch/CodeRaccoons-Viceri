@@ -21,8 +21,8 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var lista = connection.Query<Paciente>($"SELECT P.Id, P.Nome, P.Cpf, P.Telefone_Mov," +
-                                                       $" P.DataNasc, P.Genero, P.Telefone_Res " +
+                var lista = connection.Query<Paciente>($"SELECT P.Id, P.Nome, P.Cpf, P.Email, P.DataNasc," +
+                                                       $"P.Genero, P.Celular, P.TelefoneRes " +
                                                        $"FROM [Paciente] P ");
                 return lista;
             }
@@ -37,8 +37,8 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var obj = connection.QueryFirstOrDefault<Paciente>($"SELECT P.Id, P.Nome, P.Cpf, P.Telefone_Mov," +
-                                                                   $" P.DataNasc, P.Genero, P.Telefone_Res " +
+                var obj = connection.QueryFirstOrDefault<Paciente>($"SELECT P.Id, P.Nome, P.Cpf, P.Email, " +
+                                                                   $"P.DataNasc, P.Genero, P.Celular P.TelefoneRes" +
                                                                    $"FROM [Paciente] P " +
                                                                    $"WHERE P.Id = {id}");
 
@@ -55,8 +55,9 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var obj = connection.QueryFirstOrDefault<Paciente>($"SELECT * " +
-                                                                 $"FROM [Paciente] " +
+                var obj = connection.QueryFirstOrDefault<Paciente>($"SELECT P.Id, P.Nome, P.Cpf, P.Email," +
+                                                                 $"P.DataNasc, P.Genero, P.Celular P.TelefoneRes" +
+                                                                 $"FROM [Paciente] P " +
                                                                  $"WHERE Cpf = '{cpf}'");
                 return obj;
             }
@@ -73,12 +74,16 @@ namespace Fatec.Clinica.Dado
             {
                 return connection.QuerySingle<int>($"DECLARE @ID int;" +
                                                    $"INSERT INTO [Paciente] " +
-                                                   $"(Nome, Cpf, Celular, DataNasc, Genero, Telefone_Res) " +
+                                                   $"(Nome, Cpf, Email, DataNasc, Genero, Celular, TelefoneRes) " +
                                                    $"VALUES ('{entity.Nome}'," +
                                                    $" '{entity.Cpf}'," +
-                                                   $" '{entity.Celular}'," +
+                                                   $" '{entity.Email}'," +
                                                    $" '{entity.DataNasc}'," +
                                                    $" '{entity.Genero}'," +
+<<<<<<< HEAD
+=======
+                                                   $" '{entity.Celular}'," +
+>>>>>>> 76bd581b7257586894d1de385c087f66d5145ee7
                                                    $" '{entity.TelefoneRes}')" +
                                                    $"SET @ID = SCOPE_IDENTITY();" +
                                                    $"SELECT @ID");
@@ -96,9 +101,11 @@ namespace Fatec.Clinica.Dado
                 connection.Execute($"UPDATE [Paciente] " +
                                    $"SET Nome = '{entity.Nome}'," +
                                    $"CPF = '{entity.Cpf}'," +
-                                   $"Celular = '{entity.Celular}', " +
-                                   $"Data_Nasc = '{entity.DataNasc}', " +
+                                   $"Email = '{entity.Email}'," +
+                                   $"DataNasc = '{entity.DataNasc}', " +
                                    $"Genero = '{entity.Genero}' " +
+                                   $"Celular = '{entity.Celular}', " +
+                                   $"TelefoneRes = '{entity.TelefoneRes}'," +
                                    $"WHERE Id = {entity.Id}");
             }
         }
