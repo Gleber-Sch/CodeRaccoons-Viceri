@@ -21,12 +21,13 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 var lista = connection.Query<Medico>($"SELECT M.Id, M.Nome, M.Cpf, M.Crm, M.IdEspecialidade, M.Celular," +
-                                                        $" M.Email, M.DataNasc, M.StatusAtividade, M.Genero , E.Nome As Especialidade " +
-                                                        $"FROM [Medico] M " +
-                                                        $"JOIN [Especialidade] E ON M.IdEspecialidade = E.Id");
+                                                     $" M.Email, M.DataNasc, M.StatusAtividade, M.Genero , E.Nome As Especialidade " +
+                                                     $"FROM [Medico] M " +
+                                                     $"JOIN [Especialidade] E ON M.IdEspecialidade = E.Id");
                 return lista;
             }
         }
+        
 
         /// <summary>
         /// Seleciona um médico no Database através do ID especificado.
