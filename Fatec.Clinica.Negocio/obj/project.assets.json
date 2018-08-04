@@ -2108,23 +2108,39 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\Lucas Contesini\\.nuget\\packages\\": {},
+=======
+    "C:\\Users\\Massao\\.nuget\\packages\\": {},
+>>>>>>> 0599fbaeedbc6648837b72b8e3fad43fa6c48ce6
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Lucas Contesini\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Negocio\\Fatec.Clinica.Negocio.csproj",
       "projectName": "Fatec.Clinica.Negocio",
       "projectPath": "C:\\Users\\Lucas Contesini\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Negocio\\Fatec.Clinica.Negocio.csproj",
       "packagesPath": "C:\\Users\\Lucas Contesini\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Lucas Contesini\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Negocio\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\Massao\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Negocio\\Fatec.Clinica.Negocio.csproj",
+      "projectName": "Fatec.Clinica.Negocio",
+      "projectPath": "C:\\Users\\Massao\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Negocio\\Fatec.Clinica.Negocio.csproj",
+      "packagesPath": "C:\\Users\\Massao\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Massao\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Negocio\\obj\\",
+>>>>>>> 0599fbaeedbc6648837b72b8e3fad43fa6c48ce6
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\Lucas Contesini\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+        "C:\\Users\\Massao\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> 0599fbaeedbc6648837b72b8e3fad43fa6c48ce6
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2137,8 +2153,13 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
+<<<<<<< HEAD
             "C:\\Users\\Lucas Contesini\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dado\\Fatec.Clinica.Dado.csproj": {
               "projectPath": "C:\\Users\\Lucas Contesini\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dado\\Fatec.Clinica.Dado.csproj"
+=======
+            "C:\\Users\\Massao\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dado\\Fatec.Clinica.Dado.csproj": {
+              "projectPath": "C:\\Users\\Massao\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dado\\Fatec.Clinica.Dado.csproj"
+>>>>>>> 0599fbaeedbc6648837b72b8e3fad43fa6c48ce6
             }
           }
         }
