@@ -100,6 +100,19 @@ namespace Fatec.Clinica.Dado
             }
         }
 
+        public Medico SelecionarPorEmail(string email)
+        {
+            using(var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
+            {
+                var obj = connection.QueryFirstOrDefault<Medico>($"SELECT M.Id, M.Nome, M.Cpf, M.Crm, M.IdEspecialidade, M.Celular," +
+                                                                 $"M.Email, M.DataNasc, M.StatusAtividade, M.Genero , E.Nome As Especialidade" +
+                                                                 $"FROM [Medico] M" +
+                                                                 $"JOIN [ESPECIALIDADE] E ON M.IdEspecialidade = E.Id" +
+                                                                 $"WHERE Email = '{email}'");
+                return obj;
+            }
+        }
+
         /// <summary>
         /// Insere um médico no Database.
         /// </summary>

@@ -12,13 +12,11 @@ namespace Fatec.Clinica.Negocio
     /// </summary>
     public class EspecialidadeNegocio : Validacao, INegocioBase<Especialidade>
     {
-        /// <summary>
-        /// 
-        /// </summary>
+        
         private readonly EspecialidadeRepositorio _especialidadeRepositorio;
 
         /// <summary>
-        /// 
+        /// Construtor para instanciar o repositório.
         /// </summary>
         public EspecialidadeNegocio()
         {
@@ -28,7 +26,7 @@ namespace Fatec.Clinica.Negocio
 
 
         /// <summary>
-        /// 
+        /// Seleciona todas as Especialidades do Database.
         /// </summary>
         /// <returns></returns>
         public IEnumerable<Especialidade> Selecionar()
@@ -37,7 +35,7 @@ namespace Fatec.Clinica.Negocio
         }
 
         /// <summary>
-        /// 
+        /// Verifica se a especialidade com o ID indicado existe.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -52,7 +50,7 @@ namespace Fatec.Clinica.Negocio
         }
 
         /// <summary>
-        /// 
+        /// Verifica se o nome da especialidade já existe, antes de inserir os dados da especialidade
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -61,7 +59,7 @@ namespace Fatec.Clinica.Negocio
           
             if (VerificarCamposVazios(entity))
             {
-                throw new DadoInvalidoException($"O campo Nome da Especialidade é obrigatório");
+                throw new DadoInvalidoException($"O Nome da Especialidade é obrigatório");
             }
 
             if (_especialidadeRepositorio.SelecionarPorNome(entity.Nome) != null)
@@ -73,7 +71,7 @@ namespace Fatec.Clinica.Negocio
         }
 
         /// <summary>
-        /// 
+        /// Verifica se o nome da especialidade já existe, antes de alterar os dados da especialidade
         /// </summary>
         /// <param name="id"></param>
         /// <param name="entity"></param>
@@ -96,7 +94,7 @@ namespace Fatec.Clinica.Negocio
         }
 
         /// <summary>
-        /// 
+        /// Verifica se a especialidade existe no Database antes de deleta-lo.
         /// </summary>
         /// <param name="id"></param>
         public void Deletar(int id)

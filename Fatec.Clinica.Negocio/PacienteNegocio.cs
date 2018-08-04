@@ -59,6 +59,7 @@ namespace Fatec.Clinica.Negocio
         public Paciente SelecionarPorCpf(string cpf)
         {
             var obj = _pacienteRepositorio.SelecionarPorCpf(cpf);
+
             if(obj == null)
                 throw new NaoEncontradoException($"Não foi encontrado nenhum paciente com o CPF {cpf}!");
             return obj;
@@ -72,8 +73,8 @@ namespace Fatec.Clinica.Negocio
         /// <returns>ID do paciente inserido no Database ou exceção.</returns>
         public int Inserir(Paciente entity)
         {
-            var CamposVazios = VerificarCamposVazios(entity);
-            if (CamposVazios)
+
+            if (VerificarCamposVazios(entity))
             {
                 throw new DadoInvalidoException($"Os seguintes campos são obrigatórios:" +
                                                 $"Nome, CPF, Telefone Movel, Gênero e Data de Nascimento");
@@ -91,6 +92,16 @@ namespace Fatec.Clinica.Negocio
                     throw new ConflitoException($"Já existe cadastrado o CPF {cpfExistente.Cpf}!");
             }
 
+            if (_pacienteRepositorio.SelecionarPorEmail(entity.Email) != null)
+            {
+                throw new ConflitoException("O email já foi cadastrado");
+            }
+
+            if (VerificarIdade(entity.DataNasc) == false)
+            {
+                throw new DadoInvalidoException("Idade inválida - Apenas maiores de 18 anos!!");
+            }
+
             return _pacienteRepositorio.Inserir(entity);
         }
 
@@ -104,8 +115,8 @@ namespace Fatec.Clinica.Negocio
         /// <returns>Paciente selecionado do Database ou exceção.</returns>
         public Paciente Alterar(int id, Paciente entity)
         {
-            var CamposVazios = VerificarCamposVazios(entity);
-            if (CamposVazios)
+
+            if (VerificarCamposVazios(entity))
             {
                 throw new DadoInvalidoException($"Os seguintes campos são obrigatórios:" +
                                                 $"Nome, CPF, Telefone Movel, Gênero e Data de Nascimento");
@@ -126,6 +137,17 @@ namespace Fatec.Clinica.Negocio
                 }
                            
             }
+
+            if (_pacienteRepositorio.SelecionarPorEmail(entity.Email) != null)
+            {
+                throw new ConflitoException("O email já foi cadastrado");
+            }
+
+            if (VerificarIdade(entity.DataNasc) == false)
+            {
+                throw new DadoInvalidoException("Idade inválida - Apenas maiores de 18 anos!!");
+            }
+
             entity.Id = id;
             _pacienteRepositorio.Alterar(entity);
 
