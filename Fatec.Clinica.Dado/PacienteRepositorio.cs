@@ -63,6 +63,18 @@ namespace Fatec.Clinica.Dado
             }
         }
 
+        public Paciente SelecionarPorEmail(string email)
+        {
+            using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
+            {
+                var obj = connection.QueryFirstOrDefault<Paciente>($"SELECT P.Id, P.Nome, P.Cpf, P.Celular," +
+                                                                 $"P.Email, P.DataNasc, P.Genero, P.TelefoneRes" +
+                                                                 $"FROM [Paciente] P" +
+                                                                 $"WHERE Email = '{email}'");
+                return obj;
+            }
+        }
+
         /// <summary>
         /// Insere um paciente no Database.
         /// </summary>

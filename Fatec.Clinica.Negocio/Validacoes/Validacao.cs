@@ -109,5 +109,34 @@ namespace Fatec.Clinica.Negocio.Validacoes
             return false;
         }
         #endregion
+
+        #region Verificar se existem campos vazios na inserção ou alteração de um Tipo de Exame
+        public bool VerificarCamposVazios(TipoExame entity)
+        {
+            if (string.IsNullOrEmpty(entity.Nome))
+            {
+                return true;
+            }
+            return false;
+        }
+        #endregion
+
+        #region Verificação de Idade
+        public bool VerificarIdade(DateTime DataNasc)
+        {
+            if(DateTime.Now.Year - DataNasc.Year > 18)
+            {
+                return true;
+            }
+            else if((DateTime.Now.Year - DataNasc.Year == 18) && (DateTime.Now.Month > DataNasc.Month || (DateTime.Now.Month == DataNasc.Month && DateTime.Now.Day >= DataNasc.Day)))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        #endregion
     }
 }

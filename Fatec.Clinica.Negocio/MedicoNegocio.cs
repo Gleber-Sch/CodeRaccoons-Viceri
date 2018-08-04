@@ -44,6 +44,7 @@ namespace Fatec.Clinica.Negocio
 
             if (obj == null)
                 throw new NaoEncontradoException($"Não foi encontrado um médico com o ID {id}!");
+
             return obj;
         }
 
@@ -58,7 +59,7 @@ namespace Fatec.Clinica.Negocio
 
            if(obj == null)
                 throw new NaoEncontradoException($"Não foi encontrado nenhum médico com esta epecialidade!" +
-                                                 $" (ID da Especialidade{id})");
+                                                 $" (ID da Especialidade {id})");
             return obj;
         }
 
@@ -83,6 +84,7 @@ namespace Fatec.Clinica.Negocio
         public Medico SelecionarPorCpf(string cpf)
         {
             var obj = _medicoRepositorio.SelecionarPorCpf(cpf);
+
             if (obj == null)
                 throw new NaoEncontradoException($"Não foi encontrado nenhum médico com o CPF {cpf}!");
             return obj;
@@ -104,13 +106,11 @@ namespace Fatec.Clinica.Negocio
                                                 $"Data de Nascimento e Especialidade");
             }
 
-            var crmExistente = _medicoRepositorio.SelecionarPorCrm(entity.Crm);
 
-            if(crmExistente != null)
-                throw new ConflitoException($"Já existe cadastrado o CRM {crmExistente.Crm}!");
+            if(_medicoRepositorio.SelecionarPorCrm(entity.Crm) != null)
+                throw new ConflitoException($"Já existe cadastrado o CRM {entity.Crm}!");
 
-            var CpfValido = new Validacao();
-            if (CpfValido.VerificarCPF(entity.Cpf) == false)
+            if (VerificarCPF(entity.Cpf) == false)
             {
                 throw new DadoInvalidoException($"O CPF {entity.Cpf} é invalido");
             }
@@ -120,6 +120,16 @@ namespace Fatec.Clinica.Negocio
 
                 if (cpfExistente != null)
                     throw new ConflitoException($"Já existe cadastrado o CPF {cpfExistente.Cpf}!");
+            }
+
+            if(_medicoRepositorio.SelecionarPorEmail(entity.Email) != null)
+            {
+                throw new ConflitoException("O email já foi cadastrado");
+            }
+
+            if (VerificarIdade(entity.DataNasc) == false)
+            {
+                throw new DadoInvalidoException("Idade inválida - Apenas maiores de 18 anos!!");
             }
 
             return _medicoRepositorio.Inserir(entity);
@@ -163,6 +173,16 @@ namespace Fatec.Clinica.Negocio
                     if (cpfExistente.Id != id)
                         throw new ConflitoException($"Já existe cadastrado o CPF {cpfExistente.Cpf}, para outro médico!");
                 }
+            }
+
+            if (_medicoRepositorio.SelecionarPorEmail(entity.Email) != null)
+            {
+                throw new ConflitoException("O email já foi cadastrado");
+            }
+
+            if(VerificarIdade(entity.DataNasc) == false)
+            {
+                throw new DadoInvalidoException("Idade inválida - Apenas maiores de 18 anos!!");
             }
 
             entity.Id = id;
