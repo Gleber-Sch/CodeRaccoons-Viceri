@@ -10,7 +10,7 @@ namespace Fatec.Clinica.Dado
     /// <summary>
     /// Funçoes de CRUD para o Endereço
     /// </summary>
-    class EnderecoRepositorio : IRepositorioBase<Endereco>
+    public class EnderecoRepositorio : IRepositorioBase<Endereco>
     {
         /// <summary>
         /// Seleciona todos as consultas do Database.
@@ -35,10 +35,26 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 var obj = connection.QueryFirstOrDefault<Endereco>($"SELECT *FROM ViewEnderecos"+
-                                                                   $"where IdEndereco={id}");
+                                                                   $"where Id={id}");
 
                 return obj;
             }
+        }
+
+public Endereco SelecionarPorEndereco(Endereco entity)
+        {
+            using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
+            {
+                var obj = connection.QueryFirstOrDefault<Endereco>($"SELECT *FROM ViewEnderecos" +
+                                                                    $"where Estado = {entity.Estado}" +
+                                                                    $"and Cidade = {entity.Cidade}" +
+                                                                    $"and Bairro = {entity.Bairro}" +
+                                                                    $"and Logradouro = {entity.Logradouro}" +
+                                                                    $"and Numero = {entity.Numero}" +
+                                                                    $"and Complemento = '{entity.Complemento}'");
+            return obj;
+            }
+            
         }
 
         /// <summary>
@@ -57,7 +73,7 @@ namespace Fatec.Clinica.Dado
                                                    $" '{entity.Cidade}'," +
                                                    $" '{entity.Bairro}'," +
                                                    $" '{entity.Logradouro}'" +
-                                                   $" '{entity.Numero}'" +
+                                                   $"  {entity.Numero}" +
                                                    $" '{entity.Complemento}'" +
                                                    $"  {entity.Clinica.Id}" +
                                                    $"SET @ID = SCOPE_IDENTITY();" +
@@ -78,9 +94,9 @@ namespace Fatec.Clinica.Dado
                                    $"Cidade = '{entity.Cidade}'," +
                                    $"Bairro = '{entity.Bairro}', " +
                                    $"Logradouro = '{entity.Logradouro}' " +
-                                   $"Numero = '{entity.Numero}'" +
+                                   $"Numero = {entity.Numero}" +
                                    $"Complemento = '{entity.Complemento}'" +
-                                   $"IdClinica ='{entity.Clinica.Id}'" +
+                                   $"IdClinica ={entity.Clinica.Id}" +
                                    $"WHERE Id = {entity.Id}");
             }
         }
