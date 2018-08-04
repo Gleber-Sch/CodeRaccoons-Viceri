@@ -52,7 +52,7 @@ namespace Fatec.Clinica.Dado
             {
                 var obj = connection.QueryFirstOrDefault<TipoExame>($"SELECT * " +
                                                                     $"FROM [TipoExame] " +
-                                                                    $"WHERE (Nome) = ('{nome}')");
+                                                                    $"WHERE Nome = '{nome}' ");
                 return obj;
             }
         }
@@ -67,11 +67,11 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 return connection.QuerySingle<int>($"DECLARE @ID int;" +
-                                                $"INSERT INTO [TipoExame] " +
-                                                $"(Nome) " +
-                                                $"VALUES ('{entity.Nome}')" +
-                                                $"SET @ID = SCOPE_IDENTITY();" +
-                                                $"SELECT @ID");
+                                                   $"INSERT INTO [TipoExame] " +
+                                                   $"(Nome) " +
+                                                   $"VALUES ('{entity.Nome}')" +
+                                                   $"SET @ID = SCOPE_IDENTITY();" +
+                                                   $"SELECT @ID");
             }
         }
 
@@ -98,7 +98,7 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 connection.Execute($"DELETE " +
-                                   $"FROM [Especialidade] " +
+                                   $"FROM [TipoExame] " +
                                    $"WHERE Id = {id}");
             }
         }

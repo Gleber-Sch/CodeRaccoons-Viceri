@@ -80,10 +80,7 @@ namespace Fatec.Clinica.Dado
                                                    $" '{entity.Email}'," +
                                                    $" '{entity.DataNasc}'," +
                                                    $" '{entity.Genero}'," +
-<<<<<<< HEAD
-=======
                                                    $" '{entity.Celular}'," +
->>>>>>> 76bd581b7257586894d1de385c087f66d5145ee7
                                                    $" '{entity.TelefoneRes}')" +
                                                    $"SET @ID = SCOPE_IDENTITY();" +
                                                    $"SELECT @ID");
