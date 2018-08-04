@@ -71,6 +71,7 @@
     <Build Include="dbo\View\ViewConsultas.sql" />
     <Build Include="dbo\View\ViewEnderecos.sql" />
     <Build Include="dbo\View\ViewClinicas.sql" />
+    <Build Include="dbo\View\ViewExames.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tabelas\Exame.sql" />

@@ -19,7 +19,7 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var lista = connection.Query<Exame>("SELECT * FROM [Exame]");
+                var lista = connection.Query<Exame>("SELECT * FROM [ViewExames]");
                 return lista;
             }
         }
@@ -34,8 +34,72 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 var obj = connection.QueryFirstOrDefault<Exame>($"SELECT * " +
-                                                                    $"FROM [Exame] " +
-                                                                    $"WHERE Id = {id}");
+                                                                $"FROM [ViewExames] " +
+                                                                $"WHERE Id = {id}");
+                return obj;
+            }
+        }
+
+        /// <summary>
+        /// Seleciona exames no Database através do ID do Paciente especificado.
+        /// </summary>
+        /// <param name="id">Usado para buscar o Paciente no Database.</param>
+        /// <returns>Exames selecionados.</returns>
+        public Exame SelecionarPorPaciente(int id)
+        {
+            using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
+            {
+                var obj = connection.QueryFirstOrDefault<Exame>($"SELECT * " +
+                                                                $"FROM [ViewExames] " +
+                                                                $"WHERE IdPaciente = {id}");
+                return obj;
+            }
+        }
+
+        /// <summary>
+        /// Seleciona exames no Database através do ID do médico que os solicitou.
+        /// </summary>
+        /// <param name="id">Usado para buscar o médico no Database.</param>
+        /// <returns>Exames selecionados.</returns>
+        public Exame SelecionarPorMedicoQueSolicitou(int id)
+        {
+            using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
+            {
+                var obj = connection.QueryFirstOrDefault<Exame>($"SELECT * " +
+                                                                $"FROM [ViewExames] " +
+                                                                $"WHERE IdMedicoQueSolicitou = {id}");
+                return obj;
+            }
+        }
+
+        /// <summary>
+        /// Seleciona exames no Database através do ID do médico que os realizou.
+        /// </summary>
+        /// <param name="id">Usado para buscar o médico no Database.</param>
+        /// <returns>Exames selecionados.</returns>
+        public Exame SelecionarPorMedicoQueRealizou(int id)
+        {
+            using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
+            {
+                var obj = connection.QueryFirstOrDefault<Exame>($"SELECT * " +
+                                                                $"FROM [ViewExames] " +
+                                                                $"WHERE IdMedicoQueRealizou = {id}");
+                return obj;
+            }
+        }
+
+        /// <summary>
+        /// Seleciona exames no Database através do ID da clínica onde eles foram realizados.
+        /// </summary>
+        /// <param name="id">Usado para buscar a clínica no Database.</param>
+        /// <returns>Exames selecionados.</returns>
+        public Exame SelecionarPorClinica(int id)
+        {
+            using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
+            {
+                var obj = connection.QueryFirstOrDefault<Exame>($"SELECT * " +
+                                                                $"FROM [ViewExames] " +
+                                                                $"WHERE IdClinica = {id}");
                 return obj;
             }
         }

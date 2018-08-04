@@ -21,22 +21,71 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var lista = connection.Query<Consulta>($"SELECT *From ViewConsultas");
+                var lista = connection.Query<Consulta>($"SELECT * FROM [ViewConsultas]");
 
                 return lista;
             }
         }
 
         /// <summary>
-        /// Seleciona uma a consulta do Database, através do Id.
+        /// Seleciona consultas no Database através do ID especificado.
         /// </summary>
-        /// <returns>Consulta seleciona.</returns>
+        /// <param name="id">Usado para buscar a consulta no Database.</param>
+        /// <returns>Consultas selecionados.</returns>
         public Consulta SelecionarPorId(int id)
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var obj = connection.QueryFirstOrDefault<Consulta>($"SELECT *FROM ViewConsultas,"+
+                var obj = connection.QueryFirstOrDefault<Consulta>($"SELECT * FROM [ViewConsultas] "+
                                                                    $"WHERE C.Id = {id} ");
+
+                return obj;
+            }
+        }
+
+        /// <summary>
+        /// Seleciona uma a consulta do Database através do Id do paciente.
+        /// </summary>
+        /// <param name="id">Usado para buscar o paciente no Database.</param>
+        /// <returns>Consulta seleciona.</returns>
+        public Consulta SelecionarPorPaciente(int id)
+        {
+            using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
+            {
+                var obj = connection.QueryFirstOrDefault<Consulta>($"SELECT * FROM [ViewConsultas] " +
+                                                                   $"WHERE IdPaciente = {id} ");
+
+                return obj;
+            }
+        }
+
+        /// <summary>
+        /// Seleciona uma a consulta do Database através do Id do médico.
+        /// </summary>
+        /// <param name="id">Usado para buscar o médico no Database.</param>
+        /// <returns>Consulta seleciona.</returns>
+        public Consulta SelecionarPorMedico(int id)
+        {
+            using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
+            {
+                var obj = connection.QueryFirstOrDefault<Consulta>($"SELECT * FROM [ViewConsultas] " +
+                                                                   $"WHERE IdMedico = {id} ");
+
+                return obj;
+            }
+        }
+
+        /// <summary>
+        /// Seleciona uma a consulta do Database através do Id da clinica.
+        /// </summary>
+        /// <param name="id">Usado para buscar a clinica no Database.</param>
+        /// <returns>Consulta seleciona.</returns>
+        public Consulta SelecionarPorClinica(int id)
+        {
+            using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
+            {
+                var obj = connection.QueryFirstOrDefault<Consulta>($"SELECT * FROM [ViewConsultas] " +
+                                                                   $"WHERE IdClinica = {id} ");
 
                 return obj;
             }
@@ -53,11 +102,12 @@ namespace Fatec.Clinica.Dado
             {
                 return connection.QuerySingle<int>($"DECLARE @ID int;" +
                                                    $"INSERT INTO [Consulta] " +
-                                                   $"(Historico, Data_Consulta, Id_Paciente, Id_Medico) " +
+                                                   $"(Historico, DataHora, IdPaciente, IdAtendimento, Nota) " +
                                                    $"VALUES ('{entity.Historico}'," +
                                                    $" '{entity.DataHora}'," +
-                                                   $" '{entity.Paciente.Id}'," +
-                                                   $" '{entity.Atendimento.Id}'" +
+                                                   $" {entity.Paciente.Id}," +
+                                                   $" {entity.Atendimento.Id}" +
+                                                   $" {entity.Nota}" +
                                                    $"SET @ID = SCOPE_IDENTITY();" +
                                                    $"SELECT @ID");
             }
@@ -73,9 +123,10 @@ namespace Fatec.Clinica.Dado
             {
                 connection.Execute($"UPDATE [Consulta] " +
                                    $"SET Historico = '{entity.Historico}'," +
-                                   $"Data_Consulta = '{entity.DataHora}'," +
-                                   $"Id_Paciente = '{entity.Paciente.Id}', " +
-                                   $"Id_Medico = '{entity.Atendimento.Medico}' " +
+                                   $"DataHora = '{entity.DataHora}'," +
+                                   $"IdPaciente = {entity.Paciente.Id}, " +
+                                   $"IdAtendimento = {entity.Atendimento.Id} " +
+                                   $"Nota = {entity.Nota}" +
                                    $"WHERE Id = {entity.Id}");
             }
         }
