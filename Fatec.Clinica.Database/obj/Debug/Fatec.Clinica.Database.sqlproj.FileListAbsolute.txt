@@ -8,3 +8,9 @@ C:\Users\Gleber_M\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\ob
 C:\Users\Gleber_M\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\obj\Debug\Fatec.Clinica.Database.pdb
 C:\Users\Gleber_M\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\bin\Debug\Fatec.Clinica.Database.dll
 C:\Users\Gleber_M\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\bin\Debug\Fatec.Clinica.Database.pdb
+C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\bin\Debug\Fatec.Clinica.Database.dacpac
+C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\bin\Debug\Fatec.Clinica.Database.dll
+C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\bin\Debug\Fatec.Clinica.Database.pdb
+C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\obj\Debug\Fatec.Clinica.Database.sqlprojAssemblyReference.cache
+C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\obj\Debug\Fatec.Clinica.Database.dll
+C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\obj\Debug\Fatec.Clinica.Database.pdb

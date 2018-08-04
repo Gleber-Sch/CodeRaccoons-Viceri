@@ -35,7 +35,7 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 var obj = connection.QueryFirstOrDefault<Endereco>($"SELECT *FROM ViewEnderecos"+
-                                                                   $"where id={id}");
+                                                                   $"where IdEndereco={id}");
 
                 return obj;
             }
