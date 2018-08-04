@@ -110,6 +110,18 @@ namespace Fatec.Clinica.Negocio.Validacoes
         }
         #endregion
 
+        #region Verifica se existe campo vazio na inserção ou alteração de um Endereco
+        public bool VerificarCamposVazios(Endereco entity)
+        {
+            if (String.IsNullOrEmpty(Convert.ToString(entity.Estado)) || String.IsNullOrEmpty(entity.Cidade) ||
+                 String.IsNullOrEmpty(entity.Bairro) || String.IsNullOrEmpty(entity.Logradouro) ||
+                 String.IsNullOrEmpty(Convert.ToString(entity.Numero)) || String.IsNullOrEmpty(Convert.ToString(entity.Clinica)))
+            {
+                return true;
+            }
+            return false;
+        }
+        #endregion
         #region Verificar se existem campos vazios na inserção ou alteração de um Tipo de Exame
         public bool VerificarCamposVazios(TipoExame entity)
         {
