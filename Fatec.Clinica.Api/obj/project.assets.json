@@ -13496,23 +13496,69 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\Gleber_M\\.nuget\\packages\\": {},
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    "C:\\Users\\Lucas Contesini\\.nuget\\packages\\": {},
+=======
+    "C:\\Users\\Gleber_M\\.nuget\\packages\\": {},
+>>>>>>> df0a9921aaee3b5dfbe6229f371e06f29583a098
+=======
+    "C:\\Users\\Massao\\.nuget\\packages\\": {},
+>>>>>>> 0599fbaeedbc6648837b72b8e3fad43fa6c48ce6
+>>>>>>> f7c26b6bbe3f1099d1fde44960a79ac3b45b3a81
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+      "projectUniqueName": "C:\\Users\\Lucas Contesini\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Api\\Fatec.Clinica.Api.csproj",
+      "projectName": "Fatec.Clinica.Api",
+      "projectPath": "C:\\Users\\Lucas Contesini\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Api\\Fatec.Clinica.Api.csproj",
+      "packagesPath": "C:\\Users\\Lucas Contesini\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Lucas Contesini\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Api\\obj\\",
+=======
+>>>>>>> f7c26b6bbe3f1099d1fde44960a79ac3b45b3a81
       "projectUniqueName": "C:\\Users\\Gleber_M\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Api\\Fatec.Clinica.Api.csproj",
       "projectName": "Fatec.Clinica.Api",
       "projectPath": "C:\\Users\\Gleber_M\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Api\\Fatec.Clinica.Api.csproj",
       "packagesPath": "C:\\Users\\Gleber_M\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Gleber_M\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Api\\obj\\",
+<<<<<<< HEAD
+=======
+>>>>>>> df0a9921aaee3b5dfbe6229f371e06f29583a098
+=======
+      "projectUniqueName": "C:\\Users\\Massao\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Api\\Fatec.Clinica.Api.csproj",
+      "projectName": "Fatec.Clinica.Api",
+      "projectPath": "C:\\Users\\Massao\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Api\\Fatec.Clinica.Api.csproj",
+      "packagesPath": "C:\\Users\\Massao\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Massao\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Api\\obj\\",
+>>>>>>> 0599fbaeedbc6648837b72b8e3fad43fa6c48ce6
+>>>>>>> f7c26b6bbe3f1099d1fde44960a79ac3b45b3a81
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\Gleber_M\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        "C:\\Users\\Lucas Contesini\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+        "C:\\Users\\Gleber_M\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> df0a9921aaee3b5dfbe6229f371e06f29583a098
+=======
+        "C:\\Users\\Massao\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> 0599fbaeedbc6648837b72b8e3fad43fa6c48ce6
+>>>>>>> f7c26b6bbe3f1099d1fde44960a79ac3b45b3a81
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -13525,11 +13571,37 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+            "C:\\Users\\Lucas Contesini\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\Fatec.Clinica.Dominio.csproj": {
+              "projectPath": "C:\\Users\\Lucas Contesini\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\Fatec.Clinica.Dominio.csproj"
+            },
+            "C:\\Users\\Lucas Contesini\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Negocio\\Fatec.Clinica.Negocio.csproj": {
+              "projectPath": "C:\\Users\\Lucas Contesini\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Negocio\\Fatec.Clinica.Negocio.csproj"
+=======
+            "C:\\Users\\Massao\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\Fatec.Clinica.Dominio.csproj": {
+              "projectPath": "C:\\Users\\Massao\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\Fatec.Clinica.Dominio.csproj"
+            },
+=======
+>>>>>>> f7c26b6bbe3f1099d1fde44960a79ac3b45b3a81
             "C:\\Users\\Gleber_M\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\Fatec.Clinica.Dominio.csproj": {
               "projectPath": "C:\\Users\\Gleber_M\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\Fatec.Clinica.Dominio.csproj"
             },
             "C:\\Users\\Gleber_M\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Negocio\\Fatec.Clinica.Negocio.csproj": {
               "projectPath": "C:\\Users\\Gleber_M\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Negocio\\Fatec.Clinica.Negocio.csproj"
+<<<<<<< HEAD
+=======
+=======
+            "C:\\Users\\Massao\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\Fatec.Clinica.Dominio.csproj": {
+              "projectPath": "C:\\Users\\Massao\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\Fatec.Clinica.Dominio.csproj"
+            },
+>>>>>>> df0a9921aaee3b5dfbe6229f371e06f29583a098
+            "C:\\Users\\Massao\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Negocio\\Fatec.Clinica.Negocio.csproj": {
+              "projectPath": "C:\\Users\\Massao\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Negocio\\Fatec.Clinica.Negocio.csproj"
+>>>>>>> 0599fbaeedbc6648837b72b8e3fad43fa6c48ce6
+>>>>>>> f7c26b6bbe3f1099d1fde44960a79ac3b45b3a81
             }
           }
         }
