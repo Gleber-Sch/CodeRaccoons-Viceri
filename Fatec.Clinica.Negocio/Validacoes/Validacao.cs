@@ -169,6 +169,18 @@ namespace Fatec.Clinica.Negocio.Validacoes
         }
         #endregion
 
+        #region Verifica se existe campo vazio na inserção ou alteração de um Endereco
+        public bool VerificarCamposVazios(Endereco entity)
+        {
+            if (String.IsNullOrEmpty(Convert.ToString(entity.Estado)) || String.IsNullOrEmpty(entity.Cidade) ||
+                 String.IsNullOrEmpty(entity.Bairro) || String.IsNullOrEmpty(entity.Logradouro) ||
+                 String.IsNullOrEmpty(Convert.ToString(entity.Numero)) || String.IsNullOrEmpty(Convert.ToString(entity.Clinica)))
+            {
+                return true;
+            }
+            return false;
+        }
+        #endregion
         #region Verificar se existem campos vazios na inserção ou alteração de um Tipo de Exame
         /// <summary>
         /// Verifica se o atributo obrigátorio não foi preenchido.
@@ -177,7 +189,30 @@ namespace Fatec.Clinica.Negocio.Validacoes
         /// <returns>True se o atributo Nome não estever preenchido ou False se ele estiver.</returns>
         public bool VerificarCamposVazios(TipoExame entity)
         {
-            if (string.IsNullOrEmpty(entity.Nome))
+            if (String.IsNullOrEmpty(entity.Nome))
+            {
+                return true;
+            }
+            return false;
+        }
+        #endregion
+
+        #region Verificar se existem campos vazios na inserção ou alteração de um Atendimento
+        public bool VerificarCamposVazios(Atendimento entity)
+        {
+            if(String.IsNullOrEmpty(Convert.ToString(entity.Clinica)) || String.IsNullOrEmpty(Convert.ToString(entity.Medico)))
+            {
+                return true;
+            }
+            return false;
+        }
+        #endregion
+
+        #region Verificar se existem campos vazios na inserção ou alteração de uma Consulta
+        public bool VerificarCamposVazios(Consulta entity)
+        {
+            if (String.IsNullOrEmpty(Convert.ToString(entity.Atendimento)) || String.IsNullOrEmpty(Convert.ToString(entity.Paciente)) ||
+                String.IsNullOrEmpty(Convert.ToString(entity.DataHora)) || String.IsNullOrEmpty(entity.Historico))
             {
                 return true;
             }
