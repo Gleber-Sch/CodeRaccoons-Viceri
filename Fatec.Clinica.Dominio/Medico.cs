@@ -4,6 +4,6 @@
     {
         public int Crm { get; set; }
         public int IdEspecialidade { get; set; }
-        public char StatusAtividade { get; set; }
+        public bool StatusAtividade { get; set; }
     }
 }

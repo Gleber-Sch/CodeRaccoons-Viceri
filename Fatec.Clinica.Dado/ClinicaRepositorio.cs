@@ -35,9 +35,39 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 var obj = connection.QueryFirstOrDefault<Clinicas>($"SELECT *FROM ViewClinicas," +
-                                                                   $"WHERE C.Id = {id} ");
+                                                                   $"WHERE Clinica.Id = {id} ");
 
                 return obj;
+            }
+        }
+
+        /// <summary>
+        /// Seleciona uma clinica do Database através do CNPJ.
+        /// </summary>
+        /// <returns>clinica seleciona.</returns>
+        public Clinicas SelecionarPorCnpj(string cnpj)
+        {
+            using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
+            {
+                var obj = connection.QueryFirstOrDefault<Clinicas>($"SELECT *FROM ViewClinicas," +
+                                                                   $"WHERE Clinica.Cnpj = '{cnpj}' ");
+
+                return obj;
+            }
+        }
+
+        /// <summary>
+        /// Seleciona uma clinica do Database através do status de atividade, sendo TRUE para ativa e FALSE para inativa.
+        /// </summary>
+        /// <returns>Lista de clinicas.</returns>
+        public IEnumerable<Clinicas> SelecionarPorStatusAtividade(bool status)
+        {
+            using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
+            {
+                var lista = connection.Query<Clinicas>($"SELECT * FROM ViewClinicas," +
+                                                       $"WHERE Clinica.StatusAtividade = {status} ");
+
+                return lista;
             }
         }
 
@@ -55,7 +85,7 @@ namespace Fatec.Clinica.Dado
                                                    $"(Cnpj, StatusAtividade, TelefoneCom, Nome) " +
                                                    $"VALUES ('{entity.Cnpj}'," +
                                                    $" '{entity.StatusAtividade}'," +
-                                                   $" '{entity.TelefoneCom}'" +
+                                                   $" '{entity.TelefoneCom}', " +
                                                    $" '{entity.Nome}'" +
                                                    $"SET @ID = SCOPE_IDENTITY();" +
                                                    $"SELECT @ID");
@@ -73,7 +103,7 @@ namespace Fatec.Clinica.Dado
                 connection.Execute($"UPDATE [Clinica] " +
                                    $"SET Cnpj = '{entity.Cnpj}'," +
                                    $"StatusAtividade = '{entity.StatusAtividade}', " +
-                                   $"TelefoneCom = '{entity.TelefoneCom}' " +
+                                   $"TelefoneCom = '{entity.TelefoneCom}', " +
                                    $"Nome = '{entity.Nome}'" +
                                    $"WHERE Id = {entity.Id}");
             }

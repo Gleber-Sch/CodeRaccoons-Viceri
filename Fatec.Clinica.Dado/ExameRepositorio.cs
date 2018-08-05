@@ -14,7 +14,7 @@ namespace Fatec.Clinica.Dado
         /// <summary>
         /// Seleciona todas os exames do Database.
         /// </summary>
-        /// <returns>Lista de exames.</returns>
+        /// <returns>Lista com todos os exames.</returns>
         public IEnumerable<Exame> Selecionar()
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
@@ -44,15 +44,15 @@ namespace Fatec.Clinica.Dado
         /// Seleciona exames no Database através do ID do Paciente especificado.
         /// </summary>
         /// <param name="id">Usado para buscar o Paciente no Database.</param>
-        /// <returns>Exames selecionados.</returns>
-        public Exame SelecionarPorPaciente(int id)
+        /// <returns>Lista de exames realizados por um paciente.</returns>
+        public IEnumerable<Exame> SelecionarPorPaciente(int id)
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var obj = connection.QueryFirstOrDefault<Exame>($"SELECT * " +
-                                                                $"FROM [ViewExames] " +
-                                                                $"WHERE IdPaciente = {id}");
-                return obj;
+                var lista = connection.Query<Exame>($"SELECT * " +
+                                                    $"FROM [ViewExames] " +
+                                                    $"WHERE IdPaciente = {id}");
+                return lista;
             }
         }
 
@@ -60,15 +60,15 @@ namespace Fatec.Clinica.Dado
         /// Seleciona exames no Database através do ID do médico que os solicitou.
         /// </summary>
         /// <param name="id">Usado para buscar o médico no Database.</param>
-        /// <returns>Exames selecionados.</returns>
-        public Exame SelecionarPorMedicoQueSolicitou(int id)
+        /// <returns>Lista de exames solicitados por um médico.</returns>
+        public IEnumerable<Exame> SelecionarPorMedicoQueSolicitou(int id)
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var obj = connection.QueryFirstOrDefault<Exame>($"SELECT * " +
-                                                                $"FROM [ViewExames] " +
-                                                                $"WHERE IdMedicoQueSolicitou = {id}");
-                return obj;
+                var lista = connection.Query<Exame>($"SELECT * " +
+                                                    $"FROM [ViewExames] " +
+                                                    $"WHERE IdMedicoQueSolicitou = {id}");
+                return lista;
             }
         }
 
@@ -76,15 +76,15 @@ namespace Fatec.Clinica.Dado
         /// Seleciona exames no Database através do ID do médico que os realizou.
         /// </summary>
         /// <param name="id">Usado para buscar o médico no Database.</param>
-        /// <returns>Exames selecionados.</returns>
-        public Exame SelecionarPorMedicoQueRealizou(int id)
+        /// <returns>Lista de exames realizados por um médico.</returns>
+        public IEnumerable<Exame> SelecionarPorMedicoQueRealizou(int id)
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var obj = connection.QueryFirstOrDefault<Exame>($"SELECT * " +
-                                                                $"FROM [ViewExames] " +
-                                                                $"WHERE IdMedicoQueRealizou = {id}");
-                return obj;
+                var lista = connection.Query<Exame>($"SELECT * " +
+                                                    $"FROM [ViewExames] " +
+                                                    $"WHERE IdMedicoQueRealizou = {id}");
+                return lista;
             }
         }
 
@@ -92,15 +92,15 @@ namespace Fatec.Clinica.Dado
         /// Seleciona exames no Database através do ID da clínica onde eles foram realizados.
         /// </summary>
         /// <param name="id">Usado para buscar a clínica no Database.</param>
-        /// <returns>Exames selecionados.</returns>
-        public Exame SelecionarPorClinica(int id)
+        /// <returns>Lista de exames realizados em uma clínica.</returns>
+        public IEnumerable<Exame> SelecionarPorClinica(int id)
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var obj = connection.QueryFirstOrDefault<Exame>($"SELECT * " +
-                                                                $"FROM [ViewExames] " +
-                                                                $"WHERE IdClinica = {id}");
-                return obj;
+                var lista = connection.Query<Exame>($"SELECT * " +
+                                                    $"FROM [ViewExames] " +
+                                                    $"WHERE IdClinica = {id}");
+                return lista;
             }
         }
 

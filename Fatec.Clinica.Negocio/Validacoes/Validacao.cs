@@ -1,7 +1,6 @@
-﻿using Fatec.Clinica.Dominio;
+﻿using Fatec.Clinica.Dado;
+using Fatec.Clinica.Dominio;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Fatec.Clinica.Negocio.Validacoes
 {
@@ -11,8 +10,8 @@ namespace Fatec.Clinica.Negocio.Validacoes
         /// <summary>
         /// Validação do CPF
         /// </summary>
-        /// <param name="cpf"></param>
-        /// <returns></returns>
+        /// <param name="cpf">Dado a ser verificado.</param>
+        /// <returns>TRUE se o CPF é válido ou FALSE se não for.</returns>
         public bool VerificarCPF(string cpf)
         {
             //Limpa a formatação da String
@@ -57,6 +56,66 @@ namespace Fatec.Clinica.Negocio.Validacoes
         }
         #endregion
 
+        #region Validar CNPJ
+        /// <summary>
+        /// Validação do CNPJ
+        /// </summary>
+        /// <param name="cnpj">Dado a ser verificado.</param>
+        /// <returns>TRUE se o CNPJ é válido ou FALSE se não for.</returns>
+        public bool VerificarCnpj(string cnpj)
+        {
+            //Limpa a formatação da String
+            cnpj = cnpj.Trim();
+            cnpj = cnpj.Replace(".", "").Replace("-", "").Replace("/", "");
+
+            //Verifica se existem caracteres diferentes de números
+            if (long.TryParse(cnpj, out long somenteNumero) == false)
+            {
+                return false;
+            }
+
+            //Se o CNPJ não tem 14 digitos ele é inválido
+            if (cnpj.Length != 14)
+                return false;
+
+            int[] multiplicador1 = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+            int[] multiplicador2 = new int[13] { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+            int soma,resto;
+            string digito,tempCnpj;
+
+            //Gera uma string sem os dígitos verificadores
+            tempCnpj = cnpj.Substring(0, 12);
+
+            soma = 0;
+            for (int i = 0; i < 12; i++)
+                soma += int.Parse(tempCnpj[i].ToString()) * multiplicador1[i];
+
+            resto = (soma % 11);
+            if (resto < 2)
+                resto = 0;
+            else
+                resto = 11 - resto;
+
+            digito = resto.ToString();
+
+            tempCnpj = tempCnpj + digito;
+            soma = 0;
+            for (int i = 0; i < 13; i++)
+                soma += int.Parse(tempCnpj[i].ToString()) * multiplicador2[i];
+
+            resto = (soma % 11);
+            if (resto < 2)
+                resto = 0;
+            else
+                resto = 11 - resto;
+
+            digito = digito + resto.ToString();
+
+            //Compara se DigitoVerificador é igual ao foi recebido como parâmetro pelo método e retorna um booleano
+            return cnpj.EndsWith(digito);
+        }
+        #endregion
+
         #region Verificar se existem campos vazios na inserção ou alteração de um Médico
         /// <summary>
         /// Verifica se os atributos obrigátorios não foram preenchidos.
@@ -98,7 +157,7 @@ namespace Fatec.Clinica.Negocio.Validacoes
         /// <summary>
         /// Verifica se o atributo obrigátorio não foi preenchido.
         /// </summary>
-        /// <param name="entity">Objeto com os atributos a serem verificados.</param>
+        /// <param name="entity">Objeto com os atributo a ser verificado.</param>
         /// <returns>True se o atributo Nome não estever preenchido ou False se ele estiver.</returns>
         public bool VerificarCamposVazios(Especialidade entity)
         {
@@ -123,6 +182,11 @@ namespace Fatec.Clinica.Negocio.Validacoes
         }
         #endregion
         #region Verificar se existem campos vazios na inserção ou alteração de um Tipo de Exame
+        /// <summary>
+        /// Verifica se o atributo obrigátorio não foi preenchido.
+        /// </summary>
+        /// <param name="entity">Objeto com o atributo a ser verificado.</param>
+        /// <returns>True se o atributo Nome não estever preenchido ou False se ele estiver.</returns>
         public bool VerificarCamposVazios(TipoExame entity)
         {
             if (String.IsNullOrEmpty(entity.Nome))
@@ -156,6 +220,39 @@ namespace Fatec.Clinica.Negocio.Validacoes
         }
         #endregion
 
+        #region Verificar se existem campos vazios na inserção ou alteração de um Exame
+        /// <summary>
+        /// Verifica se o atributo obrigátorio não foi preenchido.
+        /// </summary>
+        /// <param name="entity">Objeto com o atributo a ser verificado.</param>
+        /// <returns>True se o atributo DataHora não estever preenchido ou False se ele estiver.</returns>
+        public bool VerificarCamposVazios(Exame entity)
+        {
+            if (entity.DataHora == null)
+            {
+                return true;
+            }
+            return false;
+        }
+        #endregion
+
+        #region Verificar se existem campos vazios na inserção ou alteração de uma Clinica
+        /// <summary>
+        /// Verifica se os atributos obrigátorios não foram preenchidos.
+        /// </summary>
+        /// <param name="entity">Objeto com os dados da Cinica.</param>
+        /// <returns>True se os atributos obrigátorios não foram preenchidos ou False se eles foram.</returns>
+        public bool VerificarCamposVazios(Clinicas entity)
+        {
+            if ( string.IsNullOrEmpty(entity.Nome) || string.IsNullOrEmpty(entity.Cnpj) ||
+                 string.IsNullOrEmpty(entity.TelefoneCom) )
+            {
+                return true;
+            }
+            return false;
+        }
+        #endregion
+
         #region Verificação de Idade
         public bool VerificarIdade(DateTime DataNasc)
         {
@@ -171,6 +268,60 @@ namespace Fatec.Clinica.Negocio.Validacoes
             {
                 return false;
             }
+        }
+        #endregion
+
+        #region Verifica se o Tipo de Exame existe
+        /// <summary>
+        /// Verifica se o ID do TipoExame existe no Database.
+        /// </summary>
+        /// <param name="id">Usado para buscar o TipoExame no Database.</param>
+        /// <returns>TRUE se o tipo de exame existir ou FALSE se ele não existir.</returns>
+        public bool VerificarIdTipoExame(int id)
+        {
+            var repositorio = new TipoExameRepositorio();
+            if( repositorio.SelecionarPorId(id) == null)
+            {
+                return false;
+            }
+
+            return true;
+        }
+        #endregion
+
+        #region Verifica se o Atendimento existe
+        /// <summary>
+        /// Verifica se o ID do Atendimento existe no Database.
+        /// </summary>
+        /// <param name="id">Usado para buscar o Atendimento no Database.</param>
+        /// <returns>TRUE se o atendimento existir ou FALSE se ele não existir.</returns>
+        public bool VerificarIdAtendimento(int id)
+        {
+            var repositorio = new AtendimentoRepositorio();
+            if (repositorio.SelecionarPorId(id) == null)
+            {
+                return false;
+            }
+
+            return true;
+        }
+        #endregion
+
+        #region Verifica se a Consulta existe
+        /// <summary>
+        /// Verifica se o ID da Consulta existe no Database.
+        /// </summary>
+        /// <param name="id">Usado para buscar a Consulta no Database.</param>
+        /// <returns>TRUE se a consulta existir ou FALSE se ele não existir.</returns>
+        public bool VerificarIdConsulta(int id)
+        {
+            var repositorio = new ConsultaRepositorio();
+            if (repositorio.SelecionarPorId(id) == null)
+            {
+                return false;
+            }
+
+            return true;
         }
         #endregion
     }

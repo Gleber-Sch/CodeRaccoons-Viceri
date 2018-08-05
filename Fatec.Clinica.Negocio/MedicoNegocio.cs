@@ -43,7 +43,7 @@ namespace Fatec.Clinica.Negocio
             var obj = _medicoRepositorio.SelecionarPorId(id);
 
             if (obj == null)
-                throw new NaoEncontradoException($"Não foi encontrado um médico com o ID {id}!");
+                throw new NaoEncontradoException($"Não foi encontrado um médico com o ID: {id}");
 
             return obj;
         }
@@ -55,12 +55,12 @@ namespace Fatec.Clinica.Negocio
         /// <returns>Lista de médicos ou gera uma exceção.</returns>
         public IEnumerable<Medico> SelecionarPorEspecialidade(int id)
         {
-           var obj = _medicoRepositorio.SelecionarPorEspecialidade(id);
+           var lista = _medicoRepositorio.SelecionarPorEspecialidade(id);
 
-           if(obj == null)
+           if(lista == null)
                 throw new NaoEncontradoException($"Não foi encontrado nenhum médico com esta epecialidade!" +
                                                  $" (ID da Especialidade {id})");
-            return obj;
+            return lista;
         }
 
         /// <summary>
@@ -201,7 +201,7 @@ namespace Fatec.Clinica.Negocio
 
             if(obj == null)
             {
-                throw new NaoEncontradoException($"Não foi encontrado um Médico com este ID {id}!");
+                throw new NaoEncontradoException($"Não foi encontrado nenhum Médico com este ID: {id}");
             }
             _medicoRepositorio.Deletar(obj.Id);
         }
