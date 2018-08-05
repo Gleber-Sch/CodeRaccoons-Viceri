@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using Fatec.Clinica.Negocio.Validacoes;
 using Fatec.Clinica.Negocio.Abstracao;
 using Fatec.Clinica.Dominio;
@@ -10,7 +8,7 @@ using Fatec.Clinica.Dominio.Excecoes;
 namespace Fatec.Clinica.Negocio
 {
     /// <summary>
-    /// Regras de Negócio sobre o tipo de exame
+    /// Regras de Negócio sobre o tipo de exame.
     /// </summary>
     public class TipoExameNegocio : Validacao, INegocioBase<TipoExame>
     {
@@ -18,18 +16,17 @@ namespace Fatec.Clinica.Negocio
         private readonly TipoExameRepositorio _tipoExameRepositorio;
 
         /// <summary>
-        /// Construtor para instaciar o repositório
+        /// Construtor para instaciar o repositório.
         /// </summary>
         public TipoExameNegocio()
         {
             _tipoExameRepositorio = new TipoExameRepositorio();
         }
 
-
         /// <summary>
-        /// Seleciona todas os Tipos de Exames
+        /// Seleciona todas os Tipos de Exames.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Lista de tipos de exame.</returns>
         public IEnumerable<TipoExame> Selecionar()
         {
             return _tipoExameRepositorio.Selecionar();

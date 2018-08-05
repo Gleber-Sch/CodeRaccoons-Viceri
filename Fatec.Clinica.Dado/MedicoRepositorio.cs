@@ -133,7 +133,7 @@ namespace Fatec.Clinica.Dado
                                                             $"'{entity.Celular}' ," +
                                                             $"'{entity.Email}' ," +
                                                             $"'{entity.DataNasc}' ," +
-                                                            $"'{entity.StatusAtividade}' ," +
+                                                            $" '{entity.StatusAtividade}' ," +
                                                             $"'{entity.Genero}' ," +
                                               $"SET @ID = SCOPE_IDENTITY();" +
                                               $"SELECT @ID");
