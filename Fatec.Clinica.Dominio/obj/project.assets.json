@@ -664,23 +664,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Lucas Contesini\\.nuget\\packages\\": {},
+    "C:\\Users\\Massao\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lucas Contesini\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\Fatec.Clinica.Dominio.csproj",
+      "projectUniqueName": "C:\\Users\\Massao\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\Fatec.Clinica.Dominio.csproj",
       "projectName": "Fatec.Clinica.Dominio",
-      "projectPath": "C:\\Users\\Lucas Contesini\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\Fatec.Clinica.Dominio.csproj",
-      "packagesPath": "C:\\Users\\Lucas Contesini\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lucas Contesini\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\obj\\",
+      "projectPath": "C:\\Users\\Massao\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\Fatec.Clinica.Dominio.csproj",
+      "packagesPath": "C:\\Users\\Massao\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Massao\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Lucas Contesini\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Massao\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
