@@ -77,7 +77,7 @@ namespace Fatec.Clinica.Dado
                 var obj = connection.QueryFirstOrDefault<Medico>($"SELECT M.Id, M.Nome, M.Cpf, M.Crm, M.IdEspecialidade, M.Celular, " +
                                                                   $" M.Email, M.DataNasc, M.StatusAtividade, M.Genero , E.Nome As Especialidade " +
                                                                   $"FROM [Medico] M " +
-                                                                  $"JOIN [ESPECIALIDADE] E ON M.IdEspecialidade = E.Id" +
+                                                                  $"JOIN [ESPECIALIDADE] E ON M.IdEspecialidade = E.Id " +
                                                                   $"WHERE Crm = {crm}");
                 return obj;
             }
@@ -95,7 +95,7 @@ namespace Fatec.Clinica.Dado
                 var obj = connection.QueryFirstOrDefault<Medico>($"SELECT M.Id, M.Nome, M.Cpf, M.Crm, M.IdEspecialidade, M.Celular, " +
                                                                  $" M.Email, M.DataNasc, M.StatusAtividade, M.Genero , E.Nome As Especialidade " +
                                                                  $"FROM [Medico] M " +
-                                                                 $"JOIN [ESPECIALIDADE] E ON M.IdEspecialidade = E.Id" +
+                                                                 $"JOIN [ESPECIALIDADE] E ON M.IdEspecialidade = E.Id " +
                                                                  $"WHERE Cpf = '{cpf}'");
                 return obj;
             }
@@ -107,8 +107,8 @@ namespace Fatec.Clinica.Dado
             {
                 var obj = connection.QueryFirstOrDefault<Medico>($"SELECT M.Id, M.Nome, M.Cpf, M.Crm, M.IdEspecialidade, M.Celular," +
                                                                  $"M.Email, M.DataNasc, M.StatusAtividade, M.Genero , E.Nome As Especialidade" +
-                                                                 $"FROM [Medico] M" +
-                                                                 $"JOIN [ESPECIALIDADE] E ON M.IdEspecialidade = E.Id" +
+                                                                 $"FROM [Medico] M " +
+                                                                 $"JOIN [ESPECIALIDADE] E ON M.IdEspecialidade = E.Id " +
                                                                  $"WHERE Email = '{email}'");
                 return obj;
             }
@@ -134,7 +134,7 @@ namespace Fatec.Clinica.Dado
                                                             $"'{entity.Email}' ," +
                                                             $"'{entity.DataNasc}' ," +
                                                             $" '{entity.StatusAtividade}' ," +
-                                                            $"'{entity.Genero}' ," +
+                                                            $"'{entity.Genero}' " +
                                               $"SET @ID = SCOPE_IDENTITY();" +
                                               $"SELECT @ID");
             }
@@ -157,7 +157,7 @@ namespace Fatec.Clinica.Dado
                                    $"Email = '{entity.Email}' ," +
                                    $"DataNasc = '{entity.DataNasc}' ," +
                                    $"StatusAtividade = '{entity.StatusAtividade}' ," +
-                                   $"Genero = '{entity.Genero}' ," +
+                                   $"Genero = '{entity.Genero}' " +
                                    $"WHERE Id = {entity.Id}");
             }
         }

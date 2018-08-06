@@ -34,7 +34,7 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var obj = connection.QueryFirstOrDefault<Clinicas>($"SELECT *FROM ViewClinicas," +
+                var obj = connection.QueryFirstOrDefault<Clinicas>($"SELECT *FROM ViewClinicas " +
                                                                    $"WHERE Clinica.Id = {id} ");
 
                 return obj;
@@ -49,7 +49,7 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var obj = connection.QueryFirstOrDefault<Clinicas>($"SELECT *FROM ViewClinicas," +
+                var obj = connection.QueryFirstOrDefault<Clinicas>($"SELECT *FROM ViewClinicas " +
                                                                    $"WHERE Clinica.Cnpj = '{cnpj}' ");
 
                 return obj;
@@ -64,7 +64,7 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var lista = connection.Query<Clinicas>($"SELECT * FROM ViewClinicas," +
+                var lista = connection.Query<Clinicas>($"SELECT * FROM ViewClinicas " +
                                                        $"WHERE Clinica.StatusAtividade = {status} ");
 
                 return lista;
@@ -104,7 +104,7 @@ namespace Fatec.Clinica.Dado
                                    $"SET Cnpj = '{entity.Cnpj}'," +
                                    $"StatusAtividade = '{entity.StatusAtividade}', " +
                                    $"TelefoneCom = '{entity.TelefoneCom}', " +
-                                   $"Nome = '{entity.Nome}'" +
+                                   $"Nome = '{entity.Nome}' " +
                                    $"WHERE Id = {entity.Id}");
             }
         }

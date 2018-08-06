@@ -107,7 +107,7 @@ namespace Fatec.Clinica.Dado
                                                    $" '{entity.DataHora}'," +
                                                    $" {entity.Paciente.Id}," +
                                                    $" {entity.Atendimento.Id}" +
-                                                   $" {entity.Nota}" +
+                                                   $" {entity.Nota} " +
                                                    $"SET @ID = SCOPE_IDENTITY();" +
                                                    $"SELECT @ID");
             }
@@ -126,7 +126,7 @@ namespace Fatec.Clinica.Dado
                                    $"DataHora = '{entity.DataHora}'," +
                                    $"IdPaciente = {entity.Paciente.Id}, " +
                                    $"IdAtendimento = {entity.Atendimento.Id} " +
-                                   $"Nota = {entity.Nota}" +
+                                   $"Nota = {entity.Nota} " +
                                    $"WHERE Id = {entity.Id}");
             }
         }

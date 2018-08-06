@@ -69,7 +69,7 @@ namespace Fatec.Clinica.Dado
                 return connection.QuerySingle<int>($"DECLARE @ID int;" +
                                                    $"INSERT INTO [TipoExame] " +
                                                    $"(Nome) " +
-                                                   $"VALUES ('{entity.Nome}')" +
+                                                   $"VALUES ('{entity.Nome}') " +
                                                    $"SET @ID = SCOPE_IDENTITY();" +
                                                    $"SELECT @ID");
             }
