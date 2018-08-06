@@ -174,13 +174,14 @@ namespace Fatec.Clinica.Negocio.Validacoes
         {
             if (String.IsNullOrEmpty(Convert.ToString(entity.Estado)) || String.IsNullOrEmpty(entity.Cidade) ||
                  String.IsNullOrEmpty(entity.Bairro) || String.IsNullOrEmpty(entity.Logradouro) ||
-                 String.IsNullOrEmpty(Convert.ToString(entity.Numero)) || String.IsNullOrEmpty(Convert.ToString(entity.Clinica)))
+                 String.IsNullOrEmpty(Convert.ToString(entity.Numero)) || String.IsNullOrEmpty(Convert.ToString(entity.IdClinica)))
             {
                 return true;
             }
             return false;
         }
         #endregion
+
         #region Verificar se existem campos vazios na inserção ou alteração de um Tipo de Exame
         /// <summary>
         /// Verifica se o atributo obrigátorio não foi preenchido.

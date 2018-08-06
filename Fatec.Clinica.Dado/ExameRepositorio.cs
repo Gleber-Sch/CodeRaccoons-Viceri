@@ -117,9 +117,9 @@ namespace Fatec.Clinica.Dado
                                                    $"INSERT INTO [Exame] " +
                                                    $"(DataHora, IdTipoExame, IdAtendimento, IdConsulta) " +
                                                    $"VALUES ('{entity.DataHora}'," +
-                                                   $"{entity.TipoExame.Id}," +
-                                                   $"{entity.Atendimento.Id})," +
-                                                   $"{entity.Consulta.Id} " +
+                                                   $"{entity.IdTipoExame}," +
+                                                   $"{entity.IdAtendimento})," +
+                                                   $"{entity.IdConsulta}" +
                                                    $"SET @ID = SCOPE_IDENTITY();" +
                                                    $"SELECT @ID");
             }
@@ -135,9 +135,9 @@ namespace Fatec.Clinica.Dado
             {
                 connection.Execute($"UPDATE [Exame] " +
                                    $"SET  DataHora = '{entity.DataHora}'," +
-                                   $"TipoExame = {entity.TipoExame.Id}" +
-                                   $"IdAtendimento = {entity.Atendimento.Id}" +
-                                   $"IdConsulta = {entity.Consulta.Id} " +
+                                   $"TipoExame = {entity.IdTipoExame}" +
+                                   $"IdAtendimento = {entity.IdAtendimento}" +
+                                   $"IdConsulta = {entity.IdConsulta}" +
                                    $"WHERE Id = {entity.Id}");
             }
         }

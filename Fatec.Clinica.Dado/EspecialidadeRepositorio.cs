@@ -10,8 +10,7 @@ namespace Fatec.Clinica.Dado
     /// <summary>
     /// Funções de CRUD para a especialidade.
     /// </summary>
-    public class EspecialidadeRepositorio 
-        : IRepositorioBase<Especialidade>
+    public class EspecialidadeRepositorio : IRepositorioBase<Especialidade>
     {
         /// <summary>
         /// Seleciona todas as especialidades do Database.
@@ -85,11 +84,7 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 connection.Execute($"UPDATE [Especialidade] " +
-<<<<<<< HEAD
                                    $"SET  Nome = '{entity.Nome}'" +
-=======
-                                   $"SET  Nome = '{entity.Nome}' " +
->>>>>>> 89e8af0130c4cdbe29a7cbea02c0dbcc87e152a0
                                    $"WHERE Id = {entity.Id}");
             }
         }

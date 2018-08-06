@@ -8,8 +8,8 @@ namespace Fatec.Clinica.Dominio
     {
         public int Id { get; set; }
         public DateTime DataHora { get; set; }
-        public Atendimento Atendimento { get; set; }
-        public Consulta Consulta { get; set; }
-        public TipoExame TipoExame{ get; set; }
+        public int IdAtendimento { get; set; }
+        public int IdConsulta { get; set; }
+        public int IdTipoExame { get; set; }
     }
 }
