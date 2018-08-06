@@ -69,6 +69,36 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
+        /// Método que seleciona um médico..
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("medico/{Crm}")]
+        [SwaggerResponse((int)HttpStatusCode.OK, typeof(MedicoDto), nameof(HttpStatusCode.OK))]
+        [SwaggerResponse((int)HttpStatusCode.NotFound)]
+        public IActionResult GetCrm(int Crm)
+        {
+            return Ok(_medicoNegocio.SelecionarPorCrm(Crm));
+        }
+
+        /// <summary>
+        /// Método que seleciona um médico..
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("medico/{Cpf}")]
+        [SwaggerResponse((int)HttpStatusCode.OK, typeof(MedicoDto), nameof(HttpStatusCode.OK))]
+        [SwaggerResponse((int)HttpStatusCode.NotFound)]
+        public IActionResult GetCpf(string Cpf)
+        {
+            return Ok(_medicoNegocio.SelecionarPorCpf(Cpf));
+        }
+
+
+
+        /// <summary>
         /// Método que insere um médico..
         /// </summary>
         /// <param name="input"></param>
@@ -81,10 +111,16 @@ namespace Fatec.Clinica.Api.Controllers
         {
             var objMedico = new Medico()
             {
+                Nome = input.Nome,
                 Cpf = input.Cpf,
-                Crm =  input.Crm,
+                Celular = input.Celular,
+                Email = input.Email,
+                Crm = input.Crm,
+                DataNasc = input.DataNasc,
+                Genero = input.Genero,
                 IdEspecialidade = input.IdEspecialidade,
-                Nome = input.Nome
+                Senha = input.Senha,
+                StatusAtividade = true
             };
 
             var idMedico = _medicoNegocio.Inserir(objMedico);
@@ -107,10 +143,16 @@ namespace Fatec.Clinica.Api.Controllers
         {
             var objMedico = new Medico()
             {
+                Nome = input.Nome,
                 Cpf = input.Cpf,
+                Celular = input.Celular,
+                Email = input.Email,
                 Crm = input.Crm,
+                DataNasc = input.DataNasc,
+                Genero = input.Genero,
                 IdEspecialidade = input.IdEspecialidade,
-                Nome = input.Nome
+                Senha = input.Senha,
+                StatusAtividade = input.StatusAtividade
             };
 
             var obj = _medicoNegocio.Alterar(id, objMedico);

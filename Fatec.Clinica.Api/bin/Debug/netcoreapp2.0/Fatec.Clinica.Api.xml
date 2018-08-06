@@ -84,6 +84,20 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="M:Fatec.Clinica.Api.Controllers.MedicoController.GetCrm(System.Int32)">
+            <summary>
+            Método que seleciona um médico..
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fatec.Clinica.Api.Controllers.MedicoController.GetCpf(System.String)">
+            <summary>
+            Método que seleciona um médico..
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="M:Fatec.Clinica.Api.Controllers.MedicoController.Post(Fatec.Clinica.Api.Model.MedicoInput)">
             <summary>
             Método que insere um médico..

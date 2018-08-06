@@ -77,7 +77,7 @@ namespace Fatec.Clinica.Dado
                 var obj = connection.QueryFirstOrDefault<Medico>($"SELECT M.Id, M.Nome, M.Cpf, M.Crm, M.IdEspecialidade, M.Celular, " +
                                                                   $" M.Email, M.DataNasc, M.StatusAtividade, M.Genero , E.Nome As Especialidade " +
                                                                   $"FROM [Medico] M " +
-                                                                  $"JOIN [ESPECIALIDADE] E ON M.IdEspecialidade = E.Id" +
+                                                                  $"JOIN [ESPECIALIDADE] E ON M.IdEspecialidade = E.Id " +
                                                                   $"WHERE Crm = {crm}");
                 return obj;
             }
@@ -95,7 +95,7 @@ namespace Fatec.Clinica.Dado
                 var obj = connection.QueryFirstOrDefault<Medico>($"SELECT M.Id, M.Nome, M.Cpf, M.Crm, M.IdEspecialidade, M.Celular, " +
                                                                  $" M.Email, M.DataNasc, M.StatusAtividade, M.Genero , E.Nome As Especialidade " +
                                                                  $"FROM [Medico] M " +
-                                                                 $"JOIN [ESPECIALIDADE] E ON M.IdEspecialidade = E.Id" +
+                                                                 $"JOIN [ESPECIALIDADE] E ON M.IdEspecialidade = E.Id " +
                                                                  $"WHERE Cpf = '{cpf}'");
                 return obj;
             }
@@ -108,7 +108,7 @@ namespace Fatec.Clinica.Dado
                 var obj = connection.QueryFirstOrDefault<Medico>($"SELECT M.Id, M.Nome, M.Cpf, M.Crm, M.IdEspecialidade, M.Celular," +
                                                                  $"M.Email, M.DataNasc, M.StatusAtividade, M.Genero , E.Nome As Especialidade" +
                                                                  $"FROM [Medico] M" +
-                                                                 $"JOIN [ESPECIALIDADE] E ON M.IdEspecialidade = E.Id" +
+                                                                 $"JOIN [ESPECIALIDADE] E ON M.IdEspecialidade = E.Id " +
                                                                  $"WHERE Email = '{email}'");
                 return obj;
             }

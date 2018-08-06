@@ -13,7 +13,7 @@ namespace Fatec.Clinica.Api.Filtros
         {
             try
             {
-                await next();
+                 await next();
             }
             catch (Exception ex)
             {
