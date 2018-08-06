@@ -1,4 +1,7 @@
-﻿namespace Fatec.Clinica.Api.Model
+﻿using System;
+
+namespace Fatec.Clinica.Api.Model
+
 {
     public class MedicoInput
     {
