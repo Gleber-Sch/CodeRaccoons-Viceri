@@ -13,7 +13,3 @@ C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\bin\
 C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\obj\Debug\Fatec.Clinica.Database.dll
 C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\obj\Debug\Fatec.Clinica.Database.pdb
 C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\obj\Debug\Fatec.Clinica.Database.sqlprojAssemblyReference.cache
-C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\obj\Debug\Model.xml
-C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\obj\Debug\refactor.xml
-C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\obj\Debug\postdeploy.sql
-C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\obj\Debug\predeploy.sql
