@@ -34,7 +34,7 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var obj = connection.QueryFirstOrDefault<Endereco>($"SELECT *FROM ViewEnderecos"+
+                var obj = connection.QueryFirstOrDefault<Endereco>($"SELECT *FROM ViewEnderecos "+
                                                                    $"where Id={id}");
 
                 return obj;
@@ -75,7 +75,7 @@ public Endereco SelecionarPorEndereco(Endereco entity)
                                                    $" '{entity.Logradouro}'" +
                                                    $"  {entity.Numero}" +
                                                    $" '{entity.Complemento}'" +
-                                                   $"  {entity.Clinica.Id}" +
+                                                   $"  {entity.Clinica.Id} " +
                                                    $"SET @ID = SCOPE_IDENTITY();" +
                                                    $"SELECT @ID");
             }
@@ -96,7 +96,7 @@ public Endereco SelecionarPorEndereco(Endereco entity)
                                    $"Logradouro = '{entity.Logradouro}' " +
                                    $"Numero = {entity.Numero}" +
                                    $"Complemento = '{entity.Complemento}'" +
-                                   $"IdClinica ={entity.Clinica.Id}" +
+                                   $"IdClinica ={entity.Clinica.Id} " +
                                    $"WHERE Id = {entity.Id}");
             }
         }

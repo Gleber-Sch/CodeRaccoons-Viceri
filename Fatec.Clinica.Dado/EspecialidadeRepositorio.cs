@@ -85,7 +85,11 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 connection.Execute($"UPDATE [Especialidade] " +
+<<<<<<< HEAD
                                    $"SET  Nome = '{entity.Nome}'" +
+=======
+                                   $"SET  Nome = '{entity.Nome}' " +
+>>>>>>> 89e8af0130c4cdbe29a7cbea02c0dbcc87e152a0
                                    $"WHERE Id = {entity.Id}");
             }
         }
