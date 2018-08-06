@@ -12,7 +12,7 @@ namespace Fatec.Clinica.Negocio
     /// <summary>
     /// Regras de Negócio sobre o Paciente.
     /// </summary>
-    class PacienteNegocio : Validacao, INegocioBase<Paciente>
+    public class PacienteNegocio : Validacao, INegocioBase<Paciente>
     {
         
         private readonly PacienteRepositorio _pacienteRepositorio;

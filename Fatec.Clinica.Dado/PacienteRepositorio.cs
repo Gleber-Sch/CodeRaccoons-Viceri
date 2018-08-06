@@ -38,7 +38,7 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 var obj = connection.QueryFirstOrDefault<Paciente>($"SELECT P.Id, P.Nome, P.Cpf, P.Email, " +
-                                                                   $"P.DataNasc, P.Genero, P.Celular P.TelefoneRes" +
+                                                                   $"P.DataNasc, P.Genero, P.Celular P.TelefoneRes " +
                                                                    $"FROM [Paciente] P " +
                                                                    $"WHERE P.Id = {id}");
 
@@ -56,7 +56,7 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 var obj = connection.QueryFirstOrDefault<Paciente>($"SELECT P.Id, P.Nome, P.Cpf, P.Email," +
-                                                                 $"P.DataNasc, P.Genero, P.Celular P.TelefoneRes" +
+                                                                 $"P.DataNasc, P.Genero, P.Celular P.TelefoneRes " +
                                                                  $"FROM [Paciente] P " +
                                                                  $"WHERE Cpf = '{cpf}'");
                 return obj;
@@ -68,8 +68,8 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 var obj = connection.QueryFirstOrDefault<Paciente>($"SELECT P.Id, P.Nome, P.Cpf, P.Celular," +
-                                                                 $"P.Email, P.DataNasc, P.Genero, P.TelefoneRes" +
-                                                                 $"FROM [Paciente] P" +
+                                                                 $"P.Email, P.DataNasc, P.Genero, P.TelefoneRes " +
+                                                                 $"FROM [Paciente] P " +
                                                                  $"WHERE Email = '{email}'");
                 return obj;
             }
@@ -93,7 +93,7 @@ namespace Fatec.Clinica.Dado
                                                    $" '{entity.DataNasc}'," +
                                                    $" '{entity.Genero}'," +
                                                    $" '{entity.Celular}'," +
-                                                   $" '{entity.TelefoneRes}')" +
+                                                   $" '{entity.TelefoneRes}') " +
                                                    $"SET @ID = SCOPE_IDENTITY();" +
                                                    $"SELECT @ID");
             }
@@ -114,7 +114,7 @@ namespace Fatec.Clinica.Dado
                                    $"DataNasc = '{entity.DataNasc}', " +
                                    $"Genero = '{entity.Genero}' " +
                                    $"Celular = '{entity.Celular}', " +
-                                   $"TelefoneRes = '{entity.TelefoneRes}'," +
+                                   $"TelefoneRes = '{entity.TelefoneRes}' " +
                                    $"WHERE Id = {entity.Id}");
             }
         }
