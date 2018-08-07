@@ -4,7 +4,7 @@ Id do Paciente, Id do Médico que solicitou o exame,
 Id do médico que realizou o exame e Id da Clinica onde
 o exame foi realizado*/
 
-CREATE VIEW ViewExame AS
+CREATE VIEW ViewExames AS
 SELECT E.Id, TE.Nome AS TipoDoExame, P.Id AS IdPaciente,
 P.Nome AS NomeDoPaciente, MedQueSolicitou.Id AS IdMedicoQueSolicitou,
 MedQueSolicitou.Nome AS SolicitadoPeloMedico,

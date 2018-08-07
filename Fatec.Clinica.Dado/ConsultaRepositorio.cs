@@ -36,7 +36,7 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var obj = connection.QueryFirstOrDefault<Consulta>($"SELECT * FROM [ViewConsultas] "+
+                var obj = connection.QueryFirstOrDefault<Consulta>($"SELECT * FROM [ViewConsultas] " +
                                                                    $"WHERE C.Id = {id} ");
 
                 return obj;

@@ -27,7 +27,7 @@ namespace Fatec.Clinica.Dado
                 return lista;
             }
         }
-        
+
 
         /// <summary>
         /// Seleciona um médico no Database através do ID especificado.
@@ -103,7 +103,7 @@ namespace Fatec.Clinica.Dado
 
         public Medico SelecionarPorEmail(string email)
         {
-            using(var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
+            using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 var obj = connection.QueryFirstOrDefault<Medico>($"SELECT M.Id, M.Nome, M.Cpf, M.Crm, M.IdEspecialidade, M.Celular," +
                                                                  $"M.Email, M.DataNasc, M.StatusAtividade, M.Genero , E.Nome As Especialidade" +

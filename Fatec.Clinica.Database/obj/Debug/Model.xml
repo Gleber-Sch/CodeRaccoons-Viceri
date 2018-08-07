@@ -12,7 +12,7 @@
 		</CustomData>
 		<CustomData Category="Reference" Type="Assembly">
 			<Metadata Name="LogicalName" Value="Fatec.Clinica.Database.dll" />
-			<Metadata Name="FileName" Value="C:\USERS\LUCAS CONTESINI\DOCUMENTS\GITHUB\CODERACCOONS-VICERI\FATEC.CLINICA.DATABASE\OBJ\DEBUG\FATEC.CLINICA.DATABASE.DLL" />
+			<Metadata Name="FileName" Value="C:\USERS\MASSAO\DESKTOP\FATEC.CLINICA-MASTER\FATEC.CLINICA.DATABASE\OBJ\DEBUG\FATEC.CLINICA.DATABASE.DLL" />
 			<Metadata Name="AssemblyName" Value="Fatec.Clinica.Database" />
 			<Metadata Name="PermissionSet" Value="SAFE" />
 			<Metadata Name="Owner" Value="" />
@@ -20,7 +20,7 @@
 			<Metadata Name="IsVisible" Value="True" />
 			<Metadata Name="IsModelAware" Value="True" />
 			<Metadata Name="SkipCreationIfEmpty" Value="True" />
-			<Metadata Name="AssemblySymbolsName" Value="C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\obj\Debug\Fatec.Clinica.Database.pdb" />
+			<Metadata Name="AssemblySymbolsName" Value="C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Database\obj\Debug\Fatec.Clinica.Database.pdb" />
 		</CustomData>
 		<CustomData Category="SqlCmdVariables" Type="SqlCmdVariable" />
 	</Header>
@@ -50,25 +50,6 @@
 					<Element Type="SqlIndexedColumnSpecification">
 						<Relationship Name="Column">
 							<Entry>
-								<References Name="[dbo].[TipoExame].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[TipoExame]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="3" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
 								<References Name="[dbo].[Paciente].[Id]" />
 							</Entry>
 						</Relationship>
@@ -80,7 +61,7 @@
 					<References Name="[dbo].[Paciente]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="4" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="3" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -99,26 +80,7 @@
 					<References Name="[dbo].[Medico]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="5" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[Exame].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[Exame]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="6" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="4" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -137,26 +99,7 @@
 					<References Name="[dbo].[Especialidade]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="7" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[Endereco].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[Endereco]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="8" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="5" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -175,7 +118,7 @@
 					<References Name="[dbo].[Consulta]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="9" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="6" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -194,7 +137,7 @@
 					<References Name="[dbo].[Clinica]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="10" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="7" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -213,15 +156,53 @@
 					<References Name="[dbo].[Atendimento]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="11" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="8" />
 		</Element>
-		<Element Type="SqlUniqueConstraint">
+		<Element Type="SqlPrimaryKeyConstraint">
 			<Relationship Name="ColumnSpecifications">
 				<Entry>
 					<Element Type="SqlIndexedColumnSpecification">
 						<Relationship Name="Column">
 							<Entry>
-								<References Name="[dbo].[TipoExame].[Nome]" />
+								<References Name="[dbo].[Endereco].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Endereco]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="9" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[Exame].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Exame]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="10" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[TipoExame].[Id]" />
 							</Entry>
 						</Relationship>
 					</Element>
@@ -232,7 +213,7 @@
 					<References Name="[dbo].[TipoExame]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="12" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="11" />
 		</Element>
 		<Element Type="SqlUniqueConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -251,7 +232,7 @@
 					<References Name="[dbo].[Paciente]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="13" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="12" />
 		</Element>
 		<Element Type="SqlUniqueConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -270,7 +251,7 @@
 					<References Name="[dbo].[Paciente]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="14" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="13" />
 		</Element>
 		<Element Type="SqlUniqueConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -289,7 +270,7 @@
 					<References Name="[dbo].[Medico]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="15" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="14" />
 		</Element>
 		<Element Type="SqlUniqueConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -308,7 +289,7 @@
 					<References Name="[dbo].[Medico]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="16" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="15" />
 		</Element>
 		<Element Type="SqlUniqueConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -327,7 +308,7 @@
 					<References Name="[dbo].[Medico]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="17" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="16" />
 		</Element>
 		<Element Type="SqlUniqueConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -346,7 +327,7 @@
 					<References Name="[dbo].[Especialidade]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="18" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="17" />
 		</Element>
 		<Element Type="SqlUniqueConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -363,6 +344,25 @@
 			<Relationship Name="DefiningTable">
 				<Entry>
 					<References Name="[dbo].[Clinica]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="18" />
+		</Element>
+		<Element Type="SqlUniqueConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[TipoExame].[Nome]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[TipoExame]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="19" />
@@ -385,7 +385,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="11" />
+						<AttachedAnnotation Disambiguator="8" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -447,7 +447,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="10" />
+						<AttachedAnnotation Disambiguator="7" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -465,7 +465,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="19" />
+						<AttachedAnnotation Disambiguator="18" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -543,7 +543,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="9" />
+						<AttachedAnnotation Disambiguator="6" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -654,7 +654,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="8" />
+						<AttachedAnnotation Disambiguator="9" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -799,7 +799,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="7" />
+						<AttachedAnnotation Disambiguator="5" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -817,7 +817,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="18" />
+						<AttachedAnnotation Disambiguator="17" />
 					</Element>
 				</Entry>
 			</Relationship>
@@ -845,7 +845,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="6" />
+						<AttachedAnnotation Disambiguator="10" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1147,7 +1147,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="5" />
+						<AttachedAnnotation Disambiguator="4" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1182,7 +1182,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="15" />
+						<AttachedAnnotation Disambiguator="14" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1200,7 +1200,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="16" />
+						<AttachedAnnotation Disambiguator="15" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1218,7 +1218,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="17" />
+						<AttachedAnnotation Disambiguator="16" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1346,7 +1346,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="4" />
+						<AttachedAnnotation Disambiguator="3" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1381,7 +1381,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="13" />
+						<AttachedAnnotation Disambiguator="12" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1399,7 +1399,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="14" />
+						<AttachedAnnotation Disambiguator="13" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1510,7 +1510,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="3" />
+						<AttachedAnnotation Disambiguator="11" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1528,7 +1528,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="12" />
+						<AttachedAnnotation Disambiguator="19" />
 					</Element>
 				</Entry>
 			</Relationship>
@@ -1620,150 +1620,7 @@ inner join Clinica on Atendimento.IdClinica=Clinica.Id]]></Value>
 				<Property Name="HeaderContents" Value="CREATE VIEW ViewAtendimentos as" />
 			</Annotation>
 		</Element>
-		<Element Type="SqlView" Name="[dbo].[ViewClinicas]">
-			<Property Name="QueryScript">
-				<Value><![CDATA[
-select Clinica.Id , Clinica.Cnpj, Clinica.StatusAtividade,
-Clinica.Nome, endereco.Estado, Endereco.Cidade, Endereco.Logradouro,
-Endereco.Numero, Endereco.Complemento
-from Clinica
-inner join endereco on endereco.IdClinica=Clinica.Id]]></Value>
-			</Property>
-			<Property Name="IsAnsiNullsOn" Value="True" />
-			<Relationship Name="Columns">
-				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewClinicas].[Id]">
-						<Relationship Name="ExpressionDependencies">
-							<Entry>
-								<References Name="[dbo].[Clinica].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewClinicas].[Cnpj]">
-						<Relationship Name="ExpressionDependencies">
-							<Entry>
-								<References Name="[dbo].[Clinica].[Cnpj]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewClinicas].[StatusAtividade]">
-						<Relationship Name="ExpressionDependencies">
-							<Entry>
-								<References Name="[dbo].[Clinica].[StatusAtividade]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewClinicas].[Nome]">
-						<Relationship Name="ExpressionDependencies">
-							<Entry>
-								<References Name="[dbo].[Clinica].[Nome]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewClinicas].[Estado]">
-						<Relationship Name="ExpressionDependencies">
-							<Entry>
-								<References Name="[dbo].[Endereco].[Estado]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewClinicas].[Cidade]">
-						<Relationship Name="ExpressionDependencies">
-							<Entry>
-								<References Name="[dbo].[Endereco].[Cidade]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewClinicas].[Logradouro]">
-						<Relationship Name="ExpressionDependencies">
-							<Entry>
-								<References Name="[dbo].[Endereco].[Logradouro]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewClinicas].[Numero]">
-						<Relationship Name="ExpressionDependencies">
-							<Entry>
-								<References Name="[dbo].[Endereco].[Numero]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewClinicas].[Complemento]">
-						<Relationship Name="ExpressionDependencies">
-							<Entry>
-								<References Name="[dbo].[Endereco].[Complemento]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="QueryDependencies">
-				<Entry>
-					<References Name="[dbo].[Clinica]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Endereco]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Endereco].[IdClinica]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Clinica].[Id]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Clinica].[Cnpj]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Clinica].[StatusAtividade]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Clinica].[Nome]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Endereco].[Estado]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Endereco].[Cidade]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Endereco].[Logradouro]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Endereco].[Numero]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Endereco].[Complemento]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="Schema">
-				<Entry>
-					<References ExternalSource="BuiltIns" Name="[dbo]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SysCommentsObjectAnnotation">
-				<Property Name="Length" Value="264" />
-				<Property Name="StartLine" Value="1" />
-				<Property Name="StartColumn" Value="1" />
-				<Property Name="HeaderContents" Value="create view ViewClinicas as" />
-			</Annotation>
-		</Element>
-		<Element Type="SqlView" Name="[dbo].[ViewConsulta]">
+		<Element Type="SqlView" Name="[dbo].[ViewConsultas]">
 			<Property Name="QueryScript">
 				<Value><![CDATA[
 SELECT C.Id, P.Id AS IdPaciente, P.Nome AS Paciente,
@@ -1778,7 +1635,7 @@ JOIN [Clinica] Cl ON A.IdClinica = Cl.Id]]></Value>
 			<Property Name="IsAnsiNullsOn" Value="True" />
 			<Relationship Name="Columns">
 				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewConsulta].[Id]">
+					<Element Type="SqlComputedColumn" Name="[dbo].[ViewConsultas].[Id]">
 						<Relationship Name="ExpressionDependencies">
 							<Entry>
 								<References Name="[dbo].[Consulta].[Id]" />
@@ -1787,7 +1644,7 @@ JOIN [Clinica] Cl ON A.IdClinica = Cl.Id]]></Value>
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewConsulta].[IdPaciente]">
+					<Element Type="SqlComputedColumn" Name="[dbo].[ViewConsultas].[IdPaciente]">
 						<Relationship Name="ExpressionDependencies">
 							<Entry>
 								<References Name="[dbo].[Paciente].[Id]" />
@@ -1796,7 +1653,7 @@ JOIN [Clinica] Cl ON A.IdClinica = Cl.Id]]></Value>
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewConsulta].[Paciente]">
+					<Element Type="SqlComputedColumn" Name="[dbo].[ViewConsultas].[Paciente]">
 						<Relationship Name="ExpressionDependencies">
 							<Entry>
 								<References Name="[dbo].[Paciente].[Nome]" />
@@ -1805,7 +1662,7 @@ JOIN [Clinica] Cl ON A.IdClinica = Cl.Id]]></Value>
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewConsulta].[IdMedico]">
+					<Element Type="SqlComputedColumn" Name="[dbo].[ViewConsultas].[IdMedico]">
 						<Relationship Name="ExpressionDependencies">
 							<Entry>
 								<References Name="[dbo].[Medico].[Id]" />
@@ -1814,7 +1671,7 @@ JOIN [Clinica] Cl ON A.IdClinica = Cl.Id]]></Value>
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewConsulta].[Medico]">
+					<Element Type="SqlComputedColumn" Name="[dbo].[ViewConsultas].[Medico]">
 						<Relationship Name="ExpressionDependencies">
 							<Entry>
 								<References Name="[dbo].[Medico].[Nome]" />
@@ -1823,7 +1680,7 @@ JOIN [Clinica] Cl ON A.IdClinica = Cl.Id]]></Value>
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewConsulta].[DataHora]">
+					<Element Type="SqlComputedColumn" Name="[dbo].[ViewConsultas].[DataHora]">
 						<Relationship Name="ExpressionDependencies">
 							<Entry>
 								<References Name="[dbo].[Consulta].[DataHora]" />
@@ -1832,7 +1689,7 @@ JOIN [Clinica] Cl ON A.IdClinica = Cl.Id]]></Value>
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewConsulta].[Historico]">
+					<Element Type="SqlComputedColumn" Name="[dbo].[ViewConsultas].[Historico]">
 						<Relationship Name="ExpressionDependencies">
 							<Entry>
 								<References Name="[dbo].[Consulta].[Historico]" />
@@ -1841,7 +1698,7 @@ JOIN [Clinica] Cl ON A.IdClinica = Cl.Id]]></Value>
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewConsulta].[IdClinica]">
+					<Element Type="SqlComputedColumn" Name="[dbo].[ViewConsultas].[IdClinica]">
 						<Relationship Name="ExpressionDependencies">
 							<Entry>
 								<References Name="[dbo].[Clinica].[Id]" />
@@ -1850,7 +1707,7 @@ JOIN [Clinica] Cl ON A.IdClinica = Cl.Id]]></Value>
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewConsulta].[Clinica]">
+					<Element Type="SqlComputedColumn" Name="[dbo].[ViewConsultas].[Clinica]">
 						<Relationship Name="ExpressionDependencies">
 							<Entry>
 								<References Name="[dbo].[Clinica].[Nome]" />
@@ -1859,7 +1716,7 @@ JOIN [Clinica] Cl ON A.IdClinica = Cl.Id]]></Value>
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewConsulta].[Nota]">
+					<Element Type="SqlComputedColumn" Name="[dbo].[ViewConsultas].[Nota]">
 						<Relationship Name="ExpressionDependencies">
 							<Entry>
 								<References Name="[dbo].[Consulta].[Nota]" />
@@ -1946,16 +1803,16 @@ JOIN [Clinica] Cl ON A.IdClinica = Cl.Id]]></Value>
 			</Relationship>
 			<Annotation Type="SysCommentsObjectAnnotation">
 				<Property Name="CreateOffset" Value="137" />
-				<Property Name="Length" Value="516" />
+				<Property Name="Length" Value="517" />
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
-				<Property Name="HeaderContents" Value="/* Cria uma view para exibição das consultas,&#xD;&#xA;permitindo selecionar elemetos pelo Id da Consulta, &#xD;&#xA;Id do Paciente e Id do Médico */&#xD;&#xA;&#xD;&#xA;CREATE VIEW ViewConsulta AS" />
+				<Property Name="HeaderContents" Value="/* Cria uma view para exibição das consultas,&#xD;&#xA;permitindo selecionar elemetos pelo Id da Consulta, &#xD;&#xA;Id do Paciente e Id do Médico */&#xD;&#xA;&#xD;&#xA;CREATE VIEW ViewConsultas AS" />
 			</Annotation>
 		</Element>
 		<Element Type="SqlView" Name="[dbo].[ViewEnderecos]">
 			<Property Name="QueryScript">
 				<Value><![CDATA[
-select Endereco.Id as IdEndereco,Clinica.Nome, Endereco.estado, Endereco.Cidade, Endereco.Bairro,Endereco.Logradouro,Endereco.Numero,Endereco.Complemento
+select Endereco.Id as IdEndereco,Clinica.Nome, Endereco.Estado, Endereco.Cidade, Endereco.Bairro,Endereco.Logradouro,Endereco.Numero,Endereco.Complemento
 FROM Endereco
 INNER JOIN Clinica on Endereco.IdClinica=Clinica.Id]]></Value>
 			</Property>
@@ -1980,7 +1837,7 @@ INNER JOIN Clinica on Endereco.IdClinica=Clinica.Id]]></Value>
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewEnderecos].[estado]">
+					<Element Type="SqlComputedColumn" Name="[dbo].[ViewEnderecos].[Estado]">
 						<Relationship Name="ExpressionDependencies">
 							<Entry>
 								<References Name="[dbo].[Endereco].[Estado]" />
@@ -2084,7 +1941,7 @@ INNER JOIN Clinica on Endereco.IdClinica=Clinica.Id]]></Value>
 				<Property Name="HeaderContents" Value="create view ViewEnderecos as" />
 			</Annotation>
 		</Element>
-		<Element Type="SqlView" Name="[dbo].[ViewExame]">
+		<Element Type="SqlView" Name="[dbo].[ViewExames]">
 			<Property Name="QueryScript">
 				<Value><![CDATA[
 SELECT E.Id, TE.Nome AS TipoDoExame, P.Id AS IdPaciente,
@@ -2107,7 +1964,7 @@ JOIN [Medico] MedQueSolicitou ON AtSolicitado.IdMedico = MedQueSolicitou.Id]]></
 			<Property Name="IsAnsiNullsOn" Value="True" />
 			<Relationship Name="Columns">
 				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewExame].[Id]">
+					<Element Type="SqlComputedColumn" Name="[dbo].[ViewExames].[Id]">
 						<Relationship Name="ExpressionDependencies">
 							<Entry>
 								<References Name="[dbo].[Exame].[Id]" />
@@ -2116,7 +1973,7 @@ JOIN [Medico] MedQueSolicitou ON AtSolicitado.IdMedico = MedQueSolicitou.Id]]></
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewExame].[TipoDoExame]">
+					<Element Type="SqlComputedColumn" Name="[dbo].[ViewExames].[TipoDoExame]">
 						<Relationship Name="ExpressionDependencies">
 							<Entry>
 								<References Name="[dbo].[TipoExame].[Nome]" />
@@ -2125,7 +1982,7 @@ JOIN [Medico] MedQueSolicitou ON AtSolicitado.IdMedico = MedQueSolicitou.Id]]></
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewExame].[IdPaciente]">
+					<Element Type="SqlComputedColumn" Name="[dbo].[ViewExames].[IdPaciente]">
 						<Relationship Name="ExpressionDependencies">
 							<Entry>
 								<References Name="[dbo].[Paciente].[Id]" />
@@ -2134,7 +1991,7 @@ JOIN [Medico] MedQueSolicitou ON AtSolicitado.IdMedico = MedQueSolicitou.Id]]></
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewExame].[NomeDoPaciente]">
+					<Element Type="SqlComputedColumn" Name="[dbo].[ViewExames].[NomeDoPaciente]">
 						<Relationship Name="ExpressionDependencies">
 							<Entry>
 								<References Name="[dbo].[Paciente].[Nome]" />
@@ -2143,7 +2000,7 @@ JOIN [Medico] MedQueSolicitou ON AtSolicitado.IdMedico = MedQueSolicitou.Id]]></
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewExame].[IdMedicoQueSolicitou]">
+					<Element Type="SqlComputedColumn" Name="[dbo].[ViewExames].[IdMedicoQueSolicitou]">
 						<Relationship Name="ExpressionDependencies">
 							<Entry>
 								<References Name="[dbo].[Medico].[Id]" />
@@ -2152,7 +2009,7 @@ JOIN [Medico] MedQueSolicitou ON AtSolicitado.IdMedico = MedQueSolicitou.Id]]></
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewExame].[SolicitadoPeloMedico]">
+					<Element Type="SqlComputedColumn" Name="[dbo].[ViewExames].[SolicitadoPeloMedico]">
 						<Relationship Name="ExpressionDependencies">
 							<Entry>
 								<References Name="[dbo].[Medico].[Nome]" />
@@ -2161,7 +2018,7 @@ JOIN [Medico] MedQueSolicitou ON AtSolicitado.IdMedico = MedQueSolicitou.Id]]></
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewExame].[DataHora_ExameSolicitado]">
+					<Element Type="SqlComputedColumn" Name="[dbo].[ViewExames].[DataHora_ExameSolicitado]">
 						<Relationship Name="ExpressionDependencies">
 							<Entry>
 								<References Name="[dbo].[Consulta].[DataHora]" />
@@ -2170,7 +2027,7 @@ JOIN [Medico] MedQueSolicitou ON AtSolicitado.IdMedico = MedQueSolicitou.Id]]></
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewExame].[DataHora_ExameRealizado]">
+					<Element Type="SqlComputedColumn" Name="[dbo].[ViewExames].[DataHora_ExameRealizado]">
 						<Relationship Name="ExpressionDependencies">
 							<Entry>
 								<References Name="[dbo].[Exame].[DataHora]" />
@@ -2179,7 +2036,7 @@ JOIN [Medico] MedQueSolicitou ON AtSolicitado.IdMedico = MedQueSolicitou.Id]]></
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewExame].[IdMedicoQueRealizou]">
+					<Element Type="SqlComputedColumn" Name="[dbo].[ViewExames].[IdMedicoQueRealizou]">
 						<Relationship Name="ExpressionDependencies">
 							<Entry>
 								<References Name="[dbo].[Medico].[Id]" />
@@ -2188,7 +2045,7 @@ JOIN [Medico] MedQueSolicitou ON AtSolicitado.IdMedico = MedQueSolicitou.Id]]></
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewExame].[RealizadoPeloMedico]">
+					<Element Type="SqlComputedColumn" Name="[dbo].[ViewExames].[RealizadoPeloMedico]">
 						<Relationship Name="ExpressionDependencies">
 							<Entry>
 								<References Name="[dbo].[Medico].[Nome]" />
@@ -2197,7 +2054,7 @@ JOIN [Medico] MedQueSolicitou ON AtSolicitado.IdMedico = MedQueSolicitou.Id]]></
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewExame].[IdClinica]">
+					<Element Type="SqlComputedColumn" Name="[dbo].[ViewExames].[IdClinica]">
 						<Relationship Name="ExpressionDependencies">
 							<Entry>
 								<References Name="[dbo].[Clinica].[Id]" />
@@ -2206,7 +2063,7 @@ JOIN [Medico] MedQueSolicitou ON AtSolicitado.IdMedico = MedQueSolicitou.Id]]></
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[ViewExame].[RealizadoNaClinica]">
+					<Element Type="SqlComputedColumn" Name="[dbo].[ViewExames].[RealizadoNaClinica]">
 						<Relationship Name="ExpressionDependencies">
 							<Entry>
 								<References Name="[dbo].[Clinica].[Nome]" />
@@ -2329,10 +2186,10 @@ JOIN [Medico] MedQueSolicitou ON AtSolicitado.IdMedico = MedQueSolicitou.Id]]></
 			</Relationship>
 			<Annotation Type="SysCommentsObjectAnnotation">
 				<Property Name="CreateOffset" Value="231" />
-				<Property Name="Length" Value="1142" />
+				<Property Name="Length" Value="1143" />
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
-				<Property Name="HeaderContents" Value="/* Cria uma view para exibição dos Exames,&#xD;&#xA;permitindo selecionar elemetos pelo Id do Exame, &#xD;&#xA;Id do Paciente, Id do Médico que solicitou o exame,&#xD;&#xA;Id do médico que realizou o exame e Id da Clinica onde&#xD;&#xA;o exame foi realizado*/&#xD;&#xA;&#xD;&#xA;CREATE VIEW ViewExame AS" />
+				<Property Name="HeaderContents" Value="/* Cria uma view para exibição dos Exames,&#xD;&#xA;permitindo selecionar elemetos pelo Id do Exame, &#xD;&#xA;Id do Paciente, Id do Médico que solicitou o exame,&#xD;&#xA;Id do médico que realizou o exame e Id da Clinica onde&#xD;&#xA;o exame foi realizado*/&#xD;&#xA;&#xD;&#xA;CREATE VIEW ViewExames AS" />
 			</Annotation>
 		</Element>
 	</Model>
