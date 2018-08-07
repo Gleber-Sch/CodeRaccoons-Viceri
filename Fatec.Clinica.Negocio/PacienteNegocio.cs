@@ -14,7 +14,7 @@ namespace Fatec.Clinica.Negocio
     /// </summary>
     public class PacienteNegocio : Validacao, INegocioBase<Paciente>
     {
-
+        
         private readonly PacienteRepositorio _pacienteRepositorio;
 
 
@@ -45,7 +45,7 @@ namespace Fatec.Clinica.Negocio
         {
             var obj = _pacienteRepositorio.SelecionarPorId(id);
 
-            if (obj == null)
+            if(obj == null)
                 throw new NaoEncontradoException($"Não foi encontrado nenhum paciente com o ID {id}!");
             return obj;
         }
@@ -60,7 +60,7 @@ namespace Fatec.Clinica.Negocio
         {
             var obj = _pacienteRepositorio.SelecionarPorCpf(cpf);
 
-            if (obj == null)
+            if(obj == null)
                 throw new NaoEncontradoException($"Não foi encontrado nenhum paciente com o CPF {cpf}!");
             return obj;
         }
@@ -135,7 +135,7 @@ namespace Fatec.Clinica.Negocio
                     if (cpfExistente.Id != id)
                         throw new ConflitoException($"Já existe cadastrado o CPF {cpfExistente.Cpf}!");
                 }
-
+                           
             }
 
             if (_pacienteRepositorio.SelecionarPorEmail(entity.Email) != null)
@@ -162,7 +162,7 @@ namespace Fatec.Clinica.Negocio
         {
             var obj = SelecionarPorId(id);
 
-            if (obj == null)
+            if(obj == null)
             {
                 throw new NaoEncontradoException($"Não foi encontrado um Paciente com este ID {id}!");
             }

@@ -1,14 +1,42 @@
-C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Negocio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.deps.json
-C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Negocio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.dll
-C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Negocio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.pdb
-C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Negocio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dado.dll
-C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Negocio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dominio.dll
-C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Negocio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dado.pdb
-C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Negocio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dominio.pdb
-C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Negocio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.csprojAssemblyReference.cache
-C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Negocio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.csproj.CoreCompileInputs.cache
-C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Negocio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.AssemblyInfoInputs.cache
-C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Negocio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.AssemblyInfo.cs
-C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Negocio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.csproj.CopyComplete
-C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Negocio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.dll
-C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Negocio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.pdb
+C:\Users\Lucas Contesini\source\Workspaces\Formação de Talentos Viceri 20182\Fatec.Clinica.Negocio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.deps.json
+C:\Users\Lucas Contesini\source\Workspaces\Formação de Talentos Viceri 20182\Fatec.Clinica.Negocio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.dll
+C:\Users\Lucas Contesini\source\Workspaces\Formação de Talentos Viceri 20182\Fatec.Clinica.Negocio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.pdb
+C:\Users\Lucas Contesini\source\Workspaces\Formação de Talentos Viceri 20182\Fatec.Clinica.Negocio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dado.dll
+C:\Users\Lucas Contesini\source\Workspaces\Formação de Talentos Viceri 20182\Fatec.Clinica.Negocio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dominio.dll
+C:\Users\Lucas Contesini\source\Workspaces\Formação de Talentos Viceri 20182\Fatec.Clinica.Negocio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dado.pdb
+C:\Users\Lucas Contesini\source\Workspaces\Formação de Talentos Viceri 20182\Fatec.Clinica.Negocio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dominio.pdb
+C:\Users\Lucas Contesini\source\Workspaces\Formação de Talentos Viceri 20182\Fatec.Clinica.Negocio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.csprojAssemblyReference.cache
+C:\Users\Lucas Contesini\source\Workspaces\Formação de Talentos Viceri 20182\Fatec.Clinica.Negocio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.csproj.CoreCompileInputs.cache
+C:\Users\Lucas Contesini\source\Workspaces\Formação de Talentos Viceri 20182\Fatec.Clinica.Negocio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.AssemblyInfoInputs.cache
+C:\Users\Lucas Contesini\source\Workspaces\Formação de Talentos Viceri 20182\Fatec.Clinica.Negocio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.AssemblyInfo.cs
+C:\Users\Lucas Contesini\source\Workspaces\Formação de Talentos Viceri 20182\Fatec.Clinica.Negocio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.csproj.CopyComplete
+C:\Users\Lucas Contesini\source\Workspaces\Formação de Talentos Viceri 20182\Fatec.Clinica.Negocio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.dll
+C:\Users\Lucas Contesini\source\Workspaces\Formação de Talentos Viceri 20182\Fatec.Clinica.Negocio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.pdb
+C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Negocio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.deps.json
+C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Negocio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.dll
+C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Negocio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.pdb
+C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Negocio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dado.dll
+C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Negocio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dominio.dll
+C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Negocio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dado.pdb
+C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Negocio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dominio.pdb
+C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Negocio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.csprojAssemblyReference.cache
+C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Negocio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.csproj.CoreCompileInputs.cache
+C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Negocio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.AssemblyInfoInputs.cache
+C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Negocio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.AssemblyInfo.cs
+C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Negocio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.csproj.CopyComplete
+C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Negocio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.dll
+C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Negocio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.pdb
+C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Negocio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.deps.json
+C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Negocio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.dll
+C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Negocio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.pdb
+C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Negocio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dado.dll
+C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Negocio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dominio.dll
+C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Negocio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dado.pdb
+C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Negocio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dominio.pdb
+C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Negocio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.csprojAssemblyReference.cache
+C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Negocio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.csproj.CoreCompileInputs.cache
+C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Negocio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.AssemblyInfoInputs.cache
+C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Negocio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.AssemblyInfo.cs
+C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Negocio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.csproj.CopyComplete
+C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Negocio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.dll
+C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Negocio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Negocio.pdb

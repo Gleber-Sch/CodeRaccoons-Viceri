@@ -12,7 +12,7 @@ namespace Fatec.Clinica.Negocio
     /// </summary>
     public class EspecialidadeNegocio : Validacao, INegocioBase<Especialidade>
     {
-
+        
         private readonly EspecialidadeRepositorio _especialidadeRepositorio;
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Fatec.Clinica.Negocio
         /// <returns></returns>
         public int Inserir(Especialidade entity)
         {
-
+          
             if (VerificarCamposVazios(entity))
             {
                 throw new DadoInvalidoException($"O Nome da Especialidade é obrigatório");
@@ -66,7 +66,7 @@ namespace Fatec.Clinica.Negocio
             {
                 throw new ConflitoException($"A especialidade {entity.Nome} já está cadastrado");
             }
-
+            
             return _especialidadeRepositorio.Inserir(entity);
         }
 
@@ -100,7 +100,7 @@ namespace Fatec.Clinica.Negocio
         public void Deletar(int id)
         {
             var obj = SelecionarPorId(id);
-            if (obj == null)
+            if(obj == null)
             {
                 throw new NaoEncontradoException($"O ID {id} não foi encontrado");
             }

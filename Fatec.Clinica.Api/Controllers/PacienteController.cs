@@ -14,7 +14,6 @@ namespace Fatec.Clinica.Api.Controllers
     {
         private PacienteNegocio _pacienteNegocio;
 
-
         public PacienteController()
         {
             _pacienteNegocio = new PacienteNegocio();

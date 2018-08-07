@@ -6,11 +6,11 @@ using Fatec.Clinica.Dado.Abstracao;
 using Fatec.Clinica.Dominio;
 
 namespace Fatec.Clinica.Dado
-{
+{   
     /// <summary>
     /// Funcao de CRUD para a Clinica
     /// </summary>
-    public class ClinicaRepositorio : IRepositorioBase<Clinicas>
+     public class ClinicaRepositorio : IRepositorioBase<Clinicas>
     {
         /// <summary>
         /// Seleciona todos as consultas do Database.
