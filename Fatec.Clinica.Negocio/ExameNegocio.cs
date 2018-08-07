@@ -125,7 +125,7 @@ namespace Fatec.Clinica.Negocio
                 throw new DadoInvalidoException($"Não foi encontrado nenhuma Clínica" +
                                                 $" com o ID: {entity.IdTipoExame}");
 
-            if(VerificarIdConsulta(entity.IdConsulta))
+            if (VerificarIdConsulta(entity.IdConsulta))
                 throw new DadoInvalidoException($"Não foi encontrado nenhuma Clínica" +
                                                 $" com o ID: {entity.IdConsulta}");
 
@@ -137,7 +137,7 @@ namespace Fatec.Clinica.Negocio
         /// </summary>
         /// <param name="entity">Objeto com os dados do Exame.</param>
         /// <returns>Insere um exame no Database ou é lançada uma exceção.</returns>
-        public Exame Alterar (int id, Exame entity)
+        public Exame Alterar(int id, Exame entity)
         {
             if (VerificarIdTipoExame(entity.IdTipoExame))
                 throw new DadoInvalidoException($"Não foi encontrado nenhum Tipo de Exame " +

@@ -41,7 +41,7 @@ namespace Fatec.Clinica.Negocio
         {
             var obj = _consultaRepositorio.SelecionarPorId(id);
 
-            if(obj == null)
+            if (obj == null)
                 throw new NaoEncontradoException($"Não foi encontrado uma consulta com o ID {id}!");
 
             return obj;
@@ -130,7 +130,7 @@ namespace Fatec.Clinica.Negocio
         {
             var obj = _consultaRepositorio.SelecionarPorId(id);
 
-            if(obj == null)
+            if (obj == null)
                 throw new NaoEncontradoException($"O ID {id} não foi encontrado");
 
             _consultaRepositorio.Deletar(id);

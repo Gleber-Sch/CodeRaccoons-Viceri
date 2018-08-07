@@ -1,27 +1,10 @@
-<<<<<<< HEAD
-C:\Users\Gleber_M\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\bin\Debug\Fatec.Clinica.Database.dacpac
-C:\Users\Gleber_M\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\bin\Debug\Fatec.Clinica.Database.dll
-C:\Users\Gleber_M\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\bin\Debug\Fatec.Clinica.Database.pdb
-C:\Users\Gleber_M\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\obj\Debug\Model.xml
-C:\Users\Gleber_M\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\obj\Debug\refactor.xml
-C:\Users\Gleber_M\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\obj\Debug\postdeploy.sql
-C:\Users\Gleber_M\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\obj\Debug\predeploy.sql
-C:\Users\Gleber_M\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\obj\Debug\Fatec.Clinica.Database.dll
-C:\Users\Gleber_M\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\obj\Debug\Fatec.Clinica.Database.pdb
-C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\bin\Debug\Fatec.Clinica.Database.dacpac
-C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\bin\Debug\Fatec.Clinica.Database.dll
-C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\bin\Debug\Fatec.Clinica.Database.pdb
-C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\obj\Debug\Fatec.Clinica.Database.dll
-C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\obj\Debug\Fatec.Clinica.Database.pdb
-C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\obj\Debug\Fatec.Clinica.Database.sqlprojAssemblyReference.cache
-=======
-C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\bin\Debug\Fatec.Clinica.Database.dacpac
-C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\bin\Debug\Fatec.Clinica.Database.dll
-C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\bin\Debug\Fatec.Clinica.Database.pdb
-C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\obj\Debug\Model.xml
-C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\obj\Debug\refactor.xml
-C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\obj\Debug\postdeploy.sql
-C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\obj\Debug\predeploy.sql
-C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\obj\Debug\Fatec.Clinica.Database.dll
-C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Database\obj\Debug\Fatec.Clinica.Database.pdb
->>>>>>> 8e7b70369613291d528d6e615371d0822d0524fd
+C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Database\bin\Debug\Fatec.Clinica.Database.dacpac
+C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Database\bin\Debug\Fatec.Clinica.Database.dll
+C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Database\bin\Debug\Fatec.Clinica.Database.pdb
+C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Database\obj\Debug\Fatec.Clinica.Database.sqlprojAssemblyReference.cache
+C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Database\obj\Debug\Fatec.Clinica.Database.dll
+C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Database\obj\Debug\Fatec.Clinica.Database.pdb
+C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Database\obj\Debug\Model.xml
+C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Database\obj\Debug\refactor.xml
+C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Database\obj\Debug\postdeploy.sql
+C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Database\obj\Debug\predeploy.sql

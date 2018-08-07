@@ -15,8 +15,8 @@ SET NUMERIC_ROUNDABORT OFF;
 GO
 :setvar DatabaseName "ClinicaDB"
 :setvar DefaultFilePrefix "ClinicaDB"
-:setvar DefaultDataPath "C:\Program Files\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\DATA\"
-:setvar DefaultLogPath "C:\Program Files\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\DATA\"
+:setvar DefaultDataPath "C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\"
+:setvar DefaultLogPath "C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\"
 
 GO
 :on error exit
@@ -247,6 +247,69 @@ IF fulltextserviceproperty(N'IsFulltextInstalled') = 1
 
 
 GO
+PRINT N'Creating [dbo].[Atendimento]...';
+
+
+GO
+CREATE TABLE [dbo].[Atendimento] (
+    [Id]        INT IDENTITY (1, 1) NOT NULL,
+    [IdClinica] INT NOT NULL,
+    [IdMedico]  INT NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[Clinica]...';
+
+
+GO
+CREATE TABLE [dbo].[Clinica] (
+    [Id]              INT          IDENTITY (1, 1) NOT NULL,
+    [Cnpj]            VARCHAR (14) NOT NULL,
+    [StatusAtividade] BIT          NOT NULL,
+    [TelefoneCom]     VARCHAR (10) NOT NULL,
+    [Nome]            VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC),
+    UNIQUE NONCLUSTERED ([Cnpj] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[Consulta]...';
+
+
+GO
+CREATE TABLE [dbo].[Consulta] (
+    [Id]            INT           IDENTITY (1, 1) NOT NULL,
+    [Historico]     VARCHAR (300) NOT NULL,
+    [Nota]          TINYINT       NOT NULL,
+    [DataHora]      DATETIME      NOT NULL,
+    [IdPaciente]    INT           NOT NULL,
+    [IdAtendimento] INT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[Endereco]...';
+
+
+GO
+CREATE TABLE [dbo].[Endereco] (
+    [Id]          INT          IDENTITY (1, 1) NOT NULL,
+    [Estado]      CHAR (2)     NOT NULL,
+    [Cidade]      VARCHAR (50) NOT NULL,
+    [Bairro]      VARCHAR (50) NOT NULL,
+    [Logradouro]  VARCHAR (50) NOT NULL,
+    [Numero]      INT          NOT NULL,
+    [Complemento] VARCHAR (50) NULL,
+    [IdClinica]   INT          NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+GO
 PRINT N'Creating [dbo].[Especialidade]...';
 
 
@@ -254,6 +317,22 @@ GO
 CREATE TABLE [dbo].[Especialidade] (
     [Id]   INT          IDENTITY (1, 1) NOT NULL,
     [Nome] VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC),
+    UNIQUE NONCLUSTERED ([Nome] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[Exame]...';
+
+
+GO
+CREATE TABLE [dbo].[Exame] (
+    [Id]            INT      IDENTITY (1, 1) NOT NULL,
+    [DataHora]      DATETIME NOT NULL,
+    [IdAtendimento] INT      NOT NULL,
+    [IdConsulta]    INT      NOT NULL,
+    [IdTipoExame]   INT      NOT NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 
@@ -264,13 +343,128 @@ PRINT N'Creating [dbo].[Medico]...';
 
 GO
 CREATE TABLE [dbo].[Medico] (
-    [Id]              INT           IDENTITY (1, 1) NOT NULL,
-    [IdEspecialidade] INT           NOT NULL,
-    [Nome]            VARCHAR (100) NOT NULL,
-    [CPF]             VARCHAR (11)  NOT NULL,
-    [CRM]             VARCHAR (10)  NOT NULL,
-    PRIMARY KEY CLUSTERED ([Id] ASC)
+    [Id]              INT          IDENTITY (1, 1) NOT NULL,
+    [Nome]            VARCHAR (50) NOT NULL,
+    [Cpf]             VARCHAR (11) NOT NULL,
+    [Crm]             VARCHAR (10) NOT NULL,
+    [Email]           VARCHAR (50) NOT NULL,
+    [Senha]           VARCHAR (20) NOT NULL,
+    [DataNasc]        DATE         NOT NULL,
+    [StatusAtividade] BIT          NOT NULL,
+    [Genero]          CHAR (1)     NOT NULL,
+    [Celular]         VARCHAR (11) NOT NULL,
+    [IdEspecialidade] INT          NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC),
+    UNIQUE NONCLUSTERED ([Cpf] ASC),
+    UNIQUE NONCLUSTERED ([Crm] ASC),
+    UNIQUE NONCLUSTERED ([Email] ASC)
 );
+
+
+GO
+PRINT N'Creating [dbo].[Paciente]...';
+
+
+GO
+CREATE TABLE [dbo].[Paciente] (
+    [Id]          INT          IDENTITY (1, 1) NOT NULL,
+    [Nome]        VARCHAR (50) NOT NULL,
+    [Cpf]         VARCHAR (11) NOT NULL,
+    [Email]       VARCHAR (50) NOT NULL,
+    [Senha]       VARCHAR (20) NOT NULL,
+    [DataNasc]    DATE         NOT NULL,
+    [Genero]      CHAR (1)     NOT NULL,
+    [Celular]     VARCHAR (11) NOT NULL,
+    [TelefoneRes] VARCHAR (10) NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC),
+    UNIQUE NONCLUSTERED ([Cpf] ASC),
+    UNIQUE NONCLUSTERED ([Email] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[TipoExame]...';
+
+
+GO
+CREATE TABLE [dbo].[TipoExame] (
+    [Id]   INT          IDENTITY (1, 1) NOT NULL,
+    [Nome] VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC),
+    UNIQUE NONCLUSTERED ([Nome] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[FK_Atendimento_Clinica]...';
+
+
+GO
+ALTER TABLE [dbo].[Atendimento]
+    ADD CONSTRAINT [FK_Atendimento_Clinica] FOREIGN KEY ([IdClinica]) REFERENCES [dbo].[Clinica] ([Id]);
+
+
+GO
+PRINT N'Creating [dbo].[FK_Atendimento_Medico]...';
+
+
+GO
+ALTER TABLE [dbo].[Atendimento]
+    ADD CONSTRAINT [FK_Atendimento_Medico] FOREIGN KEY ([IdMedico]) REFERENCES [dbo].[Medico] ([Id]);
+
+
+GO
+PRINT N'Creating [dbo].[FK_Consulta_Paciente]...';
+
+
+GO
+ALTER TABLE [dbo].[Consulta]
+    ADD CONSTRAINT [FK_Consulta_Paciente] FOREIGN KEY ([IdPaciente]) REFERENCES [dbo].[Paciente] ([Id]);
+
+
+GO
+PRINT N'Creating [dbo].[FK_Consulta_Atendimento]...';
+
+
+GO
+ALTER TABLE [dbo].[Consulta]
+    ADD CONSTRAINT [FK_Consulta_Atendimento] FOREIGN KEY ([IdAtendimento]) REFERENCES [dbo].[Atendimento] ([Id]);
+
+
+GO
+PRINT N'Creating [dbo].[FK_Endereco_Clinica]...';
+
+
+GO
+ALTER TABLE [dbo].[Endereco]
+    ADD CONSTRAINT [FK_Endereco_Clinica] FOREIGN KEY ([IdClinica]) REFERENCES [dbo].[Clinica] ([Id]);
+
+
+GO
+PRINT N'Creating [dbo].[FK_Exame_TipoExame]...';
+
+
+GO
+ALTER TABLE [dbo].[Exame]
+    ADD CONSTRAINT [FK_Exame_TipoExame] FOREIGN KEY ([IdTipoExame]) REFERENCES [dbo].[TipoExame] ([Id]);
+
+
+GO
+PRINT N'Creating [dbo].[FK_Exame_Atendimento]...';
+
+
+GO
+ALTER TABLE [dbo].[Exame]
+    ADD CONSTRAINT [FK_Exame_Atendimento] FOREIGN KEY ([IdAtendimento]) REFERENCES [dbo].[Atendimento] ([Id]);
+
+
+GO
+PRINT N'Creating [dbo].[FK_Exame_Consulta]...';
+
+
+GO
+ALTER TABLE [dbo].[Exame]
+    ADD CONSTRAINT [FK_Exame_Consulta] FOREIGN KEY ([IdConsulta]) REFERENCES [dbo].[Consulta] ([Id]);
 
 
 GO
@@ -282,6 +476,71 @@ ALTER TABLE [dbo].[Medico]
     ADD CONSTRAINT [FK_Medico_Especialidade] FOREIGN KEY ([IdEspecialidade]) REFERENCES [dbo].[Especialidade] ([Id]);
 
 
+GO
+PRINT N'Creating [dbo].[ViewAtendimentos]...';
+
+
+GO
+CREATE VIEW ViewAtendimentos as
+select  Atendimento.Id,Medico.Nome as medico, Clinica.Nome as Clinica
+From Atendimento
+inner Join Medico on Atendimento.IdMedico=Medico.Id
+inner join Clinica on Atendimento.IdClinica=Clinica.Id
+GO
+PRINT N'Creating [dbo].[ViewConsultas]...';
+
+
+GO
+/* Cria uma view para exibição das consultas,
+permitindo selecionar elemetos pelo Id da Consulta, 
+Id do Paciente e Id do Médico */
+
+CREATE VIEW ViewConsultas AS
+SELECT C.Id, P.Id AS IdPaciente, P.Nome AS Paciente,
+M.Id AS IdMedico, M.Nome AS Medico,C.DataHora, C.Historico,
+Cl.Id AS IdClinica, Cl.Nome AS Clinica, C.Nota
+FROM [Consulta] C
+JOIN [Atendimento] A ON C.IdAtendimento = A.Id
+JOIN [Medico] M ON A.IdMedico = M.Id
+JOIN [Paciente] P ON C.IdPaciente = P.Id
+JOIN [Clinica] Cl ON A.IdClinica = Cl.Id
+GO
+PRINT N'Creating [dbo].[ViewEnderecos]...';
+
+
+GO
+create view ViewEnderecos as
+select Endereco.Id as IdEndereco,Clinica.Nome, Endereco.estado, Endereco.Cidade, Endereco.Bairro,Endereco.Logradouro,Endereco.Numero,Endereco.Complemento
+FROM Endereco
+INNER JOIN Clinica on Endereco.IdClinica=Clinica.Id
+GO
+PRINT N'Creating [dbo].[ViewExames]...';
+
+
+GO
+/* Cria uma view para exibição dos Exames,
+permitindo selecionar elemetos pelo Id do Exame, 
+Id do Paciente, Id do Médico que solicitou o exame,
+Id do médico que realizou o exame e Id da Clinica onde
+o exame foi realizado*/
+
+CREATE VIEW ViewExames AS
+SELECT E.Id, TE.Nome AS TipoDoExame, P.Id AS IdPaciente,
+P.Nome AS NomeDoPaciente, MedQueSolicitou.Id AS IdMedicoQueSolicitou,
+MedQueSolicitou.Nome AS SolicitadoPeloMedico,
+Co.DataHora AS DataHora_ExameSolicitado,
+E.DataHora AS DataHora_ExameRealizado,
+MedQueRealizou.Id AS IdMedicoQueRealizou, MedQueRealizou.Nome AS RealizadoPeloMedico,
+Cl.Id AS IdClinica, Cl.Nome AS RealizadoNaClinica
+FROM [Exame] E
+JOIN [Atendimento] AtRealizado ON E.IdAtendimento = AtRealizado.Id
+JOIN [Medico] MedQueRealizou ON AtRealizado.IdMedico = MedQueRealizou.Id
+JOIN [TipoExame] TE ON E.IdTipoExame = TE.Id
+JOIN [Clinica] Cl ON AtRealizado.IdClinica = Cl.Id
+JOIN [Consulta] Co ON E.IdConsulta = Co.Id
+JOIN [Paciente] P ON Co.IdPaciente = P.Id
+JOIN [Atendimento] AtSolicitado ON Co.IdAtendimento = AtSolicitado.Id
+JOIN [Medico] MedQueSolicitou ON AtSolicitado.IdMedico = MedQueSolicitou.Id
 GO
 DECLARE @VarDecimalSupported AS BIT;
 

@@ -20,7 +20,7 @@ namespace Fatec.Clinica.Negocio.Validacoes
 
             if (long.TryParse(cpf, out long somenteNumero) == false)
                 return false;
-            
+
             //Se o CPF não tem 11 digitos ele é inválido
             if (cpf.Length != 11)
                 return false;
@@ -80,8 +80,8 @@ namespace Fatec.Clinica.Negocio.Validacoes
 
             int[] multiplicador1 = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
             int[] multiplicador2 = new int[13] { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
-            int soma,resto;
-            string digito,tempCnpj;
+            int soma, resto;
+            string digito, tempCnpj;
 
             //Gera uma string sem os dígitos verificadores
             tempCnpj = cnpj.Substring(0, 12);
@@ -124,10 +124,10 @@ namespace Fatec.Clinica.Negocio.Validacoes
         /// <returns>True se os atributos obrigátorios não foram preenchidos ou False se eles foram.</returns>
         public bool VerificarCamposVazios(Medico entity)
         {
-            if ( String.IsNullOrEmpty(entity.Nome) || String.IsNullOrEmpty(entity.Cpf) ||
+            if (String.IsNullOrEmpty(entity.Nome) || String.IsNullOrEmpty(entity.Cpf) ||
                  String.IsNullOrEmpty(Convert.ToString(entity.Crm)) || String.IsNullOrEmpty(entity.Celular) ||
                  String.IsNullOrEmpty(Convert.ToString(entity.IdEspecialidade)) ||
-                 String.IsNullOrEmpty(Convert.ToString(entity.Genero)) || entity.DataNasc == null )
+                 String.IsNullOrEmpty(Convert.ToString(entity.Genero)) || entity.DataNasc == null)
             {
                 return true;
             }
@@ -143,9 +143,9 @@ namespace Fatec.Clinica.Negocio.Validacoes
         /// <returns>True se os atributos obrigátorios não foram preenchidos ou False se eles foram.</returns>
         public bool VerificarCamposVazios(Paciente entity)
         {
-            if ( String.IsNullOrEmpty(entity.Nome) || String.IsNullOrEmpty(entity.Cpf) ||
+            if (String.IsNullOrEmpty(entity.Nome) || String.IsNullOrEmpty(entity.Cpf) ||
                  String.IsNullOrEmpty(entity.Celular) ||
-                 String.IsNullOrEmpty(Convert.ToString(entity.Genero)) || entity.DataNasc == null )
+                 String.IsNullOrEmpty(Convert.ToString(entity.Genero)) || entity.DataNasc == null)
             {
                 return true;
             }
@@ -161,7 +161,7 @@ namespace Fatec.Clinica.Negocio.Validacoes
         /// <returns>True se o atributo Nome não estever preenchido ou False se ele estiver.</returns>
         public bool VerificarCamposVazios(Especialidade entity)
         {
-            if ( String.IsNullOrEmpty(entity.Nome) )
+            if (String.IsNullOrEmpty(entity.Nome))
             {
                 return true;
             }
@@ -201,7 +201,7 @@ namespace Fatec.Clinica.Negocio.Validacoes
         #region Verificar se existem campos vazios na inserção ou alteração de um Atendimento
         public bool VerificarCamposVazios(Atendimento entity)
         {
-            if(String.IsNullOrEmpty(Convert.ToString(entity.Clinica)) || String.IsNullOrEmpty(Convert.ToString(entity.Medico)))
+            if (String.IsNullOrEmpty(Convert.ToString(entity.Clinica)) || String.IsNullOrEmpty(Convert.ToString(entity.Medico)))
             {
                 return true;
             }
@@ -245,8 +245,8 @@ namespace Fatec.Clinica.Negocio.Validacoes
         /// <returns>True se os atributos obrigátorios não foram preenchidos ou False se eles foram.</returns>
         public bool VerificarCamposVazios(Clinicas entity)
         {
-            if ( string.IsNullOrEmpty(entity.Nome) || string.IsNullOrEmpty(entity.Cnpj) ||
-                 string.IsNullOrEmpty(entity.TelefoneCom) )
+            if (string.IsNullOrEmpty(entity.Nome) || string.IsNullOrEmpty(entity.Cnpj) ||
+                 string.IsNullOrEmpty(entity.TelefoneCom))
             {
                 return true;
             }
@@ -257,11 +257,11 @@ namespace Fatec.Clinica.Negocio.Validacoes
         #region Verificação de Idade
         public bool VerificarIdade(DateTime DataNasc)
         {
-            if(DateTime.Now.Year - DataNasc.Year > 18)
+            if (DateTime.Now.Year - DataNasc.Year > 18)
             {
                 return true;
             }
-            else if((DateTime.Now.Year - DataNasc.Year == 18) && (DateTime.Now.Month > DataNasc.Month || (DateTime.Now.Month == DataNasc.Month && DateTime.Now.Day >= DataNasc.Day)))
+            else if ((DateTime.Now.Year - DataNasc.Year == 18) && (DateTime.Now.Month > DataNasc.Month || (DateTime.Now.Month == DataNasc.Month && DateTime.Now.Day >= DataNasc.Day)))
             {
                 return true;
             }
@@ -281,7 +281,7 @@ namespace Fatec.Clinica.Negocio.Validacoes
         public bool VerificarIdTipoExame(int id)
         {
             var repositorio = new TipoExameRepositorio();
-            if( repositorio.SelecionarPorId(id) == null)
+            if (repositorio.SelecionarPorId(id) == null)
             {
                 return false;
             }

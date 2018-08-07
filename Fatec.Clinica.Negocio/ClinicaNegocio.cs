@@ -83,7 +83,7 @@ namespace Fatec.Clinica.Negocio
 
             var obj = _clinicaRepositorio.SelecionarPorCnpj(entity.Cnpj);
 
-            if(obj != null)
+            if (obj != null)
             {
                 throw new ConflitoException("Já existe uma clínica registrada com este CNPJ!");
             }

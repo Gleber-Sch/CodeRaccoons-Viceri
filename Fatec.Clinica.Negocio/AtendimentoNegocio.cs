@@ -43,7 +43,7 @@ namespace Fatec.Clinica.Negocio
         {
             var obj = _atendimentoRepositorio.SelecionarPorId(id);
 
-            if(obj == null)
+            if (obj == null)
                 throw new NaoEncontradoException($"Não foi encontrado um atendimento com o ID {id}!");
 
             return obj;
@@ -90,7 +90,7 @@ namespace Fatec.Clinica.Negocio
         {
             var obj = _atendimentoRepositorio.SelecionarPorId(id);
 
-            if(obj == null)
+            if (obj == null)
                 throw new NaoEncontradoException($"O ID {id} não foi encontrado");
 
             _atendimentoRepositorio.Deletar(id);
