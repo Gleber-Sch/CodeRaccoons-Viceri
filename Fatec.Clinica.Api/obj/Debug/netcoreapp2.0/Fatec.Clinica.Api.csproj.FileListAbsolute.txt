@@ -17,3 +17,10 @@ C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Api\obj\Debug\netcore
 C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Api\obj\Debug\netcoreapp2.0\Fatec.Clinica.Api.csproj.CopyComplete
 C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Api\obj\Debug\netcoreapp2.0\Fatec.Clinica.Api.dll
 C:\Users\Massao\Desktop\Fatec.Clinica-master\Fatec.Clinica.Api\obj\Debug\netcoreapp2.0\Fatec.Clinica.Api.pdb
+C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Api\bin\Debug\netcoreapp2.0\Fatec.Clinica.Api.xml
+C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Api\obj\Debug\netcoreapp2.0\Fatec.Clinica.Api.csprojAssemblyReference.cache
+C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Api\obj\Debug\netcoreapp2.0\Fatec.Clinica.Api.csproj.CoreCompileInputs.cache
+C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Api\obj\Debug\netcoreapp2.0\Fatec.Clinica.Api.AssemblyInfoInputs.cache
+C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Api\obj\Debug\netcoreapp2.0\Fatec.Clinica.Api.AssemblyInfo.cs
+C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Api\obj\Debug\netcoreapp2.0\Fatec.Clinica.Api.dll
+C:\Users\Massao\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Api\obj\Debug\netcoreapp2.0\Fatec.Clinica.Api.pdb
