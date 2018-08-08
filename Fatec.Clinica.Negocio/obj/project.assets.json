@@ -2108,23 +2108,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Massao\\.nuget\\packages\\": {},
+    "C:\\Users\\Gleber_M\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Massao\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Negocio\\Fatec.Clinica.Negocio.csproj",
+      "projectUniqueName": "C:\\Users\\Gleber_M\\Desktop\\testes\\meu\\CodeRaccoons-Viceri-f036e0d0714fe09bbfd1b473b21d08b6007d2672\\Fatec.Clinica.Negocio\\Fatec.Clinica.Negocio.csproj",
       "projectName": "Fatec.Clinica.Negocio",
-      "projectPath": "C:\\Users\\Massao\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Negocio\\Fatec.Clinica.Negocio.csproj",
-      "packagesPath": "C:\\Users\\Massao\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Massao\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Negocio\\obj\\",
+      "projectPath": "C:\\Users\\Gleber_M\\Desktop\\testes\\meu\\CodeRaccoons-Viceri-f036e0d0714fe09bbfd1b473b21d08b6007d2672\\Fatec.Clinica.Negocio\\Fatec.Clinica.Negocio.csproj",
+      "packagesPath": "C:\\Users\\Gleber_M\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Gleber_M\\Desktop\\testes\\meu\\CodeRaccoons-Viceri-f036e0d0714fe09bbfd1b473b21d08b6007d2672\\Fatec.Clinica.Negocio\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Massao\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Gleber_M\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2137,8 +2137,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\Massao\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dado\\Fatec.Clinica.Dado.csproj": {
-              "projectPath": "C:\\Users\\Massao\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dado\\Fatec.Clinica.Dado.csproj"
+            "C:\\Users\\Gleber_M\\Desktop\\testes\\meu\\CodeRaccoons-Viceri-f036e0d0714fe09bbfd1b473b21d08b6007d2672\\Fatec.Clinica.Dado\\Fatec.Clinica.Dado.csproj": {
+              "projectPath": "C:\\Users\\Gleber_M\\Desktop\\testes\\meu\\CodeRaccoons-Viceri-f036e0d0714fe09bbfd1b473b21d08b6007d2672\\Fatec.Clinica.Dado\\Fatec.Clinica.Dado.csproj"
             }
           }
         }

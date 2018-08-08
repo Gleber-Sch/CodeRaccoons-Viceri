@@ -47,7 +47,7 @@ namespace Fatec.Clinica.Api.Controllers
         /// <param name="id">Usado para buscar a clínica.</param>
         /// <returns>Clínica selecionada.</returns>
         [HttpGet]
-        [Route("{id}")]
+        [Route("{id}", Name = "ClinicaGetId")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Clinicas), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult GetId(int id)
@@ -62,7 +62,7 @@ namespace Fatec.Clinica.Api.Controllers
         /// <param name="cnpj">Usado para buscar a clínica.</param>
         /// <returns>Clínica selecionada.</returns>
         [HttpGet]
-        [Route("{cnpj}")]
+        [Route("{cnpj}", Name = "ClinicaGetCnpj")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Clinicas), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult Get(string cnpj)
@@ -91,7 +91,7 @@ namespace Fatec.Clinica.Api.Controllers
 
             var idClinica = _clinicaNegocio.Inserir(obj);
             obj.Id = idClinica;
-            return CreatedAtRoute("GetId", new { id = idClinica }, obj);
+            return CreatedAtRoute("ClinicaGetId", new { id = idClinica }, obj);
         }
 
         /// <summary>

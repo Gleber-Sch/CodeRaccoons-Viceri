@@ -37,7 +37,7 @@ namespace Fatec.Clinica.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("{id}")]
+        [Route("{id}", Name = "ConsultaGetId")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Consulta), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult GetId(int id)
@@ -51,7 +51,7 @@ namespace Fatec.Clinica.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("{id}")]
+        [Route("Paciente/{id}", Name = "ConsultaGetIdPaciente")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Consulta), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult GetPaciente(int id)
@@ -65,7 +65,7 @@ namespace Fatec.Clinica.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("{id}")]
+        [Route("Medico/{id}", Name = "ConsultaGetIdMedico")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Consulta), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult GetMedico(int id)
@@ -79,7 +79,7 @@ namespace Fatec.Clinica.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("{id}")]
+        [Route("Clinica/{id}", Name = "ConsultaGetIdClinica")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Consulta), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult GetClinica(int id)
@@ -98,18 +98,18 @@ namespace Fatec.Clinica.Api.Controllers
         [SwaggerResponse((int)HttpStatusCode.InternalServerError)]
         public IActionResult Post([FromBody] ConsultaInput input)
         {
-            var objConsulta = new Consulta()
+            var obj = new Consulta()
             {
-                Atendimento = input.Atendimento,
+                IdAtendimento = input.IdAtendimento,
                 DataHora = input.DataHora,
                 Historico = input.Historico,
                 Nota = input.Nota,
-                Paciente = input.Paciente
+                IdPaciente = input.IdPaciente
             };
 
-            var idConsulta = _consultaNegocio.Inserir(objConsulta);
-            objConsulta.Id = idConsulta;
-            return CreatedAtRoute(nameof(GetId), new { id = idConsulta }, objConsulta);
+            var idConsulta = _consultaNegocio.Inserir(obj);
+            obj.Id = idConsulta;
+            return CreatedAtRoute("ConsultaGetId", new { id = idConsulta }, obj);
         }
 
         /// <summary>
@@ -127,11 +127,11 @@ namespace Fatec.Clinica.Api.Controllers
         {
             var objConsulta = new Consulta()
             {
-                Atendimento = input.Atendimento,
+                IdAtendimento = input.IdAtendimento,
                 DataHora = input.DataHora,
                 Historico = input.Historico,
                 Nota = input.Nota,
-                Paciente = input.Paciente
+                IdPaciente = input.IdPaciente
             };
 
             var obj = _consultaNegocio.Alterar(id, objConsulta);

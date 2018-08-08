@@ -47,7 +47,7 @@ namespace Fatec.Clinica.Api.Controllers
         /// <param name="id">Usado para buscar o exame.</param>
         /// <returns>Exame selecionado.</returns>
         [HttpGet]
-        [Route("{id}")]
+        [Route("{id}", Name = "ExameGetId")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Exame), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult GetId(int id)
@@ -61,7 +61,7 @@ namespace Fatec.Clinica.Api.Controllers
         /// <param name="id">Usado para buscar o paciente.</param>
         /// <returns>Todos os exames selecionado.</returns>
         [HttpGet]
-        [Route("Paciente/{id}")]
+        [Route("Paciente/{id}", Name = "ExameGetIdPaciente")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Exame), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult GetPaciente(int id)
@@ -75,7 +75,7 @@ namespace Fatec.Clinica.Api.Controllers
         /// <param name="id">Usado para buscar o médico.</param>
         /// <returns>Todos os exames selecionado.</returns>
         [HttpGet]
-        [Route("Solicitados/Medico/{id}")]
+        [Route("Solicitados/Medico/{id}", Name = "ExameGetIdMedicoQueSolicitou")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Exame), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult GetMedicoQueSolicitou(int id)
@@ -89,7 +89,7 @@ namespace Fatec.Clinica.Api.Controllers
         /// <param name="id">Usado para buscar o médico.</param>
         /// <returns>Todos os exames selecionado.</returns>
         [HttpGet]
-        [Route("Realizados/Medico/{id}")]
+        [Route("Realizados/Medico/{id}", Name = "ExameGetIdMedicoQueRealizou")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Exame), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult GetMedicoQueRealizou(int id)
@@ -103,7 +103,7 @@ namespace Fatec.Clinica.Api.Controllers
         /// <param name="id">Usado para buscar a clínica.</param>
         /// <returns>Todos os exames selecionado.</returns>
         [HttpGet]
-        [Route("Realizados/Clinica/{id}")]
+        [Route("Realizados/Clinica/{id}", Name = "ExameGetIdClinicaQueRealizou")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Exame), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult GetClinica(int id)
@@ -132,7 +132,7 @@ namespace Fatec.Clinica.Api.Controllers
 
             var idExame = _exameNegocio.Inserir(obj);
             obj.Id = idExame;
-            return CreatedAtRoute("GetId", new { id = idExame }, obj);
+            return CreatedAtRoute("ExameGetId", new { id = idExame }, obj);
         }
 
         /// <summary>

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Fatec.Clinica.Dominio
+﻿namespace Fatec.Clinica.Dominio
 {
     public class TipoExame
     {

@@ -38,7 +38,7 @@ namespace Fatec.Clinica.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("{id}")]
+        [Route("{id}", Name = "TipoExameGetId")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(TipoExame), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult GetId(int id)
@@ -57,14 +57,14 @@ namespace Fatec.Clinica.Api.Controllers
         [SwaggerResponse((int)HttpStatusCode.InternalServerError)]
         public IActionResult Post([FromBody] TipoExameInput input)
         {
-            var objTipoExame = new TipoExame()
+            var obj = new TipoExame()
             {
                 Nome = input.Nome
             };
 
-            var idTipoExame = _tipoExameNegocio.Inserir(objTipoExame);
-            objTipoExame.Id = idTipoExame;
-            return CreatedAtRoute(nameof(GetId), new { id = idTipoExame }, objTipoExame);
+            var idTipoExame = _tipoExameNegocio.Inserir(obj);
+            obj.Id = idTipoExame;
+            return CreatedAtRoute("TipoExameGetId", new { id = idTipoExame }, obj);
         }
 
         /// <summary>

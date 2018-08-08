@@ -29,7 +29,7 @@ namespace Fatec.Clinica.Api
         /// </summary>
         public IConfiguration Configuration { get; }
 
-
+        
         /// <summary>
         /// 
         /// </summary>

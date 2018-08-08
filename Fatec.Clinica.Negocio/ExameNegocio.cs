@@ -10,7 +10,7 @@ namespace Fatec.Clinica.Negocio
     /// <summary>
     /// Regras de Negócio sobre o exame.
     /// </summary>
-    public class ExameNegocio : Validacao, INegocioBase<Exame>
+    public class ExameNegocio : INegocioBase<Exame>
     {
         private readonly ExameRepositorio _exameRepositorio;
 
@@ -117,17 +117,26 @@ namespace Fatec.Clinica.Negocio
         /// <returns>Insere um exame no Database ou é lançada uma exceção.</returns>
         public int Inserir(Exame entity)
         {
-            if (VerificarIdTipoExame(entity.IdTipoExame))
+            var RepositorioTipoExame = new TipoExameRepositorio();
+            if (RepositorioTipoExame.SelecionarPorId(entity.IdTipoExame) != null)
+            {
                 throw new DadoInvalidoException($"Não foi encontrado nenhum Tipo de Exame " +
                                                 $"com o ID: {entity.IdTipoExame}");
+            }
 
-            if (VerificarIdAtendimento(entity.IdAtendimento))
+            var RepositorioAtendimento = new AtendimentoRepositorio();
+            if (RepositorioAtendimento.SelecionarPorId(entity.IdAtendimento) != null)
+            {
                 throw new DadoInvalidoException($"Não foi encontrado nenhuma Clínica" +
                                                 $" com o ID: {entity.IdTipoExame}");
+            }
 
-            if (VerificarIdConsulta(entity.IdConsulta))
+            var RepositorioConsulta = new ConsultaRepositorio();
+            if (RepositorioConsulta.SelecionarPorId(entity.IdConsulta) != null)
+            {
                 throw new DadoInvalidoException($"Não foi encontrado nenhuma Clínica" +
                                                 $" com o ID: {entity.IdConsulta}");
+            }
 
             return _exameRepositorio.Inserir(entity);
         }
@@ -139,17 +148,26 @@ namespace Fatec.Clinica.Negocio
         /// <returns>Insere um exame no Database ou é lançada uma exceção.</returns>
         public Exame Alterar(int id, Exame entity)
         {
-            if (VerificarIdTipoExame(entity.IdTipoExame))
+            var RepositorioTipoExame = new TipoExameRepositorio();
+            if (RepositorioTipoExame.SelecionarPorId(entity.IdTipoExame) != null)
+            {
                 throw new DadoInvalidoException($"Não foi encontrado nenhum Tipo de Exame " +
                                                 $"com o ID: {entity.IdTipoExame}");
+            }
 
-            if (VerificarIdAtendimento(entity.IdAtendimento))
+            var RepositorioAtendimento = new AtendimentoRepositorio();
+            if (RepositorioAtendimento.SelecionarPorId(entity.IdAtendimento) != null)
+            {
                 throw new DadoInvalidoException($"Não foi encontrado nenhuma Clínica" +
                                                 $" com o ID: {entity.IdTipoExame}");
+            }
 
-            if (VerificarIdConsulta(entity.IdConsulta))
+            var RepositorioConsulta = new ConsultaRepositorio();
+            if (RepositorioConsulta.SelecionarPorId(entity.IdConsulta) != null)
+            {
                 throw new DadoInvalidoException($"Não foi encontrado nenhuma Clínica" +
                                                 $" com o ID: {entity.IdConsulta}");
+            }
 
             entity.Id = id;
             _exameRepositorio.Alterar(entity);

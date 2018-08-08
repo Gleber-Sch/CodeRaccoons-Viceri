@@ -105,8 +105,8 @@ namespace Fatec.Clinica.Dado
                                                    $"(Historico, DataHora, IdPaciente, IdAtendimento, Nota) " +
                                                    $"VALUES ('{entity.Historico}'," +
                                                    $" '{entity.DataHora}'," +
-                                                   $" {entity.Paciente.Id}," +
-                                                   $" {entity.Atendimento.Id}" +
+                                                   $" {entity.IdPaciente}," +
+                                                   $" {entity.IdAtendimento}" +
                                                    $" {entity.Nota} " +
                                                    $"SET @ID = SCOPE_IDENTITY();" +
                                                    $"SELECT @ID");
@@ -124,8 +124,8 @@ namespace Fatec.Clinica.Dado
                 connection.Execute($"UPDATE [Consulta] " +
                                    $"SET Historico = '{entity.Historico}'," +
                                    $"DataHora = '{entity.DataHora}'," +
-                                   $"IdPaciente = {entity.Paciente.Id}, " +
-                                   $"IdAtendimento = {entity.Atendimento.Id} " +
+                                   $"IdPaciente = {entity.IdPaciente}, " +
+                                   $"IdAtendimento = {entity.IdAtendimento} " +
                                    $"Nota = {entity.Nota} " +
                                    $"WHERE Id = {entity.Id}");
             }

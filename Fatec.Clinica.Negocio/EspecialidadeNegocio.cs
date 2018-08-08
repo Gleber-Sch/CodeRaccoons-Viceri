@@ -10,7 +10,7 @@ namespace Fatec.Clinica.Negocio
     /// <summary>
     /// Regras de Negócio sobre a Especialidade do Médico
     /// </summary>
-    public class EspecialidadeNegocio : Validacao, INegocioBase<Especialidade>
+    public class EspecialidadeNegocio : INegocioBase<Especialidade>
     {
 
         private readonly EspecialidadeRepositorio _especialidadeRepositorio;
@@ -44,7 +44,7 @@ namespace Fatec.Clinica.Negocio
             var obj = _especialidadeRepositorio.SelecionarPorId(id);
 
             if (obj == null)
-                throw new NaoEncontradoException($"Não foi encontrado uma especialidade com o ID {id}!");
+                throw new NaoEncontradoException($"Não foi encontrado nenhuma especialidade com o ID: {id}");
 
             return obj;
         }
@@ -57,14 +57,14 @@ namespace Fatec.Clinica.Negocio
         public int Inserir(Especialidade entity)
         {
 
-            if (VerificarCamposVazios(entity))
+            if (CamposVazios.Verificar(entity))
             {
                 throw new DadoInvalidoException($"O Nome da Especialidade é obrigatório");
             }
 
             if (_especialidadeRepositorio.SelecionarPorNome(entity.Nome) != null)
             {
-                throw new ConflitoException($"A especialidade {entity.Nome} já está cadastrado");
+                throw new ConflitoException($"A especialidade: \"{entity.Nome}\", já está cadastrada");
             }
 
             return _especialidadeRepositorio.Inserir(entity);
@@ -78,9 +78,9 @@ namespace Fatec.Clinica.Negocio
         /// <returns></returns>
         public Especialidade Alterar(int id, Especialidade entity)
         {
-            if (VerificarCamposVazios(entity))
+            if (CamposVazios.Verificar(entity))
             {
-                throw new DadoInvalidoException($"O campo Nome da Especialidade é obrigatório");
+                throw new DadoInvalidoException($"O campo Nome da Especialidade é obrigatório!");
             }
 
             if (_especialidadeRepositorio.SelecionarPorNome(entity.Nome) != null)
@@ -102,7 +102,7 @@ namespace Fatec.Clinica.Negocio
             var obj = SelecionarPorId(id);
             if (obj == null)
             {
-                throw new NaoEncontradoException($"O ID {id} não foi encontrado");
+                throw new NaoEncontradoException($"O ID: {id} não foi encontrado");
             }
 
             _especialidadeRepositorio.Deletar(obj.Id);

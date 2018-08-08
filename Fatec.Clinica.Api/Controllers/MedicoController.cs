@@ -46,7 +46,7 @@ namespace Fatec.Clinica.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("{id}")]
+        [Route("{id}", Name = "MedicoGetId")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(MedicoDto), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult GetId(int id)
@@ -60,7 +60,7 @@ namespace Fatec.Clinica.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("Especialidade/{id}")]
+        [Route("Especialidade/{id}", Name = "MedicoGetIdEspecialidade")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(MedicoDto), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult GetEspecialidadeId(int id)
@@ -74,7 +74,7 @@ namespace Fatec.Clinica.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("medico/{Crm}")]
+        [Route("Crm/{Crm}", Name = "MedicoGetIdCrm")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(MedicoDto), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult GetCrm(int Crm)
@@ -88,15 +88,13 @@ namespace Fatec.Clinica.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("medico/{Cpf}")]
+        [Route("{Cpf}", Name = "MedicoGetIdCpf")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(MedicoDto), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult GetCpf(string Cpf)
         {
             return Ok(_medicoNegocio.SelecionarPorCpf(Cpf));
         }
-
-
 
         /// <summary>
         /// Método que insere um médico..
@@ -109,7 +107,7 @@ namespace Fatec.Clinica.Api.Controllers
         [SwaggerResponse((int)HttpStatusCode.InternalServerError)]
         public IActionResult Post([FromBody]MedicoInput input)
         {
-            var objMedico = new Medico()
+            var obj = new Medico()
             {
                 Nome = input.Nome,
                 Cpf = input.Cpf,
@@ -123,9 +121,9 @@ namespace Fatec.Clinica.Api.Controllers
                 StatusAtividade = true
             };
 
-            var idMedico = _medicoNegocio.Inserir(objMedico);
-            objMedico.Id = idMedico;
-            return CreatedAtRoute(nameof(GetId), new { id = idMedico }, objMedico);
+            var idMedico = _medicoNegocio.Inserir(obj);
+            obj.Id = idMedico;
+            return CreatedAtRoute("MedicoGetId", new { id = idMedico }, obj);
         }
 
         /// <summary>

@@ -10,7 +10,7 @@ namespace Fatec.Clinica.Negocio
     /// <summary>
     /// Regras de Negócio sobre o Médico
     /// </summary>
-    public class MedicoNegocio : Validacao, INegocioBase<Medico>
+    public class MedicoNegocio : INegocioBase<Medico>
     {
 
         private readonly MedicoRepositorio _medicoRepositorio;
@@ -99,7 +99,7 @@ namespace Fatec.Clinica.Negocio
         public int Inserir(Medico entity)
         {
 
-            if (VerificarCamposVazios(entity))
+            if (CamposVazios.Verificar(entity))
             {
                 throw new DadoInvalidoException($"Os seguintes campos são obrigatórios:" +
                                                 $"Nome, CPF, CRM, Telefone Movel, Gênero, " +
@@ -110,7 +110,7 @@ namespace Fatec.Clinica.Negocio
             if (_medicoRepositorio.SelecionarPorCrm(entity.Crm) != null)
                 throw new ConflitoException($"Já existe cadastrado o CRM {entity.Crm}!");
 
-            if (VerificarCPF(entity.Cpf) == false)
+            if (ValidacaoCpf.Verificar(entity.Cpf) == false)
             {
                 throw new DadoInvalidoException($"O CPF {entity.Cpf} é invalido");
             }
@@ -127,9 +127,9 @@ namespace Fatec.Clinica.Negocio
                 throw new ConflitoException("O email já foi cadastrado");
             }
 
-            if (VerificarIdade(entity.DataNasc) == false)
+            if (ValidacaoMaioridade.Verificar(entity.DataNasc) == false)
             {
-                throw new DadoInvalidoException("Idade inválida - Apenas maiores de 18 anos!!");
+                throw new DadoInvalidoException("Idade inválida - Apenas maiores de 18 anos podem se cadastrar");
             }
 
             return _medicoRepositorio.Inserir(entity);
@@ -145,7 +145,7 @@ namespace Fatec.Clinica.Negocio
         public Medico Alterar(int id, Medico entity)
         {
 
-            if (VerificarCamposVazios(entity))
+            if (CamposVazios.Verificar(entity))
             {
                 throw new DadoInvalidoException($"Os seguintes campos são obrigatórios:" +
                                                 $"Nome, CPF, CRM, Telefone Movel, Gênero, " +
@@ -160,7 +160,7 @@ namespace Fatec.Clinica.Negocio
                     throw new ConflitoException($"Já existe cadastrado o CRM {crmExistente.Crm}, para outro médico!");
             }
 
-            if (VerificarCPF(entity.Cpf) == false)
+            if (ValidacaoCpf.Verificar(entity.Cpf) == false)
             {
                 throw new DadoInvalidoException($"O CPF {entity.Cpf} é invalido!");
             }
@@ -180,9 +180,9 @@ namespace Fatec.Clinica.Negocio
                 throw new ConflitoException("O email já foi cadastrado");
             }
 
-            if (VerificarIdade(entity.DataNasc) == false)
+            if (ValidacaoMaioridade.Verificar(entity.DataNasc) == false)
             {
-                throw new DadoInvalidoException("Idade inválida - Apenas maiores de 18 anos!!");
+                throw new DadoInvalidoException("Idade inválida - Apenas maiores de 18 anos, podem se cadastrar!");
             }
 
             entity.Id = id;

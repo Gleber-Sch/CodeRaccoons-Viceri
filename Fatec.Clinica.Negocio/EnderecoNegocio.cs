@@ -10,7 +10,7 @@ namespace Fatec.Clinica.Negocio
     /// <summary>
     /// Regras de Negócio sobre a Endereco da Clinica
     /// </summary>
-    public class EnderecoNegocio : Validacao, INegocioBase<Endereco>
+    public class EnderecoNegocio : INegocioBase<Endereco>
     {
         private readonly EnderecoRepositorio _enderecoRepositorio;
 
@@ -41,7 +41,7 @@ namespace Fatec.Clinica.Negocio
             var obj = _enderecoRepositorio.SelecionarPorId(id);
 
             if (obj == null)
-                throw new NaoEncontradoException($"Não foi encontrado um Endereco com o ID {id}!");
+                throw new NaoEncontradoException($"Não foi encontrado um Endereco com o ID: {id}");
 
             return obj;
         }
@@ -54,7 +54,7 @@ namespace Fatec.Clinica.Negocio
         public int Inserir(Endereco entity)
         {
 
-            if (VerificarCamposVazios(entity))
+            if (CamposVazios.Verificar(entity))
             {
                 throw new DadoInvalidoException($"Os Campos: Estado, Cidade, Bairro, Logradouro, Numero, Complemento, Clinica são obrigatorios.");
             }
@@ -75,9 +75,10 @@ namespace Fatec.Clinica.Negocio
         /// <returns></returns>
         public Endereco Alterar(int id, Endereco entity)
         {
-            if (VerificarCamposVazios(entity))
+            if (CamposVazios.Verificar(entity))
             {
-                throw new DadoInvalidoException($"Os campos: Estado, Cidade, Bairro, Logradouro, Numero, Complemento, Clinica são obrigatorios.");
+                throw new DadoInvalidoException($"Os campos: Estado, Cidade, Bairro, Logradouro," +
+                                                $" Numero, Complemento, Clinica são obrigatorios.");
             }
 
             if (_enderecoRepositorio.SelecionarPorEndereco(entity) != null)
@@ -99,7 +100,7 @@ namespace Fatec.Clinica.Negocio
             var obj = SelecionarPorId(id);
             if (obj == null)
             {
-                throw new NaoEncontradoException($"O ID {id} não foi encontrado");
+                throw new NaoEncontradoException($"O ID: {id} não foi encontrado");
             }
 
             _enderecoRepositorio.Deletar(obj.Id);

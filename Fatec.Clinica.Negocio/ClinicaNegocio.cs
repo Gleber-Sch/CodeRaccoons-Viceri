@@ -12,7 +12,7 @@ namespace Fatec.Clinica.Negocio
     /// <summary>
     /// Regras de Negócio sobre a Clínica.
     /// </summary>
-    public class ClinicaNegocio : Validacao, INegocioBase<Clinicas>
+    public class ClinicaNegocio : INegocioBase<Clinicas>
     {
         private readonly ClinicaRepositorio _clinicaRepositorio;
 
@@ -58,7 +58,7 @@ namespace Fatec.Clinica.Negocio
             var obj = _clinicaRepositorio.SelecionarPorCnpj(cnpj);
 
             if (obj == null)
-                throw new NaoEncontradoException($"Não foi encontrado nenhuma Clínica com este CNPJ");
+                throw new NaoEncontradoException($"Não foi encontrado nenhuma Clínica com este CNPJ!");
 
             return obj;
         }
@@ -71,12 +71,12 @@ namespace Fatec.Clinica.Negocio
         /// <returns>ID da clínica inserida no Database ou exceção.</returns>
         public int Inserir(Clinicas entity)
         {
-            if (VerificarCamposVazios(entity))
+            if (CamposVazios.Verificar(entity))
             {
                 throw new DadoInvalidoException("Os seguintes campos são obrigatórios: Nome, Cnpj e Telefone Comercial");
             }
 
-            if (VerificarCnpj(entity.Cnpj) == false)
+            if (ValidacaoCnpj.Verificar(entity.Cnpj) == false)
             {
                 throw new DadoInvalidoException("CNPJ inválido!");
             }
@@ -99,12 +99,12 @@ namespace Fatec.Clinica.Negocio
         /// <returns>ID da clínica inserida no Database ou exceção.</returns>
         public Clinicas Alterar(int id, Clinicas entity)
         {
-            if (VerificarCamposVazios(entity))
+            if (CamposVazios.Verificar(entity))
             {
                 throw new DadoInvalidoException("Os seguintes campos são obrigatórios: Nome, Cnpj e Telefone Comercial");
             }
 
-            if (VerificarCnpj(entity.Cnpj) == false)
+            if (ValidacaoCnpj.Verificar(entity.Cnpj) == false)
             {
                 throw new DadoInvalidoException("CNPJ inválido!");
             }

@@ -10,7 +10,7 @@ namespace Fatec.Clinica.Negocio
     /// <summary>
     /// Regras de Negócio sobre a consulta
     /// </summary>
-    public class ConsultaNegocio : Validacao, INegocioBase<Consulta>
+    public class ConsultaNegocio : INegocioBase<Consulta>
     {
 
         ConsultaRepositorio _consultaRepositorio;
@@ -42,7 +42,7 @@ namespace Fatec.Clinica.Negocio
             var obj = _consultaRepositorio.SelecionarPorId(id);
 
             if (obj == null)
-                throw new NaoEncontradoException($"Não foi encontrado uma consulta com o ID {id}!");
+                throw new NaoEncontradoException($"Não foi encontrado uma consulta com o ID: {id}");
 
             return obj;
         }
@@ -57,7 +57,7 @@ namespace Fatec.Clinica.Negocio
             var obj = _consultaRepositorio.SelecionarPorPaciente(id);
 
             if (obj == null)
-                throw new NaoEncontradoException($"Não foi encontrado uma consulta com o ID do paciente {id}!");
+                throw new NaoEncontradoException("Não foi encontrado nenhuma consulta vinculada a este ID de paciente.");
 
             return obj;
         }
@@ -72,7 +72,7 @@ namespace Fatec.Clinica.Negocio
             var obj = _consultaRepositorio.SelecionarPorMedico(id);
 
             if (obj == null)
-                throw new NaoEncontradoException($"Não foi encontrado uma consulta com o ID do medico {id}!");
+                throw new NaoEncontradoException("Não foi encontrado nenhuma consulta vinculada a este ID de médico");
 
             return obj;
         }
@@ -87,7 +87,7 @@ namespace Fatec.Clinica.Negocio
             var obj = _consultaRepositorio.SelecionarPorClinica(id);
 
             if (obj == null)
-                throw new NaoEncontradoException($"Não foi encontrado uma consulta com o ID da clinica {id}!");
+                throw new NaoEncontradoException("Não foi encontrado uma consulta este ID de clinica");
 
             return obj;
         }
@@ -99,8 +99,8 @@ namespace Fatec.Clinica.Negocio
         /// <returns></returns>
         public int Inserir(Consulta entity)
         {
-            if (VerificarCamposVazios(entity))
-                throw new DadoInvalidoException($"Todos os dados são obrigatórios");
+            if (CamposVazios.Verificar(entity))
+                throw new DadoInvalidoException("Todos os campos são obrigatórios");
 
             return _consultaRepositorio.Inserir(entity);
         }
@@ -113,8 +113,8 @@ namespace Fatec.Clinica.Negocio
         /// <returns></returns>
         public Consulta Alterar(int id, Consulta entity)
         {
-            if (VerificarCamposVazios(entity))
-                throw new DadoInvalidoException($"Todos os dados são obrigatórios");
+            if (CamposVazios.Verificar(entity))
+                throw new DadoInvalidoException("Todos os campos são obrigatórios");
 
             entity.Id = id;
             _consultaRepositorio.Alterar(entity);
@@ -131,7 +131,7 @@ namespace Fatec.Clinica.Negocio
             var obj = _consultaRepositorio.SelecionarPorId(id);
 
             if (obj == null)
-                throw new NaoEncontradoException($"O ID {id} não foi encontrado");
+                throw new NaoEncontradoException($"O ID: {id} não foi encontrado");
 
             _consultaRepositorio.Deletar(id);
         }
