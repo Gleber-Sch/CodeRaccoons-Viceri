@@ -10,12 +10,14 @@ using Fatec.Clinica.Negocio.Validacoes;
 namespace Fatec.Clinica.Negocio
 {
     /// <summary>
-    /// Regras de Negócio sobre a Atendimento
+    /// Regras de Negócio sobre o Atendimento.
     /// </summary>
-    public class AtendimentoNegocio : Validacao, INegocioBase<Atendimento>
+    public class AtendimentoNegocio : INegocioBase<Atendimento>
     {
+        /// <summary>
+        /// Declara o repositório do Atendimento.
+        /// </summary>
         AtendimentoRepositorio _atendimentoRepositorio;
-
 
         /// <summary>
         /// Construtor para instanciar o repositório.
@@ -43,8 +45,8 @@ namespace Fatec.Clinica.Negocio
         {
             var obj = _atendimentoRepositorio.SelecionarPorId(id);
 
-            if(obj == null)
-                throw new NaoEncontradoException($"Não foi encontrado um atendimento com o ID {id}!");
+            if (obj == null)
+                throw new NaoEncontradoException($"Não foi encontrado um atendimento com o ID: {id}");
 
             return obj;
         }
@@ -56,9 +58,9 @@ namespace Fatec.Clinica.Negocio
         /// <returns></returns>
         public int Inserir(Atendimento entity)
         {
-            if (VerificarCamposVazios(entity))
+            if (CamposVazios.Verificar(entity))
             {
-                throw new DadoInvalidoException($"A clinica e o Médico são obrigatórios");
+                throw new DadoInvalidoException($"O ID da clínica e o ID do Médico são campos obrigatórios");
             }
             return _atendimentoRepositorio.Inserir(entity);
         }
@@ -71,9 +73,9 @@ namespace Fatec.Clinica.Negocio
         /// <returns></returns>
         public Atendimento Alterar(int id, Atendimento entity)
         {
-            if (VerificarCamposVazios(entity))
+            if (CamposVazios.Verificar(entity))
             {
-                throw new DadoInvalidoException($"A clinica e o Médico são obrigatórios");
+                throw new DadoInvalidoException($"O ID da clínica e o ID do Médico são campos obrigatórios");
             }
 
             entity.Id = id;
@@ -90,8 +92,8 @@ namespace Fatec.Clinica.Negocio
         {
             var obj = _atendimentoRepositorio.SelecionarPorId(id);
 
-            if(obj == null)
-                throw new NaoEncontradoException($"O ID {id} não foi encontrado");
+            if (obj == null)
+                throw new NaoEncontradoException($"O ID: {id} não foi encontrado");
 
             _atendimentoRepositorio.Deletar(id);
         }

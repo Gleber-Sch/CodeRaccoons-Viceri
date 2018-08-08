@@ -137,7 +137,7 @@ namespace Fatec.Clinica.Dado
                                    $"SET  DataHora = '{entity.DataHora}'," +
                                    $"TipoExame = {entity.IdTipoExame}" +
                                    $"IdAtendimento = {entity.IdAtendimento}" +
-                                   $"IdConsulta = {entity.IdConsulta}" +
+                                   $"IdConsulta = {entity.IdConsulta} " +
                                    $"WHERE Id = {entity.Id}");
             }
         }

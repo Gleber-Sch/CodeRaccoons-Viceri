@@ -37,7 +37,7 @@ namespace Fatec.Clinica.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("{id}")]
+        [Route("{id}", Name ="PacienteGetId")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Paciente), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult GetId(int id)
@@ -51,7 +51,7 @@ namespace Fatec.Clinica.Api.Controllers
         /// <param name="cpf"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("{cpf}")]
+        [Route("{cpf}", Name = "PacienteGetCpf")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Paciente), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult GetCpf(string cpf)
@@ -70,7 +70,7 @@ namespace Fatec.Clinica.Api.Controllers
         [SwaggerResponse((int)HttpStatusCode.InternalServerError)]
         public IActionResult Post([FromBody] PacienteInput input)
         {
-            var objPaciente = new Paciente()
+            var obj = new Paciente()
             {
                 Nome = input.Nome,
                 Cpf = input.Cpf,
@@ -82,9 +82,9 @@ namespace Fatec.Clinica.Api.Controllers
                 TelefoneRes = input.TelefoneRes
             };
 
-            var idPaciente = _pacienteNegocio.Inserir(objPaciente);
-            objPaciente.Id = idPaciente;
-            return CreatedAtRoute(nameof(GetId), new { id = idPaciente }, objPaciente);
+            var idPaciente = _pacienteNegocio.Inserir(obj);
+            obj.Id = idPaciente;
+            return CreatedAtRoute("PacienteGetId", new { id = idPaciente }, obj);
         }
 
         /// <summary>

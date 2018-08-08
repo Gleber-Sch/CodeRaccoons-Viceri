@@ -10,9 +10,9 @@ namespace Fatec.Clinica.Negocio
     /// <summary>
     /// Regras de Negócio sobre o Médico
     /// </summary>
-    public class MedicoNegocio : Validacao, INegocioBase<Medico>
+    public class MedicoNegocio : INegocioBase<Medico>
     {
-        
+
         private readonly MedicoRepositorio _medicoRepositorio;
 
 
@@ -55,9 +55,9 @@ namespace Fatec.Clinica.Negocio
         /// <returns>Lista de médicos ou gera uma exceção.</returns>
         public IEnumerable<Medico> SelecionarPorEspecialidade(int id)
         {
-           var lista = _medicoRepositorio.SelecionarPorEspecialidade(id);
+            var lista = _medicoRepositorio.SelecionarPorEspecialidade(id);
 
-           if(lista == null)
+            if (lista == null)
                 throw new NaoEncontradoException($"Não foi encontrado nenhum médico com esta epecialidade!" +
                                                  $" (ID da Especialidade {id})");
             return lista;
@@ -71,7 +71,7 @@ namespace Fatec.Clinica.Negocio
         public Medico SelecionarPorCrm(int crm)
         {
             var obj = _medicoRepositorio.SelecionarPorCrm(crm);
-            if(obj == null)
+            if (obj == null)
                 throw new NaoEncontradoException($"Não foi encontrado nenhum médico com o CRM {crm}!");
             return obj;
         }
@@ -99,7 +99,7 @@ namespace Fatec.Clinica.Negocio
         public int Inserir(Medico entity)
         {
 
-            if (VerificarCamposVazios(entity))
+            if (CamposVazios.Verificar(entity))
             {
                 throw new DadoInvalidoException($"Os seguintes campos são obrigatórios:" +
                                                 $"Nome, CPF, CRM, Telefone Movel, Gênero, " +
@@ -107,10 +107,10 @@ namespace Fatec.Clinica.Negocio
             }
 
 
-            if(_medicoRepositorio.SelecionarPorCrm(entity.Crm) != null)
+            if (_medicoRepositorio.SelecionarPorCrm(entity.Crm) != null)
                 throw new ConflitoException($"Já existe cadastrado o CRM {entity.Crm}!");
 
-            if (VerificarCPF(entity.Cpf) == false)
+            if (ValidacaoCpf.Verificar(entity.Cpf) == false)
             {
                 throw new DadoInvalidoException($"O CPF {entity.Cpf} é invalido");
             }
@@ -122,14 +122,14 @@ namespace Fatec.Clinica.Negocio
                     throw new ConflitoException($"Já existe cadastrado o CPF {cpfExistente.Cpf}!");
             }
 
-            if(_medicoRepositorio.SelecionarPorEmail(entity.Email) != null)
+            if (_medicoRepositorio.SelecionarPorEmail(entity.Email) != null)
             {
                 throw new ConflitoException("O email já foi cadastrado");
             }
 
-            if (VerificarIdade(entity.DataNasc) == false)
+            if (ValidacaoMaioridade.Verificar(entity.DataNasc) == false)
             {
-                throw new DadoInvalidoException("Idade inválida - Apenas maiores de 18 anos!!");
+                throw new DadoInvalidoException("Idade inválida - Apenas maiores de 18 anos podem se cadastrar");
             }
 
             return _medicoRepositorio.Inserir(entity);
@@ -144,8 +144,8 @@ namespace Fatec.Clinica.Negocio
         /// <returns>Médico selecionado do Database ou exceção.</returns>
         public Medico Alterar(int id, Medico entity)
         {
-            
-            if(VerificarCamposVazios(entity))
+
+            if (CamposVazios.Verificar(entity))
             {
                 throw new DadoInvalidoException($"Os seguintes campos são obrigatórios:" +
                                                 $"Nome, CPF, CRM, Telefone Movel, Gênero, " +
@@ -160,7 +160,7 @@ namespace Fatec.Clinica.Negocio
                     throw new ConflitoException($"Já existe cadastrado o CRM {crmExistente.Crm}, para outro médico!");
             }
 
-            if(VerificarCPF(entity.Cpf) == false)
+            if (ValidacaoCpf.Verificar(entity.Cpf) == false)
             {
                 throw new DadoInvalidoException($"O CPF {entity.Cpf} é invalido!");
             }
@@ -180,9 +180,9 @@ namespace Fatec.Clinica.Negocio
                 throw new ConflitoException("O email já foi cadastrado");
             }
 
-            if(VerificarIdade(entity.DataNasc) == false)
+            if (ValidacaoMaioridade.Verificar(entity.DataNasc) == false)
             {
-                throw new DadoInvalidoException("Idade inválida - Apenas maiores de 18 anos!!");
+                throw new DadoInvalidoException("Idade inválida - Apenas maiores de 18 anos, podem se cadastrar!");
             }
 
             entity.Id = id;
@@ -199,7 +199,7 @@ namespace Fatec.Clinica.Negocio
         {
             var obj = SelecionarPorId(id);
 
-            if(obj == null)
+            if (obj == null)
             {
                 throw new NaoEncontradoException($"Não foi encontrado nenhum Médico com este ID: {id}");
             }

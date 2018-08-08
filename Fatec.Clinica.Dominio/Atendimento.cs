@@ -3,7 +3,7 @@
     public class Atendimento
     {
         public int Id { get; set; }
-        public Clinicas Clinica { get; set; }
-        public Medico Medico { get; set; }
+        public int IdClinica { get; set; }
+        public int IdMedico { get; set; }
     }
 }

@@ -12,9 +12,9 @@ namespace Fatec.Clinica.Negocio
     /// <summary>
     /// Regras de Negócio sobre o Paciente.
     /// </summary>
-    public class PacienteNegocio : Validacao, INegocioBase<Paciente>
+    public class PacienteNegocio : INegocioBase<Paciente>
     {
-        
+
         private readonly PacienteRepositorio _pacienteRepositorio;
 
 
@@ -45,8 +45,8 @@ namespace Fatec.Clinica.Negocio
         {
             var obj = _pacienteRepositorio.SelecionarPorId(id);
 
-            if(obj == null)
-                throw new NaoEncontradoException($"Não foi encontrado nenhum paciente com o ID {id}!");
+            if (obj == null)
+                throw new NaoEncontradoException($"Não foi encontrado nenhum paciente com o ID: {id}");
             return obj;
         }
 
@@ -60,8 +60,8 @@ namespace Fatec.Clinica.Negocio
         {
             var obj = _pacienteRepositorio.SelecionarPorCpf(cpf);
 
-            if(obj == null)
-                throw new NaoEncontradoException($"Não foi encontrado nenhum paciente com o CPF {cpf}!");
+            if (obj == null)
+                throw new NaoEncontradoException($"Não foi encontrado nenhum paciente com o CPF: {cpf}");
             return obj;
         }
 
@@ -74,13 +74,13 @@ namespace Fatec.Clinica.Negocio
         public int Inserir(Paciente entity)
         {
 
-            if (VerificarCamposVazios(entity))
+            if (CamposVazios.Verificar(entity))
             {
                 throw new DadoInvalidoException($"Os seguintes campos são obrigatórios:" +
                                                 $"Nome, CPF, Telefone Movel, Gênero e Data de Nascimento");
             }
 
-            if (VerificarCPF(entity.Cpf) == false)
+            if (ValidacaoCpf.Verificar(entity.Cpf) == false)
             {
                 throw new DadoInvalidoException($"O CPF {entity.Cpf} é invalido");
             }
@@ -97,7 +97,7 @@ namespace Fatec.Clinica.Negocio
                 throw new ConflitoException("O email já foi cadastrado");
             }
 
-            if (VerificarIdade(entity.DataNasc) == false)
+            if (ValidacaoMaioridade.Verificar(entity.DataNasc) == false)
             {
                 throw new DadoInvalidoException("Idade inválida - Apenas maiores de 18 anos!!");
             }
@@ -116,13 +116,13 @@ namespace Fatec.Clinica.Negocio
         public Paciente Alterar(int id, Paciente entity)
         {
 
-            if (VerificarCamposVazios(entity))
+            if (CamposVazios.Verificar(entity))
             {
                 throw new DadoInvalidoException($"Os seguintes campos são obrigatórios:" +
                                                 $"Nome, CPF, Telefone Movel, Gênero e Data de Nascimento");
             }
 
-            if (VerificarCPF(entity.Cpf) == false)
+            if (ValidacaoCpf.Verificar(entity.Cpf) == false)
             {
                 throw new DadoInvalidoException($"O CPF {entity.Cpf} é invalido!");
             }
@@ -135,7 +135,7 @@ namespace Fatec.Clinica.Negocio
                     if (cpfExistente.Id != id)
                         throw new ConflitoException($"Já existe cadastrado o CPF {cpfExistente.Cpf}!");
                 }
-                           
+
             }
 
             if (_pacienteRepositorio.SelecionarPorEmail(entity.Email) != null)
@@ -143,7 +143,7 @@ namespace Fatec.Clinica.Negocio
                 throw new ConflitoException("O email já foi cadastrado");
             }
 
-            if (VerificarIdade(entity.DataNasc) == false)
+            if (ValidacaoMaioridade.Verificar(entity.DataNasc) == false)
             {
                 throw new DadoInvalidoException("Idade inválida - Apenas maiores de 18 anos!!");
             }
@@ -162,9 +162,9 @@ namespace Fatec.Clinica.Negocio
         {
             var obj = SelecionarPorId(id);
 
-            if(obj == null)
+            if (obj == null)
             {
-                throw new NaoEncontradoException($"Não foi encontrado um Paciente com este ID {id}!");
+                throw new NaoEncontradoException($"Não foi encontrado um Paciente com este ID: {id}");
             }
             _pacienteRepositorio.Deletar(obj.Id);
         }

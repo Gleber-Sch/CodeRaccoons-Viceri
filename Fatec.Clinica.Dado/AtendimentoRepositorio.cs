@@ -35,7 +35,7 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var obj = connection.QueryFirstOrDefault<Atendimento>($"Select *From ViewAtendimentos "+
+                var obj = connection.QueryFirstOrDefault<Atendimento>($"Select *From ViewAtendimentos " +
                                                                       $"where id={id}");
 
                 return obj;
@@ -54,8 +54,8 @@ namespace Fatec.Clinica.Dado
                 return connection.QuerySingle<int>($"DECLARE @ID int;" +
                                                    $"INSERT INTO [Atendimento] " +
                                                    $"(IdClinica, IdMedico) " +
-                                                   $"VALUES ({entity.Clinica.Id}," +
-                                                   $" {entity.Medico.Id}," +
+                                                   $"VALUES ({entity.IdClinica}," +
+                                                   $" {entity.IdMedico}," +
                                                    $"SET @ID = SCOPE_IDENTITY();" +
                                                    $"SELECT @ID");
             }
@@ -70,8 +70,8 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 connection.Execute($"UPDATE [Consulta] " +
-                                   $"SET IdClinica= {entity.Clinica.Id}," +
-                                   $"IdMedico= {entity.Medico.Id} " +
+                                   $"SET IdClinica= {entity.IdClinica}," +
+                                   $"IdMedico= {entity.IdMedico} " +
                                    $"WHERE Id = {entity.Id}");
             }
         }

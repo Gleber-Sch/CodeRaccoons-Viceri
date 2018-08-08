@@ -36,7 +36,7 @@ namespace Fatec.Clinica.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("{id}")]
+        [Route("{id}", Name = "AtendimentoGetId")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Atendimento), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult GetId(int id)
@@ -53,17 +53,17 @@ namespace Fatec.Clinica.Api.Controllers
         [SwaggerResponse((int)HttpStatusCode.Created, typeof(Atendimento), nameof(HttpStatusCode.Created))]
         [SwaggerResponse((int)HttpStatusCode.BadRequest)]
         [SwaggerResponse((int)HttpStatusCode.InternalServerError)]
-        public IActionResult Post([FromBody] AtedimentoInput input)
+        public IActionResult Post([FromBody] AtendimentoInput input)
         {
-            var objAtendimento = new Atendimento()
+            var obj = new Atendimento()
             {
-                Clinica = input.Clinica,
-                Medico = input.Medico
+                IdClinica = input.IdClinica,
+                IdMedico = input.IdMedico
             };
 
-            var idAtendimento = _atendimentoNegocio.Inserir(objAtendimento);
-            objAtendimento.Id = idAtendimento;
-            return CreatedAtRoute(nameof(GetId), new { id = idAtendimento }, objAtendimento);
+            var idAtendimento = _atendimentoNegocio.Inserir(obj);
+            obj.Id = idAtendimento;
+            return CreatedAtRoute("AtendimentoGetId", new { id = idAtendimento }, obj);
         }
 
         /// <summary>
@@ -77,12 +77,12 @@ namespace Fatec.Clinica.Api.Controllers
         [SwaggerResponse((int)HttpStatusCode.Accepted, typeof(Atendimento), nameof(HttpStatusCode.Accepted))]
         [SwaggerResponse((int)HttpStatusCode.BadRequest)]
         [SwaggerResponse((int)HttpStatusCode.InternalServerError)]
-        public IActionResult Put([FromRoute] int id, [FromBody]AtedimentoInput input)
+        public IActionResult Put([FromRoute] int id, [FromBody]AtendimentoInput input)
         {
             var objAtendimento = new Atendimento()
             {
-                Clinica = input.Clinica,
-                Medico = input.Medico
+                IdClinica = input.IdClinica,
+                IdMedico = input.IdMedico
             };
             var obj = _atendimentoNegocio.Alterar(id, objAtendimento);
             return Accepted(obj);

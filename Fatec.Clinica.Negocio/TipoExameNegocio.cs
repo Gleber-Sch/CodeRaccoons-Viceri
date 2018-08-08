@@ -10,7 +10,7 @@ namespace Fatec.Clinica.Negocio
     /// <summary>
     /// Regras de Negócio sobre o tipo de exame.
     /// </summary>
-    public class TipoExameNegocio : Validacao, INegocioBase<TipoExame>
+    public class TipoExameNegocio : INegocioBase<TipoExame>
     {
 
         private readonly TipoExameRepositorio _tipoExameRepositorio;
@@ -55,13 +55,13 @@ namespace Fatec.Clinica.Negocio
         /// <returns></returns>
         public int Inserir(TipoExame entity)
         {
-            if (VerificarCamposVazios(entity))
+            if (CamposVazios.Verificar(entity))
             {
                 throw new DadoInvalidoException("O Nome do Tipo do Exame é obrigatório");
             }
-            if(_tipoExameRepositorio.SelecionarPorNome(entity.Nome) == null)
+            if (_tipoExameRepositorio.SelecionarPorNome(entity.Nome) != null)
             {
-                throw new DadoInvalidoException("O Nome do Tipo do Exame não existe");
+                throw new DadoInvalidoException("O Nome do Tipo do Exame já foi cadastrado!");
             }
 
             return _tipoExameRepositorio.Inserir(entity);
@@ -76,7 +76,7 @@ namespace Fatec.Clinica.Negocio
         /// <returns></returns>
         public TipoExame Alterar(int id, TipoExame entity)
         {
-            if (VerificarCamposVazios(entity))
+            if (CamposVazios.Verificar(entity))
             {
                 throw new DadoInvalidoException("O Nome do Tipo do Exame é obrigatório");
             }
@@ -98,7 +98,7 @@ namespace Fatec.Clinica.Negocio
         public void Deletar(int id)
         {
             var obj = _tipoExameRepositorio.SelecionarPorId(id);
-            if(obj == null)
+            if (obj == null)
             {
                 throw new NaoEncontradoException($"O ID {id} não foi encontrado");
             }

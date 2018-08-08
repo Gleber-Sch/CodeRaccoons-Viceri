@@ -47,7 +47,7 @@ namespace Fatec.Clinica.Api.Controllers
         /// <param name="id">Usado para buscar o endereço.</param>
         /// <returns>Endereço selecionado.</returns>
         [HttpGet]
-        [Route("{id}")]
+        [Route("{id}", Name = "EnderecoGetId")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Endereco), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult GetId(int id)
@@ -79,7 +79,7 @@ namespace Fatec.Clinica.Api.Controllers
 
             var idEndereco = _enderecoNegocio.Inserir(obj);
             obj.Id = idEndereco;
-            return CreatedAtRoute("GetId", new { id = idEndereco }, obj);
+            return CreatedAtRoute("EnderecoGetId", new { id = idEndereco }, obj);
         }
 
         /// <summary>

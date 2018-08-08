@@ -42,7 +42,7 @@ namespace Fatec.Clinica.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("{id}", Name = "GetId")]
+        [Route("{id}", Name = "EspecialidadeGetId")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Especialidade), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult GetId(int id)
@@ -68,7 +68,7 @@ namespace Fatec.Clinica.Api.Controllers
 
             var idEspecialidade = _especialidadeNegocio.Inserir(obj);
             obj.Id = idEspecialidade;
-            return CreatedAtRoute("GetId", new { id = idEspecialidade }, obj);
+            return CreatedAtRoute("EspecialidadeGetId", new { id = idEspecialidade }, obj);
         }
 
         /// <summary>
