@@ -52,7 +52,8 @@ namespace Fatec.Clinica.Negocio
         }
 
         /// <summary>
-        /// Verifica se os campos foram inseridos, antes de inserir os dados do atendimento
+        /// Verifica se o ID do médico e da clínica são válidos e se os campos foram preenchidos,
+        /// antes de inserir os dados do atendimento.
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -60,13 +61,31 @@ namespace Fatec.Clinica.Negocio
         {
             if (CamposVazios.Verificar(entity))
             {
-                throw new DadoInvalidoException($"O ID da clínica e o ID do Médico são campos obrigatórios");
+                throw new DadoInvalidoException("O ID da clínica e o ID do Médico são campos obrigatórios");
             }
+            
+            //Verifica se o ID do médico é válido.
+            var RepositorioMedico = new MedicoRepositorio();
+            if (RepositorioMedico.SelecionarPorId(entity.IdMedico) != null)
+            {
+                throw new DadoInvalidoException($"Não foi encontrado nenhum médico " +
+                                                $"com o ID: {entity.IdMedico}");
+            }
+
+            //Verifica se o ID da clínica é válido.
+            var RepositorioClinica = new ClinicaRepositorio();
+            if (RepositorioClinica.SelecionarPorId(entity.IdClinica) != null)
+            {
+                throw new DadoInvalidoException($"Não foi encontrado nenhuma clínica " +
+                                                $"com o ID: {entity.IdMedico}");
+            }
+
             return _atendimentoRepositorio.Inserir(entity);
         }
 
         /// <summary>
-        /// Verifica se os campos foram inseridos, antes de alterar os dados do atendimento
+        /// Verifica se o ID do médico e da clínica são válidos e se os campos foram preenchidos,
+        /// antes de alterar os dados do atendimento.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="entity"></param>
@@ -76,6 +95,22 @@ namespace Fatec.Clinica.Negocio
             if (CamposVazios.Verificar(entity))
             {
                 throw new DadoInvalidoException($"O ID da clínica e o ID do Médico são campos obrigatórios");
+            }
+
+            //Verifica se o ID do médico é válido.
+            var RepositorioMedico = new MedicoRepositorio();
+            if (RepositorioMedico.SelecionarPorId(entity.IdMedico) != null)
+            {
+                throw new DadoInvalidoException($"Não foi encontrado nenhum médico " +
+                                                $"com o ID: {entity.IdMedico}");
+            }
+
+            //Verifica se o ID da clínica é válido.
+            var RepositorioClinica = new ClinicaRepositorio();
+            if (RepositorioClinica.SelecionarPorId(entity.IdClinica) != null)
+            {
+                throw new DadoInvalidoException($"Não foi encontrado nenhuma clínica " +
+                                                $"com o ID: {entity.IdMedico}");
             }
 
             entity.Id = id;

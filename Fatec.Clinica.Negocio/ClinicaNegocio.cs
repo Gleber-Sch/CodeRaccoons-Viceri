@@ -64,8 +64,8 @@ namespace Fatec.Clinica.Negocio
         }
 
         /// <summary>
-        /// Verifica se o CNPJ não está cadastrado e se ele é válido e se existem campos obrigatórios
-        /// sem serem preenchidos. Antes de inserir uma clínica.
+        /// Verifica se o CNPJ não está cadastrado e se ele é válido, se existem campos obrigatórios
+        /// sem serem preenchidos e se o telefone é válido. Antes de inserir uma clínica.
         /// </summary>
         /// <param name="entity">Objeto com os dados da clínica a ser inserida.</param>
         /// <returns>ID da clínica inserida no Database ou exceção.</returns>
@@ -88,12 +88,18 @@ namespace Fatec.Clinica.Negocio
                 throw new ConflitoException("Já existe uma clínica registrada com este CNPJ!");
             }
 
+            if (ValidacaoTelefone.Verificar(ValidacaoTelefone.LimparFormatacao(entity.TelefoneCom)) == false ||
+                entity.TelefoneCom.Length > 10)
+            {
+                throw new DadoInvalidoException($"O telefone:\"{entity.TelefoneCom}\" é inválido!");
+            }
+
             return _clinicaRepositorio.Inserir(entity);
         }
 
         /// <summary>
-        /// Verifica se o CNPJ já não está cadastrado e se ele é válido e se existem campos obrigatórios
-        /// sem serem preenchidos. Antes de inserir uma clínica.
+        /// Verifica se o CNPJ não está cadastrado e se ele é válido, se existem campos obrigatórios
+        /// sem serem preenchidos e se o telefone é válido. Antes de alterar uma clínica.
         /// </summary>
         /// <param name="entity">Objeto com os dados da clínica a ser inserida.</param>
         /// <returns>ID da clínica inserida no Database ou exceção.</returns>
@@ -114,6 +120,12 @@ namespace Fatec.Clinica.Negocio
             if (obj != null)
             {
                 throw new ConflitoException("Já existe uma clínica registrada com este CNPJ!");
+            }
+
+            if (ValidacaoTelefone.Verificar(ValidacaoTelefone.LimparFormatacao(entity.TelefoneCom)) == false ||
+                entity.TelefoneCom.Length > 10)
+            {
+                throw new DadoInvalidoException($"O telefone:\"{entity.TelefoneCom}\" é inválido!");
             }
 
             entity.Id = id;

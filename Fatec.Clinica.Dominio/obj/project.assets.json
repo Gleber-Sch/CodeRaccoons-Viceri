@@ -670,11 +670,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Guilherme Massao\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\Fatec.Clinica.Dominio.csproj",
       "projectName": "Fatec.Clinica.Dominio",
       "projectPath": "C:\\Users\\Guilherme Massao\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\Fatec.Clinica.Dominio.csproj",
       "packagesPath": "C:\\Users\\Guilherme Massao\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Guilherme Massao\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\Gleber_M\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\Fatec.Clinica.Dominio.csproj",
+      "projectName": "Fatec.Clinica.Dominio",
+      "projectPath": "C:\\Users\\Gleber_M\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\Fatec.Clinica.Dominio.csproj",
+      "packagesPath": "C:\\Users\\Gleber_M\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Gleber_M\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\obj\\",
+>>>>>>> 073529f60e6ef503c418aedca44db9bd0ba48bbc
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
