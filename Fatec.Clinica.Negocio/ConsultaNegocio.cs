@@ -12,6 +12,7 @@ namespace Fatec.Clinica.Negocio
     /// </summary>
     public class ConsultaNegocio : INegocioBase<Consulta>
     {
+
         ConsultaRepositorio _consultaRepositorio;
 
         /// <summary>
@@ -99,25 +100,7 @@ namespace Fatec.Clinica.Negocio
         public int Inserir(Consulta entity)
         {
             if (CamposVazios.Verificar(entity))
-            {
                 throw new DadoInvalidoException("Todos os campos são obrigatórios");
-            }
-
-            //Verifica se o ID do atendimento é válido.
-            var RepositorioMedico = new AtendimentoRepositorio();
-            if (RepositorioMedico.SelecionarPorId(entity.IdAtendimento) != null)
-            {
-                throw new DadoInvalidoException($"Não foi encontrado nenhum antendimento " +
-                                                $"com o ID: {entity.IdAtendimento}");
-            }
-
-            //Verifica se o ID do paciente é válido.
-            var RepositorioPaciente = new PacienteRepositorio();
-            if (RepositorioPaciente.SelecionarPorId(entity.IdPaciente) != null)
-            {
-                throw new DadoInvalidoException($"Não foi encontrado nenhum paciente " +
-                                                $"com o ID: {entity.IdAtendimento}");
-            }
 
             return _consultaRepositorio.Inserir(entity);
         }
@@ -131,25 +114,7 @@ namespace Fatec.Clinica.Negocio
         public Consulta Alterar(int id, Consulta entity)
         {
             if (CamposVazios.Verificar(entity))
-            {
                 throw new DadoInvalidoException("Todos os campos são obrigatórios");
-            }
-
-            //Verifica se o ID do atendimento é válido.
-            var RepositorioMedico = new AtendimentoRepositorio();
-            if (RepositorioMedico.SelecionarPorId(entity.IdAtendimento) != null)
-            {
-                throw new DadoInvalidoException($"Não foi encontrado nenhum antendimento " +
-                                                $"com o ID: {entity.IdAtendimento}");
-            }
-
-            //Verifica se o ID do paciente é válido.
-            var RepositorioPaciente = new PacienteRepositorio();
-            if (RepositorioPaciente.SelecionarPorId(entity.IdPaciente) != null)
-            {
-                throw new DadoInvalidoException($"Não foi encontrado nenhum paciente " +
-                                                $"com o ID: {entity.IdAtendimento}");
-            }
 
             entity.Id = id;
             _consultaRepositorio.Alterar(entity);
