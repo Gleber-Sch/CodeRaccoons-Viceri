@@ -1,0 +1,7 @@
+﻿CREATE TABLE Horarios (
+[Id] INTEGER PRIMARY KEY IDENTITY NOT NULL,
+[IdClinica] INTEGER NOT NULL,
+[Horario] VARCHAR(5) NOT NULL,
+[dia] VARCHAR(7) NOT NULL,
+CONSTRAINT [FK_Horarios_Agenda] FOREIGN KEY (IdClinica) REFERENCES [Clinica] ([Id])
+)
