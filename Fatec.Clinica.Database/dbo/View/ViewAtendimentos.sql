@@ -1,4 +1,7 @@
-﻿CREATE VIEW ViewAtendimentos as
+﻿/*cria view para mostrar todos os atendimentos formados no sistema.
+*/
+
+CREATE VIEW ViewAtendimentos as
 select  Atendimento.Id,Medico.Nome as medico, Clinica.Nome as Clinica
 From Atendimento
 inner Join Medico on Atendimento.IdMedico=Medico.Id

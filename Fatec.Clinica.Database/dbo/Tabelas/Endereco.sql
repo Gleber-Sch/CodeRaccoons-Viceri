@@ -1,4 +1,6 @@
-﻿CREATE TABLE Endereco (
+﻿/*Cria tabela endereco*/
+
+CREATE TABLE Endereco (
 [Id] INTEGER IDENTITY PRIMARY KEY NOT NULL,
 [Estado] CHAR(2) NOT NULL,
 [Cidade] VARCHAR (50) NOT NULL,

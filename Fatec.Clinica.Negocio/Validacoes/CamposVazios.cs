@@ -169,5 +169,21 @@ namespace Fatec.Clinica.Negocio.Validacoes
             return false;
         }
         #endregion
+
+        #region Verificar se existem campos vazios na inserção de um Horario
+        /// <summary>
+        /// Verifica se os campos obrigátorios não foram preenchidos.
+        /// </summary>
+        /// <param name="entity">Objeto com os campos a serem verificados.</param>
+        /// <returns>True se os campos obrigátorios não foram preenchidos ou False se eles foram.</returns>
+        public static bool Verificar(Horario entity)
+        {
+            if (entity.DiaHora == null)
+            {
+                return true;
+            }
+            return false;
+        }
+        #endregion
     }
 }
