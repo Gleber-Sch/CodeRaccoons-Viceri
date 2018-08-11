@@ -3,12 +3,16 @@
 
 <head>
     <title>Projeto - Login</title>
+    <meta charset="utf-8">
 
     <link rel="stylesheet" href="../../../css/bootstrap.css">
     <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
     <script src="../../../lib/jquery.js"></script>
     <script src="../../../lib/bootstrap.bundle.min.js"></script>
+    <script src="../../../js/RegraNegocio.js"></script>
+    
 
 </head>
 
@@ -16,7 +20,7 @@
 
     <form class="form-signin" id="form-login">
 
-        <img class="mb-4" src="../../../img/bootstrap-solid.svg" alt="" width="72" height="72">
+        <a href="../../../index.html"><img class="mb-4" src="../../../img/LogoProjeto1.png" alt="" width="72" height="72"></a>
 
         <h1 class="h3 mb-3 font-weight-normal">Por favor, faça o login</h1>
 
@@ -29,20 +33,13 @@
             <label for="inputPassword" class="sr-only">Senha</label>
             <input type="password" id="senha" class="form-control" placeholder="Senha" required>
         </div>
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" value="remember-me"> Lembrar-me
-            </label>
-        </div>
-
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+        <button class="btn btn-lg btn-secondary btn-block" type="submit">Entrar</button>
 
         <p class="mt-5 mb-3 text-muted">&copy; 2018</p>
 
         <p class="mt-5 mb-3 text-muted">
             Não tem um cadastro?
-            <a href="#" id="login-link-cadastrar">
+            <a href="../../../direciona.html" id="login-link-cadastrar" >
                 Registre-se
             </a>
         </p>

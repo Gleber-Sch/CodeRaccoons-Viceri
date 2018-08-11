@@ -1,89 +1,122 @@
-a,
-a:focus,
-a:hover {
-    color: #fff;
-}
-
-/* Customizando a estilização default do botão */
-
-.btn-secondary,
-.btn-secondary:hover,
-.btn-secondary:focus {
-    background-color: #fff;
-    border: .05rem solid #fff;
-    color: #333;
-    text-shadow: none;
-}
-
-
-html,
-body {
-    background-color: #333;
-    height: 100%;
-}
-
-body {
-    box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
-    color: #fff;
-    display: -ms-flexbox;
-    display: flex;
-    text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
-}
-
-.cover-container {
-    max-width: 42em;
-}
-
-
-.masthead {
-    margin-bottom: 2rem;
-}
-
-.masthead-brand {
-    margin-bottom: 0;
-}
-
-.nav-masthead .nav-link {
-    background-color: transparent;
-    border-bottom: .25rem solid transparent;
-    color: rgba(255, 255, 255, .5);
-    font-weight: 700;
-    padding: .25rem 0;
-}
-
-.nav-masthead .nav-link:hover,
-.nav-masthead .nav-link:focus {
-    border-bottom-color: rgba(255, 255, 255, .25);
-}
-
-.nav-masthead .nav-link+.nav-link {
-    margin-left: 1rem;
-}
-
-.nav-masthead .active {
-    border-bottom-color: #fff;
-    color: #fff;
-}
-
-@media (min-width: 48em) {
-    .masthead-brand {
-        float: left;
+/* Classes da pagina index */
+    .fclass{ 
+        width:100% ;
+        height:auto ;
+        color: #fff;
+        padding: 10px;
     }
-    .nav-masthead {
-        float: right;
+
+    .center { /* Centraliza os objetos no carrosel */
+        position: absolute;
+        left: 0;
+        top: 15%;
+        width: 100%;
+        text-align: center;
+        font-size: 18px;
     }
-}
+   
 
-.cover {
-    padding: 0 1.5rem;
-}
+/* Classes dos Formularios */
+    .fverde input,select,option{
+        color: #555;
+        
 
-.cover .btn-lg {
-    font-weight: 700;
-    padding: .75rem 1.25rem;
-}
+    }
+    .fverde label{
+        font-size: 18px;
+        color: #11c182;
 
+    }
+    input[type="radio"]{
+        border: 1px solid #5D5C5C;
+        background-color: transparent;
+        content: "\00a0";
+        height: 18px;
+        width: 18px;
+        border-radius:4px;
+    }
+    .fverde select:hover{
+        border:3px solid #21d192;
 
-.mastfoot {
-    color: rgba(255, 255, 255, .5);
-}
+    }
+    .fverde select:focus{
+        border:3px solid #21d192;
+
+    }
+    .fverde input:hover{
+        border:3px solid #21d192;
+
+    }
+    .fverde input:focus{
+        border:3px solid #21d192;
+
+    }
+/* Ids da pagina index */
+
+    #menu{
+        position: sticky;
+        border-bottom: #11c182 5px solid;
+       
+    }
+    #p1{
+        background-color: #444;
+        border-top: #11c182 5px solid;
+    }
+    #back {
+        position: relative; /* fundo slides */
+    }
+    #front{ /* Caixa da frente para consulta */
+        height:auto ;
+        min-height: 200px;
+        width: 100%;
+        max-width: 400px ;
+        text-align: center;
+        padding: 10px;
+        background: rgba(204, 204, 204, 0.7);
+       
+        
+    }
+    #front i{
+        color: #555;
+        margin: 10px;
+    }
+
+    #rodape{ /* Rodapé */
+        width: 100%;
+        height: 70px;
+    text-align: center;
+    background-color: #11c182;
+    
+    }
+    footer a,a:hover,a:focus,a:visited{
+        color: #fff;
+        
+    }
+    footer hr{
+        background-color: #444;
+        border-color: #444;
+        border-width:  3px;
+    }
+        /* Menus secundarios */
+            #rol a{ 
+                background-color: transparent;
+                color: #333;
+                padding: 10px;
+                margin-left:20px;
+                margin-right: 20px; 
+            }
+            #rol a:hover{
+                background-color:#21d192;
+                color: #fff;
+                padding: 10px;
+                margin-left:20px;
+                margin-right: 20px; 
+            }
+            #rol a:focus{
+                background-color:#21d192;
+                color: #fff;
+                padding: 10px;
+                margin-left:20px;
+                margin-right: 20px; 
+            }
+
