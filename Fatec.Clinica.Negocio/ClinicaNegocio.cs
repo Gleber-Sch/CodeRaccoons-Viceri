@@ -65,8 +65,8 @@ namespace Fatec.Clinica.Negocio
         }
 
         /// <summary>
-        /// Verifica se o CNPJ não está cadastrado e se ele é válido e se existem campos obrigatórios
-        /// sem serem preenchidos. Antes de inserir uma clínica.
+        /// Verifica se o CNPJ não está cadastrado e se ele é válido, se existem campos obrigatórios
+        /// sem serem preenchidos e se o telefone é válido. Antes de inserir uma clínica.
         /// </summary>
         /// <param name="entity">Objeto com os dados da clínica a ser inserida.</param>
         /// <returns>ID da clínica inserida no Database ou gera alguma exceção.</returns>
@@ -97,21 +97,18 @@ namespace Fatec.Clinica.Negocio
                 throw new ConflitoException("Já existe uma clínica registrada com este CNPJ!");
             }
 
-<<<<<<< HEAD
             //Verifica se o formato e a quantidade de caracteres do telefone são válidos.
             if (TelefoneValido.Verificar(TelefoneValido.LimparFormatacao(entity.TelefoneCom)) == false)
             {
                 throw new DadoInvalidoException($"O número de telefone:\"{entity.TelefoneCom}\" é inválido!");
             }
 
-=======
->>>>>>> d8eb6ba792e7290201585f55e2509d0c0b656994
             return _clinicaRepositorio.Inserir(entity);
         }
 
         /// <summary>
-        /// Verifica se o CNPJ já não está cadastrado e se ele é válido e se existem campos obrigatórios
-        /// sem serem preenchidos. Antes de inserir uma clínica.
+        /// Verifica se o CNPJ não está cadastrado e se ele é válido, se existem campos obrigatórios
+        /// sem serem preenchidos e se o telefone é válido. Antes de alterar uma clínica.
         /// </summary>
         /// <param name="entity">Objeto com os dados da clínica a ser inserida.</param>
         /// <returns>Seleciona a clínica alterada no Database ou gera alguma exceção.</returns>
@@ -142,15 +139,12 @@ namespace Fatec.Clinica.Negocio
                 throw new ConflitoException("Já existe uma clínica registrada com este CNPJ!");
             }
 
-<<<<<<< HEAD
             //Verifica se o formato e a quantidade de caracteres do telefone são válidos.
             if (TelefoneValido.Verificar(TelefoneValido.LimparFormatacao(entity.TelefoneCom)) == false)
             {
                 throw new DadoInvalidoException($"O número de telefone:\"{entity.TelefoneCom}\" é inválido!");
             }
 
-=======
->>>>>>> d8eb6ba792e7290201585f55e2509d0c0b656994
             entity.Id = id;
             _clinicaRepositorio.Alterar(entity);
 

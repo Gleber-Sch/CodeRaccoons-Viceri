@@ -1,4 +1,4 @@
-﻿/*Cria tabela de horarios de exames*/
+﻿/*Cria tabela de horarios de exames.*/
 
 CREATE TABLE HorariosExame(
 [Id] INTEGER IDENTITY NOT NULL,

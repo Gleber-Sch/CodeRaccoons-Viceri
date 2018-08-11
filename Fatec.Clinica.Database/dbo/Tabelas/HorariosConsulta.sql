@@ -1,7 +1,6 @@
-﻿/*Cria tabela horarios .*/
+﻿/*Cria tabela horarios.*/
 
-
-CREATE TABLE Horarios (
+CREATE TABLE HorariosConsulta (
 [Id] INTEGER PRIMARY KEY IDENTITY NOT NULL,
 [Dia] DATE NOT NULL,
 [Hora] TIME NOT NULL,
