@@ -1,4 +1,4 @@
-﻿/*Cria tabela horarios .*/
+﻿/*Cria tabela horarios.*/
 
 
 CREATE TABLE Horarios (

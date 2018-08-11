@@ -1,7 +1,4 @@
-﻿/*Cria tabela Medico*/
-
-
-CREATE TABLE Medico (
+﻿CREATE TABLE Medico (
 [Id] INTEGER IDENTITY PRIMARY KEY NOT NULL,
 [Nome] VARCHAR(50) NOT NULL,
 [Cpf] VARCHAR(11) NOT NULL,
