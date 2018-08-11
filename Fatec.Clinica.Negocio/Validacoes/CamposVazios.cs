@@ -163,7 +163,8 @@ namespace Fatec.Clinica.Negocio.Validacoes
         {
             if (string.IsNullOrEmpty(entity.Nome) || 
                 string.IsNullOrEmpty(entity.Cnpj) ||
-                string.IsNullOrEmpty(entity.TelefoneCom))
+                string.IsNullOrEmpty(entity.TelefoneCom) ||
+                string.IsNullOrEmpty(entity.Email))
             {
                 return true;
             }

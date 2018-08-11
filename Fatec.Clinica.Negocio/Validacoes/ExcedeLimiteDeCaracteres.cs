@@ -14,7 +14,8 @@ namespace Fatec.Clinica.Negocio.Validacoes
         /// </returns>
         public static bool Verificar(Clinicas entity)
         {
-            if (entity.Cnpj.Length > 14 ||
+            if (entity.Email.Length >50 ||
+                entity.Cnpj.Length > 14 ||
                 entity.Nome.Length > 50 ||
                 entity.TelefoneCom.Length > 10)
             {

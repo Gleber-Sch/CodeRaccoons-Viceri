@@ -82,8 +82,9 @@ namespace Fatec.Clinica.Dado
             {
                 return connection.QuerySingle<int>($"DECLARE @ID int;" +
                                                    $"INSERT INTO [Clinica] " +
-                                                   $"(Cnpj, StatusAtividade, TelefoneCom, Nome) " +
-                                                   $"VALUES ('{entity.Cnpj}'," +
+                                                   $"(Email, Cnpj, StatusAtividade, TelefoneCom, Nome) " +
+                                                   $"VALUES ('{entity.Email}' " +
+                                                   $"'{entity.Cnpj}'," +
                                                    $" '{entity.StatusAtividade}'," +
                                                    $" '{entity.TelefoneCom}', " +
                                                    $" '{entity.Nome}'" +
@@ -101,7 +102,8 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 connection.Execute($"UPDATE [Clinica] " +
-                                   $"SET Cnpj = '{entity.Cnpj}'," +
+                                   $"SET Email = '{entity.Email}' " +
+                                   $"Cnpj = '{entity.Cnpj}'," +
                                    $"StatusAtividade = '{entity.StatusAtividade}', " +
                                    $"TelefoneCom = '{entity.TelefoneCom}', " +
                                    $"Nome = '{entity.Nome}' " +

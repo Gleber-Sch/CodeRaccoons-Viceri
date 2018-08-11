@@ -177,22 +177,5 @@ namespace Fatec.Horarios.Negocio
             _horariosRepositorio.Deletar(obj.Id);
         }
 
-        /// <summary>
-        /// Verifica se o horario existe no Database antes de deleta-la.
-        /// </summary>
-        /// <param name="id">Usado para buscar o horario no Database.</param>
-        public void Deletar(DateTime DiaHora)
-        {
-            var obj = _horariosRepositorio.SelecionarPorDia(DiaHora);
-            var Obj = _horariosRepositorio.SelecionarPorHorario(DiaHora);
-
-            if (obj == null && Obj == null)
-            {
-                throw new NaoEncontradoException($"Não foi encontrado nenhum horario com o Dia: {DiaHora.Day} e horario: {DiaHora.Hour}");
-            }
-            _horariosRepositorio.Deletar(DiaHora);
-        }
-
-
     }
 }

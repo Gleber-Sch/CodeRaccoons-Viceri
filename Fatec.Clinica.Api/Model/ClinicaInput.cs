@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Fatec.Clinica.Api.Model
+﻿namespace Fatec.Clinica.Api.Model
 {
     public class ClinicaInput
     {
@@ -11,5 +6,6 @@ namespace Fatec.Clinica.Api.Model
         public bool StatusAtividade { get; set; }
         public string TelefoneCom { get; set; }
         public string Nome { get; set; }
+        public string Email { get; set; }
     }
 }

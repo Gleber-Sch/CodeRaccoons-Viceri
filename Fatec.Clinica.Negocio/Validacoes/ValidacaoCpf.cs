@@ -20,6 +20,21 @@
             if (cpf.Length != 11)
                 return false;
 
+            //Cpf válidos, porém não utilizados.
+            if (cpf == "00000000000000" ||
+               cpf == "11111111111111" ||
+               cpf == "22222222222222" ||
+               cpf == "33333333333333" ||
+               cpf == "44444444444444" ||
+               cpf == "55555555555555" ||
+               cpf == "66666666666666" ||
+               cpf == "77777777777777" ||
+               cpf == "88888888888888" ||
+               cpf == "99999999999999")
+            {
+                return false;
+            }
+
             string DigitosCpf, DigitoVerificador = null;
             int Soma = 0, Resto = 0, Multiplicador, Contador = 0;
 

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Fatec.Clinica.Api.Model;
 using Fatec.Clinica.Dominio;
-using Fatec.Clinica.Negocio;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Net;
 using Fatec.Horarios.Negocio;
@@ -52,7 +51,7 @@ namespace Fatec.Clinica.Api.Controllers
         /// <param name="id">Usado para buscar o Horario.</param>
         /// <returns>Todos os Horarios selecionado.</returns>
         [HttpGet]
-        [Route("{Dia}", Name = "HorariosGetDia")]
+        [Route("{Dia/{dia}", Name = "HorariosGetDia")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Horario), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult GetHorarioDia(DateTime DiaHora)
@@ -66,7 +65,7 @@ namespace Fatec.Clinica.Api.Controllers
         /// <param name="id">Usado para buscar o horario.</param>
         /// <returns>Todos os horarios selecionado.</returns>
         [HttpGet]
-        [Route("{Hora}", Name = "HorariosGetHora")]
+        [Route("{Hora/{hora}}", Name = "HorariosGetHora")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Horario), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult GetHorarioHora(DateTime DiaHora)
@@ -80,7 +79,7 @@ namespace Fatec.Clinica.Api.Controllers
         /// <param name="id">Usado para buscar o horario.</param>
         /// <returns>Todos os horarios selecionado.</returns>
         [HttpGet]
-        [Route("{IdClinica}", Name = "HorariosGetClinica")]
+        [Route("{Clinica/{id}}", Name = "HorariosGetClinica")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Horario), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult GetHorarioClinica(int Id)
@@ -146,21 +145,6 @@ namespace Fatec.Clinica.Api.Controllers
         public IActionResult Delete([FromRoute]int id)
         {
             _horariosNegocio.Deletar(id);
-            return Ok();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="DiaHora">datetime para selecionar o dia e o horario a ser removido</param>
-        /// <returns></returns>
-        [HttpDelete]
-        [Route("{id}")]
-        [SwaggerResponse((int)HttpStatusCode.OK)]
-        [SwaggerResponse((int)HttpStatusCode.NotFound)]
-        public IActionResult Delete([FromRoute]DateTime DiaHora)
-        {
-            _horariosNegocio.Deletar(DiaHora);
             return Ok();
         }
     }

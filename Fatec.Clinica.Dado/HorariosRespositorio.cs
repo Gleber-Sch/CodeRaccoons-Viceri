@@ -13,7 +13,7 @@ namespace Fatec.Clinica.Dado
     /// </summary>
     public class HorariosRepositorio : IRepositorioBase<Horario>
     {
- 
+
 
         /// <summary>
         /// Seleciona todos os Horarios.
@@ -144,26 +144,5 @@ namespace Fatec.Clinica.Dado
                                    $"WHERE Id = {id}");
             }
         }
-
-
-            /// <summary>
-            /// Deleta um Horario do Database
-            /// </summary>
-            /// <param name="DiaHora">Datetime para deletar um horario atraves do dia e do horario</param>
-            public void Deletar(DateTime DiaHora)
-            {
-                using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
-                {
-                    connection.Execute($"DELETE " +
-                                       $"FROM [Horarios] " +
-                                       $"WHERE DiaHora = '{DiaHora}'");
-                }
-
-
-
-            }
-
-
-        }
-   
+    }
 }
