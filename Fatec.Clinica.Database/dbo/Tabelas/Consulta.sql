@@ -1,4 +1,7 @@
-﻿CREATE TABLE Consulta (
+﻿/*Cria tabela consulta*/
+
+
+CREATE TABLE Consulta (
 [Id] INTEGER IDENTITY PRIMARY KEY NOT NULL,
 [Historico] VARCHAR(300) NOT NULL,
 [Nota] TINYINT NOT NULL,
