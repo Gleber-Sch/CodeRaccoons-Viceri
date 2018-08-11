@@ -230,12 +230,13 @@ namespace Fatec.Clinica.Negocio
         /// <param name="id">Usado para buscar o médico no Database.</param>
         public void Deletar(int id)
         {
+            //Verifica se o ID do médico existe.
             var obj = SelecionarPorId(id);
-
             if (obj == null)
             {
                 throw new NaoEncontradoException($"O ID: \"{id}\" não foi encontrado!");
             }
+
             _medicoRepositorio.Deletar(obj.Id);
         }
     }

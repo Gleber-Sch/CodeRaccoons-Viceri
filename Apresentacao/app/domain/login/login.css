@@ -1,11 +1,13 @@
 html,
 body {
     height: 100%;
+    max-height: 1200px;
 }
 
 body {
     align-items: center;
-    background-color: #f5f5f5;
+    background-image:url("../../../img/imgp.jpg");
+    background-repeat: no-repeat;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: center;
@@ -13,10 +15,45 @@ body {
     padding-top: 40px;
 }
 
+
+.btn-secondary{
+    background-color: #11c182;
+    color: #fff;
+    padding: 10px;
+    
+}
+
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background-color:transparent;
+    border: .1rem solid #11c182;
+    color: #11c182;
+    text-shadow: none;
+    
+}
+
+input:hover{
+    border: #11c182 2px solid;
+}
+a:link{
+    color: #11c182;
+}
+a:active{
+    color: #11c182;
+}
+a:visited{
+    color: #11c182;
+}
+
+
 .form-signin {
     margin: auto;
-    max-width: 330px;
+    max-width: 380px;
     width: 100%;
+    padding: 30px; 
+    background-color: #f5f5f5;
+    opacity: 0.96;
 }
 
 .form-signin .checkbox {
@@ -63,3 +100,25 @@ body {
     transition: .2s;
     -webkit-transition: .2s;
 }
+i{
+    font-size: 100px;
+    margin: 30px;
+    color: #11c182;
+    padding:7px; 
+}
+i:hover{
+   
+    border-bottom: #444 10px solid;
+}
+h3{
+    color: #444;
+}
+#seleCad{
+    margin: auto;
+    max-width: 480px;
+    width: 100%;
+    padding: 30px; 
+    background-color: #f5f5f5;
+    opacity: 0.96;
+}
+

@@ -1,6 +1,4 @@
-﻿/*Cria tabela Exames.*/
-
-CREATE TABLE Exame (
+﻿CREATE TABLE Exame (
 [Id] INTEGER IDENTITY PRIMARY KEY NOT NULL,
 [DataHora] DATETIME NOT NULL,
 [IdAtendimento] INTEGER NOT NULL,

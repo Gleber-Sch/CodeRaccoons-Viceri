@@ -23,6 +23,21 @@
             if (cnpj.Length != 14)
                 return false;
 
+            //Cnpj válidos, porém não utilizados.
+            if(cnpj == "00000000000000" ||
+               cnpj == "11111111111111" ||
+               cnpj == "22222222222222" ||
+               cnpj == "33333333333333" ||
+               cnpj == "44444444444444" ||
+               cnpj == "55555555555555" ||
+               cnpj == "66666666666666" ||
+               cnpj == "77777777777777" ||
+               cnpj == "88888888888888" ||
+               cnpj == "99999999999999")
+            {
+                return false;
+            }
+
             int[] Multiplicador1 = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
             int[] Multiplicador2 = new int[13] { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
             int Soma, Resto;
