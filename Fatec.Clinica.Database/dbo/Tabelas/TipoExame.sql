@@ -1,4 +1,7 @@
-﻿CREATE TABLE TipoExame (
+﻿/*Cria tabelo tipoExamo*/
+
+
+CREATE TABLE TipoExame (
 [Id] INTEGER IDENTITY PRIMARY KEY NOT NULL,
 [Nome] VARCHAR(50) NOT NULL
 )

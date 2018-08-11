@@ -2,11 +2,10 @@
 
 namespace Fatec.Clinica.Dominio
 {
-    public class Horarios
+    public class HorarioInput
     {
-        public string Dia { get; set; }
-        public string Horario { get; set; }
-        public string IdCLinica { get; set; }
+        public DateTime DiaHora { get; set; }
+        public int IdCLinica { get; set; }
 
     }
 }

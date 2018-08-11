@@ -1,4 +1,7 @@
-﻿CREATE TABLE Atendimento (
+﻿/*Cria tabela atendimento.*/
+
+
+CREATE TABLE Atendimento (
 [Id] INTEGER IDENTITY PRIMARY KEY NOT NULL,
 [IdClinica] INTEGER NOT NULL,
 [IdMedico] INTEGER NOT NULL,

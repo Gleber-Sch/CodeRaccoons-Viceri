@@ -4,13 +4,14 @@ using System.Data.SqlClient;
 using Dapper;
 using Fatec.Clinica.Dado.Configuracao;
 using Fatec.Clinica.Dado.Abstracao;
+using System;
 
 namespace Fatec.Clinica.Dado
 {
     /// <summary>
     /// Funcao de CRUD para os Horarios
     /// </summary>
-    public class HorariosRepositorio : IRepositorioBase<Horarios>
+    public class HorariosRepositorio : IRepositorioBase<Horario>
     {
  
 
@@ -18,12 +19,11 @@ namespace Fatec.Clinica.Dado
         /// Seleciona todos os Horarios.
         /// </summary>
         /// <returns>Lista de Horarios.</returns>
-        public IEnumerable<Horarios> Selecionar()
+        public IEnumerable<Horario> Selecionar()
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var lista = connection.Query<Horarios>($"Select *from ViewHorarios");
-
+                var lista = connection.Query<Horario>($"Select *from ViewHorarios");
                 return lista;
             }
 
@@ -32,12 +32,13 @@ namespace Fatec.Clinica.Dado
         /// <summary>
         /// Seleciona todos os Horarios por Id Da Clinica.
         /// </summary>
+        /// <param name="Id">Seleciona Horario por Id</param>
         /// <returns>Lista de Horarios.</returns>
-        public Horarios SelecionarPorId(int Id)
+        public Horario SelecionarPorId(int Id)
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var Obj = connection.QueryFirstOrDefault<Horarios>($"Select *from ViewHorarios " +
+                var Obj = connection.QueryFirstOrDefault<Horario>($"Select *from ViewHorarios " +
                                                        $"Where IdClinica = {Id}");
 
                 return Obj;
@@ -48,15 +49,17 @@ namespace Fatec.Clinica.Dado
         /// <summary>
         /// Seleciona todos os Horarios por Dia.
         /// </summary>
+        /// <param name="DiaHora">datetime para selecionar o horario atraves do dia
+        /// </param>
         /// <returns>Lista de Horarios.</returns>
-        public IEnumerable<Horarios> SelecionarPorDia(string Dia)
+        public Horario SelecionarPorDia(DateTime DiaHora)
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var lista = connection.Query<Horarios>($"Select *from ViewHorarios " +
-                                                       $"Where Horarios.Dia={Dia}");
+                var Obj = connection.QueryFirstOrDefault<Horario>($"Select *from ViewHorarios " +
+                                                       $"Where Horarios.DiaHora='{DiaHora.Day}'");
 
-                return lista;
+                return Obj;
             }
 
         }
@@ -64,15 +67,32 @@ namespace Fatec.Clinica.Dado
         /// <summary>
         /// Seleciona todos os Horarios por Horario.
         /// </summary>
+        /// <param name="DiaHora">Datetime para selecionar horarios atraves do horario</param>
         /// <returns>Lista de Horarios.</returns>
-        public IEnumerable<Horarios> SelecionarPorHorario(string Horario)
+        public Horario SelecionarPorHorario(DateTime DiaHora)
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var lista = connection.Query<Horarios>($"Select *from ViewHorarios " +
-                                                       $"Where Horarios.Horario = {Horario}");
+                var obj = connection.QueryFirstOrDefault<Horario>($"Select *from ViewHorarios " +
+                                                       $"Where Horarios.DiaHora = '{DiaHora.Hour}'");
 
-                return lista;
+                return obj;
+            }
+
+        }
+
+        /// <summary>
+        /// Seleciona todos os Horarios pela Clinica.
+        /// </summary><param name="IdClinica">Seleciona horario por IdClinica </param>
+        /// <returns>Lista de Horarios.</returns>
+        public Horario SelecionarPorClinica(int Id)
+        {
+            using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
+            {
+                var obj = connection.QueryFirstOrDefault<Horario>($"Select *from ViewHorarios " +
+                                                       $"Where Horarios.IdClinica = {Id}");
+
+                return obj;
             }
 
         }
@@ -82,15 +102,14 @@ namespace Fatec.Clinica.Dado
         /// </summary>
         /// <param name="entity">Objeto que contêm os dados do Horario.</param>
         /// <returns>ID do Horario inserido no Database.</returns>
-        public int Inserir(Horarios entity)
+        public int Inserir(Horario entity)
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 return connection.QuerySingle<int>($"DECLARE @ID int;" +
                                                    $"INSERT INTO [Horarios] " +
                                                    $"(Horario, Dia, IdClinica) " +
-                                                   $"VALUES ('{entity.Horario}'," +
-                                                   $" '{entity.Dia}'," +
+                                                   $"VALUES ('{entity.DiaHora}'," +
                                                    $"{entity.IdClinica} " +
                                                    $"SET @ID = SCOPE_IDENTITY();" +
                                                    $"SELECT @ID");
@@ -101,14 +120,13 @@ namespace Fatec.Clinica.Dado
         /// Altera os dados do Horario no Database.
         /// </summary>
         /// <param name="entity">Objeto que contêm os dados do Horario.</param>
-        public void Alterar(Horarios entity)
+        public void Alterar(Horario entity)
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 connection.Execute($"UPDATE [Horarios] " +
                                    $"SET IdClinica= {entity.IdClinica}," +
-                                   $"Dia= '{entity.Dia}', " +
-                                   $"Horario = '{entity.Horario}' " +
+                                   $"Horario = '{entity.DiaHora}' " +
                                    $"WHERE Id = {entity.Id}");
             }
         }
@@ -125,8 +143,27 @@ namespace Fatec.Clinica.Dado
                                    $"FROM [Horarios] " +
                                    $"WHERE Id = {id}");
             }
+        }
+
+
+            /// <summary>
+            /// Deleta um Horario do Database
+            /// </summary>
+            /// <param name="DiaHora">Datetime para deletar um horario atraves do dia e do horario</param>
+            public void Deletar(DateTime DiaHora)
+            {
+                using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
+                {
+                    connection.Execute($"DELETE " +
+                                       $"FROM [Horarios] " +
+                                       $"WHERE DiaHora = '{DiaHora}'");
+                }
+
+
+
+            }
 
 
         }
-    }
+   
 }

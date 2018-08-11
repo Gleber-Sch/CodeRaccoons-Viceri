@@ -1,4 +1,6 @@
-﻿CREATE TABLE Clinica (
+﻿/*Cria Tabela Clinica*/
+
+CREATE TABLE Clinica (
 [Id] INTEGER IDENTITY PRIMARY KEY NOT NULL,
 [Cnpj] VARCHAR(14) UNIQUE NOT NULL,
 [StatusAtividade] BIT NOT NULL,
