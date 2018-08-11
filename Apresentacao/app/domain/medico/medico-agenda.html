@@ -30,19 +30,19 @@
 
             <div class="collapse navbar-collapse" id="nav">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item  active">
-                        <a class="nav-link" href="medico.html"><i class="fas fa-user-circle"></i> Perfil</a>
+                  <li class="nav-item">
+                    <a class="nav-link" href="medico.html"><i class="fas fa-user-circle"></i> Perfil</a>
+                </li>
+                
+                <li class="nav-item active">
+                    <a class="nav-link" href="medico-agenda.html"><i class="fas fa-briefcase-medical"></i> Agenda </a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link" href="medico-procurar.html"><i class="fab fa-sistrix"></i> Procurar</a>
                     </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="medico-agenda.html"><i class="fas fa-briefcase-medical"></i> Agenda </a>
-                    </li>
-                    <li class="nav-item">
-                            <a class="nav-link" href="medico-procurar.html"><i class="fab fa-sistrix"></i> Procurar</a>
-                        </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="medico-configurações.html"><i class="fa fa-cogs"></i> Configurações</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="medico-configurações.html"><i class="fa fa-cogs"></i> Configurações</a>
+                </li>
                     
                     
                     
@@ -61,41 +61,56 @@
     <main role="main" class="container">
         
         <br>
-        <div class="media container">
-          <i class="fa fa-user-md icone"></i>
-                <div class="media-body">
-                  <h4 class="mt-0">Médico</h4>
-                  <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 120px;">
-                    <p><i class="fa fa-user mr-3"></i>Nome:</p>
-                    <p><i class="fas fa-stethoscope"></i>Especialidade:</p>
-                    <p><i class="far fa-address-card mr-3"></i>CPF:</p>
-                    <p><i class="fas fa-id-card-alt"></i> CRM:</p>
-                    <p><i class="fa fa-calendar-alt mr-3"></i>Data de nascimento:</p>
-                    <p><i class="fa fa-envelope mr-3"></i>Email:</p>
-                    <p><i class="fa fa-phone mr-3"></i>Telefone:</p>
-                    <p><i class="fa fa-mobile-alt mr-3"></i>Celular:</p>
-                    <p><i class="fas fa-venus-mars"></i>Genêro:</p>
-                </div>
-              </div>
-              
-
-            <br>
-              <hr>
-            <br>
+        
             <div class="media container">
-              <i class="fa fa-hospital icone"></i>
+              <i class="fas fa-file-medical icone"></i>
                 <div class="media-body">
-                  <h4 class="mt-0">Participa das Clínicas</h4>
-                  <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 220px;">
+                  <h5 class="mt-0">Registrar as Consultas</h5>
+                  <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 120px;">
+                  <form class="form-inline">
+                    <div class="form-group mb-2">
+                      <label for="agenda-valor" class="sr-only">Valor</label>
+                      <input type="number" step="0.01" class="form-control" id="agenda-valor" placeholder="Valor Consulta R$ 0,00">
+                    </div>
+                    <div class="form-group mx-sm-2 mb-2">
+                      <label for="agenda-data" class="sr-only">Data</label>
+                      <input type="date" class="form-control" id="agenda-data">
+                    </div>
+                    <div class="form-group mx-sm-2 mb-2">
+                      <label for="agenda-hora" class="sr-only">Hora</label>
+                      <input type="time" class="form-control" id="agenda-hora">
+                    </div>
+                    <button type="submit" class="btn btn-secondary mb-2">inserir na agenda</button>
+                  </form>
                   <div class="mt-5" id="medicos"></div>
                 </div>
               </div>
               
-   
-      <br>
-      <hr>
-      <br>
-
+              <br>
+              <hr>
+            <br>
+            <div class="media container">
+              <i class="fas fa-plus-square icone"></i>
+                <div class="media-body">
+                  <h4 class="mt-0">Consultas Disponíveis</h4>
+                  <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 220px;">
+                  <div class="mt-5" id="medicos"></div>
+                </div>
+              </div>
+              <br>
+              <hr>
+              <br>
+              <div class="media container">
+                <i class="fas fa-star-of-life icone"></i>
+                  <div class="media-body">
+                    <h4 class="mt-0">Consultas Agendadas</h4>
+                    <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 220px;">
+                    <div class="mt-5" id="medicos"></div>
+                  </div>
+                </div>
+                <br>
+                <hr>
+                <br>
 
     
 

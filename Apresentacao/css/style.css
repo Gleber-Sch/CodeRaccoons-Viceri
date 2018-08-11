@@ -1,3 +1,204 @@
-body{
-    margin-top: 90px;
+
+
+/* Customizando a estilização default do botão */
+
+.btn-secondary{
+    background-color: #11c182;
+    color: #fff;
+    padding: 10px;
+    margin-left:20px;
+    margin-right: 20px; 
+}
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background-color:transparent;
+    border: .1rem solid #11c182;
+    color: #11c182;
+    text-shadow: none;
+    font-weight: 200;
+    
+}
+.btn-dark{
+    background-color: #222;
+    color: #11c182;
+     
+}
+.btn-dark:hover{
+    background-color: transparent;
+    color: #009071;
+    border: #009071  2px solid;
+    
+     
+}
+
+
+html,
+body {
+    background-color: #fff;
+    height: auto;
+}
+
+
+
+.cover-container {
+    max-width: 100em;
+}
+
+
+
+
+.navbar-brand {
+    margin-bottom: 0;
+}
+.gg{
+    color: #11c182;
+    text-shadow: 3px 2px  #555;
+    
+    
+    
+    
+}
+.cover {
+    padding: 0 1.5rem;
+}
+
+.cover .btn-lg {
+    font-weight: 700;
+    padding: .75rem 1.25rem;
+}
+
+
+.mastfoot {
+    color: rgba(255, 255, 255, .5);
+}
+#menu h3{
+    font-family: 'Lilita One', cursive;
+}
+#menu nav{
+    
+    width: 100%;
+    background-color: #333;
+    font-size: 25px;
+   height: auto;
+
+}
+#menu nav li{
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #fff;
+}
+#menu nav li:hover {
+    border-bottom: #11c182 solid 2px;
+   
+}
+
+.carousel img{
+    height:600px ;
+}
+.form-inline{
+text-align: center;
+    }
+
+.nav-link active{
+    background-color: #21d192;
+    color: #fff;
+    padding: 10px;
+    margin-left:20px;
+    margin-right: 20px; 
+}
+
+hr{
+    border: #11c182 1.5px solid;
+}
+.fi{
+    font-size: 40px;
+    color: #444;
+    
+}
+.fi i{
+    margin: 10px;
+}
+.icone{
+    font-size: 100px;
+    color: #11c182;
+    margin-right: 10px;
+}
+.topo{
+    position:fixed;
+	bottom:0px;
+    right:0px;
+    margin:10px; 
+    height: 68px;
+    width: 68px;
+    font-size: 40px;
+    padding: 5px;
+    padding-left: 6px; 
+    align-items: center;
+    text-align: center;
+}
+.titulo{
+    color: #666;
+    margin: 5px;
+    text-shadow: 2px 1px  #11c182;
+    
+}
+@font-face{
+    font-family: rr;
+    src: url(fonts/Righteous-Regular.ttf)
+}
+
+.green{
+    background-color: #21d192;
+}
+.green2{
+    background-color: #11c182;
+}
+
+#menu{
+    position: sticky;
+    border-bottom: #11c182 5px solid;
+}
+
+#rodape{ /* Rodapé */
+    width: 100%;
+    height: 70px;
+text-align: center;
+background-color: #11c182;
+
+}
+footer a{
+    color: #fff;
+    
+}
+footer a:hover{
+    color: #fff;
+}
+footer a:active{
+    color: #fff;
+}
+footer a:link{
+    color: #fff;
+}
+
+footer hr{
+    background-color: #444;
+    border-color: #444;
+    border-width:  3px;
+}
+
+/* 
+modal para usar */
+.modal-header{
+    background-color: #11c182;
+    color: #fff;
+    font-size: 20px;
+}
+.modal-body{
+    background-color: #fff;
+   
+}
+.modal-footer{
+    background-color: #11c182;
+    color: #fff;
+    font-size: 20px;
 }

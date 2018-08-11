@@ -9,8 +9,7 @@ document.querySelector('#login-link-cadastrar')
     .addEventListener('click', function (event) {
 
         event.preventDefault();
-
-        alert("Aguardando implementação.");
+        window.location.href="../../../direciona.html";
 
     });
 
@@ -18,6 +17,7 @@ document.querySelector('#form-login')
     .addEventListener('submit', function (event) {
 
         event.preventDefault();
+        
 
         var obj = {
             login: elementosForm.login.value,
