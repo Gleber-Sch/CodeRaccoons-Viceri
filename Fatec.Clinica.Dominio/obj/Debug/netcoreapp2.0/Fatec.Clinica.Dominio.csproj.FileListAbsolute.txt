@@ -7,11 +7,3 @@ C:\Users\Lucas Contesini\source\Workspaces\Formação de Talentos Viceri 20182\F
 C:\Users\Lucas Contesini\source\Workspaces\Formação de Talentos Viceri 20182\Fatec.Clinica.Dominio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Dominio.AssemblyInfo.cs
 C:\Users\Lucas Contesini\source\Workspaces\Formação de Talentos Viceri 20182\Fatec.Clinica.Dominio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Dominio.dll
 C:\Users\Lucas Contesini\source\Workspaces\Formação de Talentos Viceri 20182\Fatec.Clinica.Dominio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Dominio.pdb
-C:\Users\Gleber_M\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dominio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dominio.deps.json
-C:\Users\Gleber_M\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dominio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dominio.dll
-C:\Users\Gleber_M\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dominio\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dominio.pdb
-C:\Users\Gleber_M\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dominio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Dominio.csproj.CoreCompileInputs.cache
-C:\Users\Gleber_M\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dominio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Dominio.AssemblyInfoInputs.cache
-C:\Users\Gleber_M\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dominio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Dominio.AssemblyInfo.cs
-C:\Users\Gleber_M\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dominio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Dominio.dll
-C:\Users\Gleber_M\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dominio\obj\Debug\netcoreapp2.0\Fatec.Clinica.Dominio.pdb

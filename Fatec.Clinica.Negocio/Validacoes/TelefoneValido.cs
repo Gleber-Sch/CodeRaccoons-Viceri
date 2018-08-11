@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Fatec.Clinica.Negocio.Validacoes
 {
-    public class ValidacaoTelefone
+    public class TelefoneValido
     {
         /// <summary>
         /// Remove caracteres não numéricos que podem estar presentes na string telefone.
@@ -20,17 +20,21 @@ namespace Fatec.Clinica.Negocio.Validacoes
         }
 
         /// <summary>
-        /// Verifica se o telefone possui apenas números.
+        /// Verifica se o telefone possui apenas números e se a quantidade de números é válida.
         /// </summary>
         /// <remarks>Usar somente após a utilização do método LimparFormatacao.</remarks>
         /// <param name="telefone">Contêm o telefone a ser verificado.</param>
-        /// <returns>TRUE se o tefelone possuir apenas números ou FALSE caso não tenha.</returns>
+        /// <returns>True se o tefelone possuir apenas números e se a quantidade de números for válida ou
+        /// FALSE caso contrário.</returns>
         public static bool Verificar(string telefone)
         {
-            if(int.TryParse(telefone, out int x))
+            if(int.TryParse(telefone, out int x) &&
+               telefone.Length >= 10 &&
+               telefone.Length < 11)
             {
                 return true;
             }
+
             return false;
         }
     }

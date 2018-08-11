@@ -20,7 +20,7 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var lista = connection.Query<Endereco>($"SELECT *FROM ViewEnderecos");
+                var lista = connection.Query<Endereco>($"SELECT * FROM ViewEnderecos");
 
                 return lista;
             }
@@ -34,7 +34,7 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var obj = connection.QueryFirstOrDefault<Endereco>($"SELECT *FROM ViewEnderecos " +
+                var obj = connection.QueryFirstOrDefault<Endereco>($"SELECT * FROM ViewEnderecos " +
                                                                    $"where Id={id}");
 
                 return obj;
@@ -45,7 +45,7 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var obj = connection.QueryFirstOrDefault<Endereco>($"SELECT *FROM ViewEnderecos" +
+                var obj = connection.QueryFirstOrDefault<Endereco>($"SELECT * FROM ViewEnderecos" +
                                                                     $"where Estado = {entity.Estado}" +
                                                                     $"and Cidade = {entity.Cidade}" +
                                                                     $"and Bairro = {entity.Bairro}" +

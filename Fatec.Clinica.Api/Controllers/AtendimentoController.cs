@@ -11,17 +11,25 @@ namespace Fatec.Clinica.Api.Controllers
     [Route("api/Atendimento")]
     public class AtendimentoController : Controller
     {
+        /// <summary>
+        /// Declara as regras de negócio do Atendimento.
+        /// </summary>
         private AtendimentoNegocio _atendimentoNegocio;
 
+        /// <summary>
+        /// Construtor para instanciar as regras de negócio.
+        /// </summary>
         public AtendimentoController()
         {
             _atendimentoNegocio = new AtendimentoNegocio();
         }
 
         /// <summary>
-        /// Método que obtem uma lista de Atendimento
+        /// Método que obtêm uma lista com todos os Atendimentos.
         /// </summary>
         /// <returns></returns>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFoud</response>
         [HttpGet]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Atendimento), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
@@ -31,10 +39,12 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que seleciona um atendimento por Id
+        /// Método que seleciona um atendimento.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Usado para selecionar o atendimento.</param>
         /// <returns></returns>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFoud</response>
         [HttpGet]
         [Route("{id}", Name = "AtendimentoGetId")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Atendimento), nameof(HttpStatusCode.OK))]
@@ -45,10 +55,13 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que insere um novo atendimento
+        /// Método que insere um novo atendimento.
         /// </summary>
-        /// <param name="input"></param>
+        /// <param name="input">Objeto com os dados do atendimento.</param>
         /// <returns></returns>
+        /// <response code="200">OK</response>
+        /// <response code="400">BadRequest</response>
+        /// <response code="500">InternalServerError</response>
         [HttpPost]
         [SwaggerResponse((int)HttpStatusCode.Created, typeof(Atendimento), nameof(HttpStatusCode.Created))]
         [SwaggerResponse((int)HttpStatusCode.BadRequest)]
@@ -67,11 +80,14 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que altera os dados de um atendimento
+        /// Método que altera os dados de um atendimento.
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="input"></param>
+        /// <param name="id">Usado para buscar o atendimento.</param>
+        /// <param name="input">Objeto que contêm os dados a serem alteradas.</param>
         /// <returns></returns>
+        /// <response code="200">OK</response>
+        /// <response code="400">BadRequest</response>
+        /// <response code="500">InternalServerError</response>
         [HttpPut]
         [Route("{id}")]
         [SwaggerResponse((int)HttpStatusCode.Accepted, typeof(Atendimento), nameof(HttpStatusCode.Accepted))]
@@ -91,8 +107,10 @@ namespace Fatec.Clinica.Api.Controllers
         /// <summary>
         /// Método que deleta um atendimento
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Usado para buscar o atendimento.</param>
         /// <returns></returns>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFound</response>
         [HttpDelete]
         [Route("{id}")]
         [SwaggerResponse((int)HttpStatusCode.OK)]

@@ -8,14 +8,17 @@ using Fatec.Clinica.Negocio.Validacoes;
 namespace Fatec.Clinica.Negocio
 {
     /// <summary>
-    /// Regras de Negócio sobre a Endereco da Clinica
+    /// Regras de Negócio sobre o Endereco da Clinica.
     /// </summary>
     public class EnderecoNegocio : INegocioBase<Endereco>
     {
+        /// <summary>
+        /// Declara o repositório do Endereço.
+        /// </summary>
         private readonly EnderecoRepositorio _enderecoRepositorio;
 
         /// <summary>
-        /// Construtor para instanciar o Endereco.
+        /// Construtor que inicializa o repositório.
         /// </summary>
         public EnderecoNegocio()
         {
@@ -25,17 +28,17 @@ namespace Fatec.Clinica.Negocio
         /// <summary>
         /// Seleciona todos os Enderecos da Database.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Lista de Endereços.</returns>
         public IEnumerable<Endereco> Selecionar()
         {
             return _enderecoRepositorio.Selecionar();
         }
 
         /// <summary>
-        /// Verifica se o Endereco com o ID indicado existe.
+        /// Verifica se existe algum endereço com o ID indicado.
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">Usado para buscar um endereço no Database.</param>
+        /// <returns>Seleciona um atendimento ou gera uma exceção.</returns>
         public Endereco SelecionarPorId(int id)
         {
             var obj = _enderecoRepositorio.SelecionarPorId(id);
@@ -47,44 +50,80 @@ namespace Fatec.Clinica.Negocio
         }
 
         /// <summary>
-        /// Verifica se o nome da especialidade já existe, antes de inserir os dados da especialidade
+        /// Verifica se existem campos obrigatórios não preenchidos, se o ID da clínica é válidos,
+        /// se os campos respeitam os limites de caracteres especificados no Database e se o endereço
+        /// já não foi cadastrado. Antes de inserir os dados do endereço.
         /// </summary>
-        /// <param name="entity"></param>
-        /// <returns></returns>
+        /// <param name="entity">Objeto com os dados do endereco.</param>
+        /// <returns>ID do endereco inserido no Databse ou gera uma exceção.</returns>
         public int Inserir(Endereco entity)
         {
 
+            //Verifica se existem campos vazios.
             if (CamposVazios.Verificar(entity))
             {
-                throw new DadoInvalidoException($"Os Campos: Estado, Cidade, Bairro, Logradouro, Numero, Complemento, Clinica são obrigatorios.");
+                throw new DadoInvalidoException("Existem campos obrigatórios que não foram preenchidos!");
             }
 
+            //Verifica se nenhum campo do objeto entity excede o limite de caracteres estipulado no Database.
+            if (ExcedeLimiteDeCaracteres.Verificar(entity))
+            {
+                throw new DadoInvalidoException("Existem campos que excedem o limite de caracteres permitidos!");
+            }
+            
+            //Verifica se o endereço informado já foi cadastrado.
             if (_enderecoRepositorio.SelecionarPorEndereco(entity) != null)
             {
-                throw new ConflitoException($"O Endereco informado ja foi cadastrado");
+                throw new ConflitoException("O Endereco informado está cadastrado!");
+            }
+
+            //Verifica se o ID da clínica é válido.
+            var RepositorioClinica = new ClinicaRepositorio();
+            if (RepositorioClinica.SelecionarPorId(entity.IdClinica) == null)
+            {
+                throw new DadoInvalidoException($"Não foi encontrado nenhuma clínica " +
+                                                $"com o ID: {entity.IdClinica}");
             }
 
             return _enderecoRepositorio.Inserir(entity);
         }
 
         /// <summary>
-        /// Verifica se o endereco informado ja foi cadastrado.
+        /// Verifica se existem campos obrigatórios não preenchidos, se o ID da clínica é válidos,
+        /// se os campos respeitam os limites de caracteres especificados no Database e se o endereço
+        /// já não foi cadastrado. Antes de inserir os dados do endereço.
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="entity"></param>
-        /// <returns></returns>
+        /// <param name="id">Usado para buscar o endereço.</param>
+        /// <param name="entity">Objeto com os dados do endereço.</param>
+        /// <returns>Seleciona o endereço alterado no Database ou gera uma exceção.</returns>
         public Endereco Alterar(int id, Endereco entity)
         {
+            //Verifica se existem campos vazios.
             if (CamposVazios.Verificar(entity))
             {
-                throw new DadoInvalidoException($"Os campos: Estado, Cidade, Bairro, Logradouro," +
-                                                $" Numero, Complemento, Clinica são obrigatorios.");
+                throw new DadoInvalidoException("Existem campos obrigatórios que não foram preenchidos!");
             }
 
+            //Verifica se nenhum campo do objeto entity excede o limite de caracteres estipulado no Database.
+            if (ExcedeLimiteDeCaracteres.Verificar(entity))
+            {
+                throw new DadoInvalidoException("Existem campos que excedem o limite de caracteres permitidos!");
+            }
+
+            //Verifica se o endereço informado já foi cadastrado.
             if (_enderecoRepositorio.SelecionarPorEndereco(entity) != null)
             {
-                throw new ConflitoException($"O Endereco informado ja foi cadastrado");
+                throw new ConflitoException("O Endereco informado está cadastrado!");
             }
+
+            //Verifica se o ID da clínica é válido.
+            var RepositorioClinica = new ClinicaRepositorio();
+            if (RepositorioClinica.SelecionarPorId(entity.IdClinica) == null)
+            {
+                throw new DadoInvalidoException($"Não foi encontrado nenhuma clínica " +
+                                                $"com o ID: {entity.IdClinica}");
+            }
+
             entity.Id = id;
             _enderecoRepositorio.Alterar(entity);
 
@@ -94,13 +133,13 @@ namespace Fatec.Clinica.Negocio
         /// <summary>
         /// Verifica se o endereco existe no Database antes de deleta-lo.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Usado para buscar o endereço no Database.</param>
         public void Deletar(int id)
         {
             var obj = SelecionarPorId(id);
             if (obj == null)
             {
-                throw new NaoEncontradoException($"O ID: {id} não foi encontrado");
+                throw new NaoEncontradoException($"O ID: \"{id}\" não foi encontrado!");
             }
 
             _enderecoRepositorio.Deletar(obj.Id);

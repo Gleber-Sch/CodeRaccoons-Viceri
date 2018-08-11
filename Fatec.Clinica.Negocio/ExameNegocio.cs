@@ -12,6 +12,9 @@ namespace Fatec.Clinica.Negocio
     /// </summary>
     public class ExameNegocio : INegocioBase<Exame>
     {
+        /// <summary>
+        /// Declara o repositório do Exame.
+        /// </summary>
         private readonly ExameRepositorio _exameRepositorio;
 
         /// <summary>
@@ -32,7 +35,7 @@ namespace Fatec.Clinica.Negocio
         }
 
         /// <summary>
-        /// Verifica se o exame com o ID indicado existe.
+        /// Verifica se existe o exame com o ID indicado.
         /// </summary>
         /// <param name="id">Usado para buscar um exame no Database.</param>
         /// <returns>Seleciona um exame ou gera uma exceção.</returns>
@@ -56,8 +59,10 @@ namespace Fatec.Clinica.Negocio
             var lista = _exameRepositorio.SelecionarPorPaciente(id);
 
             if (lista == null)
+            {
                 throw new DadoInvalidoException($"Não foi encontrado nenhum Exame realidado pelo " +
                                                 $"paciente que possui o ID: {id}");
+            }
 
             return lista;
         }
@@ -72,8 +77,10 @@ namespace Fatec.Clinica.Negocio
             var lista = _exameRepositorio.SelecionarPorMedicoQueSolicitou(id);
 
             if (lista == null)
+            {
                 throw new DadoInvalidoException($"Não foi encontrado nenhum Exame solicitado pelo " +
                                                 $"médico que possui o ID: {id}");
+            }
 
             return lista;
         }
@@ -88,8 +95,10 @@ namespace Fatec.Clinica.Negocio
             var lista = _exameRepositorio.SelecionarPorMedicoQueRealizou(id);
 
             if (lista == null)
+            {
                 throw new DadoInvalidoException($"Não foi encontrado nenhum Exame realidado pelo " +
                                                 $"médico que possui o ID: {id}");
+            }
 
             return lista;
         }
@@ -111,28 +120,38 @@ namespace Fatec.Clinica.Negocio
         }
 
         /// <summary>
-        /// Verifica se o ID do tipo de exame, do atentidmento e da consulta são válidos.
+        /// Verifica se os campos obrigátorios foram preenchidos e se o ID do tipo de exame,
+        /// do atentidmento e da consulta são válidos. Antes de inserir o exame o Database.
         /// </summary>
         /// <param name="entity">Objeto com os dados do Exame.</param>
-        /// <returns>Insere um exame no Database ou é lançada uma exceção.</returns>
+        /// <returns>Insere um exame no Database ou gera alguma exceção.</returns>
         public int Inserir(Exame entity)
         {
+            //Verifica se existem campos vazios.
+            if (CamposVazios.Verificar(entity))
+            {
+                throw new DadoInvalidoException("O campo DataHora é obrigatório e deve ser preenchido!");
+            }
+
+            //Verifica se existe o Id do TipoExame é válido.
             var RepositorioTipoExame = new TipoExameRepositorio();
-            if (RepositorioTipoExame.SelecionarPorId(entity.IdTipoExame) != null)
+            if (RepositorioTipoExame.SelecionarPorId(entity.IdTipoExame) == null)
             {
                 throw new DadoInvalidoException($"Não foi encontrado nenhum Tipo de Exame " +
                                                 $"com o ID: {entity.IdTipoExame}");
             }
 
+            //Verifica se existe o Id do atendimento é válido.
             var RepositorioAtendimento = new AtendimentoRepositorio();
-            if (RepositorioAtendimento.SelecionarPorId(entity.IdAtendimento) != null)
+            if (RepositorioAtendimento.SelecionarPorId(entity.IdAtendimento) == null)
             {
                 throw new DadoInvalidoException($"Não foi encontrado nenhuma Clínica" +
                                                 $" com o ID: {entity.IdTipoExame}");
             }
 
+            //Verifica se existe o Id da consulta é válido.
             var RepositorioConsulta = new ConsultaRepositorio();
-            if (RepositorioConsulta.SelecionarPorId(entity.IdConsulta) != null)
+            if (RepositorioConsulta.SelecionarPorId(entity.IdConsulta) == null)
             {
                 throw new DadoInvalidoException($"Não foi encontrado nenhuma Clínica" +
                                                 $" com o ID: {entity.IdConsulta}");
@@ -142,28 +161,39 @@ namespace Fatec.Clinica.Negocio
         }
 
         /// <summary>
-        /// Verifica se o ID do tipo de exame, do atentidmento e da consulta são válidos.
+        /// Verifica se os campos obrigátorios foram preenchidos e se o ID do tipo de exame,
+        /// do atentidmento e da consulta são válidos. Antes de alterar os dados do exame o Database.
         /// </summary>
+        /// <param name="id">Usado prara buscar o exame.</param>
         /// <param name="entity">Objeto com os dados do Exame.</param>
-        /// <returns>Insere um exame no Database ou é lançada uma exceção.</returns>
+        /// <returns>Seleciona o exame alterado no Database ou gera uma exceção.</returns>
         public Exame Alterar(int id, Exame entity)
         {
+            //Verifica se existem campos vazios.
+            if (CamposVazios.Verificar(entity))
+            {
+                throw new DadoInvalidoException("O campo DataHora é obrigatório e deve ser preenchido!");
+            }
+
+            //Verifica se existe o Id do TipoExame é válido.
             var RepositorioTipoExame = new TipoExameRepositorio();
-            if (RepositorioTipoExame.SelecionarPorId(entity.IdTipoExame) != null)
+            if (RepositorioTipoExame.SelecionarPorId(entity.IdTipoExame) == null)
             {
                 throw new DadoInvalidoException($"Não foi encontrado nenhum Tipo de Exame " +
                                                 $"com o ID: {entity.IdTipoExame}");
             }
 
+            //Verifica se existe o Id do atendimento é válido.
             var RepositorioAtendimento = new AtendimentoRepositorio();
-            if (RepositorioAtendimento.SelecionarPorId(entity.IdAtendimento) != null)
+            if (RepositorioAtendimento.SelecionarPorId(entity.IdAtendimento) == null)
             {
                 throw new DadoInvalidoException($"Não foi encontrado nenhuma Clínica" +
                                                 $" com o ID: {entity.IdTipoExame}");
             }
 
+            //Verifica se existe o Id da consulta é válido.
             var RepositorioConsulta = new ConsultaRepositorio();
-            if (RepositorioConsulta.SelecionarPorId(entity.IdConsulta) != null)
+            if (RepositorioConsulta.SelecionarPorId(entity.IdConsulta) == null)
             {
                 throw new DadoInvalidoException($"Não foi encontrado nenhuma Clínica" +
                                                 $" com o ID: {entity.IdConsulta}");
@@ -185,7 +215,7 @@ namespace Fatec.Clinica.Negocio
 
             if (obj == null)
             {
-                throw new NaoEncontradoException($"Não foi encontrado nenhum exame com este ID: {id}");
+                throw new NaoEncontradoException($"O ID: \"{id}\" não foi encontrado!");
             }
             _exameRepositorio.Deletar(obj.Id);
         }

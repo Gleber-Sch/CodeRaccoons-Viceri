@@ -12,9 +12,10 @@ namespace Fatec.Clinica.Negocio
     /// </summary>
     public class MedicoNegocio : INegocioBase<Medico>
     {
-
+        /// <summary>
+        /// Declara o repositório do Médico.
+        /// </summary>
         private readonly MedicoRepositorio _medicoRepositorio;
-
 
         /// <summary>
         /// Construtor para instanciar o repositório.
@@ -34,7 +35,7 @@ namespace Fatec.Clinica.Negocio
         }
 
         /// <summary>
-        /// Verifica se o medico com o ID indicado existe.
+        /// Verifica se existe algum médico com o ID indicado.
         /// </summary>
         /// <param name="id">Usado para buscar um médico no Database.</param>
         /// <returns>Seleciona um médico ou gera uma exceção.</returns>
@@ -59,7 +60,7 @@ namespace Fatec.Clinica.Negocio
 
             if (lista == null)
                 throw new NaoEncontradoException($"Não foi encontrado nenhum médico com esta epecialidade!" +
-                                                 $" (ID da Especialidade {id})");
+                                                 $" (ID da Especialidade: {id})");
             return lista;
         }
 
@@ -71,8 +72,10 @@ namespace Fatec.Clinica.Negocio
         public Medico SelecionarPorCrm(int crm)
         {
             var obj = _medicoRepositorio.SelecionarPorCrm(crm);
+
             if (obj == null)
-                throw new NaoEncontradoException($"Não foi encontrado nenhum médico com o CRM {crm}!");
+                throw new NaoEncontradoException($"Não foi encontrado nenhum médico com o CRM: {crm}");
+
             return obj;
         }
 
@@ -86,48 +89,67 @@ namespace Fatec.Clinica.Negocio
             var obj = _medicoRepositorio.SelecionarPorCpf(cpf);
 
             if (obj == null)
-                throw new NaoEncontradoException($"Não foi encontrado nenhum médico com o CPF {cpf}!");
+                throw new NaoEncontradoException($"Não foi encontrado nenhum médico com o CPF: {cpf}");
+
             return obj;
         }
 
         /// <summary>
-        /// Verifica se o CPF e o CRM já não estão cadastrados, se o CPF é válido e se existem campos obrigatórios
-        /// sem serem preenchidos. Antes de inserir um médico.
+        /// Verifica se o CPF, o CRM e o email já não estão cadastrados, se o CPF é válido, se existem campos obrigatórios
+        /// que não estão preenchidos, se os campos respeitam os limites de caracteres especificados no Database e se o
+        /// médico é maior de idade. Antes de inserir um médico.
         /// </summary>
-        /// <param name="entity">Objeto com os dados do médico a ser inserido.</param>
-        /// <returns>ID do médico inserido no Database ou exceção.</returns>
+        /// <param name="entity">Objeto com os dados do médico.</param>
+        /// <returns>ID do médico inserido no Database ou gera alguma exceção.</returns>
         public int Inserir(Medico entity)
         {
-
+            //Verifica se existem campos vazios.
             if (CamposVazios.Verificar(entity))
             {
-                throw new DadoInvalidoException($"Os seguintes campos são obrigatórios:" +
-                                                $"Nome, CPF, CRM, Telefone Movel, Gênero, " +
-                                                $"Data de Nascimento e Especialidade");
+                throw new DadoInvalidoException("Existem campos obrigatórios que não foram preenchidos!");
             }
 
+            //Verifica se nenhum campo do objeto entity excede o limite de caracteres estipulado no Database.
+            if (ExcedeLimiteDeCaracteres.Verificar(entity))
+            {
+                throw new DadoInvalidoException("Existem campos que excedem o limite de caracteres permitidos!");
+            }
 
+            //Verifica se o formato e a quantidade de caracteres do celular são válidos.
+            if (TelefoneValido.Verificar(TelefoneValido.LimparFormatacao(entity.Celular)) == false)
+            {
+                throw new DadoInvalidoException($"O número de celular:\"{entity.Celular}\" é inválido!");
+            }
+
+            //Verifica se o CRM já não foi cadastrado.
             if (_medicoRepositorio.SelecionarPorCrm(entity.Crm) != null)
-                throw new ConflitoException($"Já existe cadastrado o CRM {entity.Crm}!");
+            {
+                throw new ConflitoException($"O CRM: \"{entity.Crm}\", já foi cadastrado!");
+            }
 
+            //Verifica se o CPF é válido e se ele já foi cadastrado.
             if (ValidacaoCpf.Verificar(entity.Cpf) == false)
             {
-                throw new DadoInvalidoException($"O CPF {entity.Cpf} é invalido");
+                throw new DadoInvalidoException($"O CPF: \"{entity.Cpf}\" é invalido!");
             }
             else
             {
                 var cpfExistente = _medicoRepositorio.SelecionarPorCpf(entity.Cpf);
 
                 if (cpfExistente != null)
-                    throw new ConflitoException($"Já existe cadastrado o CPF {cpfExistente.Cpf}!");
+                {
+                    throw new ConflitoException($"O CPF: \"{entity.Cpf}\", já foi cadastrado!");
+                }
             }
 
+            //Verifica se o email já foi casatrado.
             if (_medicoRepositorio.SelecionarPorEmail(entity.Email) != null)
             {
-                throw new ConflitoException("O email já foi cadastrado");
+                throw new ConflitoException($"O email: \"{entity.Email}\", já foi cadastrado!");
             }
 
-            if (ValidacaoMaioridade.Verificar(entity.DataNasc) == false)
+            //Verifica se o médico é maior de idade.
+            if (Maioridade.Verificar(entity.DataNasc) == false)
             {
                 throw new DadoInvalidoException("Idade inválida - Apenas maiores de 18 anos podem se cadastrar");
             }
@@ -136,33 +158,43 @@ namespace Fatec.Clinica.Negocio
         }
 
         /// <summary>
-        /// Verifica se o CPF e o CRM já não estão cadastrados, se o CPF é válido e se existem campos obrigatórios
-        /// sem serem preenchidos. Antes de alterar os dados sobre um médico.
+        /// Verifica se o CPF, o CRM e o email já não estão cadastrados, se o CPF é válido, se existem campos obrigatórios
+        /// que não estão preenchidos, se os campos respeitam os limites de caracteres especificados no Database e se o
+        /// médico é maior de idade. Antes de alterar os dados sobre um médico.
         /// </summary>
         /// <param name="id">Usado para buscar o médico no Database.</param>
         /// <param name="entity">Objeto com as informações a serem alteradas.</param>
-        /// <returns>Médico selecionado do Database ou exceção.</returns>
+        /// <returns>Seleciona um médico do Database ou gera alguma exceção.</returns>
         public Medico Alterar(int id, Medico entity)
         {
-
+            //Verifica se existem campos vazios.
             if (CamposVazios.Verificar(entity))
             {
-                throw new DadoInvalidoException($"Os seguintes campos são obrigatórios:" +
-                                                $"Nome, CPF, CRM, Telefone Movel, Gênero, " +
-                                                $"Data de Nascimento e Especialidade");
+                throw new DadoInvalidoException("Existem campos obrigatórios que não foram preenchidos!");
             }
 
-            var crmExistente = _medicoRepositorio.SelecionarPorCrm(entity.Crm);
-
-            if (crmExistente != null)
+            //Verifica se nenhum campo do objeto entity excede o limite de caracteres estipulado no Database.
+            if (ExcedeLimiteDeCaracteres.Verificar(entity))
             {
-                if (crmExistente.Id != id)
-                    throw new ConflitoException($"Já existe cadastrado o CRM {crmExistente.Crm}, para outro médico!");
+                throw new DadoInvalidoException("Existem campos que excedem o limite de caracteres permitidos!");
             }
 
+            //Verifica se o formato e a quantidade de caracteres do celular são válidos.
+            if (TelefoneValido.Verificar(TelefoneValido.LimparFormatacao(entity.Celular)) == false)
+            {
+                throw new DadoInvalidoException($"O número de celular:\"{entity.Celular}\" é inválido!");
+            }
+
+            //Verifica se o CRM já não foi cadastrado.
+            if (_medicoRepositorio.SelecionarPorCrm(entity.Crm) != null)
+            {
+                throw new ConflitoException($"O CRM: \"{entity.Crm}\", já foi cadastrado!");
+            }
+
+            //Verifica se o CPF é válido e se ele já foi cadastrado.
             if (ValidacaoCpf.Verificar(entity.Cpf) == false)
             {
-                throw new DadoInvalidoException($"O CPF {entity.Cpf} é invalido!");
+                throw new DadoInvalidoException($"O CPF: \"{entity.Cpf}\" é invalido!");
             }
             else
             {
@@ -170,19 +202,20 @@ namespace Fatec.Clinica.Negocio
 
                 if (cpfExistente != null)
                 {
-                    if (cpfExistente.Id != id)
-                        throw new ConflitoException($"Já existe cadastrado o CPF {cpfExistente.Cpf}, para outro médico!");
+                    throw new ConflitoException($"O CPF: \"{entity.Cpf}\", já foi cadastrado!");
                 }
             }
 
+            //Verifica se o email já foi casatrado.
             if (_medicoRepositorio.SelecionarPorEmail(entity.Email) != null)
             {
-                throw new ConflitoException("O email já foi cadastrado");
+                throw new ConflitoException($"O email: \"{entity.Email}\", já foi cadastrado!");
             }
 
-            if (ValidacaoMaioridade.Verificar(entity.DataNasc) == false)
+            //Verifica se o médico é maior de idade.
+            if (Maioridade.Verificar(entity.DataNasc) == false)
             {
-                throw new DadoInvalidoException("Idade inválida - Apenas maiores de 18 anos, podem se cadastrar!");
+                throw new DadoInvalidoException("Idade inválida - Apenas maiores de 18 anos podem se cadastrar");
             }
 
             entity.Id = id;
@@ -201,7 +234,7 @@ namespace Fatec.Clinica.Negocio
 
             if (obj == null)
             {
-                throw new NaoEncontradoException($"Não foi encontrado nenhum Médico com este ID: {id}");
+                throw new NaoEncontradoException($"O ID: \"{id}\" não foi encontrado!");
             }
             _medicoRepositorio.Deletar(obj.Id);
         }

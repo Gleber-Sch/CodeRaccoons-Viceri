@@ -8,14 +8,17 @@ using Fatec.Clinica.Negocio.Validacoes;
 namespace Fatec.Clinica.Negocio
 {
     /// <summary>
-    /// Regras de Negócio sobre a consulta
+    /// Regras de Negócio sobre a consulta.
     /// </summary>
     public class ConsultaNegocio : INegocioBase<Consulta>
     {
+        /// <summary>
+        /// Declara o repositório da Consulta.
+        /// </summary>
         ConsultaRepositorio _consultaRepositorio;
 
         /// <summary>
-        /// Construtor que inicializa o repositório
+        /// Construtor que inicializa o repositório.
         /// </summary>
         public ConsultaNegocio()
         {
@@ -23,34 +26,34 @@ namespace Fatec.Clinica.Negocio
         }
 
         /// <summary>
-        /// Seleciona todas as consultas
+        /// Seleciona todas as consultas do Database.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Lista de consultas.</returns>
         public IEnumerable<Consulta> Selecionar()
         {
             return _consultaRepositorio.Selecionar();
         }
 
         /// <summary>
-        /// Verifica se a consulta com o ID indicado existe.
+        /// Verifica se existe alguma consulta com o ID indicado.
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">Usado para buscar uma consulta no Database.</param>
+        /// <returns>Seleciona uma consulta ou gera uma exceção.</returns>
         public Consulta SelecionarPorId(int id)
         {
             var obj = _consultaRepositorio.SelecionarPorId(id);
 
             if (obj == null)
                 throw new NaoEncontradoException($"Não foi encontrado uma consulta com o ID: {id}");
-
+                
             return obj;
         }
 
         /// <summary>
         /// Verifica se a consulta com o ID do paciente indicado existe.
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">Usado para buscar um paciente no Database.</param>
+        /// <returns>Seleciona um atendimento ou gera uma exceção.</returns>
         public Consulta SelecionarPorPaciente(int id)
         {
             var obj = _consultaRepositorio.SelecionarPorPaciente(id);
@@ -64,8 +67,8 @@ namespace Fatec.Clinica.Negocio
         /// <summary>
         /// Verifica se a consulta com o ID do medico indicado existe.
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">Usado para buscar um médico no Database.</param>
+        /// <returns>Seleciona um atendimento ou gera uma exceção.</returns>
         public Consulta SelecionarPorMedico(int id)
         {
             var obj = _consultaRepositorio.SelecionarPorMedico(id);
@@ -79,8 +82,8 @@ namespace Fatec.Clinica.Negocio
         /// <summary>
         /// Verifica se a consulta com o ID da clinica indicado existe.
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">Usado para buscar uma clínica no Database.</param>
+        /// <returns>Seleciona um atendimento ou gera uma exceção.</returns>
         public Consulta SelecionarPorClinica(int id)
         {
             var obj = _consultaRepositorio.SelecionarPorClinica(id);
@@ -92,20 +95,29 @@ namespace Fatec.Clinica.Negocio
         }
 
         /// <summary>
-        /// Verifica se os campos estão preenchidos, antes de inserir os dados da consulta
+        /// Verifica se existem campos obrigatórios não preenchidos, se o ID do atendimento e do paciente
+        /// são válidos e se os campos respeitam os limites de caracteres especificados no Database.
+        /// Antes de inserir uma clínica.
         /// </summary>
-        /// <param name="entity"></param>
-        /// <returns></returns>
+        /// <param name="entity">Objeto com os dados da consulta.</param>
+        /// <returns>ID da consulta inserida no Databse ou gera uma exceção.</returns>
         public int Inserir(Consulta entity)
         {
+            //Verifica se existem campos vazios.
             if (CamposVazios.Verificar(entity))
             {
-                throw new DadoInvalidoException("Todos os campos são obrigatórios");
+                throw new DadoInvalidoException("Existem campos obrigatórios que não foram preenchidos!");
+            }
+
+            //Verifica se nenhum campo do objeto entity excede o limite de caracteres estipulado no Database.
+            if (ExcedeLimiteDeCaracteres.Verificar(entity))
+            {
+                throw new DadoInvalidoException("Existem campos que excedem o limite de caracteres permitidos!");
             }
 
             //Verifica se o ID do atendimento é válido.
             var RepositorioMedico = new AtendimentoRepositorio();
-            if (RepositorioMedico.SelecionarPorId(entity.IdAtendimento) != null)
+            if (RepositorioMedico.SelecionarPorId(entity.IdAtendimento) == null)
             {
                 throw new DadoInvalidoException($"Não foi encontrado nenhum antendimento " +
                                                 $"com o ID: {entity.IdAtendimento}");
@@ -113,7 +125,7 @@ namespace Fatec.Clinica.Negocio
 
             //Verifica se o ID do paciente é válido.
             var RepositorioPaciente = new PacienteRepositorio();
-            if (RepositorioPaciente.SelecionarPorId(entity.IdPaciente) != null)
+            if (RepositorioPaciente.SelecionarPorId(entity.IdPaciente) == null)
             {
                 throw new DadoInvalidoException($"Não foi encontrado nenhum paciente " +
                                                 $"com o ID: {entity.IdAtendimento}");
@@ -123,21 +135,30 @@ namespace Fatec.Clinica.Negocio
         }
 
         /// <summary>
-        /// Verifica se os campos estão preenchidos, antes de alterar os dados da consulta
+        /// Verifica se existem campos obrigatórios não preenchidos, se o ID do atendimento e do paciente
+        /// são válidos e se os campos respeitam os limites de caracteres especificados no Database.
+        /// Antes de alterar os dados de uma clínica.
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="entity"></param>
-        /// <returns></returns>
+        /// <param name="entity">Objeto com os dados da consulta.</param>
+        /// <param name="id">Usado para buscar a consulta no Database.</param>
+        /// <returns>Seleciona a consulta alterada no Database ou gera uma exceção.</returns>
         public Consulta Alterar(int id, Consulta entity)
         {
+            //Verifica se existem campos vazios.
             if (CamposVazios.Verificar(entity))
             {
-                throw new DadoInvalidoException("Todos os campos são obrigatórios");
+                throw new DadoInvalidoException("Existem campos obrigatórios que não foram preenchidos!");
+            }
+
+            //Verifica se nenhum campo do objeto entity excede o limite de caracteres estipulado no Database.
+            if (ExcedeLimiteDeCaracteres.Verificar(entity))
+            {
+                throw new DadoInvalidoException("Existem campos que excedem o limite de caracteres permitidos!");
             }
 
             //Verifica se o ID do atendimento é válido.
             var RepositorioMedico = new AtendimentoRepositorio();
-            if (RepositorioMedico.SelecionarPorId(entity.IdAtendimento) != null)
+            if (RepositorioMedico.SelecionarPorId(entity.IdAtendimento) == null)
             {
                 throw new DadoInvalidoException($"Não foi encontrado nenhum antendimento " +
                                                 $"com o ID: {entity.IdAtendimento}");
@@ -145,7 +166,7 @@ namespace Fatec.Clinica.Negocio
 
             //Verifica se o ID do paciente é válido.
             var RepositorioPaciente = new PacienteRepositorio();
-            if (RepositorioPaciente.SelecionarPorId(entity.IdPaciente) != null)
+            if (RepositorioPaciente.SelecionarPorId(entity.IdPaciente) == null)
             {
                 throw new DadoInvalidoException($"Não foi encontrado nenhum paciente " +
                                                 $"com o ID: {entity.IdAtendimento}");
@@ -160,13 +181,13 @@ namespace Fatec.Clinica.Negocio
         /// <summary>
         /// Verifica se a consulta existe no Database antes de deleta-lo.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Usado para buscar a consulta no Database.</param>
         public void Deletar(int id)
         {
             var obj = _consultaRepositorio.SelecionarPorId(id);
 
             if (obj == null)
-                throw new NaoEncontradoException($"O ID: {id} não foi encontrado");
+                throw new NaoEncontradoException($"O ID: \"{id}\" não foi encontrado!");
 
             _consultaRepositorio.Deletar(id);
         }
