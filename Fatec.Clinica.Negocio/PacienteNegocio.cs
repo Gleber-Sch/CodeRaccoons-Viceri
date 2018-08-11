@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using Fatec.Clinica.Dado;
 using Fatec.Clinica.Negocio.Validacoes;
 using Fatec.Clinica.Negocio.Abstracao;
@@ -14,9 +12,10 @@ namespace Fatec.Clinica.Negocio
     /// </summary>
     public class PacienteNegocio : INegocioBase<Paciente>
     {
-
+        /// <summary>
+        /// Declara o repositório do Paciente.
+        /// </summary>
         private readonly PacienteRepositorio _pacienteRepositorio;
-
 
         /// <summary>
         /// Construtor para instanciar o repositório.
@@ -25,7 +24,6 @@ namespace Fatec.Clinica.Negocio
         {
             _pacienteRepositorio = new PacienteRepositorio();
         }
-
 
         /// <summary>
         /// Seleciona todas os Pacientes do Database.
@@ -37,7 +35,7 @@ namespace Fatec.Clinica.Negocio
         }
 
         /// <summary>
-        /// Verifica se o paciente com o ID indicado existe.
+        /// Verifica se existe o paciente com o ID indicado.
         /// </summary>
         /// <param name="id">Usado para buscar um paciente no Database.</param>
         /// <returns>Seleciona um paciente ou gera uma exceção.</returns>
@@ -49,7 +47,6 @@ namespace Fatec.Clinica.Negocio
                 throw new NaoEncontradoException($"Não foi encontrado nenhum paciente com o ID: {id}");
             return obj;
         }
-
 
         /// <summary>
         /// Verifica se existe o paciente com o CPF indicado.
@@ -66,65 +63,42 @@ namespace Fatec.Clinica.Negocio
         }
 
         /// <summary>
-        /// Verifica se o CPF já não esta cadastrado e se ele é válido, e se existem campos obrigatórios
-        /// sem serem preenchidos. Antes de inserir um paciente.
+        /// Verifica se o CPF e o email já não estão cadastrados, se o CPF é válido, se existem campos obrigatórios
+        /// que não estão preenchidos, se os campos respeitam os limites de caracteres especificados no Database e se o
+        /// paciente é maior de idade. Antes de inserir um paciente.
         /// </summary>
-        /// <param name="entity">Objeto com os dados do paciente a ser inserido.</param>
-        /// <returns>ID do paciente inserido no Database ou exceção.</returns>
+        /// <param name="entity">Objeto com os dados do paciente.</param>
+        /// <returns>ID do paciente inserido no Database ou gera alguma exceção.</returns>
         public int Inserir(Paciente entity)
         {
-
+            //Verifica se existem campos vazios.
             if (CamposVazios.Verificar(entity))
             {
-                throw new DadoInvalidoException($"Os seguintes campos são obrigatórios:" +
-                                                $"Nome, CPF, Telefone Movel, Gênero e Data de Nascimento");
+                throw new DadoInvalidoException("Existem campos obrigatórios que não foram preenchidos!");
             }
 
+            //Verifica se nenhum campo do objeto entity excede o limite de caracteres estipulado no Database.
+            if (ExcedeLimiteDeCaracteres.Verificar(entity))
+            {
+                throw new DadoInvalidoException("Existem campos que excedem o limite de caracteres permitidos!");
+            }
+
+            //Verifica se o formato e a quantidade de caracteres do celular são válidos.
+            if (TelefoneValido.Verificar(TelefoneValido.LimparFormatacao(entity.Celular)) == false)
+            {
+                throw new DadoInvalidoException($"O número de celular:\"{entity.Celular}\" é inválido!");
+            }
+
+            //Verifica se o formato e a quantidade de caracteres do telefone residencial são válidos.
+            if (TelefoneValido.Verificar(TelefoneValido.LimparFormatacao(entity.TelefoneRes)) == false)
+            {
+                throw new DadoInvalidoException($"O número de telefone residencial:\"{entity.TelefoneRes}\" é inválido!");
+            }
+
+            //Verifica se o CPF é válido e se ele já foi cadastrado.
             if (ValidacaoCpf.Verificar(entity.Cpf) == false)
             {
-                throw new DadoInvalidoException($"O CPF {entity.Cpf} é invalido");
-            }
-            else
-            {
-                var cpfExistente = _pacienteRepositorio.SelecionarPorCpf(entity.Cpf);
-
-                if (cpfExistente != null)
-                    throw new ConflitoException($"Já existe cadastrado o CPF {cpfExistente.Cpf}!");
-            }
-
-            if (_pacienteRepositorio.SelecionarPorEmail(entity.Email) != null)
-            {
-                throw new ConflitoException("O email já foi cadastrado");
-            }
-
-            if (ValidacaoMaioridade.Verificar(entity.DataNasc) == false)
-            {
-                throw new DadoInvalidoException("Idade inválida - Apenas maiores de 18 anos!!");
-            }
-
-            return _pacienteRepositorio.Inserir(entity);
-        }
-
-
-        /// <summary>
-        /// Verifica se o CPF já não esta cadastrado e se ele é válido, e se existem campos obrigatórios
-        /// sem serem preenchidos. Antes de alterar os dados sobre um paciente.
-        /// </summary>
-        /// <param name="id">Usado para buscar o paciente.</param>
-        /// <param name="entity">Objeto com as informações a serem alteradas.</param>
-        /// <returns>Paciente selecionado do Database ou exceção.</returns>
-        public Paciente Alterar(int id, Paciente entity)
-        {
-
-            if (CamposVazios.Verificar(entity))
-            {
-                throw new DadoInvalidoException($"Os seguintes campos são obrigatórios:" +
-                                                $"Nome, CPF, Telefone Movel, Gênero e Data de Nascimento");
-            }
-
-            if (ValidacaoCpf.Verificar(entity.Cpf) == false)
-            {
-                throw new DadoInvalidoException($"O CPF {entity.Cpf} é invalido!");
+                throw new DadoInvalidoException($"O CPF: \"{entity.Cpf}\" é invalido!");
             }
             else
             {
@@ -132,20 +106,85 @@ namespace Fatec.Clinica.Negocio
 
                 if (cpfExistente != null)
                 {
-                    if (cpfExistente.Id != id)
-                        throw new ConflitoException($"Já existe cadastrado o CPF {cpfExistente.Cpf}!");
+                    throw new ConflitoException($"O CPF: \"{entity.Cpf}\", já foi cadastrado!");
                 }
-
             }
 
+            //Verifica se o email já foi casatrado.
             if (_pacienteRepositorio.SelecionarPorEmail(entity.Email) != null)
             {
-                throw new ConflitoException("O email já foi cadastrado");
+                throw new ConflitoException($"O email: \"{entity.Email}\", já foi cadastrado!");
             }
 
-            if (ValidacaoMaioridade.Verificar(entity.DataNasc) == false)
+            //Verifica se o médico é maior de idade.
+            if (Maioridade.Verificar(entity.DataNasc) == false)
             {
-                throw new DadoInvalidoException("Idade inválida - Apenas maiores de 18 anos!!");
+                throw new DadoInvalidoException("Idade inválida - Apenas maiores de 18 anos podem se cadastrar");
+            }
+
+            return _pacienteRepositorio.Inserir(entity);
+        }
+
+
+        /// <summary>
+        /// Verifica se o CPF e o email já não estão cadastrados, se o CPF é válido, se existem campos obrigatórios
+        /// que não estão preenchidos, se os campos respeitam os limites de caracteres especificados no Database e se o
+        /// paciente é maior de idade. Antes de alterar os dados de um paciente.
+        /// </summary>
+        /// <param name="id">Usado para buscar o paciente.</param>
+        /// <param name="entity">Objeto com as informações a serem alteradas.</param>
+        /// <returns>Seleciona um paciente do Database ou gera alguma exceção.</returns>
+        public Paciente Alterar(int id, Paciente entity)
+        {
+            //Verifica se existem campos vazios.
+            if (CamposVazios.Verificar(entity))
+            {
+                throw new DadoInvalidoException("Existem campos obrigatórios que não foram preenchidos!");
+            }
+
+            //Verifica se nenhum campo do objeto entity excede o limite de caracteres estipulado no Database.
+            if (ExcedeLimiteDeCaracteres.Verificar(entity))
+            {
+                throw new DadoInvalidoException("Existem campos que excedem o limite de caracteres permitidos!");
+            }
+
+            //Verifica se o formato e a quantidade de caracteres do celular são válidos.
+            if (TelefoneValido.Verificar(TelefoneValido.LimparFormatacao(entity.Celular)) == false)
+            {
+                throw new DadoInvalidoException($"O número de celular:\"{entity.Celular}\" é inválido!");
+            }
+
+            //Verifica se o formato e a quantidade de caracteres do telefone residencial são válidos.
+            if (TelefoneValido.Verificar(TelefoneValido.LimparFormatacao(entity.TelefoneRes)) == false)
+            {
+                throw new DadoInvalidoException($"O número de telefone residencial:\"{entity.TelefoneRes}\" é inválido!");
+            }
+
+            //Verifica se o CPF é válido e se ele já foi cadastrado.
+            if (ValidacaoCpf.Verificar(entity.Cpf) == false)
+            {
+                throw new DadoInvalidoException($"O CPF: \"{entity.Cpf}\" é invalido!");
+            }
+            else
+            {
+                var cpfExistente = _pacienteRepositorio.SelecionarPorCpf(entity.Cpf);
+
+                if (cpfExistente != null)
+                {
+                    throw new ConflitoException($"O CPF: \"{entity.Cpf}\", já foi cadastrado!");
+                }
+            }
+
+            //Verifica se o email já foi casatrado.
+            if (_pacienteRepositorio.SelecionarPorEmail(entity.Email) != null)
+            {
+                throw new ConflitoException($"O email: \"{entity.Email}\", já foi cadastrado!");
+            }
+
+            //Verifica se o médico é maior de idade.
+            if (Maioridade.Verificar(entity.DataNasc) == false)
+            {
+                throw new DadoInvalidoException("Idade inválida - Apenas maiores de 18 anos podem se cadastrar");
             }
 
             entity.Id = id;
@@ -164,7 +203,7 @@ namespace Fatec.Clinica.Negocio
 
             if (obj == null)
             {
-                throw new NaoEncontradoException($"Não foi encontrado um Paciente com este ID: {id}");
+                throw new NaoEncontradoException($"O ID: \"{id}\" não foi encontrado!");
             }
             _pacienteRepositorio.Deletar(obj.Id);
         }

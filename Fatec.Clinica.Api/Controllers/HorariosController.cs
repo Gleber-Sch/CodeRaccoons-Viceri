@@ -17,7 +17,7 @@ namespace Fatec.Clinica.Api.Controllers
 
         public HorariosController()
         {
-           HorariosNegocio _horariosNegocio = new HorariosNegocio();
+            HorariosNegocio _horariosNegocio = new HorariosNegocio();
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace Fatec.Clinica.Api.Controllers
         {
             var obj = new Horario()
             {
-                DiaHora= input.DiaHora,
+                DiaHora = input.DiaHora,
                 IdClinica = input.IdCLinica
 
             };
@@ -148,6 +148,7 @@ namespace Fatec.Clinica.Api.Controllers
             _horariosNegocio.Deletar(id);
             return Ok();
         }
+
         /// <summary>
         /// 
         /// </summary>

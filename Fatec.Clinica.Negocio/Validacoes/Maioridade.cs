@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Fatec.Clinica.Negocio.Validacoes
 {
-    public class ValidacaoMaioridade
+    public class Maioridade
     {
         /// <summary>
         /// Verifica se o usuário é maior de idade.

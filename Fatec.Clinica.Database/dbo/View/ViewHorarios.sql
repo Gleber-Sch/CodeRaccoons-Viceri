@@ -1,8 +1,5 @@
 ﻿/* Cria uma View para Exebição dos Horarios De cada clinica */
 
-
-
-
 CREATE VIEW ViewHorarios AS
 SELECT Clinica.Nome, Horarios.DiaHora, Horarios.Tipoatt
 FROM Horarios

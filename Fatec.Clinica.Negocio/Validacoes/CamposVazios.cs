@@ -102,10 +102,10 @@ namespace Fatec.Clinica.Negocio.Validacoes
 
         #region Verificar se existem campos vazios na inserção ou alteração de um Atendimento
         /// <summary>
-        /// Verifica se os campos obrigátorios não foram preenchidos.
+        /// Verifica se os campos obrigátorios foram preenchidos.
         /// </summary>
         /// <param name="entity">Objeto com os campos a serem verificados.</param>
-        /// <returns>True se os campos obrigátorios não foram preenchidos ou False se eles foram.</returns>
+        /// <returns>True se os campos obrigátorios estiverem vazios ou False se não estiverem.</returns>
         public static bool Verificar(Atendimento entity)
         {
             if (String.IsNullOrEmpty(Convert.ToString(entity.IdClinica)) ||
@@ -113,6 +113,7 @@ namespace Fatec.Clinica.Negocio.Validacoes
             {
                 return true;
             }
+
             return false;
         }
         #endregion
@@ -122,7 +123,7 @@ namespace Fatec.Clinica.Negocio.Validacoes
         /// Verifica se os campos obrigátorios não foram preenchidos.
         /// </summary>
         /// <param name="entity">Objeto com os campos a serem verificados.</param>
-        /// <returns>True se os campos obrigátorios não foram preenchidos ou False se eles foram.</returns>
+        /// <returns>True se os campos obrigátorios estiverem vazios ou False se não estiverem.</returns>
         public static bool Verificar(Consulta entity)
         {
             if (String.IsNullOrEmpty(Convert.ToString(entity.IdAtendimento)) ||
@@ -154,18 +155,19 @@ namespace Fatec.Clinica.Negocio.Validacoes
 
         #region Verificar se existem campos vazios na inserção ou alteração de uma Clinica
         /// <summary>
-        /// Verifica se os campos obrigátorios não foram preenchidos.
+        /// Verifica se os campos obrigátorios foram preenchidos.
         /// </summary>
         /// <param name="entity">Objeto com os campos a serem verificados.</param>
-        /// <returns>True se os campos obrigátorios não foram preenchidos ou False se eles foram.</returns>
+        /// <returns>True se os campos obrigátorios estiverem vazios ou False se não estiverem.</returns>
         public static bool Verificar(Clinicas entity)
         {
-            if (string.IsNullOrEmpty(entity.Nome) ||
+            if (string.IsNullOrEmpty(entity.Nome) || 
                 string.IsNullOrEmpty(entity.Cnpj) ||
                 string.IsNullOrEmpty(entity.TelefoneCom))
             {
                 return true;
             }
+
             return false;
         }
         #endregion
@@ -185,5 +187,6 @@ namespace Fatec.Clinica.Negocio.Validacoes
             return false;
         }
         #endregion
+
     }
 }
