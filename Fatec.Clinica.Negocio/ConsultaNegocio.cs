@@ -12,9 +12,13 @@ namespace Fatec.Clinica.Negocio
     /// </summary>
     public class ConsultaNegocio : INegocioBase<Consulta>
     {
+<<<<<<< HEAD
         /// <summary>
         /// Declara o repositório da Consulta.
         /// </summary>
+=======
+
+>>>>>>> d8eb6ba792e7290201585f55e2509d0c0b656994
         ConsultaRepositorio _consultaRepositorio;
 
         /// <summary>
@@ -105,6 +109,7 @@ namespace Fatec.Clinica.Negocio
         {
             //Verifica se existem campos vazios.
             if (CamposVazios.Verificar(entity))
+<<<<<<< HEAD
             {
                 throw new DadoInvalidoException("Existem campos obrigatórios que não foram preenchidos!");
             }
@@ -130,6 +135,9 @@ namespace Fatec.Clinica.Negocio
                 throw new DadoInvalidoException($"Não foi encontrado nenhum paciente " +
                                                 $"com o ID: {entity.IdAtendimento}");
             }
+=======
+                throw new DadoInvalidoException("Todos os campos são obrigatórios");
+>>>>>>> d8eb6ba792e7290201585f55e2509d0c0b656994
 
             return _consultaRepositorio.Inserir(entity);
         }
@@ -146,6 +154,7 @@ namespace Fatec.Clinica.Negocio
         {
             //Verifica se existem campos vazios.
             if (CamposVazios.Verificar(entity))
+<<<<<<< HEAD
             {
                 throw new DadoInvalidoException("Existem campos obrigatórios que não foram preenchidos!");
             }
@@ -171,6 +180,9 @@ namespace Fatec.Clinica.Negocio
                 throw new DadoInvalidoException($"Não foi encontrado nenhum paciente " +
                                                 $"com o ID: {entity.IdAtendimento}");
             }
+=======
+                throw new DadoInvalidoException("Todos os campos são obrigatórios");
+>>>>>>> d8eb6ba792e7290201585f55e2509d0c0b656994
 
             entity.Id = id;
             _consultaRepositorio.Alterar(entity);
