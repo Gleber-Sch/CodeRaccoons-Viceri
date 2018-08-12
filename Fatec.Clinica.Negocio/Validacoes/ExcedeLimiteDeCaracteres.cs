@@ -105,10 +105,9 @@ namespace Fatec.Clinica.Negocio.Validacoes
         {
             if (entity.Nome.Length > 50 ||
                 entity.Cpf.Length != 11 ||
-                entity.Crm > 10 ||
                 entity.Email.Length > 50 ||
                 entity.Senha.Length >20 ||
-                Convert.ToString(entity.Genero).Length > 1 ||
+                entity.Genero.Length > 1 ||
                 entity.Celular.Length > 11)
             {
                 return true;
@@ -133,7 +132,7 @@ namespace Fatec.Clinica.Negocio.Validacoes
                 entity.Cpf.Length != 11 ||
                 entity.Email.Length > 50 ||
                 entity.Senha.Length > 20 ||
-                Convert.ToString(entity.Genero).Length  > 1 ||
+                entity.Genero.Length  > 1 ||
                 entity.Celular.Length > 11 ||
                 entity.TelefoneRes.Length > 10)
             {

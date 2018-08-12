@@ -104,6 +104,9 @@ namespace Fatec.Clinica.Negocio
         /// <returns>ID do médico inserido no Database ou gera alguma exceção.</returns>
         public int Inserir(Medico entity)
         {
+            //Atera o status do médico que será enserido para TRUE.
+            entity.StatusAtividade = true;
+
             //Verifica se existem campos vazios.
             if (CamposVazios.Verificar(entity))
             {

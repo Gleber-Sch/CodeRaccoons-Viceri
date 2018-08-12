@@ -9,9 +9,9 @@ namespace Fatec.Clinica.Negocio.Validacoes
         /// </summary>
         /// <param name="genero">Dado a ser convertido.</param>
         /// <returns>gênero em caixa alta.</returns>
-        public static char CaixaAlta(char genero)
+        public static string CaixaAlta(string genero)
         {
-            genero = Convert.ToChar(Convert.ToString(genero).ToUpper());
+            genero = genero.ToUpper();
             return genero;
         }
         /// <summary>
@@ -20,10 +20,10 @@ namespace Fatec.Clinica.Negocio.Validacoes
         /// <remarks>Use somente após o método CaixaAlta.</remarks>
         /// <param name="genero">Dado a ser comparado.</param>
         /// <returns>TRUE se o gênero for válido ou FALSE caso ele seja inválido.</returns>
-        public static bool Verificar(char genero)
+        public static bool Verificar(string genero)
         {
-            if(!(Convert.ToString(genero).Equals('F')) &&
-               !(Convert.ToString(genero).Equals('M')))
+            if(!(genero.Equals('F')) &&
+               !(genero.Equals('M')))
             {
                 return false;
             }

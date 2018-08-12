@@ -16,9 +16,10 @@ namespace Fatec.Clinica.Negocio.Validacoes
             if (String.IsNullOrWhiteSpace(entity.Nome) || 
                 String.IsNullOrWhiteSpace(entity.Cpf) ||
                 String.IsNullOrWhiteSpace(Convert.ToString(entity.Crm)) ||
+                String.IsNullOrWhiteSpace(Convert.ToString(entity.CrmEstado)) ||
                 String.IsNullOrWhiteSpace(entity.Celular) ||
                 String.IsNullOrWhiteSpace(Convert.ToString(entity.IdEspecialidade)) ||
-                String.IsNullOrWhiteSpace(Convert.ToString(entity.Genero)) ||
+                String.IsNullOrWhiteSpace(entity.Genero) ||
                 String.IsNullOrWhiteSpace(entity.Email) ||
                 String.IsNullOrWhiteSpace(entity.Senha) ||
                 String.IsNullOrWhiteSpace(Convert.ToString(entity.StatusAtividade)) ||
@@ -41,7 +42,7 @@ namespace Fatec.Clinica.Negocio.Validacoes
             if (String.IsNullOrWhiteSpace(entity.Nome) || 
                 String.IsNullOrWhiteSpace(entity.Cpf) ||
                 String.IsNullOrWhiteSpace(entity.Celular) ||
-                String.IsNullOrWhiteSpace(Convert.ToString(entity.Genero)) ||
+                String.IsNullOrWhiteSpace(entity.Genero) ||
                 String.IsNullOrWhiteSpace(entity.Email) ||
                 String.IsNullOrWhiteSpace(entity.Senha) ||
                 String.IsNullOrWhiteSpace(entity.DataNasc.ToString()))

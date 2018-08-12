@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Fatec.Clinica.Api.Model
 {
@@ -11,11 +8,11 @@ namespace Fatec.Clinica.Api.Model
         public string Cpf { get; set; }
         public string Celular { get; set; }
         public DateTime DataNasc { get; set; }
-        public char Genero { get; set; }
+        public string Genero { get; set; }
         public string Email { get; set; }
         public string Senha { get; set; }
         public int Crm { get; set; }
+        public string CrmEstado { get; set; }
         public int IdEspecialidade { get; set; }
-        public bool StatusAtividade { get; set; }
     }
 }

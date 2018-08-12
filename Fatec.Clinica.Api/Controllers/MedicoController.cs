@@ -114,11 +114,11 @@ namespace Fatec.Clinica.Api.Controllers
                 Celular = input.Celular,
                 Email = input.Email,
                 Crm = input.Crm,
+                CrmEstado = input.CrmEstado,
                 DataNasc = input.DataNasc,
                 Genero = input.Genero,
                 IdEspecialidade = input.IdEspecialidade,
-                Senha = input.Senha,
-                StatusAtividade = true
+                Senha = input.Senha
             };
 
             var idMedico = _medicoNegocio.Inserir(obj);
@@ -149,8 +149,7 @@ namespace Fatec.Clinica.Api.Controllers
                 DataNasc = input.DataNasc,
                 Genero = input.Genero,
                 IdEspecialidade = input.IdEspecialidade,
-                Senha = input.Senha,
-                StatusAtividade = input.StatusAtividade
+                Senha = input.Senha
             };
 
             var obj = _medicoNegocio.Alterar(id, objMedico);
