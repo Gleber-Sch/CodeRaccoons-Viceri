@@ -18,8 +18,7 @@ namespace Fatec.Clinica.Negocio.Validacoes
                 String.IsNullOrEmpty(Convert.ToString(entity.Crm)) ||
                 String.IsNullOrEmpty(entity.Celular) ||
                 String.IsNullOrEmpty(Convert.ToString(entity.IdEspecialidade)) ||
-                String.IsNullOrEmpty(Convert.ToString(entity.Genero)) ||
-                entity.DataNasc == null)
+                String.IsNullOrEmpty(Convert.ToString(entity.Genero)))
             {
                 return true;
             }
@@ -38,8 +37,7 @@ namespace Fatec.Clinica.Negocio.Validacoes
             if (String.IsNullOrEmpty(entity.Nome) || 
                 String.IsNullOrEmpty(entity.Cpf) ||
                 String.IsNullOrEmpty(entity.Celular) ||
-                String.IsNullOrEmpty(Convert.ToString(entity.Genero)) ||
-                entity.DataNasc == null)
+                String.IsNullOrEmpty(Convert.ToString(entity.Genero)))
             {
                 return true;
             }

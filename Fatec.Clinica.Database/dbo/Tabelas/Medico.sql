@@ -5,7 +5,6 @@
 [Crm] VARCHAR(10) NOT NULL,
 [Email] VARCHAR(50) NOT NULL,
 [Senha] VARCHAR(20) NOT NULL,
-[DataNasc] DATE NOT NULL,
 [StatusAtividade] BIT NOT NULL,
 [Genero] CHAR(1) NOT NULL,
 [Celular] VARCHAR(11) NOT NULL,

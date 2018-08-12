@@ -3,7 +3,6 @@
 [Nome] VARCHAR(50) NOT NULL,
 [Cpf] VARCHAR(11) NOT NULL,
 [Email] VARCHAR(50) NOT NULL,
-[DataNasc] DATE NOT NULL,
 [Genero] CHAR(1) CHECK ([GENERO] IN ('M', 'F')) NOT NULL,
 [Celular] VARCHAR(11) NOT NULL
 )

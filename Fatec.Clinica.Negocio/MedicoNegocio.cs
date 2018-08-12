@@ -148,12 +148,6 @@ namespace Fatec.Clinica.Negocio
                 throw new ConflitoException($"O email: \"{entity.Email}\", já foi cadastrado!");
             }
 
-            //Verifica se o médico é maior de idade.
-            if (Maioridade.Verificar(entity.DataNasc) == false)
-            {
-                throw new DadoInvalidoException("Idade inválida - Apenas maiores de 18 anos podem se cadastrar");
-            }
-
             return _medicoRepositorio.Inserir(entity);
         }
 
@@ -210,12 +204,6 @@ namespace Fatec.Clinica.Negocio
             if (_medicoRepositorio.SelecionarPorEmail(entity.Email) != null)
             {
                 throw new ConflitoException($"O email: \"{entity.Email}\", já foi cadastrado!");
-            }
-
-            //Verifica se o médico é maior de idade.
-            if (Maioridade.Verificar(entity.DataNasc) == false)
-            {
-                throw new DadoInvalidoException("Idade inválida - Apenas maiores de 18 anos podem se cadastrar");
             }
 
             entity.Id = id;
