@@ -46,12 +46,12 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que seleciona um paciente por Cpf
+        /// Método que seleciona um paciente por Cpf.
         /// </summary>
         /// <param name="cpf"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("{cpf}", Name = "PacienteGetCpf")]
+        [Route("Cpf/{cpf}", Name = "PacienteGetCpf")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Paciente), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult GetCpf(string cpf)
@@ -75,7 +75,6 @@ namespace Fatec.Clinica.Api.Controllers
                 Nome = input.Nome,
                 Cpf = input.Cpf,
                 Celular = input.Celular,
-                DataNasc = input.DataNasc,
                 Email = input.Email,
                 Genero = input.Genero,
                 Senha = input.Senha,
@@ -105,7 +104,6 @@ namespace Fatec.Clinica.Api.Controllers
                 Nome = input.Nome,
                 Cpf = input.Cpf,
                 Celular = input.Celular,
-                DataNasc = input.DataNasc,
                 Email = input.Email,
                 Genero = input.Genero,
                 Senha = input.Senha,

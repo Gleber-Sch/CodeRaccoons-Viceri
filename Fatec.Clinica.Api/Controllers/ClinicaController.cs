@@ -83,6 +83,7 @@ namespace Fatec.Clinica.Api.Controllers
         {
             var obj = new Clinicas()
             {
+                Email = input.Email,
                 Nome = input.Nome,
                 Cnpj = input.Cnpj,
                 TelefoneCom = input.TelefoneCom,
@@ -109,6 +110,7 @@ namespace Fatec.Clinica.Api.Controllers
         {
             var obj = new Clinicas()
             {
+                Email = input.Email,
                 Nome = input.Nome,
                 Cnpj = input.Cnpj,
                 TelefoneCom = input.TelefoneCom,

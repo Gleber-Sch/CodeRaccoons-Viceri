@@ -333,69 +333,6 @@
             <param name="id">Usado para selecionar o exame a ser deletado.</param>
             <returns></returns>
         </member>
-        <member name="M:Fatec.Clinica.Api.Controllers.HorariosController.Get">
-            <summary>
-            Método que obtêm todos os Horarios.
-            </summary>
-            <returns>Todos os Horarios registrados.</returns>
-        </member>
-        <member name="M:Fatec.Clinica.Api.Controllers.HorariosController.GetId(System.Int32)">
-            <summary>
-            Método que obtêm um Horario.
-            </summary>
-            <param name="id">Usado para buscar o Horario.</param>
-            <returns>Horario selecionado.</returns>
-        </member>
-        <member name="M:Fatec.Clinica.Api.Controllers.HorariosController.GetHorarioDia(System.DateTime)">
-            <summary>
-            Método que obtêm todos os horarios de uma Clinica do dia informado.
-            </summary>
-            <param name="id">Usado para buscar o Horario.</param>
-            <returns>Todos os Horarios selecionado.</returns>
-        </member>
-        <member name="M:Fatec.Clinica.Api.Controllers.HorariosController.GetHorarioHora(System.DateTime)">
-            <summary>
-            Método que obtêm os horarios de uma clinica apartir da hora informada.
-            </summary>
-            <param name="id">Usado para buscar o horario.</param>
-            <returns>Todos os horarios selecionado.</returns>
-        </member>
-        <member name="M:Fatec.Clinica.Api.Controllers.HorariosController.GetHorarioClinica(System.Int32)">
-            <summary>
-            Método que obtêm todos os horarios de uma clinica.
-            </summary>
-            <param name="id">Usado para buscar o horario.</param>
-            <returns>Todos os horarios selecionado.</returns>
-        </member>
-        <member name="M:Fatec.Clinica.Api.Controllers.HorariosController.Post(Fatec.Clinica.Api.Model.HorarioInput)">
-            <summary>
-            Método que insere um exame.
-            </summary>
-            <param name="input">Objeto com os dados do exame.</param>
-            <returns>ID criado para o exame inserido.</returns>
-        </member>
-        <member name="M:Fatec.Clinica.Api.Controllers.HorariosController.Put(System.Int32,Fatec.Clinica.Api.Model.HorarioInput)">
-            <summary>
-            Método que altera os dados de um horario.
-            </summary>
-            <param name="id">Usado para buscar o horario.</param>
-            <param name="input">Objeto com os dados do horario.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Fatec.Clinica.Api.Controllers.HorariosController.Delete(System.Int32)">
-            <summary>
-            
-            </summary>
-            <param name="id">Id para selecionar o horario a ser removido</param>
-            <returns></returns>
-        </member>
-        <member name="M:Fatec.Clinica.Api.Controllers.HorariosController.Delete(System.DateTime)">
-            <summary>
-            
-            </summary>
-            <param name="DiaHora">datetime para selecionar o dia e o horario a ser removido</param>
-            <returns></returns>
-        </member>
         <member name="T:Fatec.Clinica.Api.Controllers.MedicoController">
             <summary>
             
@@ -482,7 +419,7 @@
         </member>
         <member name="M:Fatec.Clinica.Api.Controllers.PacienteController.GetCpf(System.String)">
             <summary>
-            Método que seleciona um paciente por Cpf
+            Método que seleciona um paciente por Cpf.
             </summary>
             <param name="cpf"></param>
             <returns></returns>

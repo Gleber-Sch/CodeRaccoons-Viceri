@@ -21,7 +21,7 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var lista = connection.Query<Paciente>($"SELECT P.Id, P.Nome, P.Cpf, P.Email, P.DataNasc," +
+                var lista = connection.Query<Paciente>($"SELECT P.Id, P.Nome, P.Cpf, P.Email," +
                                                        $"P.Genero, P.Celular, P.TelefoneRes " +
                                                        $"FROM [Paciente] P ");
                 return lista;
@@ -38,7 +38,7 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 var obj = connection.QueryFirstOrDefault<Paciente>($"SELECT P.Id, P.Nome, P.Cpf, P.Email, " +
-                                                                   $"P.DataNasc, P.Genero, P.Celular P.TelefoneRes " +
+                                                                   $"P.Genero, P.Celular, P.TelefoneRes " +
                                                                    $"FROM [Paciente] P " +
                                                                    $"WHERE P.Id = {id}");
 
@@ -56,7 +56,7 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 var obj = connection.QueryFirstOrDefault<Paciente>($"SELECT P.Id, P.Nome, P.Cpf, P.Email," +
-                                                                 $"P.DataNasc, P.Genero, P.Celular P.TelefoneRes " +
+                                                                 $"P.Genero, P.Celular, P.TelefoneRes " +
                                                                  $"FROM [Paciente] P " +
                                                                  $"WHERE Cpf = '{cpf}'");
                 return obj;
@@ -68,7 +68,7 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 var obj = connection.QueryFirstOrDefault<Paciente>($"SELECT P.Id, P.Nome, P.Cpf, P.Celular," +
-                                                                 $"P.Email, P.DataNasc, P.Genero, P.TelefoneRes " +
+                                                                 $"P.Email, P.Genero, P.TelefoneRes " +
                                                                  $"FROM [Paciente] P " +
                                                                  $"WHERE Email = '{email}'");
                 return obj;
@@ -86,11 +86,11 @@ namespace Fatec.Clinica.Dado
             {
                 return connection.QuerySingle<int>($"DECLARE @ID int;" +
                                                    $"INSERT INTO [Paciente] " +
-                                                   $"(Nome, Cpf, Email, DataNasc, Genero, Celular, TelefoneRes) " +
+                                                   $"(Nome, Cpf, Email, Senha, Genero, Celular, TelefoneRes) " +
                                                    $"VALUES ('{entity.Nome}'," +
                                                    $" '{entity.Cpf}'," +
                                                    $" '{entity.Email}'," +
-                                                   $" '{entity.DataNasc}'," +
+                                                   $" '{entity.Senha}'," +
                                                    $" '{entity.Genero}'," +
                                                    $" '{entity.Celular}'," +
                                                    $" '{entity.TelefoneRes}') " +
@@ -111,7 +111,6 @@ namespace Fatec.Clinica.Dado
                                    $"SET Nome = '{entity.Nome}'," +
                                    $"CPF = '{entity.Cpf}'," +
                                    $"Email = '{entity.Email}'," +
-                                   $"DataNasc = '{entity.DataNasc}', " +
                                    $"Genero = '{entity.Genero}' " +
                                    $"Celular = '{entity.Celular}', " +
                                    $"TelefoneRes = '{entity.TelefoneRes}' " +

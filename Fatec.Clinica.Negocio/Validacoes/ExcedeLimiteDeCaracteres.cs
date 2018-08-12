@@ -1,4 +1,6 @@
 ﻿using Fatec.Clinica.Dominio;
+using System;
+
 namespace Fatec.Clinica.Negocio.Validacoes
 {
     public class ExcedeLimiteDeCaracteres
@@ -14,7 +16,8 @@ namespace Fatec.Clinica.Negocio.Validacoes
         /// </returns>
         public static bool Verificar(Clinicas entity)
         {
-            if (entity.Cnpj.Length > 14 ||
+            if (entity.Email.Length >50 ||
+                entity.Cnpj.Length > 14 ||
                 entity.Nome.Length > 50 ||
                 entity.TelefoneCom.Length > 10)
             {
@@ -105,7 +108,7 @@ namespace Fatec.Clinica.Negocio.Validacoes
                 entity.Crm > 10 ||
                 entity.Email.Length > 50 ||
                 entity.Senha.Length >20 ||
-                entity.Genero > 1 ||
+                Convert.ToString(entity.Genero).Length > 1 ||
                 entity.Celular.Length > 11)
             {
                 return true;
@@ -130,7 +133,7 @@ namespace Fatec.Clinica.Negocio.Validacoes
                 entity.Cpf.Length != 11 ||
                 entity.Email.Length > 50 ||
                 entity.Senha.Length > 20 ||
-                entity.Genero > 1 ||
+                Convert.ToString(entity.Genero).Length  > 1 ||
                 entity.Celular.Length > 11 ||
                 entity.TelefoneRes.Length > 10)
             {

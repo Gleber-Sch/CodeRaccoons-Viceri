@@ -18,8 +18,7 @@ namespace Fatec.Clinica.Negocio.Validacoes
                 String.IsNullOrEmpty(Convert.ToString(entity.Crm)) ||
                 String.IsNullOrEmpty(entity.Celular) ||
                 String.IsNullOrEmpty(Convert.ToString(entity.IdEspecialidade)) ||
-                String.IsNullOrEmpty(Convert.ToString(entity.Genero)) ||
-                entity.DataNasc == null)
+                String.IsNullOrEmpty(Convert.ToString(entity.Genero)))
             {
                 return true;
             }
@@ -38,8 +37,7 @@ namespace Fatec.Clinica.Negocio.Validacoes
             if (String.IsNullOrEmpty(entity.Nome) || 
                 String.IsNullOrEmpty(entity.Cpf) ||
                 String.IsNullOrEmpty(entity.Celular) ||
-                String.IsNullOrEmpty(Convert.ToString(entity.Genero)) ||
-                entity.DataNasc == null)
+                String.IsNullOrEmpty(Convert.ToString(entity.Genero)))
             {
                 return true;
             }
@@ -163,27 +161,12 @@ namespace Fatec.Clinica.Negocio.Validacoes
         {
             if (string.IsNullOrEmpty(entity.Nome) || 
                 string.IsNullOrEmpty(entity.Cnpj) ||
-                string.IsNullOrEmpty(entity.TelefoneCom))
+                string.IsNullOrEmpty(entity.TelefoneCom) ||
+                string.IsNullOrEmpty(entity.Email))
             {
                 return true;
             }
 
-            return false;
-        }
-        #endregion
-
-        #region Verificar se existem campos vazios na inserção de um Horario
-        /// <summary>
-        /// Verifica se os campos obrigátorios não foram preenchidos.
-        /// </summary>
-        /// <param name="entity">Objeto com os campos a serem verificados.</param>
-        /// <returns>True se os campos obrigátorios não foram preenchidos ou False se eles foram.</returns>
-        public static bool Verificar(Horario entity)
-        {
-            if (entity.DiaHora == null)
-            {
-                return true;
-            }
             return false;
         }
         #endregion

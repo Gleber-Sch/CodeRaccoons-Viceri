@@ -1,0 +1,32 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The column [dbo].[ArquivoMorto].[DataNasc] is being dropped, data loss could occur.
+       The column [dbo].[Medico].[DataNasc] is being dropped, data loss could occur.
+       The column [dbo].[Paciente].[DataNasc] is being dropped, data loss could occur.
+
+** User actions
+     Drop
+       unnamed constraint on [dbo].[ArquivoMorto] (Check Constraint)
+     Alter
+       [dbo].[ArquivoMorto] (Table)
+       [dbo].[Medico] (Table)
+       [dbo].[Paciente] (Table)
+     Create
+       Check Constraint: unnamed constraint on [dbo].[ArquivoMorto] (Check Constraint)
+
+** Supporting actions
+     Refresh
+       [dbo].[ViewAtendimentos] (View)
+       [dbo].[ViewConsulta] (View)
+       [dbo].[ViewExame] (View)
+
+The column [dbo].[ArquivoMorto].[DataNasc] is being dropped, data loss could occur.
+The column [dbo].[Medico].[DataNasc] is being dropped, data loss could occur.
+The column [dbo].[Paciente].[DataNasc] is being dropped, data loss could occur.
+
