@@ -12,17 +12,25 @@ namespace Fatec.Clinica.Api.Controllers
     [Route("api/Consulta")]
     public class ConsultaController : Controller
     {
+        /// <summary>
+        /// Declara as regras de negócio da Consulta. 
+        /// </summary>
         ConsultaNegocio _consultaNegocio;
 
+        /// <summary>
+        /// Construtor para instanciar as regras de negócio.
+        /// </summary>
         public ConsultaController()
         {
             _consultaNegocio = new ConsultaNegocio();
         }
 
         /// <summary>
-        /// Método que obtem uma lista de Consultas
+        /// Método que obtêm todas as consultas.
         /// </summary>
         /// <returns></returns>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFoud</response>
         [HttpGet]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Consulta), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
@@ -32,10 +40,13 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que seleciona uma consulta por Id
+        /// Método que obtêm uma consulta.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Usado para selecionar a consulta.</param>
         /// <returns></returns>
+        /// <remarks>Obtêm uma consulta pelo Id da consulta.</remarks>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFoud</response>
         [HttpGet]
         [Route("{id}", Name = "ConsultaGetId")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Consulta), nameof(HttpStatusCode.OK))]
@@ -46,10 +57,13 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que seleciona uma consulta pelo Id do paciente
+        /// Método que obtêm todas as consultas agendadas ou realizadas por um paciente.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Usado para selecionar as consultas.</param>
         /// <returns></returns>
+        /// <remarks>Obtêm consultas pelo Id do paciente.</remarks>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFoud</response>
         [HttpGet]
         [Route("Paciente/{id}", Name = "ConsultaGetIdPaciente")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Consulta), nameof(HttpStatusCode.OK))]
@@ -60,10 +74,13 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que seleciona uma consulta pelo Id do medico
+        /// Método que obtêm todas as consultas agendadas ou realizadas com um médico.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Usado para selecionar as consultas.</param>
         /// <returns></returns>
+        /// <remarks>Obtêm consultas pelo Id do médico.</remarks>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFoud</response>
         [HttpGet]
         [Route("Medico/{id}", Name = "ConsultaGetIdMedico")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Consulta), nameof(HttpStatusCode.OK))]
@@ -74,10 +91,13 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que seleciona uma consulta pelo Id da clinica
+        /// Método que obtêm todas as consultas agendadas ou realizadas numa clínica.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Usado para selecionar as consultas.</param>
         /// <returns></returns>
+        /// <remarks>Obtêm consultas pelo Id da clínica.</remarks>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFoud</response>
         [HttpGet]
         [Route("Clinica/{id}", Name = "ConsultaGetIdClinica")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Consulta), nameof(HttpStatusCode.OK))]
@@ -88,10 +108,13 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que insere uma novo consulta
+        /// Método que insere uma consulta.
         /// </summary>
-        /// <param name="input"></param>
+        /// <param name="input">Objeto com os dados da consulta.</param>
         /// <returns></returns>
+        /// <response code="201">Created</response>
+        /// <response code="400">BadRequest</response>
+        /// <response code="500">InternalServerError</response>
         [HttpPost]
         [SwaggerResponse((int)HttpStatusCode.Created, typeof(Consulta), nameof(HttpStatusCode.Created))]
         [SwaggerResponse((int)HttpStatusCode.BadRequest)]
@@ -113,11 +136,14 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que altera os dados de uma consulta
+        /// Método que altera os dados de uma consulta.
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="input"></param>
+        /// <param name="id">Usado para selecionar a consulta.</param>
+        /// <param name="input">Objeto que contêm os dados a serem alterados.</param>
         /// <returns></returns>
+        /// <response code="202">Accepted</response>
+        /// <response code="400">BadRequest</response>
+        /// <response code="500">InternalServerError</response>
         [HttpPut]
         [Route("{id}")]
         [SwaggerResponse((int)HttpStatusCode.Accepted, typeof(Consulta), nameof(HttpStatusCode.Accepted))]
@@ -139,10 +165,12 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que deleta uma consulta
+        /// Método que deleta uma clínica.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Usado para selecionar o endereço.</param>
         /// <returns></returns>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFound</response>
         [HttpDelete]
         [Route("{id}")]
         [SwaggerResponse((int)HttpStatusCode.OK)]

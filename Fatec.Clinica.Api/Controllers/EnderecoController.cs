@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
+﻿using System.Net;
 using Fatec.Clinica.Api.Model;
 using Fatec.Clinica.Dominio;
 using Fatec.Clinica.Negocio;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
@@ -17,12 +12,12 @@ namespace Fatec.Clinica.Api.Controllers
     public class EnderecoController : Controller
     {
         /// <summary>
-        /// Contêm as regras de negócio do Endereço. 
+        /// Declara as regras de negócio do Endereço. 
         /// </summary>
         private EnderecoNegocio _enderecoNegocio;
 
         /// <summary>
-        /// Construtor para instaciar as regras de negócio do Endereço.
+        /// Construtor para instanciar as regras de negócio.
         /// </summary>
         public EnderecoController()
         {
@@ -30,9 +25,11 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que obtêm os endereços.
+        /// Método que obtêm todas os Endereços.
         /// </summary>
-        /// <returns>Todos os endereços registrados.</returns>
+        /// <returns></returns>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFoud</response>
         [HttpGet]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Endereco), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
@@ -42,10 +39,13 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que seleciona um endereço.
+        /// Método que obtêm um endereço.
         /// </summary>
-        /// <param name="id">Usado para buscar o endereço.</param>
-        /// <returns>Endereço selecionado.</returns>
+        /// <param name="id">Usado para selecionar o endereço.</param>
+        /// <returns></returns>
+        /// <remarks>Obtêm uma consulta pelo Id do endereço.</remarks>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFoud</response>
         [HttpGet]
         [Route("{id}", Name = "EnderecoGetId")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Endereco), nameof(HttpStatusCode.OK))]
@@ -59,7 +59,10 @@ namespace Fatec.Clinica.Api.Controllers
         /// Método que insere um endereço.
         /// </summary>
         /// <param name="input">Objeto com os dados do endereço.</param>
-        /// <returns>ID criado para o endereço inserido.</returns>
+        /// <returns></returns>
+        /// <response code="201">Created</response>
+        /// <response code="400">BadRequest</response>
+        /// <response code="500">InternalServerError</response>
         [HttpPost]
         [SwaggerResponse((int)HttpStatusCode.Created, typeof(Endereco), nameof(HttpStatusCode.Created))]
         [SwaggerResponse((int)HttpStatusCode.BadRequest)]
@@ -83,11 +86,14 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que altera os dados de um endreço.
+        /// Método que altera os dados de um endereço.
         /// </summary>
-        /// <param name="id">Usado para buscar o endereço.</param>
-        /// <param name="input">Objeto com os dados do endereço.</param>
+        /// <param name="id">Usado para selecionar o endereço.</param>
+        /// <param name="input">Objeto que contêm os dados a serem alterados.</param>
         /// <returns></returns>
+        /// <response code="202">Accepted</response>
+        /// <response code="400">BadRequest</response>
+        /// <response code="500">InternalServerError</response>
         [HttpPut]
         [Route("{id}")]
         [SwaggerResponse((int)HttpStatusCode.Accepted, typeof(Endereco), nameof(HttpStatusCode.Accepted))]
@@ -113,8 +119,10 @@ namespace Fatec.Clinica.Api.Controllers
         /// <summary>
         /// Método que deleta um endereço.
         /// </summary>
-        /// <param name="id">Usado para selecionar o endereço a ser deletado.</param>
+        /// <param name="id">Usado para selecionar o endereço.</param>
         /// <returns></returns>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFound</response>
         [HttpDelete]
         [Route("{id}")]
         [SwaggerResponse((int)HttpStatusCode.OK)]

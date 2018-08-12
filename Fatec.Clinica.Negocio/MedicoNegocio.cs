@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Fatec.Clinica.Dado;
 using Fatec.Clinica.Dominio;
 using Fatec.Clinica.Dominio.Excecoes;
@@ -115,6 +116,12 @@ namespace Fatec.Clinica.Negocio
                 throw new DadoInvalidoException("Existem campos que excedem o limite de caracteres permitidos!");
             }
 
+            //Converte o gênero para caixa alta e verifica se o gênero é válido.
+            if (GeneroValido.Verificar(GeneroValido.CaixaAlta(entity.Genero)) == false)
+            {
+                throw new DadoInvalidoException($"O gênero: \"{entity.Genero}\", é inválido!");
+            }
+
             //Verifica se o formato e a quantidade de caracteres do celular são válidos.
             if (TelefoneValido.Verificar(TelefoneValido.LimparFormatacao(entity.Celular)) == false)
             {
@@ -167,6 +174,8 @@ namespace Fatec.Clinica.Negocio
         /// <returns>Seleciona um médico do Database ou gera alguma exceção.</returns>
         public Medico Alterar(int id, Medico entity)
         {
+            Medico obj;
+
             //Verifica se existem campos vazios.
             if (CamposVazios.Verificar(entity))
             {
@@ -179,6 +188,12 @@ namespace Fatec.Clinica.Negocio
                 throw new DadoInvalidoException("Existem campos que excedem o limite de caracteres permitidos!");
             }
 
+            //Converte o gênero para caixa alta e verifica se o gênero é válido.
+            if (GeneroValido.Verificar(GeneroValido.CaixaAlta(entity.Genero)) == false)
+            {
+                throw new DadoInvalidoException($"O gênero: \"{entity.Genero}\", é inválido!");
+            }
+
             //Verifica se o formato e a quantidade de caracteres do celular são válidos.
             if (TelefoneValido.Verificar(TelefoneValido.LimparFormatacao(entity.Celular)) == false)
             {
@@ -186,7 +201,8 @@ namespace Fatec.Clinica.Negocio
             }
 
             //Verifica se o CRM já não foi cadastrado.
-            if (_medicoRepositorio.SelecionarPorCrm(entity.Crm) != null)
+            obj = _medicoRepositorio.SelecionarPorCrm(entity.Crm);
+            if (obj != null && obj.Id != id)
             {
                 throw new ConflitoException($"O CRM: \"{entity.Crm}\", já foi cadastrado!");
             }
@@ -198,16 +214,17 @@ namespace Fatec.Clinica.Negocio
             }
             else
             {
-                var cpfExistente = _medicoRepositorio.SelecionarPorCpf(entity.Cpf);
+                obj = _medicoRepositorio.SelecionarPorCpf(entity.Cpf);
 
-                if (cpfExistente != null)
+                if (obj != null && id != obj.Id)
                 {
                     throw new ConflitoException($"O CPF: \"{entity.Cpf}\", já foi cadastrado!");
                 }
             }
 
             //Verifica se o email já foi casatrado.
-            if (_medicoRepositorio.SelecionarPorEmail(entity.Email) != null)
+            obj = _medicoRepositorio.SelecionarPorEmail(entity.Email);
+            if (obj != null && id != obj.Id)
             {
                 throw new ConflitoException($"O email: \"{entity.Email}\", já foi cadastrado!");
             }

@@ -87,6 +87,8 @@ namespace Fatec.Clinica.Negocio
         /// <returns>Seleciona a especialidade alterada no Database ou gera uma exceção.</returns>
         public Especialidade Alterar(int id, Especialidade entity)
         {
+            Especialidade obj;
+
             //Verifica se existem campos vazios.
             if (CamposVazios.Verificar(entity))
             {
@@ -100,7 +102,8 @@ namespace Fatec.Clinica.Negocio
             }
 
             //Verifica se a especialidade já não foi cadastrada.
-            if (_especialidadeRepositorio.SelecionarPorNome(entity.Nome) != null)
+            obj = _especialidadeRepositorio.SelecionarPorNome(entity.Nome);
+            if (obj != null && obj.Id != id)
             {
                 throw new ConflitoException($"A especialidade: \"{entity.Nome}\", já foi cadastrada!");
             }

@@ -104,10 +104,10 @@ namespace Fatec.Clinica.Dado
                                                    $"INSERT INTO [Consulta] " +
                                                    $"(Historico, DataHora, IdPaciente, IdAtendimento, Nota) " +
                                                    $"VALUES ('{entity.Historico}'," +
-                                                   $" '{entity.DataHora}'," +
-                                                   $" {entity.IdPaciente}," +
-                                                   $" {entity.IdAtendimento}" +
-                                                   $" {entity.Nota} " +
+                                                   $" '{entity.DataHora}', " +
+                                                   $" {entity.IdPaciente}, " +
+                                                   $" {entity.IdAtendimento}, " +
+                                                   $" {entity.Nota}) " +
                                                    $"SET @ID = SCOPE_IDENTITY();" +
                                                    $"SELECT @ID");
             }
@@ -125,7 +125,7 @@ namespace Fatec.Clinica.Dado
                                    $"SET Historico = '{entity.Historico}'," +
                                    $"DataHora = '{entity.DataHora}'," +
                                    $"IdPaciente = {entity.IdPaciente}, " +
-                                   $"IdAtendimento = {entity.IdAtendimento} " +
+                                   $"IdAtendimento = {entity.IdAtendimento}, " +
                                    $"Nota = {entity.Nota} " +
                                    $"WHERE Id = {entity.Id}");
             }

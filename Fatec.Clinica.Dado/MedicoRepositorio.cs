@@ -126,16 +126,17 @@ namespace Fatec.Clinica.Dado
             {
                 return connection.QuerySingle<int>($"DECLARE @ID int;" +
                                               $"INSERT INTO [Medico] " +
-                                              $"(IdEspecialidade, Nome, Cpf, Crm, Celular, Email, DataNasc, StatusAtividade, Genero) " +
-                                                    $"VALUES ({entity.IdEspecialidade}," +
-                                                            $"'{entity.Nome}'," +
-                                                            $"'{entity.Cpf}'," +
-                                                            $"{entity.Crm} ," +
-                                                            $"'{entity.Celular}' ," +
-                                                            $"'{entity.Email}' ," +
-                                                            $"'{entity.DataNasc}' ," +
-                                                            $" '{entity.StatusAtividade}' ," +
-                                                            $"'{entity.Genero}' " +
+                                              $"(IdEspecialidade, Nome, Cpf, Crm, Celular, Email," +
+                                              $" DataNasc, StatusAtividade, Genero) " +
+                                              $"VALUES ({entity.IdEspecialidade}," +
+                                                     $"'{entity.Nome}', " +
+                                                     $"'{entity.Cpf}', " +
+                                                     $"{entity.Crm}, " +
+                                                     $"'{entity.Celular}', " +
+                                                     $"'{entity.Email}', " +
+                                                     $"'{entity.DataNasc.ToString("dd/MM/yyyy")}', " +
+                                                     $" '{entity.StatusAtividade}', " +
+                                                     $"'{entity.Genero}') " +
                                               $"SET @ID = SCOPE_IDENTITY();" +
                                               $"SELECT @ID");
             }
@@ -151,13 +152,13 @@ namespace Fatec.Clinica.Dado
             {
                 connection.Execute($"UPDATE [Medico] " +
                                    $"SET  IdEspecialidade = {entity.IdEspecialidade}," +
-                                   $"Nome = '{entity.Nome}'," +
-                                   $"Cpf = '{entity.Cpf}'," +
-                                   $"Crm = {entity.Crm} ," +
-                                   $"Celular = '{entity.Celular}' ," +
-                                   $"Email = '{entity.Email}' ," +
-                                   $"DataNasc = '{entity.DataNasc}' ," +
-                                   $"StatusAtividade = '{entity.StatusAtividade}' ," +
+                                   $"Nome = '{entity.Nome}', " +
+                                   $"Cpf = '{entity.Cpf}', " +
+                                   $"Crm = {entity.Crm}, " +
+                                   $"Celular = '{entity.Celular}', " +
+                                   $"Email = '{entity.Email}', " +
+                                   $"DataNasc = '{entity.DataNasc.ToString("dd/MM/yyyy")}', " +
+                                   $"StatusAtividade = '{entity.StatusAtividade}', " +
                                    $"Genero = '{entity.Genero}' " +
                                    $"WHERE Id = {entity.Id}");
             }

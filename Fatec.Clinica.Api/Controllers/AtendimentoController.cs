@@ -25,7 +25,7 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que obtêm uma lista com todos os Atendimentos.
+        /// Método que obtêm todos os Atendimentos.
         /// </summary>
         /// <returns></returns>
         /// <response code="200">OK</response>
@@ -39,10 +39,11 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que seleciona um atendimento.
+        /// Método que obtêm um atendimento.
         /// </summary>
         /// <param name="id">Usado para selecionar o atendimento.</param>
         /// <returns></returns>
+        /// <remarks>Obtêm um atendimento pelo Id do atendimento.</remarks>
         /// <response code="200">OK</response>
         /// <response code="404">NotFoud</response>
         [HttpGet]
@@ -55,11 +56,11 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que insere um novo atendimento.
+        /// Método que insere um atendimento.
         /// </summary>
         /// <param name="input">Objeto com os dados do atendimento.</param>
         /// <returns></returns>
-        /// <response code="200">OK</response>
+        /// <response code="201">Created</response>
         /// <response code="400">BadRequest</response>
         /// <response code="500">InternalServerError</response>
         [HttpPost]
@@ -82,10 +83,10 @@ namespace Fatec.Clinica.Api.Controllers
         /// <summary>
         /// Método que altera os dados de um atendimento.
         /// </summary>
-        /// <param name="id">Usado para buscar o atendimento.</param>
-        /// <param name="input">Objeto que contêm os dados a serem alteradas.</param>
+        /// <param name="id">Usado para selecionar o atendimento.</param>
+        /// <param name="input">Objeto que contêm os dados a serem alterados.</param>
         /// <returns></returns>
-        /// <response code="200">OK</response>
+        /// <response code="202">Accepted</response>
         /// <response code="400">BadRequest</response>
         /// <response code="500">InternalServerError</response>
         [HttpPut]
@@ -105,9 +106,9 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que deleta um atendimento
+        /// Método que deleta um atendimento.
         /// </summary>
-        /// <param name="id">Usado para buscar o atendimento.</param>
+        /// <param name="id">Usado para selecionar o atendimento.</param>
         /// <returns></returns>
         /// <response code="200">OK</response>
         /// <response code="404">NotFound</response>

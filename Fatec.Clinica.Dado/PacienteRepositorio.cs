@@ -87,13 +87,13 @@ namespace Fatec.Clinica.Dado
                 return connection.QuerySingle<int>($"DECLARE @ID int;" +
                                                    $"INSERT INTO [Paciente] " +
                                                    $"(Nome, Cpf, Email, Senha, DataNasc, Genero, Celular, TelefoneRes) " +
-                                                   $"VALUES ('{entity.Nome}'," +
-                                                   $" '{entity.Cpf}'," +
-                                                   $" '{entity.Email}'," +
-                                                   $" '{entity.Senha}'," +
-                                                   $" '{entity.DataNasc}'," +
-                                                   $" '{entity.Genero}'," +
-                                                   $" '{entity.Celular}'," +
+                                                   $"VALUES ('{entity.Nome}', " +
+                                                   $" '{entity.Cpf}', " +
+                                                   $" '{entity.Email}', " +
+                                                   $" '{entity.Senha}', " +
+                                                   $" '{entity.DataNasc.ToString("dd/MM/yyyy")}', " +
+                                                   $" '{entity.Genero}', " +
+                                                   $" '{entity.Celular}', " +
                                                    $" '{entity.TelefoneRes}') " +
                                                    $"SET @ID = SCOPE_IDENTITY();" +
                                                    $"SELECT @ID");
@@ -109,11 +109,11 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 connection.Execute($"UPDATE [Paciente] " +
-                                   $"SET Nome = '{entity.Nome}'," +
-                                   $"CPF = '{entity.Cpf}'," +
-                                   $"Email = '{entity.Email}'," +
-                                   $"DataNasc = '{entity.DataNasc}', " +
-                                   $"Genero = '{entity.Genero}' " +
+                                   $"SET Nome = '{entity.Nome}', " +
+                                   $"CPF = '{entity.Cpf}', " +
+                                   $"Email = '{entity.Email}', " +
+                                   $"DataNasc = '{entity.DataNasc.ToString("dd/MM/yyyy")}', " +
+                                   $"Genero = '{entity.Genero}', " +
                                    $"Celular = '{entity.Celular}', " +
                                    $"TelefoneRes = '{entity.TelefoneRes}' " +
                                    $"WHERE Id = {entity.Id}");

@@ -87,6 +87,8 @@ namespace Fatec.Clinica.Negocio
         /// <returns>Seleciona o tipo de exame alterado no Database ou gera uma exceção.</returns>
         public TipoExame Alterar(int id, TipoExame entity)
         {
+            TipoExame obj;
+
             //Verifica se existem campos vazios.
             if (CamposVazios.Verificar(entity))
             {
@@ -100,7 +102,8 @@ namespace Fatec.Clinica.Negocio
             }
 
             //Verifica se o tipo de exame já não foi cadastrado.
-            if (_tipoExameRepositorio.SelecionarPorNome(entity.Nome) != null)
+            obj = _tipoExameRepositorio.SelecionarPorNome(entity.Nome);
+            if (obj != null && obj.Id != id)
             {
                 throw new ConflitoException($"O tipo de exame: \"{entity.Nome}\", já foi cadastrado!");
             }

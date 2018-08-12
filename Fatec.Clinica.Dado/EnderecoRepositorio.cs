@@ -46,10 +46,10 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 var obj = connection.QueryFirstOrDefault<Endereco>($"SELECT * FROM ViewEnderecos" +
-                                                                    $"where Estado = {entity.Estado}" +
-                                                                    $"and Cidade = {entity.Cidade}" +
-                                                                    $"and Bairro = {entity.Bairro}" +
-                                                                    $"and Logradouro = {entity.Logradouro}" +
+                                                                    $"where Estado = '{entity.Estado}'" +
+                                                                    $"and Cidade = '{entity.Cidade}'" +
+                                                                    $"and Bairro = '{entity.Bairro}'" +
+                                                                    $"and Logradouro = '{entity.Logradouro}'" +
                                                                     $"and Numero = {entity.Numero}" +
                                                                     $"and Complemento = '{entity.Complemento}'");
                 return obj;
@@ -69,13 +69,13 @@ namespace Fatec.Clinica.Dado
                 return connection.QuerySingle<int>($"DECLARE @ID int;" +
                                                    $"INSERT INTO [Endereco] " +
                                                    $"(Estado, Cidade, Bairro, Logradouro, Numero, Complemento,IdClinica) " +
-                                                   $"VALUES ('{entity.Estado}'," +
-                                                   $" '{entity.Cidade}'," +
-                                                   $" '{entity.Bairro}'," +
-                                                   $" '{entity.Logradouro}'" +
-                                                   $"  {entity.Numero}" +
-                                                   $" '{entity.Complemento}'" +
-                                                   $"  {entity.IdClinica}" +
+                                                   $"VALUES ('{entity.Estado}', " +
+                                                   $" '{entity.Cidade}', " +
+                                                   $" '{entity.Bairro}', " +
+                                                   $" '{entity.Logradouro}', " +
+                                                   $"  {entity.Numero}, " +
+                                                   $" '{entity.Complemento}, '" +
+                                                   $"  {entity.IdClinica}) " +
                                                    $"SET @ID = SCOPE_IDENTITY();" +
                                                    $"SELECT @ID");
             }
@@ -90,13 +90,13 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 connection.Execute($"UPDATE [Endereco] " +
-                                   $"SET Estado = '{entity.Estado}'," +
-                                   $"Cidade = '{entity.Cidade}'," +
+                                   $"SET Estado = '{entity.Estado}', " +
+                                   $"Cidade = '{entity.Cidade}', " +
                                    $"Bairro = '{entity.Bairro}', " +
-                                   $"Logradouro = '{entity.Logradouro}' " +
-                                   $"Numero = {entity.Numero}" +
-                                   $"Complemento = '{entity.Complemento}'" +
-                                   $"IdClinica ={entity.IdClinica}" +
+                                   $"Logradouro = '{entity.Logradouro}', " +
+                                   $"Numero = {entity.Numero}, " +
+                                   $"Complemento = '{entity.Complemento}', " +
+                                   $"IdClinica ={entity.IdClinica} " +
                                    $"WHERE Id = {entity.Id}");
             }
         }

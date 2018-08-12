@@ -12,12 +12,12 @@ namespace Fatec.Clinica.Api.Controllers
     public class EspecialidadeController : Controller
     {
         /// <summary>
-        /// 
+        /// Declara as regras de negócio da Especialidade. 
         /// </summary>
         private EspecialidadeNegocio _especialidadeNegocio;
 
         /// <summary>
-        /// 
+        /// Construtor para instanciar as regras de negócio.
         /// </summary>
         public EspecialidadeController()
         {

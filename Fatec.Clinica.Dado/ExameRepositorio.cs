@@ -116,10 +116,10 @@ namespace Fatec.Clinica.Dado
                 return connection.QuerySingle<int>($"DECLARE @ID int;" +
                                                    $"INSERT INTO [Exame] " +
                                                    $"(DataHora, IdTipoExame, IdAtendimento, IdConsulta) " +
-                                                   $"VALUES ('{entity.DataHora}'," +
-                                                   $"{entity.IdTipoExame}," +
-                                                   $"{entity.IdAtendimento})," +
-                                                   $"{entity.IdConsulta}" +
+                                                   $"VALUES ('{entity.DataHora}', " +
+                                                   $"{entity.IdTipoExame}, " +
+                                                   $"{entity.IdAtendimento}, " +
+                                                   $"{entity.IdConsulta})" +
                                                    $"SET @ID = SCOPE_IDENTITY();" +
                                                    $"SELECT @ID");
             }
@@ -134,9 +134,9 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 connection.Execute($"UPDATE [Exame] " +
-                                   $"SET  DataHora = '{entity.DataHora}'," +
-                                   $"TipoExame = {entity.IdTipoExame}" +
-                                   $"IdAtendimento = {entity.IdAtendimento}" +
+                                   $"SET  DataHora = '{entity.DataHora}', " +
+                                   $"TipoExame = {entity.IdTipoExame}, " +
+                                   $"IdAtendimento = {entity.IdAtendimento}, " +
                                    $"IdConsulta = {entity.IdConsulta} " +
                                    $"WHERE Id = {entity.Id}");
             }

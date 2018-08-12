@@ -114,6 +114,8 @@ namespace Fatec.Clinica.Negocio
         /// <returns>Seleciona a clínica alterada no Database ou gera alguma exceção.</returns>
         public Clinicas Alterar(int id, Clinicas entity)
         {
+            Clinicas obj;
+
             //Verififica se há campos vazios.
             if (CamposVazios.Verificar(entity))
             {
@@ -126,17 +128,18 @@ namespace Fatec.Clinica.Negocio
                 throw new DadoInvalidoException("Existem campos que excedem o limite de caracteres permitidos!");
             }
 
-            //Verifica a validação do CNPJ
-            if (!ValidacaoCnpj.Verificar(entity.Cnpj))
+            //Verifica se o CNPJ é válido e se ele já foi cadastrado
+            if (ValidacaoCnpj.Verificar(entity.Cnpj) == false)
             {
                 throw new DadoInvalidoException("CNPJ inválido!");
             }
-
-            //Verifica se o CNPJ já não está registrado.
-            var obj = _clinicaRepositorio.SelecionarPorCnpj(entity.Cnpj);
-            if (obj != null)
+            else
             {
-                throw new ConflitoException("Já existe uma clínica registrada com este CNPJ!");
+                obj = _clinicaRepositorio.SelecionarPorCnpj(entity.Cnpj);
+                if (obj != null && obj.Id != id)
+                {
+                    throw new ConflitoException("Já existe uma clínica registrada com este CNPJ!");
+                }
             }
 
             //Verifica se o formato e a quantidade de caracteres do telefone são válidos.

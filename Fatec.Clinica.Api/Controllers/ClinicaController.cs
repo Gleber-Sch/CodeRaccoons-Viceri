@@ -17,12 +17,12 @@ namespace Fatec.Clinica.Api.Controllers
     public class ClinicaController : Controller
     {
         /// <summary>
-        /// Contêm as regras de negócio da Clínica. 
+        /// Declara as regras de negócio da Clínica. 
         /// </summary>
         private ClinicaNegocio _clinicaNegocio;
 
         /// <summary>
-        /// Construtor para instaciar as regras de negócio da Clínica.
+        /// Construtor para instanciar as regras de negócio.
         /// </summary>
         public ClinicaController()
         {
@@ -32,7 +32,9 @@ namespace Fatec.Clinica.Api.Controllers
         /// <summary>
         /// Método que obtêm todos as clínicas.
         /// </summary>
-        /// <returns>Todos as clínicas registradas.</returns>
+        /// <returns></returns>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFoud</response>
         [HttpGet]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Clinicas), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
@@ -44,8 +46,11 @@ namespace Fatec.Clinica.Api.Controllers
         /// <summary>
         /// Método que obtêm uma clínica.
         /// </summary>
-        /// <param name="id">Usado para buscar a clínica.</param>
-        /// <returns>Clínica selecionada.</returns>
+        /// <param name="id">Usado para selecionar a clínica.</param>
+        /// <returns></returns>
+        /// <remarks>Obtêm uma clíca pelo Id da clínica.</remarks>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFoud</response>
         [HttpGet]
         [Route("{id}", Name = "ClinicaGetId")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Clinicas), nameof(HttpStatusCode.OK))]
@@ -56,13 +61,15 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que obtêm uma clínica.
+        /// Método que obtêm uma clínica através de um CNPJ.
         /// </summary>
-        /// <remarks>Obtêm uma clína através de um cnpj.</remarks>
-        /// <param name="cnpj">Usado para buscar a clínica.</param>
-        /// <returns>Clínica selecionada.</returns>
+        /// <param name="cnpj">Usado para selecionar a clínica.</param>
+        /// <returns></returns>
+        /// <remarks>Obtêm uma clíca pelo CNPJ da clínica.</remarks>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFoud</response>
         [HttpGet]
-        [Route("{cnpj}", Name = "ClinicaGetCnpj")]
+        [Route("CNPJ/{cnpj}", Name = "ClinicaGetCnpj")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Clinicas), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult Get(string cnpj)
@@ -74,7 +81,10 @@ namespace Fatec.Clinica.Api.Controllers
         /// Método que insere uma clínica.
         /// </summary>
         /// <param name="input">Objeto com os dados da clínica.</param>
-        /// <returns>ID criado para a clínica inserido.</returns>
+        /// <returns></returns>
+        /// <response code="201">Created</response>
+        /// <response code="400">BadRequest</response>
+        /// <response code="500">InternalServerError</response>
         [HttpPost]
         [SwaggerResponse((int)HttpStatusCode.Created, typeof(Clinicas), nameof(HttpStatusCode.Created))]
         [SwaggerResponse((int)HttpStatusCode.BadRequest)]
@@ -84,6 +94,7 @@ namespace Fatec.Clinica.Api.Controllers
             var obj = new Clinicas()
             {
                 Email = input.Email,
+                Senha = input.Senha,
                 Nome = input.Nome,
                 Cnpj = input.Cnpj,
                 TelefoneCom = input.TelefoneCom,
@@ -98,9 +109,12 @@ namespace Fatec.Clinica.Api.Controllers
         /// <summary>
         /// Método que altera os dados de uma clínica.
         /// </summary>
-        /// <param name="id">Usado para buscar a clínica.</param>
-        /// <param name="input">Objeto com os dados da clínica.</param>
+        /// <param name="id">Usado para selecionar a clínica.</param>
+        /// <param name="input">Objeto que contêm os dados a serem alterados.</param>
         /// <returns></returns>
+        /// <response code="202">Accepted</response>
+        /// <response code="400">BadRequest</response>
+        /// <response code="500">InternalServerError</response>
         [HttpPut]
         [Route("{id}")]
         [SwaggerResponse((int)HttpStatusCode.Accepted, typeof(Clinicas), nameof(HttpStatusCode.Accepted))]
@@ -111,6 +125,7 @@ namespace Fatec.Clinica.Api.Controllers
             var obj = new Clinicas()
             {
                 Email = input.Email,
+                Senha = input.Senha,
                 Nome = input.Nome,
                 Cnpj = input.Cnpj,
                 TelefoneCom = input.TelefoneCom,
@@ -124,8 +139,10 @@ namespace Fatec.Clinica.Api.Controllers
         /// <summary>
         /// Método que deleta uma clínica.
         /// </summary>
-        /// <param name="id">Usado para selecionar a clínica a ser deletado.</param>
+        /// <param name="id">Usado para selecionar a clínica.</param>
         /// <returns></returns>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFound</response>
         [HttpDelete]
         [Route("{id}")]
         [SwaggerResponse((int)HttpStatusCode.OK)]

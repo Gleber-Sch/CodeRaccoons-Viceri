@@ -98,6 +98,8 @@ namespace Fatec.Clinica.Negocio
         /// <returns>Seleciona o endereço alterado no Database ou gera uma exceção.</returns>
         public Endereco Alterar(int id, Endereco entity)
         {
+            Endereco obj;
+
             //Verifica se existem campos vazios.
             if (CamposVazios.Verificar(entity))
             {
@@ -111,7 +113,8 @@ namespace Fatec.Clinica.Negocio
             }
 
             //Verifica se o endereço informado já foi cadastrado.
-            if (_enderecoRepositorio.SelecionarPorEndereco(entity) != null)
+            obj = _enderecoRepositorio.SelecionarPorEndereco(entity);
+            if (obj != null && obj.Id != id)
             {
                 throw new ConflitoException("O Endereco informado está cadastrado!");
             }
