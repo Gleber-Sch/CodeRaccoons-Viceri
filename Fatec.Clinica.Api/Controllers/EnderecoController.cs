@@ -76,8 +76,7 @@ namespace Fatec.Clinica.Api.Controllers
                 Bairro = input.Bairro,
                 Logradouro = input.Logradouro,
                 Numero = input.Numero,
-                Complemento = input.Complemento,
-                IdClinica = input.IdClinica
+                Complemento = input.Complemento
             };
 
             var idEndereco = _enderecoNegocio.Inserir(obj);
@@ -108,8 +107,7 @@ namespace Fatec.Clinica.Api.Controllers
                 Bairro = input.Bairro,
                 Logradouro = input.Logradouro,
                 Numero = input.Numero,
-                Complemento = input.Complemento,
-                IdClinica = input.IdClinica
+                Complemento = input.Complemento
             };
 
             var objReturn = _enderecoNegocio.Alterar(id, obj);

@@ -6,6 +6,4 @@
 [Logradouro] VARCHAR(50) NOT NULL,
 [Numero] INTEGER NOT NULL,
 [Complemento] VARCHAR(50),
-[IdClinica] INTEGER NOT NULL,
-CONSTRAINT [FK_Endereco_Clinica] FOREIGN KEY(IdClinica) REFERENCES [Clinica] ([Id])
 )
