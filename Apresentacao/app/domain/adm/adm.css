@@ -1,0 +1,95 @@
+body{
+    padding-top:115px;
+
+    
+}
+img{
+  margin-right:15px; 
+}
+
+
+.navbar-nav.contents{
+    display: contents;
+}
+
+table thead{
+    text-transform: uppercase;
+}
+nav{
+    background-color: #333;
+    border-bottom: 5px solid #11c182;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 16px;
+}
+ nav li{
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #fff;
+}
+ nav li:hover {
+    border-bottom: #11c182 solid 2px;
+    color: #11c182;
+}
+
+.pv{
+  margin-left: 20px;
+}
+hr{
+  margin-left: 40px;
+}
+/* formulario step a step */
+#consultaform{
+    width: 80%;
+    text-align: center;
+    
+}
+/* Style the form */
+#regForm {
+    background-color: #ffffff;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 40px;
+    width: 80%;
+    
+  }
+  
+  /* Style the input fields */
+  input {
+    padding: 10px;
+    width: 100%;
+    font-size: 20px;
+    border: 1px solid #aaaaaa;
+  }
+  
+  /* Mark input boxes that gets an error on validation: */
+  input.invalid {
+    background-color: #ffdddd;
+  }
+  
+  /* Hide all steps by default: */
+  .tab {
+    display: none;
+  }
+  
+  /* Make circles that indicate the steps of the form: */
+  .step {
+    height: 30px;
+    width: 30px;
+    margin: 0 8px;
+    background-color: #777;
+    border: none; 
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.8;
+  }
+  
+  /* Mark the active step: */
+  .step.active {
+    opacity: 1;
+  }
+  
+  /* Mark the steps that are finished and valid: */
+  .step.finish {
+    background-color:#11c182;
+  }
