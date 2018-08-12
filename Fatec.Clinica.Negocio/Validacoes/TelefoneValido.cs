@@ -28,9 +28,9 @@ namespace Fatec.Clinica.Negocio.Validacoes
         /// FALSE caso contrário.</returns>
         public static bool Verificar(string telefone)
         {
-            if(int.TryParse(telefone, out int x) &&
+            if(long.TryParse(telefone, out long x) &&
                telefone.Length >= 10 &&
-               telefone.Length < 11)
+               telefone.Length <= 11)
             {
                 return true;
             }

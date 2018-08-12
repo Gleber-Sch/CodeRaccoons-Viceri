@@ -38,7 +38,7 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 var obj = connection.QueryFirstOrDefault<Paciente>($"SELECT P.Id, P.Nome, P.Cpf, P.Email, " +
-                                                                   $"P.DataNasc, P.Genero, P.Celular P.TelefoneRes " +
+                                                                   $"P.DataNasc, P.Genero, P.Celular, P.TelefoneRes " +
                                                                    $"FROM [Paciente] P " +
                                                                    $"WHERE P.Id = {id}");
 
@@ -56,7 +56,7 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 var obj = connection.QueryFirstOrDefault<Paciente>($"SELECT P.Id, P.Nome, P.Cpf, P.Email," +
-                                                                 $"P.DataNasc, P.Genero, P.Celular P.TelefoneRes " +
+                                                                 $"P.DataNasc, P.Genero, P.Celular, P.TelefoneRes " +
                                                                  $"FROM [Paciente] P " +
                                                                  $"WHERE Cpf = '{cpf}'");
                 return obj;
@@ -86,10 +86,11 @@ namespace Fatec.Clinica.Dado
             {
                 return connection.QuerySingle<int>($"DECLARE @ID int;" +
                                                    $"INSERT INTO [Paciente] " +
-                                                   $"(Nome, Cpf, Email, DataNasc, Genero, Celular, TelefoneRes) " +
+                                                   $"(Nome, Cpf, Email, Senha, DataNasc, Genero, Celular, TelefoneRes) " +
                                                    $"VALUES ('{entity.Nome}'," +
                                                    $" '{entity.Cpf}'," +
                                                    $" '{entity.Email}'," +
+                                                   $" '{entity.Senha}'," +
                                                    $" '{entity.DataNasc}'," +
                                                    $" '{entity.Genero}'," +
                                                    $" '{entity.Celular}'," +
