@@ -59,7 +59,7 @@ namespace Fatec.Clinica.Negocio.Validacoes
         /// </returns>
         public static bool Verificar(Endereco entity)
         {
-            if (entity.Estado != 2 ||
+            if (entity.Estado.Length != 2 ||
                 entity.Cidade.Length > 50 ||
                 entity.Bairro.Length > 50 ||
                 entity.Complemento.Length > 50 ||

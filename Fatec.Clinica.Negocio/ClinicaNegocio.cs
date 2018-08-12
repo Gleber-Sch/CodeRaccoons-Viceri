@@ -105,7 +105,7 @@ namespace Fatec.Clinica.Negocio
 
             //Verifica se o ID do endereço é válido.
             var RepositorioClinica = new ClinicaRepositorio();
-            if (RepositorioClinica.SelecionarPorId(entity.IdEndereco) == null)
+            if (RepositorioClinica.SelecionarPorEndereco(entity.IdEndereco) == null)
             {
                 throw new DadoInvalidoException($"Não foi encontrado nenhum endereço " +
                                                 $"com o ID: {entity.IdEndereco}");

@@ -77,7 +77,7 @@ namespace Fatec.Clinica.Negocio.Validacoes
         /// <returns>True se o atributo Nome não estever preenchido ou False se ele estiver.</returns>
         public static bool Verificar(Endereco entity)
         {
-            if (String.IsNullOrWhiteSpace(Convert.ToString(entity.Estado)) ||
+            if (String.IsNullOrWhiteSpace(entity.Estado) ||
                 String.IsNullOrWhiteSpace(entity.Cidade) ||
                 String.IsNullOrWhiteSpace(entity.Bairro) ||
                 String.IsNullOrWhiteSpace(entity.Logradouro) ||
