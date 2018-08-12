@@ -35,29 +35,52 @@
                 return false;
             }
 
-            string DigitosCpf, DigitoVerificador = null;
-            int Soma = 0, Resto = 0, Multiplicador, Contador = 0;
+            int[] Multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+
+            int[] Multiplicador2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+
+            string DigitosCpf, DigitoVerificador;
+            int Soma=0, Resto;
 
             //Gera uma string sem os dígitos verificadores
             DigitosCpf = cpf.Substring(0, 9);
 
-            while (Contador < 2)
+            for (int i = 0; i < 9; i++)
             {
-                Multiplicador = 10 + Contador;
-                for (int i = 0; i < 9; i++, Multiplicador--)
-                    Soma += int.Parse(DigitosCpf[i].ToString()) * Multiplicador;
+                Soma += int.Parse(DigitosCpf[i].ToString()) * Multiplicador1[i];
+            }      
 
-                Resto = Soma % 11;
+            Resto = Soma % 11;
 
-                if (Resto < 2)
-                    Resto = 0;
-                else
-                    Resto = 11 - Resto;
+            if (Resto < 2)
+            {
+                Resto = 0;
+            }
+            else
+            {
+                Resto = 11 - Resto;
+            }     
 
-                DigitoVerificador = Resto.ToString();
-                DigitosCpf += DigitoVerificador;
-                Soma = 0;
-                Contador++;
+            DigitoVerificador = Resto.ToString();
+
+            DigitosCpf += DigitoVerificador;
+
+            Soma = 0;
+
+            for (int i = 0; i < 10; i++)
+            {
+                Soma += int.Parse(DigitosCpf[i].ToString()) * Multiplicador2[i];
+            }  
+
+            Resto = Soma % 11;
+
+            if (Resto < 2)
+            {
+                Resto = 0;
+            }
+            else
+            {
+                Resto = 11 - Resto;
             }
 
             DigitoVerificador += Resto.ToString();
