@@ -6,5 +6,6 @@
 [Senha] VARCHAR(20) NOT NULL,
 [Genero] CHAR(1) NOT NULL,
 [Celular] VARCHAR(11) NOT NULL,
-[TelefoneRes] VARCHAR(10)
+[TelefoneRes] VARCHAR(10),
+[StatusDeAtividade] BIT NOT NULL
 )
