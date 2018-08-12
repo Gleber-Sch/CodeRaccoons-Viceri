@@ -74,8 +74,7 @@ namespace Fatec.Clinica.Dado
                                                    $" '{entity.Bairro}', " +
                                                    $" '{entity.Logradouro}', " +
                                                    $"  {entity.Numero}, " +
-                                                   $" '{entity.Complemento}, '" +
-                                                   $"  {entity.IdClinica}) " +
+                                                   $" '{entity.Complemento}' " +
                                                    $"SET @ID = SCOPE_IDENTITY();" +
                                                    $"SELECT @ID");
             }
@@ -95,8 +94,7 @@ namespace Fatec.Clinica.Dado
                                    $"Bairro = '{entity.Bairro}', " +
                                    $"Logradouro = '{entity.Logradouro}', " +
                                    $"Numero = {entity.Numero}, " +
-                                   $"Complemento = '{entity.Complemento}', " +
-                                   $"IdClinica ={entity.IdClinica} " +
+                                   $"Complemento = '{entity.Complemento}' " +
                                    $"WHERE Id = {entity.Id}");
             }
         }

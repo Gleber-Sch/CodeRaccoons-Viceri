@@ -5,5 +5,7 @@
 [Cnpj] VARCHAR(14) UNIQUE NOT NULL,
 [StatusAtividade] BIT NOT NULL,
 [TelefoneCom] VARCHAR (10) NOT NULL,
-[Nome] VARCHAR(50) NOT NULL
+[Nome] VARCHAR(50) NOT NULL,
+[IdEndereco] INTEGER NOT NULL,
+CONSTRAINT [FK_Clinica_Endereco] FOREIGN KEY(IdEndereco) REFERENCES [Endereco] ([Id])
 )

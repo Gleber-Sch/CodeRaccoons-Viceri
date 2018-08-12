@@ -98,7 +98,8 @@ namespace Fatec.Clinica.Api.Controllers
                 Nome = input.Nome,
                 Cnpj = input.Cnpj,
                 TelefoneCom = input.TelefoneCom,
-                StatusAtividade = true
+                StatusAtividade = true,
+                IdEndereco = input.IdEndereco
             };
 
             var idClinica = _clinicaNegocio.Inserir(obj);
@@ -129,7 +130,8 @@ namespace Fatec.Clinica.Api.Controllers
                 Nome = input.Nome,
                 Cnpj = input.Cnpj,
                 TelefoneCom = input.TelefoneCom,
-                StatusAtividade = input.StatusAtividade
+                StatusAtividade = input.StatusAtividade,
+                IdEndereco = input.IdEndereco
             };
 
             var objReturn = _clinicaNegocio.Alterar(id, obj);

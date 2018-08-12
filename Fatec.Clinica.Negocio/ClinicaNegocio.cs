@@ -103,6 +103,14 @@ namespace Fatec.Clinica.Negocio
                 throw new DadoInvalidoException($"O número de telefone:\"{entity.TelefoneCom}\" é inválido!");
             }
 
+            //Verifica se o ID do endereço é válido.
+            var RepositorioClinica = new ClinicaRepositorio();
+            if (RepositorioClinica.SelecionarPorId(entity.IdEndereco) == null)
+            {
+                throw new DadoInvalidoException($"Não foi encontrado nenhum endereço " +
+                                                $"com o ID: {entity.IdEndereco}");
+            }
+
             return _clinicaRepositorio.Inserir(entity);
         }
 
@@ -146,6 +154,14 @@ namespace Fatec.Clinica.Negocio
             if (TelefoneValido.Verificar(TelefoneValido.LimparFormatacao(entity.TelefoneCom)) == false)
             {
                 throw new DadoInvalidoException($"O número de telefone:\"{entity.TelefoneCom}\" é inválido!");
+            }
+
+            //Verifica se o ID do endereço é válido.
+            var RepositorioClinica = new ClinicaRepositorio();
+            if (RepositorioClinica.SelecionarPorId(entity.IdEndereco) == null)
+            {
+                throw new DadoInvalidoException($"Não foi encontrado nenhum endereço " +
+                                                $"com o ID: {entity.IdEndereco}");
             }
 
             entity.Id = id;

@@ -9,5 +9,6 @@
         public bool StatusAtividade { get; set; }
         public string TelefoneCom { get; set; }
         public string Nome { get; set; }
+        public int IdEndereco { get; set; }
     }
 }

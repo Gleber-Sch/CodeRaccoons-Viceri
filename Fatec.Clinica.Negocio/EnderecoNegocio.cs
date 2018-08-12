@@ -77,14 +77,6 @@ namespace Fatec.Clinica.Negocio
                 throw new ConflitoException("O Endereco informado está cadastrado!");
             }
 
-            //Verifica se o ID da clínica é válido.
-            var RepositorioClinica = new ClinicaRepositorio();
-            if (RepositorioClinica.SelecionarPorId(entity.IdClinica) == null)
-            {
-                throw new DadoInvalidoException($"Não foi encontrado nenhuma clínica " +
-                                                $"com o ID: {entity.IdClinica}");
-            }
-
             return _enderecoRepositorio.Inserir(entity);
         }
 
@@ -117,14 +109,6 @@ namespace Fatec.Clinica.Negocio
             if (obj != null && obj.Id != id)
             {
                 throw new ConflitoException("O Endereco informado está cadastrado!");
-            }
-
-            //Verifica se o ID da clínica é válido.
-            var RepositorioClinica = new ClinicaRepositorio();
-            if (RepositorioClinica.SelecionarPorId(entity.IdClinica) == null)
-            {
-                throw new DadoInvalidoException($"Não foi encontrado nenhuma clínica " +
-                                                $"com o ID: {entity.IdClinica}");
             }
 
             entity.Id = id;

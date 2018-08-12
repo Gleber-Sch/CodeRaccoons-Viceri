@@ -82,13 +82,14 @@ namespace Fatec.Clinica.Dado
             {
                 return connection.QuerySingle<int>($"DECLARE @ID int;" +
                                                    $"INSERT INTO [Clinica] " +
-                                                   $"(Email, Senha, Cnpj, StatusAtividade, TelefoneCom, Nome) " +
+                                                   $"(Email, Senha, Cnpj, StatusAtividade, TelefoneCom, Nome, IdEndereco) " +
                                                    $"VALUES ('{entity.Email}', " +
                                                    $"{entity.Senha}, " +
                                                    $"'{entity.Cnpj}'," +
                                                    $" '{entity.StatusAtividade}'," +
                                                    $" '{entity.TelefoneCom}', " +
-                                                   $" '{entity.Nome}') " +
+                                                   $" '{entity.Nome}', " +
+                                                   $" {entity.IdEndereco}) " +
                                                    $"SET @ID = SCOPE_IDENTITY();" +
                                                    $"SELECT @ID");
             }
@@ -108,7 +109,8 @@ namespace Fatec.Clinica.Dado
                                    $"Cnpj = '{entity.Cnpj}', " +
                                    $"StatusAtividade = '{entity.StatusAtividade}', " +
                                    $"TelefoneCom = '{entity.TelefoneCom}', " +
-                                   $"Nome = '{entity.Nome}' " +
+                                   $"Nome = '{entity.Nome}'," +
+                                   $"IdEndereco = {entity.IdEndereco} " +
                                    $"WHERE Id = {entity.Id}");
             }
         }

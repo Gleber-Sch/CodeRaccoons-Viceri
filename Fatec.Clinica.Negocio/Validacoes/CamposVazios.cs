@@ -81,8 +81,7 @@ namespace Fatec.Clinica.Negocio.Validacoes
                 String.IsNullOrWhiteSpace(entity.Cidade) ||
                 String.IsNullOrWhiteSpace(entity.Bairro) ||
                 String.IsNullOrWhiteSpace(entity.Logradouro) ||
-                String.IsNullOrWhiteSpace(Convert.ToString(entity.Numero)) || 
-                String.IsNullOrWhiteSpace(Convert.ToString(entity.IdClinica)))
+                String.IsNullOrWhiteSpace(Convert.ToString(entity.Numero)))
             {
                 return true;
             }
@@ -171,12 +170,13 @@ namespace Fatec.Clinica.Negocio.Validacoes
         /// <returns>True se os campos obrigátorios estiverem vazios ou False se não estiverem.</returns>
         public static bool Verificar(Clinicas entity)
         {
-            if (String.IsNullOrWhiteSpace(entity.Nome) || 
+            if (String.IsNullOrWhiteSpace(entity.Nome) ||
                 String.IsNullOrWhiteSpace(entity.Cnpj) ||
                 String.IsNullOrWhiteSpace(Convert.ToString(entity.StatusAtividade)) ||
                 String.IsNullOrWhiteSpace(entity.TelefoneCom) ||
                 String.IsNullOrWhiteSpace(entity.Email) ||
-                String.IsNullOrWhiteSpace(entity.Senha))
+                String.IsNullOrWhiteSpace(entity.Senha) ||
+                String.IsNullOrWhiteSpace(Convert.ToString(entity.IdEndereco)))
             {
                 return true;
             }
