@@ -12,18 +12,25 @@ namespace Fatec.Clinica.Api.Controllers
     [Route("api/TipoExame")]
     public class TipoExameController : Controller
     {
-
+        /// <summary>
+        /// Declara as regras de negócio do Tipo de Exame.
+        /// </summary>
         TipoExameNegocio _tipoExameNegocio;
 
+        /// <summary>
+        /// Construtor para instanciar as regras de negócio.
+        /// </summary>
         public TipoExameController()
         {
             _tipoExameNegocio = new TipoExameNegocio();
         }
 
         /// <summary>
-        /// Método que obtem uma lista de TipoExame
+        /// Método que obtêm todos os Tipos dos Exames.
         /// </summary>
         /// <returns></returns>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFoud</response>
         [HttpGet]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(TipoExame), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
@@ -33,10 +40,13 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que seleciona um TipoExame por Id
+        /// Método que obtêm um Tipo de Exame.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Usado para selecionar o tipo de exame.</param>
         /// <returns></returns>
+        /// <remarks>Obtêm um tipo de exame pelo Id do tipo de exame.</remarks>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFoud</response>
         [HttpGet]
         [Route("{id}", Name = "TipoExameGetId")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(TipoExame), nameof(HttpStatusCode.OK))]
@@ -47,10 +57,13 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que insere um novo TipoExame
+        /// Método que insere um Tipo de Exame.
         /// </summary>
-        /// <param name="input"></param>
+        /// <param name="input">Objeto com os dados do tipo de exame.</param>
         /// <returns></returns>
+        /// <response code="201">Created</response>
+        /// <response code="400">BadRequest</response>
+        /// <response code="500">InternalServerError</response>
         [HttpPost]
         [SwaggerResponse((int)HttpStatusCode.Created, typeof(TipoExame), nameof(HttpStatusCode.Created))]
         [SwaggerResponse((int)HttpStatusCode.BadRequest)]
@@ -68,11 +81,14 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que altera os dados de um atendimento
+        /// Método que altera os dados de um Tipo de Exame.
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="input"></param>
+        /// <param name="id">Usado para selecionar o tipo de exame.</param>
+        /// <param name="input">Objeto que contêm os dados a serem alterados.</param>
         /// <returns></returns>
+        /// <response code="202">Accepted</response>
+        /// <response code="400">BadRequest</response>
+        /// <response code="500">InternalServerError</response>
         [HttpPut]
         [Route("{id}")]
         [SwaggerResponse((int)HttpStatusCode.Accepted, typeof(TipoExame), nameof(HttpStatusCode.Accepted))]
@@ -90,10 +106,12 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que deleta um TipoExame
+        /// Método que deleta um Tipo de Exame.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Usado para selecionar o Tipo de Exame.</param>
         /// <returns></returns>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFound</response>
         [HttpDelete]
         [Route("{id}")]
         [SwaggerResponse((int)HttpStatusCode.OK)]

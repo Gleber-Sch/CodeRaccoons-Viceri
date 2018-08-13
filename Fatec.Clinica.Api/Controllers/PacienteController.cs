@@ -12,17 +12,25 @@ namespace Fatec.Clinica.Api.Controllers
     [Route("api/Paciente")]
     public class PacienteController : Controller
     {
+        /// <summary>
+        /// Declara as regras de negócio do Paciente.
+        /// </summary>
         private PacienteNegocio _pacienteNegocio;
 
+        /// <summary>
+        /// Construtor para instanciar as regras de negócio.
+        /// </summary>
         public PacienteController()
         {
             _pacienteNegocio = new PacienteNegocio();
         }
 
         /// <summary>
-        /// Método que obtem uma lista de pacientes
+        /// Método que obtêm todos os Pacientes.
         /// </summary>
         /// <returns></returns>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFoud</response>
         [HttpGet]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Paciente), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
@@ -32,10 +40,13 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que seleciona um paciente por Id
+        /// Método que obtêm um Paciente.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Usado para selecionar o paciente.</param>
         /// <returns></returns>
+        /// <remarks>Obtêm um paciente pelo Id do paciente.</remarks>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFoud</response>
         [HttpGet]
         [Route("{id}", Name ="PacienteGetId")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Paciente), nameof(HttpStatusCode.OK))]
@@ -46,10 +57,13 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que seleciona um paciente por Cpf.
+        /// Método que obtêm um Paciente.
         /// </summary>
-        /// <param name="cpf"></param>
+        /// <param name="cpf">Usado para selecionar o paciente.</param>
         /// <returns></returns>
+        /// <remarks>Obtêm um paciente pelo Cpf do paciente.</remarks>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFoud</response>
         [HttpGet]
         [Route("Cpf/{cpf}", Name = "PacienteGetCpf")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Paciente), nameof(HttpStatusCode.OK))]
@@ -60,10 +74,13 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que insere um novo paciente
+        /// Método que insere um paciente.
         /// </summary>
-        /// <param name="input"></param>
+        /// <param name="input">Objeto com os dados do paciente.</param>
         /// <returns></returns>
+        /// <response code="201">Created</response>
+        /// <response code="400">BadRequest</response>
+        /// <response code="500">InternalServerError</response>
         [HttpPost]
         [SwaggerResponse((int)HttpStatusCode.Created, typeof(Paciente), nameof(HttpStatusCode.Created))]
         [SwaggerResponse((int)HttpStatusCode.BadRequest)]
@@ -88,11 +105,14 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que altera os dados de um paciente
+        /// Método que altera os dados de um paciente.
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="input"></param>
+        /// <param name="id">Usado para selecionar o paciente.</param>
+        /// <param name="input">Objeto que contêm os dados a serem alterados.</param>
         /// <returns></returns>
+        /// <response code="202">Accepted</response>
+        /// <response code="400">BadRequest</response>
+        /// <response code="500">InternalServerError</response>
         [HttpPut]
         [Route("{id}")]
         [SwaggerResponse((int)HttpStatusCode.Accepted, typeof(Paciente), nameof(HttpStatusCode.Accepted))]
@@ -117,10 +137,12 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que deleta um paciente
+        /// Método que deleta um paciente.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Usado para selecionar o paciente.</param>
         /// <returns></returns>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFound</response>
         [HttpDelete]
         [Route("{id}")]
         [SwaggerResponse((int)HttpStatusCode.OK)]
