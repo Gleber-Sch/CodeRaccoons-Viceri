@@ -184,5 +184,43 @@ namespace Fatec.Clinica.Negocio.Validacoes
             return false;
         }
         #endregion
+
+        #region Verificar se existem campos vazios na inserção ou alteração de um HorarioExame
+        /// <summary>
+        /// Verifica se os campos obrigátorios não foram preenchidos.
+        /// </summary>
+        /// <param name="entity">Objeto com os campos a serem verificados.</param>
+        /// <returns>True se os campos obrigátorios não foram preenchidos ou False se eles foram.</returns>
+        public static bool Verificar(HorariosExame entity)
+        {
+            if (String.IsNullOrEmpty(Convert.ToString(entity.DiaHora)) ||
+                String.IsNullOrEmpty(Convert.ToString(entity.Valor)) ||
+                String.IsNullOrEmpty(Convert.ToString(entity.IdAtendimento)) ||
+                String.IsNullOrEmpty(Convert.ToString(entity.IdTipoExame)))
+            {
+                return true;
+            }
+            return false;
+        }
+        #endregion
+
+
+        #region Verificar se existem campos vazios na inserção ou alteração de um HorarioConsulta
+        /// <summary>
+        /// Verifica se os campos obrigátorios não foram preenchidos.
+        /// </summary>
+        /// <param name="entity">Objeto com os campos a serem verificados.</param>
+        /// <returns>True se os campos obrigátorios não foram preenchidos ou False se eles foram.</returns>
+        public static bool Verificar(HorariosConsulta entity)
+        {
+            if (String.IsNullOrEmpty(Convert.ToString(entity.DiaHora)) ||
+                String.IsNullOrEmpty(Convert.ToString(entity.Valor)) ||
+                String.IsNullOrEmpty(Convert.ToString(entity.IdAtendimento)))
+            {
+                return true;
+            }
+            return false;
+        }
+        #endregion
     }
 }

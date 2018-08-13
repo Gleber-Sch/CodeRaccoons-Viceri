@@ -74,6 +74,8 @@
     <Build Include="dbo\View\ViewExame.sql" />
     <Build Include="dbo\Tabelas\HorariosConsulta.sql" />
     <Build Include="dbo\Tabelas\HorariosExame.sql" />
+    <Build Include="dbo\View\ViewHorariosConsulta.sql" />
+    <Build Include="dbo\View\ViewHorariosExame.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tabelas\Exame.sql" />

@@ -1,4 +1,6 @@
-﻿/*Cria tabela horarios.*/
+﻿
+
+/*Cria tabela horarios.*/
 
 CREATE TABLE HorariosConsulta (
 [Id] INTEGER PRIMARY KEY IDENTITY NOT NULL,
