@@ -107,7 +107,7 @@ namespace Fatec.Clinica.Negocio.Validacoes
                 entity.Cpf.Length != 11 ||
                 entity.Email.Length > 50 ||
                 entity.Senha.Length >20 ||
-                entity.Genero.Length > 1 ||
+                Convert.ToString(entity.Genero).Length > 1 ||
                 entity.Celular.Length > 11)
             {
                 return true;
@@ -132,7 +132,7 @@ namespace Fatec.Clinica.Negocio.Validacoes
                 entity.Cpf.Length != 11 ||
                 entity.Email.Length > 50 ||
                 entity.Senha.Length > 20 ||
-                entity.Genero.Length  > 1 ||
+                Convert.ToString(entity.Genero).Length  > 1 ||
                 entity.Celular.Length > 11 ||
                 entity.TelefoneRes.Length > 10)
             {

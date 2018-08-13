@@ -43,7 +43,7 @@ namespace Fatec.Clinica.Api.Controllers
         /// </summary>
         /// <param name="id">Usado para selecionar o endereço.</param>
         /// <returns></returns>
-        /// <remarks>Obtêm uma consulta pelo Id do endereço.</remarks>
+        /// <remarks>Obtêm um endereço pelo Id do endereço.</remarks>
         /// <response code="200">OK</response>
         /// <response code="404">NotFoud</response>
         [HttpGet]

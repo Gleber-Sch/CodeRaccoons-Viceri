@@ -19,6 +19,11 @@ namespace Fatec.Clinica.Negocio
         private readonly MedicoRepositorio _medicoRepositorio;
 
         /// <summary>
+        /// Declara e instancia o repositório do Paciente.
+        /// </summary>
+        private readonly PacienteRepositorio _pacienteRepositorio = new PacienteRepositorio();
+
+        /// <summary>
         /// Construtor para instanciar o repositório.
         /// </summary>
         public MedicoNegocio()
@@ -144,9 +149,11 @@ namespace Fatec.Clinica.Negocio
             }
             else
             {
-                var cpfExistente = _medicoRepositorio.SelecionarPorCpf(entity.Cpf);
-
-                if (cpfExistente != null)
+                if (_medicoRepositorio.SelecionarPorCpf(entity.Cpf) != null)
+                {
+                    throw new ConflitoException($"O CPF: \"{entity.Cpf}\", já foi cadastrado!");
+                }
+                else if (_pacienteRepositorio.SelecionarPorCpf(entity.Cpf) != null)
                 {
                     throw new ConflitoException($"O CPF: \"{entity.Cpf}\", já foi cadastrado!");
                 }
@@ -218,8 +225,11 @@ namespace Fatec.Clinica.Negocio
             else
             {
                 obj = _medicoRepositorio.SelecionarPorCpf(entity.Cpf);
-
-                if (obj != null && id != obj.Id)
+                if (obj != null && obj.Id != id)
+                {
+                    throw new ConflitoException($"O CPF: \"{entity.Cpf}\", já foi cadastrado!");
+                }
+                else if (_pacienteRepositorio.SelecionarPorCpf(entity.Cpf) != null)
                 {
                     throw new ConflitoException($"O CPF: \"{entity.Cpf}\", já foi cadastrado!");
                 }

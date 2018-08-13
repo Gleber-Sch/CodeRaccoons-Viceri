@@ -115,9 +115,8 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 var obj = connection.QueryFirstOrDefault<Medico>($"SELECT M.Id, M.Nome, M.Cpf, M.Crm, M.CrmEstado, " +
-                                                                 $"M.IdEspecialidade, M.Celular, M.Email, M.DataNasc," +
-                                                                 $"M.StatusAtividade, M.Genero , E.Nome As Especialidade" +
-                                                                 $"FROM [Medico] M" +
+                                                                 $"M.IdEspecialidade, M.Celular, M.Email, M.DataNasc, " +
+                                                                 $"M.StatusAtividade, M.Genero, E.Nome As Especialidade " +
                                                                  $"FROM [Medico] M " +
                                                                  $"JOIN [ESPECIALIDADE] E ON M.IdEspecialidade = E.Id " +
                                                                  $"WHERE Email = '{email}'");
@@ -137,17 +136,18 @@ namespace Fatec.Clinica.Dado
                 return connection.QuerySingle<int>($"DECLARE @ID int;" +
                                               $"INSERT INTO [Medico] " +
                                               $"(IdEspecialidade, Nome, Cpf, Crm, CrmEstado, Celular, Email," +
-                                              $" DataNasc, StatusAtividade, Genero) " +
+                                              $" DataNasc, StatusAtividade, Genero, Senha) " +
                                               $"VALUES ({entity.IdEspecialidade}," +
                                                      $"'{entity.Nome}', " +
                                                      $"'{entity.Cpf}', " +
                                                      $"{entity.Crm}," +
-                                                     $"{entity.CrmEstado}, " +
+                                                     $"'{entity.CrmEstado}', " +
                                                      $"'{entity.Celular}', " +
                                                      $"'{entity.Email}', " +
                                                      $"'{entity.DataNasc.ToString("dd/MM/yyyy")}', " +
-                                                     $" '{entity.StatusAtividade}', " +
-                                                     $"'{entity.Genero}') " +
+                                                     $"'{entity.StatusAtividade}', " +
+                                                     $"'{entity.Genero}', " +
+                                                     $"'{entity.Senha}') " +
                                               $"SET @ID = SCOPE_IDENTITY();" +
                                               $"SELECT @ID");
             }
@@ -162,14 +162,14 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 connection.Execute($"UPDATE [Medico] " +
-                                   $"SET  IdEspecialidade = {entity.IdEspecialidade}," +
+                                   $"SET  IdEspecialidade = {entity.IdEspecialidade}, " +
                                    $"Nome = '{entity.Nome}', " +
                                    $"Cpf = '{entity.Cpf}', " +
                                    $"Crm = {entity.Crm}, " +
-                                   $"CrmEstado = {entity.CrmEstado}, " +
+                                   $"CrmEstado = '{entity.CrmEstado}', " +
                                    $"Celular = '{entity.Celular}', " +
                                    $"Email = '{entity.Email}', " +
-                                   $"Senha = {entity.CrmEstado}," +
+                                   $"Senha = '{entity.Senha}', " +
                                    $"DataNasc = '{entity.DataNasc.ToString("dd/MM/yyyy")}', " +
                                    $"StatusAtividade = '{entity.StatusAtividade}', " +
                                    $"Genero = '{entity.Genero}' " +

@@ -25,9 +25,11 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que obtem uma lista de especialidades
+        /// Método que obtêm todas as especialidades.
         /// </summary>
         /// <returns></returns>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFoud</response>
         [HttpGet]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Especialidade), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
@@ -37,10 +39,13 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que seleciona uma especialidade
+        /// Método que obtêm uma especialidade.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Usado para selecionar a especialidade.</param>
         /// <returns></returns>
+        /// <remarks>Obtêm uma especialidade pelo Id da especialidade.</remarks>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFoud</response>
         [HttpGet]
         [Route("{id}", Name = "EspecialidadeGetId")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Especialidade), nameof(HttpStatusCode.OK))]
@@ -51,10 +56,13 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que insere um médico..
+        /// Método que insere uma especialidade.
         /// </summary>
-        /// <param name="input"></param>
+        /// <param name="input">Objeto com os dados da especialidade.</param>
         /// <returns></returns>
+        /// <response code="201">Created</response>
+        /// <response code="400">BadRequest</response>
+        /// <response code="500">InternalServerError</response>
         [HttpPost]
         [SwaggerResponse((int)HttpStatusCode.Created, typeof(Especialidade), nameof(HttpStatusCode.Created))]
         [SwaggerResponse((int)HttpStatusCode.BadRequest)]
@@ -72,11 +80,14 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Método que altera os dados de uma especialidade.
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="input"></param>
+        /// <param name="id">Usado para selecionar a especialidade.</param>
+        /// <param name="input">Objeto que contêm os dados a serem alterados.</param>
         /// <returns></returns>
+        /// <response code="202">Accepted</response>
+        /// <response code="400">BadRequest</response>
+        /// <response code="500">InternalServerError</response>
         [HttpPut]
         [Route("{id}")]
         [SwaggerResponse((int)HttpStatusCode.Accepted, typeof(Especialidade), nameof(HttpStatusCode.Accepted))]
@@ -94,10 +105,12 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Método que deleta uma especialidade.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Usado para selecionar a especialidade.</param>
         /// <returns></returns>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFound</response>
         [HttpDelete]
         [Route("{id}")]
         [SwaggerResponse((int)HttpStatusCode.OK)]
