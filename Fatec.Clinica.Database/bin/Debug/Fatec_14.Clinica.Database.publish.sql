@@ -36,6 +36,26 @@ IF N'$(__IsSqlCmdEnabled)' NOT LIKE N'True'
 
 
 GO
+USE [master];
+
+
+GO
+
+IF (DB_ID(N'$(DatabaseName)') IS NOT NULL) 
+BEGIN
+    ALTER DATABASE [$(DatabaseName)]
+    SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+    DROP DATABASE [$(DatabaseName)];
+END
+
+GO
+PRINT N'Creating $(DatabaseName)...'
+GO
+CREATE DATABASE [$(DatabaseName)]
+    ON 
+    PRIMARY(NAME = [$(DatabaseName)], FILENAME = N'$(DefaultDataPath)$(DefaultFilePrefix)_Primary.mdf')
+    LOG ON (NAME = [$(DatabaseName)_log], FILENAME = N'$(DefaultLogPath)$(DefaultFilePrefix)_Primary.ldf') COLLATE SQL_Latin1_General_CP1_CI_AS
+GO
 USE [$(DatabaseName)];
 
 
@@ -50,10 +70,16 @@ IF EXISTS (SELECT 1
                 ANSI_WARNINGS ON,
                 ARITHABORT ON,
                 CONCAT_NULL_YIELDS_NULL ON,
+                NUMERIC_ROUNDABORT OFF,
                 QUOTED_IDENTIFIER ON,
                 ANSI_NULL_DEFAULT ON,
                 CURSOR_DEFAULT LOCAL,
-                RECOVERY FULL 
+                RECOVERY FULL,
+                CURSOR_CLOSE_ON_COMMIT OFF,
+                AUTO_CREATE_STATISTICS ON,
+                AUTO_SHRINK OFF,
+                AUTO_UPDATE_STATISTICS ON,
+                RECURSIVE_TRIGGERS OFF 
             WITH ROLLBACK IMMEDIATE;
         ALTER DATABASE [$(DatabaseName)]
             SET AUTO_CLOSE OFF 
@@ -67,9 +93,71 @@ IF EXISTS (SELECT 1
            WHERE  [name] = N'$(DatabaseName)')
     BEGIN
         ALTER DATABASE [$(DatabaseName)]
-            SET PAGE_VERIFY NONE,
-                DISABLE_BROKER 
+            SET ALLOW_SNAPSHOT_ISOLATION OFF;
+    END
+
+
+GO
+IF EXISTS (SELECT 1
+           FROM   [master].[dbo].[sysdatabases]
+           WHERE  [name] = N'$(DatabaseName)')
+    BEGIN
+        ALTER DATABASE [$(DatabaseName)]
+            SET READ_COMMITTED_SNAPSHOT OFF 
             WITH ROLLBACK IMMEDIATE;
+    END
+
+
+GO
+IF EXISTS (SELECT 1
+           FROM   [master].[dbo].[sysdatabases]
+           WHERE  [name] = N'$(DatabaseName)')
+    BEGIN
+        ALTER DATABASE [$(DatabaseName)]
+            SET AUTO_UPDATE_STATISTICS_ASYNC OFF,
+                PAGE_VERIFY NONE,
+                DATE_CORRELATION_OPTIMIZATION OFF,
+                DISABLE_BROKER,
+                PARAMETERIZATION SIMPLE,
+                SUPPLEMENTAL_LOGGING OFF 
+            WITH ROLLBACK IMMEDIATE;
+    END
+
+
+GO
+IF IS_SRVROLEMEMBER(N'sysadmin') = 1
+    BEGIN
+        IF EXISTS (SELECT 1
+                   FROM   [master].[dbo].[sysdatabases]
+                   WHERE  [name] = N'$(DatabaseName)')
+            BEGIN
+                EXECUTE sp_executesql N'ALTER DATABASE [$(DatabaseName)]
+    SET TRUSTWORTHY OFF,
+        DB_CHAINING OFF 
+    WITH ROLLBACK IMMEDIATE';
+            END
+    END
+ELSE
+    BEGIN
+        PRINT N'The database settings cannot be modified. You must be a SysAdmin to apply these settings.';
+    END
+
+
+GO
+IF IS_SRVROLEMEMBER(N'sysadmin') = 1
+    BEGIN
+        IF EXISTS (SELECT 1
+                   FROM   [master].[dbo].[sysdatabases]
+                   WHERE  [name] = N'$(DatabaseName)')
+            BEGIN
+                EXECUTE sp_executesql N'ALTER DATABASE [$(DatabaseName)]
+    SET HONOR_BROKER_PRIORITY OFF 
+    WITH ROLLBACK IMMEDIATE';
+            END
+    END
+ELSE
+    BEGIN
+        PRINT N'The database settings cannot be modified. You must be a SysAdmin to apply these settings.';
     END
 
 
@@ -85,9 +173,77 @@ IF EXISTS (SELECT 1
            WHERE  [name] = N'$(DatabaseName)')
     BEGIN
         ALTER DATABASE [$(DatabaseName)]
-            SET QUERY_STORE (CLEANUP_POLICY = (STALE_QUERY_THRESHOLD_DAYS = 367)) 
+            SET FILESTREAM(NON_TRANSACTED_ACCESS = OFF),
+                CONTAINMENT = NONE 
             WITH ROLLBACK IMMEDIATE;
     END
+
+
+GO
+IF EXISTS (SELECT 1
+           FROM   [master].[dbo].[sysdatabases]
+           WHERE  [name] = N'$(DatabaseName)')
+    BEGIN
+        ALTER DATABASE [$(DatabaseName)]
+            SET AUTO_CREATE_STATISTICS ON(INCREMENTAL = OFF),
+                MEMORY_OPTIMIZED_ELEVATE_TO_SNAPSHOT = OFF,
+                DELAYED_DURABILITY = DISABLED 
+            WITH ROLLBACK IMMEDIATE;
+    END
+
+
+GO
+IF EXISTS (SELECT 1
+           FROM   [master].[dbo].[sysdatabases]
+           WHERE  [name] = N'$(DatabaseName)')
+    BEGIN
+        ALTER DATABASE [$(DatabaseName)]
+            SET QUERY_STORE (QUERY_CAPTURE_MODE = ALL, DATA_FLUSH_INTERVAL_SECONDS = 900, INTERVAL_LENGTH_MINUTES = 60, MAX_PLANS_PER_QUERY = 200, CLEANUP_POLICY = (STALE_QUERY_THRESHOLD_DAYS = 367), MAX_STORAGE_SIZE_MB = 100) 
+            WITH ROLLBACK IMMEDIATE;
+    END
+
+
+GO
+IF EXISTS (SELECT 1
+           FROM   [master].[dbo].[sysdatabases]
+           WHERE  [name] = N'$(DatabaseName)')
+    BEGIN
+        ALTER DATABASE [$(DatabaseName)]
+            SET QUERY_STORE = OFF 
+            WITH ROLLBACK IMMEDIATE;
+    END
+
+
+GO
+IF EXISTS (SELECT 1
+           FROM   [master].[dbo].[sysdatabases]
+           WHERE  [name] = N'$(DatabaseName)')
+    BEGIN
+        ALTER DATABASE SCOPED CONFIGURATION SET MAXDOP = 0;
+        ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET MAXDOP = PRIMARY;
+        ALTER DATABASE SCOPED CONFIGURATION SET LEGACY_CARDINALITY_ESTIMATION = OFF;
+        ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET LEGACY_CARDINALITY_ESTIMATION = PRIMARY;
+        ALTER DATABASE SCOPED CONFIGURATION SET PARAMETER_SNIFFING = ON;
+        ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET PARAMETER_SNIFFING = PRIMARY;
+        ALTER DATABASE SCOPED CONFIGURATION SET QUERY_OPTIMIZER_HOTFIXES = OFF;
+        ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET QUERY_OPTIMIZER_HOTFIXES = PRIMARY;
+    END
+
+
+GO
+IF EXISTS (SELECT 1
+           FROM   [master].[dbo].[sysdatabases]
+           WHERE  [name] = N'$(DatabaseName)')
+    BEGIN
+        ALTER DATABASE [$(DatabaseName)]
+            SET TEMPORAL_HISTORY_RETENTION ON 
+            WITH ROLLBACK IMMEDIATE;
+    END
+
+
+GO
+IF fulltextserviceproperty(N'IsFulltextInstalled') = 1
+    EXECUTE sp_fulltext_database 'enable';
 
 
 GO
@@ -116,12 +272,7 @@ CREATE TABLE [dbo].[Clinica] (
     [StatusAtividade] BIT          NOT NULL,
     [TelefoneCom]     VARCHAR (13) NOT NULL,
     [Nome]            VARCHAR (50) NOT NULL,
-    [Estado]          VARCHAR (2)  NOT NULL,
-    [Cidade]          VARCHAR (50) NOT NULL,
-    [Bairro]          VARCHAR (50) NOT NULL,
-    [Logradouro]      VARCHAR (50) NOT NULL,
-    [Numero]          INT          NOT NULL,
-    [Complemento]     VARCHAR (50) NULL,
+    [IdEndereco]      INT          NOT NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC),
     UNIQUE NONCLUSTERED ([Cnpj] ASC),
     UNIQUE NONCLUSTERED ([Email] ASC)
@@ -140,6 +291,23 @@ CREATE TABLE [dbo].[Consulta] (
     [DataHora]      DATETIME      NOT NULL,
     [IdPaciente]    INT           NOT NULL,
     [IdAtendimento] INT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[Endereco]...';
+
+
+GO
+CREATE TABLE [dbo].[Endereco] (
+    [Id]          INT          IDENTITY (1, 1) NOT NULL,
+    [Estado]      VARCHAR (2)  NOT NULL,
+    [Cidade]      VARCHAR (50) NOT NULL,
+    [Bairro]      VARCHAR (50) NOT NULL,
+    [Logradouro]  VARCHAR (50) NOT NULL,
+    [Numero]      INT          NOT NULL,
+    [Complemento] VARCHAR (50) NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 
@@ -267,7 +435,7 @@ PRINT N'Creating [dbo].[FK_Atendimento_Clinica]...';
 
 
 GO
-ALTER TABLE [dbo].[Atendimento] WITH NOCHECK
+ALTER TABLE [dbo].[Atendimento]
     ADD CONSTRAINT [FK_Atendimento_Clinica] FOREIGN KEY ([IdClinica]) REFERENCES [dbo].[Clinica] ([Id]);
 
 
@@ -276,8 +444,17 @@ PRINT N'Creating [dbo].[FK_Atendimento_Medico]...';
 
 
 GO
-ALTER TABLE [dbo].[Atendimento] WITH NOCHECK
+ALTER TABLE [dbo].[Atendimento]
     ADD CONSTRAINT [FK_Atendimento_Medico] FOREIGN KEY ([IdMedico]) REFERENCES [dbo].[Medico] ([Id]);
+
+
+GO
+PRINT N'Creating [dbo].[FK_Clinica_Endereco]...';
+
+
+GO
+ALTER TABLE [dbo].[Clinica]
+    ADD CONSTRAINT [FK_Clinica_Endereco] FOREIGN KEY ([IdEndereco]) REFERENCES [dbo].[Endereco] ([Id]);
 
 
 GO
@@ -285,7 +462,7 @@ PRINT N'Creating [dbo].[FK_Consulta_Paciente]...';
 
 
 GO
-ALTER TABLE [dbo].[Consulta] WITH NOCHECK
+ALTER TABLE [dbo].[Consulta]
     ADD CONSTRAINT [FK_Consulta_Paciente] FOREIGN KEY ([IdPaciente]) REFERENCES [dbo].[Paciente] ([Id]);
 
 
@@ -294,7 +471,7 @@ PRINT N'Creating [dbo].[FK_Consulta_Atendimento]...';
 
 
 GO
-ALTER TABLE [dbo].[Consulta] WITH NOCHECK
+ALTER TABLE [dbo].[Consulta]
     ADD CONSTRAINT [FK_Consulta_Atendimento] FOREIGN KEY ([IdAtendimento]) REFERENCES [dbo].[Atendimento] ([Id]);
 
 
@@ -303,7 +480,7 @@ PRINT N'Creating [dbo].[FK_Exame_TipoExame]...';
 
 
 GO
-ALTER TABLE [dbo].[Exame] WITH NOCHECK
+ALTER TABLE [dbo].[Exame]
     ADD CONSTRAINT [FK_Exame_TipoExame] FOREIGN KEY ([IdTipoExame]) REFERENCES [dbo].[TipoExame] ([Id]);
 
 
@@ -312,7 +489,7 @@ PRINT N'Creating [dbo].[FK_Exame_Atendimento]...';
 
 
 GO
-ALTER TABLE [dbo].[Exame] WITH NOCHECK
+ALTER TABLE [dbo].[Exame]
     ADD CONSTRAINT [FK_Exame_Atendimento] FOREIGN KEY ([IdAtendimento]) REFERENCES [dbo].[Atendimento] ([Id]);
 
 
@@ -321,7 +498,7 @@ PRINT N'Creating [dbo].[FK_Exame_Consulta]...';
 
 
 GO
-ALTER TABLE [dbo].[Exame] WITH NOCHECK
+ALTER TABLE [dbo].[Exame]
     ADD CONSTRAINT [FK_Exame_Consulta] FOREIGN KEY ([IdConsulta]) REFERENCES [dbo].[Consulta] ([Id]);
 
 
@@ -330,7 +507,7 @@ PRINT N'Creating [dbo].[FK_HorariosConsulta_Atendimento]...';
 
 
 GO
-ALTER TABLE [dbo].[HorariosConsulta] WITH NOCHECK
+ALTER TABLE [dbo].[HorariosConsulta]
     ADD CONSTRAINT [FK_HorariosConsulta_Atendimento] FOREIGN KEY ([IdAtendimento]) REFERENCES [dbo].[Atendimento] ([Id]);
 
 
@@ -339,7 +516,7 @@ PRINT N'Creating [dbo].[FK_HorariosExame_Atendimento]...';
 
 
 GO
-ALTER TABLE [dbo].[HorariosExame] WITH NOCHECK
+ALTER TABLE [dbo].[HorariosExame]
     ADD CONSTRAINT [FK_HorariosExame_Atendimento] FOREIGN KEY ([IdAtendimento]) REFERENCES [dbo].[Atendimento] ([Id]);
 
 
@@ -348,7 +525,7 @@ PRINT N'Creating [dbo].[FK_HorariosExame_TipoExame]...';
 
 
 GO
-ALTER TABLE [dbo].[HorariosExame] WITH NOCHECK
+ALTER TABLE [dbo].[HorariosExame]
     ADD CONSTRAINT [FK_HorariosExame_TipoExame] FOREIGN KEY ([IdTipoExame]) REFERENCES [dbo].[TipoExame] ([Id]);
 
 
@@ -357,7 +534,7 @@ PRINT N'Creating [dbo].[FK_Medico_Especialidade]...';
 
 
 GO
-ALTER TABLE [dbo].[Medico] WITH NOCHECK
+ALTER TABLE [dbo].[Medico]
     ADD CONSTRAINT [FK_Medico_Especialidade] FOREIGN KEY ([IdEspecialidade]) REFERENCES [dbo].[Especialidade] ([Id]);
 
 
@@ -378,9 +555,10 @@ PRINT N'Creating [dbo].[ViewClinicas]...';
 GO
 create view ViewClinicas as
 select Clinica.Id, Clinica.Email, Clinica.Cnpj, Clinica.StatusAtividade,
-Clinica.Nome, Clinica.Estado, Clinica.Cidade, Clinica.Logradouro,
-Clinica.Numero, Clinica.Complemento
-FROM Clinica
+Clinica.Nome, Endereco.Estado, Endereco.Cidade, Endereco.Logradouro,
+Endereco.Numero, Endereco.Complemento
+from Clinica
+inner join Endereco on Clinica.IdEndereco = Endereco.Id
 GO
 PRINT N'Creating [dbo].[ViewConsulta]...';
 
@@ -399,6 +577,17 @@ JOIN [Atendimento] A ON C.IdAtendimento = A.Id
 JOIN [Medico] M ON A.IdMedico = M.Id
 JOIN [Paciente] P ON C.IdPaciente = P.Id
 JOIN [Clinica] Cl ON A.IdClinica = Cl.Id
+GO
+PRINT N'Creating [dbo].[ViewEnderecos]...';
+
+
+GO
+create view ViewEnderecos as
+select Endereco.Id, Clinica.Nome, Endereco.Estado,
+Endereco.Cidade, Endereco.Bairro, Endereco.Logradouro,
+Endereco.Numero, Endereco.Complemento
+FROM Endereco
+INNER JOIN Clinica on Endereco.Id = Clinica.IdEndereco
 GO
 PRINT N'Creating [dbo].[ViewExame]...';
 
@@ -455,35 +644,21 @@ INNER JOIN [Clinica] C ON C.Id = A.IdClinica
 INNER JOIN [TipoExame] Tp ON Tp.Id = He.IdTipoExame
 INNER JOIN [Medico] M ON M.Id = A.IdMedico
 GO
-PRINT N'Checking existing data against newly created constraints';
+DECLARE @VarDecimalSupported AS BIT;
 
+SELECT @VarDecimalSupported = 0;
 
-GO
-USE [$(DatabaseName)];
+IF ((ServerProperty(N'EngineEdition') = 3)
+    AND (((@@microsoftversion / power(2, 24) = 9)
+          AND (@@microsoftversion & 0xffff >= 3024))
+         OR ((@@microsoftversion / power(2, 24) = 10)
+             AND (@@microsoftversion & 0xffff >= 1600))))
+    SELECT @VarDecimalSupported = 1;
 
-
-GO
-ALTER TABLE [dbo].[Atendimento] WITH CHECK CHECK CONSTRAINT [FK_Atendimento_Clinica];
-
-ALTER TABLE [dbo].[Atendimento] WITH CHECK CHECK CONSTRAINT [FK_Atendimento_Medico];
-
-ALTER TABLE [dbo].[Consulta] WITH CHECK CHECK CONSTRAINT [FK_Consulta_Paciente];
-
-ALTER TABLE [dbo].[Consulta] WITH CHECK CHECK CONSTRAINT [FK_Consulta_Atendimento];
-
-ALTER TABLE [dbo].[Exame] WITH CHECK CHECK CONSTRAINT [FK_Exame_TipoExame];
-
-ALTER TABLE [dbo].[Exame] WITH CHECK CHECK CONSTRAINT [FK_Exame_Atendimento];
-
-ALTER TABLE [dbo].[Exame] WITH CHECK CHECK CONSTRAINT [FK_Exame_Consulta];
-
-ALTER TABLE [dbo].[HorariosConsulta] WITH CHECK CHECK CONSTRAINT [FK_HorariosConsulta_Atendimento];
-
-ALTER TABLE [dbo].[HorariosExame] WITH CHECK CHECK CONSTRAINT [FK_HorariosExame_Atendimento];
-
-ALTER TABLE [dbo].[HorariosExame] WITH CHECK CHECK CONSTRAINT [FK_HorariosExame_TipoExame];
-
-ALTER TABLE [dbo].[Medico] WITH CHECK CHECK CONSTRAINT [FK_Medico_Especialidade];
+IF (@VarDecimalSupported > 0)
+    BEGIN
+        EXECUTE sp_db_vardecimal_storage_format N'$(DatabaseName)', 'ON';
+    END
 
 
 GO
