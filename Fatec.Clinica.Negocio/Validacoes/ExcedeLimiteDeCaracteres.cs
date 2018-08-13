@@ -48,29 +48,6 @@ namespace Fatec.Clinica.Negocio.Validacoes
         }
         #endregion
 
-        #region Endereço
-        /// <summary>
-        /// Verifica se o tamanho dos campos do objeto excedem o limite estabelecido no banco de dados.
-        /// </summary>
-        /// <param name="entity">Contêm os dados do campo.</param>
-        /// <returns>
-        /// True se algum campo possuir mais caracteres do que o limite declarado no banco de dados ou
-        /// False caso todos os campos respeitem esta especificação.
-        /// </returns>
-        public static bool Verificar(Endereco entity)
-        {
-            if (entity.Estado.Length != 2 ||
-                entity.Cidade.Length > 50 ||
-                entity.Bairro.Length > 50 ||
-                entity.Complemento.Length > 50 ||
-                entity.Logradouro.Length > 50)
-            {
-                return true;
-            }
-
-            return false;
-        }
-        #endregion
 
         #region Especialidade
         /// <summary>
