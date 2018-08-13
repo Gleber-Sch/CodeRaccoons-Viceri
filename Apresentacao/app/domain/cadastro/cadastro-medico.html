@@ -8,12 +8,6 @@
     <link rel="stylesheet" href="../../../css/bootstrap.css">
     <link rel="stylesheet" href="cadastro.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-
-    <script src="../../../lib/jquery.js"></script>
-    <script src="../../../lib/bootstrap.bundle.min.js"></script>
-    <script src="../../../js/RegraNegocio.js"></script>
-    
-
 </head>
 
 <body class="text-center">
@@ -27,23 +21,61 @@
         <div class="form-group">
                 <i class="fas fa-user"></i>
             <label for="inputEmail" class="sr-only">Email</label>
-            <input type="email" pattern="[a-z0-9._-]+@+[a-z0-9.-]+.+[a-z]{2,3}" id="login-med" class="form-control" placeholder="Email*- Ex: exemplo@exemplo.com" required>
+            <input type="email" id="login-med" class="form-control" placeholder="Email*- Ex: exemplo@exemplo.com" required>
         </div>
 
         <div class="form-group"> 
                 <i class="fas fa-key"></i>
             <label for="inputPassword" class="sr-only">Senha</label>
-            <input type="password" minlength="8" pattern="(?=^.{8,}$)((?=.\d)|(?=.\W+))(?![.\n])(?=.[A-Z])(?=.[a-z]).*$]" id="senha-med" class="form-control" placeholder="Senha* - Min: 8 Caracteres" required>
+            <input type="password" minlength="8" id="senha-med" class="form-control" placeholder="Senha* - Min: 8 Caracteres" required>
         </div>
         <div class="form-group">
                 <i class="fas fa-address-card"></i>
             <label for="inputCpf" class="sr-only">CPF</label>
-            <input type="text" pattern="([0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2})" onkeypress="MascaraCPF(text);" onblur="ValidarCPF(text);" id="cpf-med" class="form-control" placeholder="CPF*- Ex: 000.000.000-00" required>
+            <input type="text" id="cpf-med" class="form-control" placeholder="CPF* " required>
         </div>
         <div class="form-group">
             <i class="fas fa-user-md"></i>
-        <label for="inputCrm" class="sr-only">CRM</label>
-        <input type="number" pattern="[0-9]{7}[-]?[A-Za-z]{2}" id="crm-med" class="form-control" placeholder="CRM*" required>
+            <div class="form-row">
+                <div class="form-group col-md-9">
+                    <label for="inputCrm" class=""></label>
+                    <input type="number" id="crm-med" class="form-control" placeholder="CRM" required>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputState"></label>
+                  <select id="inputState" class="form-control">
+                    <option selected>Estado</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                  </select>
+                </div>
+                </div>
+        
     </div>
         <div class="form-group">
                 <i class="fas fa-user-circle"></i>
@@ -71,25 +103,20 @@
         </div>
 
         <div class="form-group">
-                <i class="fas fa-phone"></i>
-                <label for="inputTel" class="sr-only">Telefone Comercial</label>
-                <input type="tel" minlength="13" onkeypress="MascaraTelefone(tel);" onblur="ValidaTelefone(tel);" pattern="[(][0-9]{2}[)][0-9]{4}[-][0-9]{4}" id="telefone-med" class="form-control" placeholder="Telefone Res. - Ex: (11)0000-0000">
-            </div>
-            <div class="form-group">
-                    <i class="fas fa-mobile-alt"></i>
-                    <label for="inputCel" class="sr-only">Telefone celular</label>
-                    <input type="tel" minlength="14" onkeypress="MascaraCel(tel);" onblur="ValidaCel(cel);" Celular: pattern="[(][0-9]{2}[)][9][0-9]{4}[-][0-9]{4}" id="celular-med" class="form-control" placeholder="Telefone cel.* - Ex: (11)00000-0000" required>
-                </div>
-                <i class="fas fa-venus-mars"></i>
+            <i class="fas fa-mobile-alt"></i>
+            <label for="inputCel" class="sr-only">Telefone celular</label>
+            <input type="tel" minlength="11" id="celular-med" class="form-control" placeholder="Telefone cel.*" required>
+        </div>
+                
         <div class="form-group">
-
+            <i class="fas fa-venus-mars"></i>
             <div class="form-check form-check-inline">
                 <h4>Sexo - &nbsp </h4>
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="M" required>
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio" value="M" required>
                 <label class="form-check-label" for="inlineRadio1">Masculino</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="F" required>
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio" value="F" required>
                 <label class="form-check-label" for="inlineRadio2">Feminino</label>
               </div>
               </div>
@@ -97,11 +124,13 @@
         </div>
         <button class="btn btn-lg btn-secondary btn-block" type="submit">Entrar</button><br>
 
-        
-
     </form>
 
-    <script src="cadastro.js"></script>
+    <script src="../../../lib/jquery.js"></script>
+    <script src="../../../lib/bootstrap.bundle.min.js"></script>
+    <script src="../../../js/RegraNegocio.js"></script>
+    <script src="cadastroMedico.js"></script>
+
 </body>
 
 </html>
