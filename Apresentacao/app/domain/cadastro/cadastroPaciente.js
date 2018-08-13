@@ -1,5 +1,6 @@
 var urlApi = 'http://localhost:53731/api/Paciente/';
 
+
 var paciente = {
     Email: document.querySelector('#login-pac'),
     Senha: document.querySelector('#senha-pac'),
@@ -8,14 +9,12 @@ var paciente = {
     DataNasc: document.querySelector('#datanasc-pac'),
     TelefoneRes: document.querySelector('#telefone-pac'),
     Celular: document.querySelector('#celular-pac'),
-    Genero: document.getElementById('#inlineRadio1').checked = true,
-    Genero: document.getElementById('#inlineRadio2').checked = true,
-    Genero: document.getElementById('#inlineRadio3').checked = true
-
+    Genero: document.querySelector('#inlineRadio')
 };
 
 document.querySelector('.form-signin').addEventListener('submit', function(event)
 {
+    event.preventDefault();
     var obj = 
     {
         Email: paciente.Email.value,
@@ -46,10 +45,37 @@ function inserir(obj)
         fetch(request)
         .then(function(response)
         {
+            alert("Incluído com sucesso");
+            window.location.href="../login/login.html";
             return response.json();
         })
         .catch(function(response)
         {
             console.log(reponse);
         })
+}
+
+function obterTodos(){
+
+    var request = new Request(urlApi, {
+        method: 'GET',
+        headers: new Headers({
+            'Content-Type': 'application/json'
+        })
+    });
+
+    fetch(request)
+        .then(function(response){
+            if(response.status == 200)
+                return response.json();
+            alert('Sua requisição falhou.');
+        })
+        .then(function(paciente){
+            console.log(paciente);
+            update(paciente);
+        })
+        .catch(function(response){
+            console.log(response);
+        });
+
 }

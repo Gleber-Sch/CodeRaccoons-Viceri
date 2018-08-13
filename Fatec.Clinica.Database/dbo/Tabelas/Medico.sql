@@ -1,7 +1,7 @@
 ﻿CREATE TABLE Medico (
 [Id] INTEGER IDENTITY PRIMARY KEY NOT NULL,
 [Nome] VARCHAR(50) NOT NULL,
-[Cpf] VARCHAR(11) UNIQUE NOT NULL,
+[Cpf] VARCHAR(14) UNIQUE NOT NULL,
 [Crm] INT UNIQUE NOT NULL,
 [CrmEstado] VARCHAR(2) NOT NULL,
 [Email] VARCHAR(50) UNIQUE NOT NULL,
@@ -9,7 +9,7 @@
 [DataNasc] DATE NOT NULL,
 [StatusAtividade] BIT NOT NULL,
 [Genero] CHAR(1) NOT NULL,
-[Celular] VARCHAR(11) NOT NULL,
+[Celular] VARCHAR(14) NOT NULL,
 [IdEspecialidade] INTEGER NOT NULL,
 CONSTRAINT [FK_Medico_Especialidade] FOREIGN KEY(IdEspecialidade) REFERENCES [Especialidade] ([Id])
 )

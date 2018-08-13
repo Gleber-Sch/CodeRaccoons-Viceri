@@ -17,9 +17,9 @@ namespace Fatec.Clinica.Negocio.Validacoes
         public static bool Verificar(Clinicas entity)
         {
             if (entity.Email.Length >50 ||
-                entity.Cnpj.Length > 14 ||
+                entity.Cnpj.Length > 18 ||
                 entity.Nome.Length > 50 ||
-                entity.TelefoneCom.Length > 10)
+                entity.TelefoneCom.Length > 14)
             {
                 return true; 
             }
@@ -104,11 +104,11 @@ namespace Fatec.Clinica.Negocio.Validacoes
         public static bool Verificar(Medico entity)
         {
             if (entity.Nome.Length > 50 ||
-                entity.Cpf.Length != 11 ||
+                entity.Cpf.Length != 14 ||
                 entity.Email.Length > 50 ||
                 entity.Senha.Length >20 ||
                 Convert.ToString(entity.Genero).Length > 1 ||
-                entity.Celular.Length > 11)
+                entity.Celular.Length > 14)
             {
                 return true;
             }
@@ -129,12 +129,12 @@ namespace Fatec.Clinica.Negocio.Validacoes
         public static bool Verificar(Paciente entity)
         {
             if (entity.Nome.Length > 50 ||
-                entity.Cpf.Length != 11 ||
+                entity.Cpf.Length != 14 ||
                 entity.Email.Length > 50 ||
                 entity.Senha.Length > 20 ||
                 Convert.ToString(entity.Genero).Length  > 1 ||
-                entity.Celular.Length > 11 ||
-                entity.TelefoneRes.Length > 10)
+                entity.Celular.Length > 14 ||
+                entity.TelefoneRes.Length > 13)
             {
                 return true;
             }

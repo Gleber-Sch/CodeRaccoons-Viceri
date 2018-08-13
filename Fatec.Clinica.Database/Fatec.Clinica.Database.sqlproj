@@ -68,12 +68,14 @@
     <Build Include="dbo\Tabelas\Endereco.sql" />
     <Build Include="dbo\Tabelas\Especialidade.sql" />
     <Build Include="dbo\View\ViewAtendimentos.sql" />
-    <Build Include="dbo\View\ViewConsultas.sql" />
+    <Build Include="dbo\View\ViewConsulta.sql" />
     <Build Include="dbo\View\ViewEnderecos.sql" />
     <Build Include="dbo\View\ViewClinicas.sql" />
-    <Build Include="dbo\View\ViewExames.sql" />
+    <Build Include="dbo\View\ViewExame.sql" />
     <Build Include="dbo\Tabelas\HorariosConsulta.sql" />
     <Build Include="dbo\Tabelas\HorariosExame.sql" />
+    <Build Include="dbo\View\ViewHorariosConsulta.sql" />
+    <Build Include="dbo\View\ViewHorariosExame.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tabelas\Exame.sql" />

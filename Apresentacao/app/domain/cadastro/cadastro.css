@@ -101,7 +101,7 @@ a:visited{
     transition: .2s;
     -webkit-transition: .2s;
 }
-input , select , option{
+input , select{
     font-size: 30px;
     font-weight: bold;
     color: #666;

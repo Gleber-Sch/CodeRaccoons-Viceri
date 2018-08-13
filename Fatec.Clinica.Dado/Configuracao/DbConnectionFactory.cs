@@ -2,6 +2,6 @@
 {
     internal static class DbConnectionFactory 
     {
-        public static string SQLConnectionString => "Data Source=DESKTOP-CGEHIFJ\\SQLEXPRESS;Initial Catalog=ClinicaDB;Integrated Security=True";
+        public static string SQLConnectionString => "Data Source=DESKTOP-7NGJIU8\\SQLEXPRESS;Initial Catalog=ClinicaDB;Integrated Security=True";
     }
 }

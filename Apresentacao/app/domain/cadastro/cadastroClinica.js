@@ -1,4 +1,4 @@
-var urlApi = 'http://localhost:53731/api/Paciente/';
+var urlApi = 'http://localhost:53731/api/Clinica/';
 
 var clinica = 
 {
@@ -40,6 +40,8 @@ function inserir(obj)
         fetch(request)
         .then(function(response)
         {
+            alert("Incluído com sucesso");
+            window.location.href="../login/login.html";
             return response.json();
         })
         .catch(function(response)
