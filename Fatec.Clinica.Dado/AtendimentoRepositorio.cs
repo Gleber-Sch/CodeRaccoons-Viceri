@@ -20,7 +20,7 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var lista = connection.Query<Atendimento>($"Select * from ViewAtendimentos");
+                var lista = connection.Query<Atendimento>($"Select * from Atendimento");
 
                 return lista;
             }
@@ -35,7 +35,7 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var obj = connection.QueryFirstOrDefault<Atendimento>($"Select * From ViewAtendimentos " +
+                var obj = connection.QueryFirstOrDefault<Atendimento>($"Select * From Atendimento " +
                                                                       $"where id={id}");
 
                 return obj;
@@ -69,7 +69,7 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                connection.Execute($"UPDATE [Consulta] " +
+                connection.Execute($"UPDATE [Atendimento] " +
                                    $"SET IdClinica= {entity.IdClinica}," +
                                    $"IdMedico= {entity.IdMedico} " +
                                    $"WHERE Id = {entity.Id}");

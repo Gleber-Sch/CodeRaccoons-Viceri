@@ -32,6 +32,38 @@ namespace Fatec.Clinica.Negocio
         }
 
         /// <summary>
+        /// Verifica se existe campos vazios, se algum campo escede o tamanho do campo e se existe algum usuario
+        /// com este email e senha.
+        /// </summary>
+        /// <param name="usuario">Objeto com os dados do usúario.</param>
+        /// <returns>Usuario selecionado ou gera exceção.</returns>
+        public int Login(string email, string senha)
+        {
+            //Verifica se existem campos vazios.
+            if (String.IsNullOrWhiteSpace(email) || String.IsNullOrWhiteSpace(senha))
+            {
+                throw new DadoInvalidoException("Existem campos obrigatórios que não foram preenchidos!");
+            }
+
+            //Verifica se nenhum campo do objeto entity excede o limite de caracteres estipulado no Database.
+            if (email.Length > 50 || senha.Length > 20)
+            {
+                throw new DadoInvalidoException("Existem campos que excedem o limite de caracteres permitidos!");
+            }
+
+            //Verifica se existe algum usuario com o email e a senha indicados
+            var obj = _medicoRepositorio.Login(email, senha);
+            if (obj == null)
+            {
+                throw new NaoEncontradoException("Usúario não encontrado!");
+            }
+
+            var id = obj.Id;
+
+            return id;
+        }
+
+        /// <summary>
         /// Seleciona todas os Médicos do Database.
         /// </summary>
         /// <returns>Lista de médicos</returns>
