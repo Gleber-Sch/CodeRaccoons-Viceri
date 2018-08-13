@@ -1,6 +1,5 @@
 var urlApi = 'http://localhost:53731/api/Paciente/';
 
-obterTodos();
 
 var paciente = {
     Email: document.querySelector('#login-pac'),
@@ -47,11 +46,8 @@ function inserir(obj)
         .then(function(response)
         {
             alert("Incluído com sucesso");
+            window.location.href="../login/login.html";
             return response.json();
-        })
-        .then(function(paciente){
-
-            obterTodos();
         })
         .catch(function(response)
         {

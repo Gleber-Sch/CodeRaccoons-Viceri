@@ -6,9 +6,9 @@ $(document).ready(function(){
     $('.date_time').mask('00/00/0000 00:00:00');
     $('.cep').mask('00000-000');
     $('.phone').mask('0000-0000');
-    $('.phone_with_ddd').mask('(00) 0000-0000');
-    $('.cell_with_ddd').mask('(00) 00000-0000');
-    $('.phone_us').mask('(000) 000-0000');
+    $('.phone_with_ddd').mask('(00)0000-0000');
+    $('.cell_with_ddd').mask('(00)00000-0000');
+    $('.phone_us').mask('(000)000-0000');
     $('.mixed').mask('AAA 000-S0S');
     $('.cpf').mask('000.000.000-00', {reverse: true});
     $('.cnpj').mask('00.000.000/0000-00', {reverse: true});
@@ -42,7 +42,7 @@ function MascaraTelefone(tel){
     if(mascaraInteiro(tel)==false){
             event.returnValue = false;
     }       
-    return formataCampo(tel, '(00) 0000-0000', event);
+    return formataCampo(tel, '(00)0000-0000', event);
 }
 
 //valida telefone
@@ -57,7 +57,7 @@ function MascaraCel(cel){
     if(mascaraInteiro(cel)==false){
             event.returnValue = false;
     }       
-    return formataCampo(cel, '(00) 00000-0000', event);
+    return formataCampo(cel, '(00)00000-0000', event);
 }
 
 //valida celular
