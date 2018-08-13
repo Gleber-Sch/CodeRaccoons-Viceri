@@ -117,7 +117,7 @@ namespace Fatec.Clinica.Api.Controllers
         /// <response code="200">OK</response>
         /// <response code="404">NotFoud</response>
         [HttpGet]
-        [Route("Login/{senha}/{email}", Name = "MedicoGetLogin")]
+        [Route("Login/{senha}&{email}", Name = "MedicoGetLogin")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Medico), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult GetLogin(string email, string senha)

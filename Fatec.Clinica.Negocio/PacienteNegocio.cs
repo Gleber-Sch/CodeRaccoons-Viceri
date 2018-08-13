@@ -100,6 +100,15 @@ namespace Fatec.Clinica.Negocio
             return obj;
         }
 
+        public Paciente SelecionarPorEmail(string email)
+        {
+            var obj = _pacienteRepositorio.SelecionarPorEmail(email);
+
+            if (obj == null)
+                throw new NaoEncontradoException($"Não foi encontrado nenhum paciente com o Email: {email}");
+            return obj;
+        }
+
         /// <summary>
         /// Verifica se o CPF e o email já não estão cadastrados, se o CPF é válido, se existem campos obrigatórios
         /// que não estão preenchidos, se os campos respeitam os limites de caracteres especificados no Database e se o

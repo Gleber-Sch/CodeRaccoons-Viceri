@@ -82,9 +82,12 @@ namespace Fatec.Clinica.Dado
                 var lista = connection.Query<Medico>($"SELECT M.Id, M.Nome, M.Cpf, M.Crm, M.CrmEstado," +
                                                      $" M.IdEspecialidade, M.Celular," +
                                                      $" M.Email, M.DataNasc, M.StatusAtividade, M.Genero," +
-                                                     $" E.Nome As Especialidade " +
+                                                     $" E.Nome As Especialidade, C.Estado, C.Cidade," +
+                                                     $"C.Bairro, C.Logradouro, C.Numero, C.Complemento " +
                                                      $"FROM [Medico] M " +
                                                      $"JOIN [Especialidade] E ON M.IdEspecialidade = E.Id " +
+                                                     $"JOIN [Atendimento] A ON M.Id = A.IdMedico " +
+                                                     $"JOIN [Clinica] C ON C.Id = A.IdClinica" +
                                                      $"WHERE E.Id = {id}");
 
                 return lista;
