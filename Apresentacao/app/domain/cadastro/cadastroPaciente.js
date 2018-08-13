@@ -54,28 +54,3 @@ function inserir(obj)
             console.log(reponse);
         })
 }
-
-function obterTodos(){
-
-    var request = new Request(urlApi, {
-        method: 'GET',
-        headers: new Headers({
-            'Content-Type': 'application/json'
-        })
-    });
-
-    fetch(request)
-        .then(function(response){
-            if(response.status == 200)
-                return response.json();
-            alert('Sua requisição falhou.');
-        })
-        .then(function(paciente){
-            console.log(paciente);
-            update(paciente);
-        })
-        .catch(function(response){
-            console.log(response);
-        });
-
-}

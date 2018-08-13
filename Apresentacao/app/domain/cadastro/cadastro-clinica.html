@@ -29,7 +29,7 @@
         <div class="form-group"> 
                 <i class="fas fa-key"></i>
             <label for="inputPassword" class="sr-only">Senha</label>
-            <input type="password" minlength="8" pattern="(?=^.{8,}$)((?=.\d)|(?=.\W+))(?![.\n])(?=.[A-Z])(?=.[a-z]).*$]" id="senha-cli" class="form-control" placeholder="Senha* - Min: 8 Caracteres" required>
+            <input type="password" minlength="8" id="senha-cli" class="form-control" placeholder="Senha* - Min: 8 Caracteres" required>
         </div>
         
         <div class="form-group">
@@ -48,8 +48,50 @@
                 <i class="fas fa-phone"></i>
                 <label for="inputTel" class="sr-only">Telefone Comercial</label>
                 <input type="tel" minlength="13"  id="telefone-cli" class="form-control phone_with_ddd" placeholder="Telefone Comercial*- Ex: (00)0000-0000" required>
+        </div>
+
+        <hr>
+        <br>
+        <h3>Endereço</h3>
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+              <label for="validationCustom00">Logradouro</label>
+              <input type="text" class="form-control" id="validationCustom00" placeholder="Rua" required>
+             
             </div>
-      
+            <div class="col-md-4 mb-3">
+              <label for="validationCustom01">Bairro</label>
+              <input type="text" class="form-control" id="validationCustom01" placeholder="Bairro" required>
+              
+            </div>
+            <div class="col-md-2 mb-3">
+              <label for="validationCustom02">Número</label>
+              <input type="text" class="form-control" id="validationCustom02" placeholder="Nº" required>
+              
+            </div>
+        </div>
+          <br>
+        <div class="form-row">
+          <div class="col-md-9 mb-3">
+            <label for="validationCustom03">Cidade</label>
+            <input type="text" class="form-control" id="validationCustom03" placeholder="Cidade" required>
+           
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationCustom04">Estado</label>
+            <input type="text" class="form-control" id="validationCustom04" placeholder="Estado" required>
+            
+          </div>
+        </div>
+        <br>
+        <div class="form-row">
+                
+                <div class="col-md-12 mb-3">
+                  <label for="validationCustom05">Complemento</label>
+                  <input type="text" class="form-control" id="validationCustom05" placeholder="Complemento" required>
+                  
+                </div>
+        </div>         
         <button class="btn btn-lg btn-secondary btn-block" type="submit">Cadastrar</button><br>
 
         
@@ -61,7 +103,7 @@
     <script src="../../../lib/jquery.mask.js"></script>
     <script src="../../../lib/jquery.mask.min.js"></script>
     <script src="../../../js/RegraNegocio.js"></script>
-    <script> src="cadastroClinica.js"</script>
+    <script src="cadastroClinica.js"></script>
     
 </body>
 
