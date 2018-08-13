@@ -23,7 +23,7 @@
         <div class="form-group">
             <i class="fas fa-user"></i>
             <label for="inputEmail" class="sr-only">Email</label>
-            <input type="email" pattern="[a-z0-9._-]+@+[a-z0-9.-]+.+[a-z]{2,3}" id="login-cli" class="form-control" placeholder="Email*- Ex: exemplo@exemplo.com" required>
+            <input type="email" id="login-cli" class="form-control" placeholder="Email*- Ex: exemplo@exemplo.com" required>
         </div>
 
         <div class="form-group"> 
@@ -41,16 +41,16 @@
         <div class="form-group">
             <i class="fas fa-hospital"></i>
         <label for="cnpj-cli" class="sr-only">CNPJ</label>
-        <input type="text" onkeypress="MascaraCNPJ(text)" onblur="ValidadorCNPJ(text)" pattern="([0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2})" id="cnpj-cli" class="form-control" placeholder="CNPJ*- Ex: 00.000.000/0000-00" required>
+        <input type="text" id="cnpj-cli" class="form-control cnpj" placeholder="CNPJ*- Ex: 00.000.000/0000-00" required>
     </div>
        
         <div class="form-group">
                 <i class="fas fa-phone"></i>
                 <label for="inputTel" class="sr-only">Telefone Comercial</label>
-                <input type="tel" minlength="13" onkeypress="MascaraTelefone(tel);" onblur="ValidaTelefone(tel);" pattern="[(][0-9]{2}[)][0-9]{4}[-][0-9]{4}" id="telefone-cli" class="form-control" placeholder="Telefone Comercial*- Ex: (00)0000-0000" required>
+                <input type="tel" minlength="13"  id="telefone-cli" class="form-control phone_with_ddd" placeholder="Telefone Comercial*- Ex: (00)0000-0000" required>
             </div>
       
-        <button class="btn btn-lg btn-secondary btn-block" type="submit">Entrar</button><br>
+        <button class="btn btn-lg btn-secondary btn-block" type="submit">Cadastrar</button><br>
 
         
 
@@ -58,6 +58,8 @@
 
     <script src="../../../lib/jquery.js"></script>
     <script src="../../../lib/bootstrap.bundle.min.js"></script>
+    <script src="../../../lib/jquery.mask.js"></script>
+    <script src="../../../lib/jquery.mask.min.js"></script>
     <script src="../../../js/RegraNegocio.js"></script>
     <script> src="cadastroClinica.js"</script>
     
