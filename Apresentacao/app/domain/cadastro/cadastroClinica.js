@@ -44,6 +44,7 @@ function inserirEndereco(objendereco)
         .then(function(response)
         {
             alert('Adicionado o Endereço');
+            console.log(objendereco);
             return response.json(); 
         })
         .catch(function(response)
@@ -54,7 +55,7 @@ function inserirEndereco(objendereco)
 
 
 
-/*
+
 var clinica = 
 {
     Email: document.querySelector('#login-cli'),
@@ -104,4 +105,3 @@ function inserir(obj)
             console.log(response);
         })
 }
-*/

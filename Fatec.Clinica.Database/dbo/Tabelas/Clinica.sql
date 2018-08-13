@@ -6,6 +6,10 @@
 [StatusAtividade] BIT NOT NULL,
 [TelefoneCom] VARCHAR (13) NOT NULL,
 [Nome] VARCHAR(50) NOT NULL,
-[IdEndereco] INTEGER NOT NULL,
-CONSTRAINT [FK_Clinica_Endereco] FOREIGN KEY(IdEndereco) REFERENCES [Endereco] ([Id])
+[Estado] VARCHAR(2) NOT NULL,
+[Cidade] VARCHAR (50) NOT NULL,
+[Bairro] VARCHAR(50) NOT NULL,
+[Logradouro] VARCHAR(50) NOT NULL,
+[Numero] INTEGER NOT NULL,
+[Complemento] VARCHAR(50)
 )
