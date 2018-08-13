@@ -69,26 +69,6 @@ namespace Fatec.Clinica.Negocio.Validacoes
         }
         #endregion
 
-        #region Endereco
-        /// <summary>
-        /// Verifica se os campos obrigátorios não foram preenchidos.
-        /// </summary>
-        /// <param name="entity">Objeto com os campos a serem verificados.</param>
-        /// <returns>True se o atributo Nome não estever preenchido ou False se ele estiver.</returns>
-        public static bool Verificar(Endereco entity)
-        {
-            if (String.IsNullOrWhiteSpace(entity.Estado) ||
-                String.IsNullOrWhiteSpace(entity.Cidade) ||
-                String.IsNullOrWhiteSpace(entity.Bairro) ||
-                String.IsNullOrWhiteSpace(entity.Logradouro) ||
-                String.IsNullOrWhiteSpace(Convert.ToString(entity.Numero)))
-            {
-                return true;
-            }
-            return false;
-        }
-        #endregion
-
         #region Tipo de Exame
         /// <summary>
         /// Verifica se o campo obrigátorio não foi preenchido.
@@ -175,8 +155,7 @@ namespace Fatec.Clinica.Negocio.Validacoes
                 String.IsNullOrWhiteSpace(Convert.ToString(entity.StatusAtividade)) ||
                 String.IsNullOrWhiteSpace(entity.TelefoneCom) ||
                 String.IsNullOrWhiteSpace(entity.Email) ||
-                String.IsNullOrWhiteSpace(entity.Senha) ||
-                String.IsNullOrWhiteSpace(Convert.ToString(entity.IdEndereco)))
+                String.IsNullOrWhiteSpace(entity.Senha))
             {
                 return true;
             }

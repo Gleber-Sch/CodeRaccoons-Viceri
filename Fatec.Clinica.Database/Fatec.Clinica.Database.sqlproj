@@ -65,11 +65,9 @@
     <Build Include="dbo\Tabelas\Atendimento.sql" />
     <Build Include="dbo\Tabelas\Clinica.sql" />
     <Build Include="dbo\Tabelas\Consulta.sql" />
-    <Build Include="dbo\Tabelas\Endereco.sql" />
     <Build Include="dbo\Tabelas\Especialidade.sql" />
     <Build Include="dbo\View\ViewAtendimentos.sql" />
     <Build Include="dbo\View\ViewConsulta.sql" />
-    <Build Include="dbo\View\ViewEnderecos.sql" />
     <Build Include="dbo\View\ViewClinicas.sql" />
     <Build Include="dbo\View\ViewExame.sql" />
     <Build Include="dbo\Tabelas\HorariosConsulta.sql" />

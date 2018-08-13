@@ -1,6 +1,5 @@
 ﻿create view ViewClinicas as
 select Clinica.Id, Clinica.Email, Clinica.Cnpj, Clinica.StatusAtividade,
-Clinica.Nome, Endereco.Estado, Endereco.Cidade, Endereco.Logradouro,
-Endereco.Numero, Endereco.Complemento
-from Clinica
-inner join Endereco on Clinica.IdEndereco = Endereco.Id
+Clinica.Nome, Clinica.Estado, Clinica.Cidade, Clinica.Logradouro,
+Clinica.Numero, Clinica.Complemento
+FROM Clinica

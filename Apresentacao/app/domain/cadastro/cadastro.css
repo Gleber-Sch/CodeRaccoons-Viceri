@@ -113,3 +113,18 @@ i{
     text-shadow: 2px 2px  #666;
     
 }
+
+.modal-header{
+    background-color: #11c182;
+    color: #fff;
+    font-size: 20px;
+}
+.modal-body{
+    background-color: #fff;
+   
+}
+.modal-footer{
+    background-color: #11c182;
+    color: #fff;
+    font-size: 20px;
+}
