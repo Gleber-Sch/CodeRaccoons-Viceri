@@ -1,17 +1,14 @@
-﻿
+﻿var api = 'http://localhost:53731/api/paciente/';
 
+var tabela = document.querySelector('#perfilpaciente');
 
-var api = 'http://localhost:53731/api/medico/';
+obterPaciente(idPaciente);
 
-var tabela = document.querySelector('#medicos');
-
-obterTodos();
-
-function update(medicos) {
-    tabela.innerHTML = template(medicos);
+function update(pacientes) {
+    tabela.innerHTML = template(pacientes);
 }
 
-function template(medicos = []) {
+function template(pacientes = []) {
     return `
     <table class="table table-hover table-bordered">
         <thead>
@@ -19,24 +16,29 @@ function template(medicos = []) {
                 <th>#</th>
                 <th>Nome</th>
                 <th>Cpf</th>
-                <th>Crm</th>
-                <th>Especialidade</th>
-                <th>Ações</th>
+                <th>Data De Nascimento</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Celular</th>
+                <th>Gênero</th>
             </tr>
         </thead>
         <tbody>
         ${
-            medicos.map(function(medico){
+            pacientes.map(function(paciente){
                 return `
                     <tr>
-                        <td>${medico.id}</td>
-                        <td>${medico.nome}</td>
-                        <td>${medico.cpf}</td>
-                        <td>${medico.crm}</td>
-                        <td>${medico.especialidade}</td>
+                        <td>${paciente.id}</td>
+                        <td>${paciente.nome}</td>
+                        <td>${paciente.cpf}</td>
+                        <td>${paciente.dataNasc}</td>
+                        <td>${paciente.email}</td>
+                        <td>${paciente.telefone}</td>
+                        <td>${paciente.celular}</td>
+                        <td>${paciente.genero}</td>
                         <td>
-                            <a href="#" onclick="alterarMedico(${medico.id})">Editar</a> | 
-                            <a href="#" onclick="excluirMedico(${medico.id})">Excluir</a>
+                            <a href="#" onclick="alterarPaciente(${paciente.id})">Editar</a> | 
+                            <a href="#" onclick="excluirPaciente(${paciente.id})">Excluir</a>
                         </td>
                     </tr>
                 `;
@@ -47,9 +49,9 @@ function template(medicos = []) {
     `;
 }
 
-function obterTodos() {
+function obterPaciente(idPaciente) {
 
-    var request = new Request(api, {
+    var request = new Request(api + idPaciente, {
         method: "GET",
         headers: new Headers({
             'Content-Type': 'application/json'
@@ -61,11 +63,11 @@ function obterTodos() {
             // console.log(response);
             if (response.status == 200) {
                 response.json()
-                    .then(function (medicos) {
-                        update(medicos);
+                    .then(function (pacientes) {
+                        update(pacientes);
                     });
             } else {
-                alert("Ocorreu um erro ao obter os médicos");
+                alert("Ocorreu um erro ao obter os paciente");
             }
         })
         .catch(function (response) {
@@ -75,14 +77,14 @@ function obterTodos() {
 
 }
 
-function alterarMedico(idMedico) {
-    window.location.href = 'medicoCriar.html?id=' + idMedico;
+function alterarPaciente(idPaciente) {
+    window.location.href = 'medicoCriar.html?id=' + idPaciente;
 }
 
-function excluirMedico(idMedico) {
-    if (confirm('Tem certeza que deseja excluir esse médico?')) {
+function excluirPaciente(idPaciente) {
+    if (confirm('Tem certeza que deseja excluir esse paciente?')) {
         
-        var request = new Request(api + idMedico, {
+        var request = new Request(api + idPaciente, {
             method: "DELETE",
             headers: new Headers({
                 'Content-Type': 'application/json'
@@ -93,9 +95,9 @@ function excluirMedico(idMedico) {
             .then(function (response) {
                 // console.log(response);
                 if (response.status == 200) {
-                    obterTodos();
+                    obterPaciente();
                 } else {
-                    alert("Ocorreu um erro ao excluir os médico");
+                    alert("Ocorreu um erro ao excluir o paciente");
                 }
             })
             .catch(function (response) {

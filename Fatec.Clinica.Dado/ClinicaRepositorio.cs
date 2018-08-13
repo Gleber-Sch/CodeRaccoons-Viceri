@@ -101,7 +101,7 @@ namespace Fatec.Clinica.Dado
             {
                 return connection.QuerySingle<int>($"DECLARE @ID int;" +
                                                    $"INSERT INTO [Clinica] " +
-                                                   $"(Email, Senha, Cnpj, StatusAtividade, TelefoneCom, Nome, IdEndereco) " +
+                                                   $"(Email, Senha, Cnpj, StatusAtividade, TelefoneCom, Nome, Estado, Cidade, Bairro, Logradouro, Numero, Complemento) " +
                                                    $"VALUES ('{entity.Email}', " +
                                                    $"'{entity.Senha}' , " +
                                                    $"'{entity.Cnpj}'," +

@@ -2,7 +2,7 @@
 
 var tabela = document.querySelector('#perfil');
 
-obterTodos();
+obterMedico(idMedico);
 
 function update(medicos) {
     tabela.innerHTML = template(medicos);
@@ -15,10 +15,10 @@ function template(medicos = []) {
                     <p><i class="fa fa-user mr-3"></i>Nome:</p>
                     <p><i class="fas fa-stethoscope"></i>Especialidade:</p>
                     <p><i class="far fa-address-card mr-3"></i>CPF:</p>
-                    <p><i class="fas fa-id-card-alt"></i> CRM:</p>
+                    <p><i class="fas fa-id-card-alt"></i>CRM:</p>
+                    <p><i class="fas fa-id-card-alt"></i>CrmEstado:</p>
                     <p><i class="fa fa-calendar-alt mr-3"></i>Data de nascimento:</p>
                     <p><i class="fa fa-envelope mr-3"></i>Email:</p>
-                    <p><i class="fa fa-phone mr-3"></i>Telefone:</p>
                     <p><i class="fa fa-mobile-alt mr-3"></i>Celular:</p>
                     <p><i class="fas fa-venus-mars"></i>Genêro:</p>
         ${
@@ -27,9 +27,15 @@ function template(medicos = []) {
                     <tr>
                         <td>${medico.id}</td>
                         <td>${medico.nome}</td>
+                        <td>${medico.especialidade}</td>
                         <td>${medico.cpf}</td>
                         <td>${medico.crm}</td>
-                        <td>${medico.especialidade}</td>
+                        <td>${medico.crmEstado}</td>
+                        <td>${medico.datanasc}</td>
+                        <td>${medico.email}</td>
+                        <td>${medico.celular}</td>
+                        <td>${medico.genero}</td>
+
                         <td>
                             <a href="#" onclick="alterarMedico(${medico.id})">Editar</a> | 
                             <a href="#" onclick="excluirMedico(${medico.id})">Excluir</a>
@@ -43,9 +49,9 @@ function template(medicos = []) {
     `;
 }
 
-function obterTodos() {
+function obterMedico(idMedico) {
 
-    var request = new Request(api, {
+    var request = new Request(api + idMedico, {
         method: "GET",
         headers: new Headers({
             'Content-Type': 'application/json'
@@ -54,7 +60,7 @@ function obterTodos() {
 
     fetch(request)
         .then(function (response) {
-            // console.log(response);
+            console.log(response);
             if (response.status == 200) {
                 response.json()
                     .then(function (medicos) {
@@ -65,7 +71,7 @@ function obterTodos() {
             }
         })
         .catch(function (response) {
-            // console.log(response);
+            console.log(response);
             alert("Desculpe, ocorreu um erro no servidor.");
         });
 
@@ -87,15 +93,15 @@ function excluirMedico(idMedico) {
 
         fetch(request)
             .then(function (response) {
-                // console.log(response);
+                console.log(response);
                 if (response.status == 200) {
-                    obterTodos();
+                    obterMedico();
                 } else {
                     alert("Ocorreu um erro ao excluir os médico");
                 }
             })
             .catch(function (response) {
-                // console.log(response);
+                console.log(response);
                 alert("Desculpe, ocorreu um erro no servidor.");
             });
     }
