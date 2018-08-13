@@ -19,7 +19,7 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var lista = connection.Query<Exame>("SELECT * FROM [ViewExames]");
+                var lista = connection.Query<Exame>("SELECT * FROM [ViewExame]");
                 return lista;
             }
         }
@@ -34,7 +34,7 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 var obj = connection.QueryFirstOrDefault<Exame>($"SELECT * " +
-                                                                $"FROM [ViewExames] " +
+                                                                $"FROM [ViewExame] " +
                                                                 $"WHERE Id = {id}");
                 return obj;
             }
@@ -50,7 +50,7 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 var lista = connection.Query<Exame>($"SELECT * " +
-                                                    $"FROM [ViewExames] " +
+                                                    $"FROM [ViewExame] " +
                                                     $"WHERE IdPaciente = {id}");
                 return lista;
             }
@@ -66,7 +66,7 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 var lista = connection.Query<Exame>($"SELECT * " +
-                                                    $"FROM [ViewExames] " +
+                                                    $"FROM [ViewExame] " +
                                                     $"WHERE IdMedicoQueSolicitou = {id}");
                 return lista;
             }
@@ -82,7 +82,7 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 var lista = connection.Query<Exame>($"SELECT * " +
-                                                    $"FROM [ViewExames] " +
+                                                    $"FROM [ViewExame] " +
                                                     $"WHERE IdMedicoQueRealizou = {id}");
                 return lista;
             }
@@ -98,7 +98,7 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 var lista = connection.Query<Exame>($"SELECT * " +
-                                                    $"FROM [ViewExames] " +
+                                                    $"FROM [ViewExame] " +
                                                     $"WHERE IdClinica = {id}");
                 return lista;
             }
@@ -135,7 +135,7 @@ namespace Fatec.Clinica.Dado
             {
                 connection.Execute($"UPDATE [Exame] " +
                                    $"SET  DataHora = '{entity.DataHora}', " +
-                                   $"TipoExame = {entity.IdTipoExame}, " +
+                                   $"IdTipoExame = {entity.IdTipoExame}, " +
                                    $"IdAtendimento = {entity.IdAtendimento}, " +
                                    $"IdConsulta = {entity.IdConsulta} " +
                                    $"WHERE Id = {entity.Id}");

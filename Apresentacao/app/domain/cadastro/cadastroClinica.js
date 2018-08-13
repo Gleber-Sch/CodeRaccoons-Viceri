@@ -1,4 +1,4 @@
-var urlApi = 'http://localhost:53731/api/Paciente/';
+var urlApi = 'http://localhost:53731/api/Clinica/';
 
 var clinica = 
 {
