@@ -77,6 +77,24 @@ namespace Fatec.Clinica.Api.Controllers
             return Ok(_clinicaNegocio.SelecionarPorCnpj(cnpj));
         }
 
+        // <summary>
+        /// Método que obtêm o Id da Clínica para realizar o Login.
+        /// </summary>
+        /// <param name="email">Usado para selecionar a clínica.</param>
+        /// <param name="senha">Usado para selecionar a clínica.</param>
+        /// <returns></returns>
+        /// <remarks>Obtêm um paciente pelo Id do paciente.</remarks>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFoud</response>
+        [HttpGet]
+        [Route("Login/{senha}/{email}", Name = "ClinicaGetLogin")]
+        [SwaggerResponse((int)HttpStatusCode.OK, typeof(Clinicas), nameof(HttpStatusCode.OK))]
+        [SwaggerResponse((int)HttpStatusCode.NotFound)]
+        public IActionResult GetLogin(string email, string senha)
+        {
+            return Ok(_clinicaNegocio.Login(email, senha));
+        }
+
         /// <summary>
         /// Método que insere uma clínica.
         /// </summary>

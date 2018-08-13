@@ -36,6 +36,7 @@ IF N'$(__IsSqlCmdEnabled)' NOT LIKE N'True'
 
 
 GO
+<<<<<<< HEAD
 USE [master];
 
 
@@ -56,6 +57,8 @@ CREATE DATABASE [$(DatabaseName)]
     PRIMARY(NAME = [$(DatabaseName)], FILENAME = N'$(DefaultDataPath)$(DefaultFilePrefix)_Primary.mdf')
     LOG ON (NAME = [$(DatabaseName)_log], FILENAME = N'$(DefaultLogPath)$(DefaultFilePrefix)_Primary.ldf') COLLATE SQL_Latin1_General_CP1_CI_AS
 GO
+=======
+>>>>>>> 6e52d453ed1ca2babd7c3dac19633f7f52c6cf36
 USE [$(DatabaseName)];
 
 
@@ -70,6 +73,7 @@ IF EXISTS (SELECT 1
                 ANSI_WARNINGS ON,
                 ARITHABORT ON,
                 CONCAT_NULL_YIELDS_NULL ON,
+<<<<<<< HEAD
                 NUMERIC_ROUNDABORT OFF,
                 QUOTED_IDENTIFIER ON,
                 ANSI_NULL_DEFAULT ON,
@@ -80,6 +84,12 @@ IF EXISTS (SELECT 1
                 AUTO_SHRINK OFF,
                 AUTO_UPDATE_STATISTICS ON,
                 RECURSIVE_TRIGGERS OFF 
+=======
+                QUOTED_IDENTIFIER ON,
+                ANSI_NULL_DEFAULT ON,
+                CURSOR_DEFAULT LOCAL,
+                RECOVERY FULL 
+>>>>>>> 6e52d453ed1ca2babd7c3dac19633f7f52c6cf36
             WITH ROLLBACK IMMEDIATE;
         ALTER DATABASE [$(DatabaseName)]
             SET AUTO_CLOSE OFF 
@@ -93,6 +103,7 @@ IF EXISTS (SELECT 1
            WHERE  [name] = N'$(DatabaseName)')
     BEGIN
         ALTER DATABASE [$(DatabaseName)]
+<<<<<<< HEAD
             SET ALLOW_SNAPSHOT_ISOLATION OFF;
     END
 
@@ -120,11 +131,16 @@ IF EXISTS (SELECT 1
                 DISABLE_BROKER,
                 PARAMETERIZATION SIMPLE,
                 SUPPLEMENTAL_LOGGING OFF 
+=======
+            SET PAGE_VERIFY NONE,
+                DISABLE_BROKER 
+>>>>>>> 6e52d453ed1ca2babd7c3dac19633f7f52c6cf36
             WITH ROLLBACK IMMEDIATE;
     END
 
 
 GO
+<<<<<<< HEAD
 IF IS_SRVROLEMEMBER(N'sysadmin') = 1
     BEGIN
         IF EXISTS (SELECT 1
@@ -162,6 +178,8 @@ ELSE
 
 
 GO
+=======
+>>>>>>> 6e52d453ed1ca2babd7c3dac19633f7f52c6cf36
 ALTER DATABASE [$(DatabaseName)]
     SET TARGET_RECOVERY_TIME = 0 SECONDS 
     WITH ROLLBACK IMMEDIATE;
@@ -173,6 +191,7 @@ IF EXISTS (SELECT 1
            WHERE  [name] = N'$(DatabaseName)')
     BEGIN
         ALTER DATABASE [$(DatabaseName)]
+<<<<<<< HEAD
             SET FILESTREAM(NON_TRANSACTED_ACCESS = OFF),
                 CONTAINMENT = NONE 
             WITH ROLLBACK IMMEDIATE;
@@ -237,16 +256,22 @@ IF EXISTS (SELECT 1
     BEGIN
         ALTER DATABASE [$(DatabaseName)]
             SET TEMPORAL_HISTORY_RETENTION ON 
+=======
+            SET QUERY_STORE (CLEANUP_POLICY = (STALE_QUERY_THRESHOLD_DAYS = 367)) 
+>>>>>>> 6e52d453ed1ca2babd7c3dac19633f7f52c6cf36
             WITH ROLLBACK IMMEDIATE;
     END
 
 
 GO
+<<<<<<< HEAD
 IF fulltextserviceproperty(N'IsFulltextInstalled') = 1
     EXECUTE sp_fulltext_database 'enable';
 
 
 GO
+=======
+>>>>>>> 6e52d453ed1ca2babd7c3dac19633f7f52c6cf36
 PRINT N'Creating [dbo].[Atendimento]...';
 
 
@@ -433,7 +458,11 @@ PRINT N'Creating [dbo].[FK_Atendimento_Clinica]...';
 
 
 GO
+<<<<<<< HEAD
 ALTER TABLE [dbo].[Atendimento]
+=======
+ALTER TABLE [dbo].[Atendimento] WITH NOCHECK
+>>>>>>> 6e52d453ed1ca2babd7c3dac19633f7f52c6cf36
     ADD CONSTRAINT [FK_Atendimento_Clinica] FOREIGN KEY ([IdClinica]) REFERENCES [dbo].[Clinica] ([Id]);
 
 
@@ -442,7 +471,11 @@ PRINT N'Creating [dbo].[FK_Atendimento_Medico]...';
 
 
 GO
+<<<<<<< HEAD
 ALTER TABLE [dbo].[Atendimento]
+=======
+ALTER TABLE [dbo].[Atendimento] WITH NOCHECK
+>>>>>>> 6e52d453ed1ca2babd7c3dac19633f7f52c6cf36
     ADD CONSTRAINT [FK_Atendimento_Medico] FOREIGN KEY ([IdMedico]) REFERENCES [dbo].[Medico] ([Id]);
 
 
@@ -451,7 +484,11 @@ PRINT N'Creating [dbo].[FK_Clinica_Endereco]...';
 
 
 GO
+<<<<<<< HEAD
 ALTER TABLE [dbo].[Clinica]
+=======
+ALTER TABLE [dbo].[Clinica] WITH NOCHECK
+>>>>>>> 6e52d453ed1ca2babd7c3dac19633f7f52c6cf36
     ADD CONSTRAINT [FK_Clinica_Endereco] FOREIGN KEY ([IdEndereco]) REFERENCES [dbo].[Endereco] ([Id]);
 
 
@@ -460,7 +497,11 @@ PRINT N'Creating [dbo].[FK_Consulta_Paciente]...';
 
 
 GO
+<<<<<<< HEAD
 ALTER TABLE [dbo].[Consulta]
+=======
+ALTER TABLE [dbo].[Consulta] WITH NOCHECK
+>>>>>>> 6e52d453ed1ca2babd7c3dac19633f7f52c6cf36
     ADD CONSTRAINT [FK_Consulta_Paciente] FOREIGN KEY ([IdPaciente]) REFERENCES [dbo].[Paciente] ([Id]);
 
 
@@ -469,7 +510,11 @@ PRINT N'Creating [dbo].[FK_Consulta_Atendimento]...';
 
 
 GO
+<<<<<<< HEAD
 ALTER TABLE [dbo].[Consulta]
+=======
+ALTER TABLE [dbo].[Consulta] WITH NOCHECK
+>>>>>>> 6e52d453ed1ca2babd7c3dac19633f7f52c6cf36
     ADD CONSTRAINT [FK_Consulta_Atendimento] FOREIGN KEY ([IdAtendimento]) REFERENCES [dbo].[Atendimento] ([Id]);
 
 
@@ -478,7 +523,11 @@ PRINT N'Creating [dbo].[FK_Exame_TipoExame]...';
 
 
 GO
+<<<<<<< HEAD
 ALTER TABLE [dbo].[Exame]
+=======
+ALTER TABLE [dbo].[Exame] WITH NOCHECK
+>>>>>>> 6e52d453ed1ca2babd7c3dac19633f7f52c6cf36
     ADD CONSTRAINT [FK_Exame_TipoExame] FOREIGN KEY ([IdTipoExame]) REFERENCES [dbo].[TipoExame] ([Id]);
 
 
@@ -487,7 +536,11 @@ PRINT N'Creating [dbo].[FK_Exame_Atendimento]...';
 
 
 GO
+<<<<<<< HEAD
 ALTER TABLE [dbo].[Exame]
+=======
+ALTER TABLE [dbo].[Exame] WITH NOCHECK
+>>>>>>> 6e52d453ed1ca2babd7c3dac19633f7f52c6cf36
     ADD CONSTRAINT [FK_Exame_Atendimento] FOREIGN KEY ([IdAtendimento]) REFERENCES [dbo].[Atendimento] ([Id]);
 
 
@@ -496,7 +549,11 @@ PRINT N'Creating [dbo].[FK_Exame_Consulta]...';
 
 
 GO
+<<<<<<< HEAD
 ALTER TABLE [dbo].[Exame]
+=======
+ALTER TABLE [dbo].[Exame] WITH NOCHECK
+>>>>>>> 6e52d453ed1ca2babd7c3dac19633f7f52c6cf36
     ADD CONSTRAINT [FK_Exame_Consulta] FOREIGN KEY ([IdConsulta]) REFERENCES [dbo].[Consulta] ([Id]);
 
 
@@ -505,7 +562,11 @@ PRINT N'Creating [dbo].[FK_HorariosConsulta_Atendimento]...';
 
 
 GO
+<<<<<<< HEAD
 ALTER TABLE [dbo].[HorariosConsulta]
+=======
+ALTER TABLE [dbo].[HorariosConsulta] WITH NOCHECK
+>>>>>>> 6e52d453ed1ca2babd7c3dac19633f7f52c6cf36
     ADD CONSTRAINT [FK_HorariosConsulta_Atendimento] FOREIGN KEY ([IdAtendimento]) REFERENCES [dbo].[Atendimento] ([Id]);
 
 
@@ -514,7 +575,11 @@ PRINT N'Creating [dbo].[FK_HorariosExame]...';
 
 
 GO
+<<<<<<< HEAD
 ALTER TABLE [dbo].[HorariosExame]
+=======
+ALTER TABLE [dbo].[HorariosExame] WITH NOCHECK
+>>>>>>> 6e52d453ed1ca2babd7c3dac19633f7f52c6cf36
     ADD CONSTRAINT [FK_HorariosExame] FOREIGN KEY ([IdClinica]) REFERENCES [dbo].[Clinica] ([Id]);
 
 
@@ -523,7 +588,11 @@ PRINT N'Creating [dbo].[FK_Medico_Especialidade]...';
 
 
 GO
+<<<<<<< HEAD
 ALTER TABLE [dbo].[Medico]
+=======
+ALTER TABLE [dbo].[Medico] WITH NOCHECK
+>>>>>>> 6e52d453ed1ca2babd7c3dac19633f7f52c6cf36
     ADD CONSTRAINT [FK_Medico_Especialidade] FOREIGN KEY ([IdEspecialidade]) REFERENCES [dbo].[Especialidade] ([Id]);
 
 
@@ -606,6 +675,7 @@ JOIN [Paciente] P ON Co.IdPaciente = P.Id
 JOIN [Atendimento] AtSolicitado ON Co.IdAtendimento = AtSolicitado.Id
 JOIN [Medico] MedQueSolicitou ON AtSolicitado.IdMedico = MedQueSolicitou.Id
 GO
+<<<<<<< HEAD
 DECLARE @VarDecimalSupported AS BIT;
 
 SELECT @VarDecimalSupported = 0;
@@ -621,6 +691,37 @@ IF (@VarDecimalSupported > 0)
     BEGIN
         EXECUTE sp_db_vardecimal_storage_format N'$(DatabaseName)', 'ON';
     END
+=======
+PRINT N'Checking existing data against newly created constraints';
+
+
+GO
+USE [$(DatabaseName)];
+
+
+GO
+ALTER TABLE [dbo].[Atendimento] WITH CHECK CHECK CONSTRAINT [FK_Atendimento_Clinica];
+
+ALTER TABLE [dbo].[Atendimento] WITH CHECK CHECK CONSTRAINT [FK_Atendimento_Medico];
+
+ALTER TABLE [dbo].[Clinica] WITH CHECK CHECK CONSTRAINT [FK_Clinica_Endereco];
+
+ALTER TABLE [dbo].[Consulta] WITH CHECK CHECK CONSTRAINT [FK_Consulta_Paciente];
+
+ALTER TABLE [dbo].[Consulta] WITH CHECK CHECK CONSTRAINT [FK_Consulta_Atendimento];
+
+ALTER TABLE [dbo].[Exame] WITH CHECK CHECK CONSTRAINT [FK_Exame_TipoExame];
+
+ALTER TABLE [dbo].[Exame] WITH CHECK CHECK CONSTRAINT [FK_Exame_Atendimento];
+
+ALTER TABLE [dbo].[Exame] WITH CHECK CHECK CONSTRAINT [FK_Exame_Consulta];
+
+ALTER TABLE [dbo].[HorariosConsulta] WITH CHECK CHECK CONSTRAINT [FK_HorariosConsulta_Atendimento];
+
+ALTER TABLE [dbo].[HorariosExame] WITH CHECK CHECK CONSTRAINT [FK_HorariosExame];
+
+ALTER TABLE [dbo].[Medico] WITH CHECK CHECK CONSTRAINT [FK_Medico_Especialidade];
+>>>>>>> 6e52d453ed1ca2babd7c3dac19633f7f52c6cf36
 
 
 GO
