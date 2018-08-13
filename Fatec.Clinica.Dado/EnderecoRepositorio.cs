@@ -35,7 +35,7 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 var obj = connection.QueryFirstOrDefault<Endereco>($"SELECT * FROM ViewEnderecos " +
-                                                                   $"where Id={id}");
+                                                                   $"where Id= {id} ");
 
                 return obj;
             }
@@ -45,12 +45,12 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var obj = connection.QueryFirstOrDefault<Endereco>($"SELECT * FROM ViewEnderecos" +
-                                                                    $"where Estado = '{entity.Estado}'" +
-                                                                    $"and Cidade = '{entity.Cidade}'" +
-                                                                    $"and Bairro = '{entity.Bairro}'" +
-                                                                    $"and Logradouro = '{entity.Logradouro}'" +
-                                                                    $"and Numero = {entity.Numero}" +
+                var obj = connection.QueryFirstOrDefault<Endereco>($"SELECT * FROM ViewEnderecos " +
+                                                                    $"where Estado = '{entity.Estado}' " +
+                                                                    $"and Cidade = '{entity.Cidade}' " +
+                                                                    $"and Bairro = '{entity.Bairro}' " +
+                                                                    $"and Logradouro = '{entity.Logradouro}' " +
+                                                                    $"and Numero = {entity.Numero} " +
                                                                     $"and Complemento = '{entity.Complemento}'");
                 return obj;
             }
@@ -68,13 +68,13 @@ namespace Fatec.Clinica.Dado
             {
                 return connection.QuerySingle<int>($"DECLARE @ID int;" +
                                                    $"INSERT INTO [Endereco] " +
-                                                   $"(Estado, Cidade, Bairro, Logradouro, Numero, Complemento,IdClinica) " +
+                                                   $"(Estado, Cidade, Bairro, Logradouro, Numero, Complemento) " +
                                                    $"VALUES ('{entity.Estado}', " +
                                                    $" '{entity.Cidade}', " +
                                                    $" '{entity.Bairro}', " +
                                                    $" '{entity.Logradouro}', " +
                                                    $"  {entity.Numero}, " +
-                                                   $" '{entity.Complemento}' " +
+                                                   $" '{entity.Complemento}') " +
                                                    $"SET @ID = SCOPE_IDENTITY();" +
                                                    $"SELECT @ID");
             }

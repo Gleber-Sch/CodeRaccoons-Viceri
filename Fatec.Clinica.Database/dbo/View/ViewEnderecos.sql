@@ -1,5 +1,5 @@
 ﻿create view ViewEnderecos as
-select Endereco.Id as IdEndereco, Clinica.Nome, Endereco.estado,
+select Endereco.Id, Clinica.Nome, Endereco.Estado,
 Endereco.Cidade, Endereco.Bairro, Endereco.Logradouro,
 Endereco.Numero, Endereco.Complemento
 FROM Endereco
