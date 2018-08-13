@@ -12,6 +12,25 @@ namespace Fatec.Clinica.Dado
     /// </summary>
     public class ClinicaRepositorio : IRepositorioBase<Clinicas>
     {
+
+        /// <summary>
+        /// Método que seleciona um paciente através do login e da senha.
+        /// </summary>
+        /// <param name="usuario">Objeto com os dados do usúario.</param>
+        /// <returns>Paciente selecionado.</returns>
+        public Clinicas Login(string email, string senha)
+        {
+            using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
+            {
+                var obj = connection.QueryFirstOrDefault<Clinicas>($"SELECT C.Id " +
+                                                                   $"FROM [Clinica] C " +
+                                                                   $"WHERE C.Email = '{email}' " +
+                                                                   $"AND C.Senha = '{senha}'");
+
+                return obj;
+            }
+        }
+
         /// <summary>
         /// Seleciona todos as consultas do Database.
         /// </summary>

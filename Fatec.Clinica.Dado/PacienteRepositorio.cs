@@ -12,6 +12,23 @@ namespace Fatec.Clinica.Dado
     /// </summary>
     public class PacienteRepositorio : IRepositorioBase<Paciente>
     {
+        /// <summary>
+        /// Método que seleciona um paciente através do login e da senha.
+        /// </summary>
+        /// <param name="usuario">Objeto com os dados do usúario.</param>
+        /// <returns>Paciente selecionado.</returns>
+        public Paciente Login(string email, string senha)
+        {
+            using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
+            {
+                var obj = connection.QueryFirstOrDefault<Paciente>($"SELECT P.Id " +
+                                                                   $"FROM [Paciente] P " +
+                                                                   $"WHERE P.Email = '{email}' " +
+                                                                   $"AND P.Senha = '{senha}'");
+
+                return obj;
+            }
+        }
 
         /// <summary>
         /// Seleciona todos os pacientes do Database.
@@ -21,7 +38,7 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var lista = connection.Query<Paciente>($"SELECT P.Id, P.Nome, P.Cpf, P.Email, P.DataNasc," +
+                var lista = connection.Query<Paciente>($"SELECT P.Id, P.Nome, P.Cpf, P.Email, P.Senha, P.DataNasc," +
                                                        $"P.Genero, P.Celular, P.TelefoneRes " +
                                                        $"FROM [Paciente] P ");
                 return lista;
@@ -37,8 +54,8 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var obj = connection.QueryFirstOrDefault<Paciente>($"SELECT P.Id, P.Nome, P.Cpf, P.Email, " +
-                                                                   $"P.DataNasc, P.Genero, P.Celular, P.TelefoneRes " +
+                var obj = connection.QueryFirstOrDefault<Paciente>($"SELECT P.Id, P.Nome, P.Cpf, P.Email, P.Senha," +
+                                                                   $"P.DataNasc, P.Genero, P.Celular, P.TelefoneRes, " +
                                                                    $"FROM [Paciente] P " +
                                                                    $"WHERE P.Id = {id}");
 
@@ -55,7 +72,7 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var obj = connection.QueryFirstOrDefault<Paciente>($"SELECT P.Id, P.Nome, P.Cpf, P.Email," +
+                var obj = connection.QueryFirstOrDefault<Paciente>($"SELECT P.Id, P.Nome, P.Cpf, P.Email, P.Senha, " +
                                                                  $"P.DataNasc, P.Genero, P.Celular, P.TelefoneRes " +
                                                                  $"FROM [Paciente] P " +
                                                                  $"WHERE Cpf = '{cpf}'");
@@ -68,7 +85,7 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 var obj = connection.QueryFirstOrDefault<Paciente>($"SELECT P.Id, P.Nome, P.Cpf, P.Celular," +
-                                                                 $"P.Email, P.DataNasc, P.Genero, P.TelefoneRes " +
+                                                                 $"P.Email, P.Senha, P.DataNasc, P.Genero, P.TelefoneRes " +
                                                                  $"FROM [Paciente] P " +
                                                                  $"WHERE Email = '{email}'");
                 return obj;
@@ -111,7 +128,8 @@ namespace Fatec.Clinica.Dado
                 connection.Execute($"UPDATE [Paciente] " +
                                    $"SET Nome = '{entity.Nome}', " +
                                    $"CPF = '{entity.Cpf}', " +
-                                   $"Email = '{entity.Email}', " +
+                                   $"Email = '{entity.Email}'," +
+                                   $"Senha = '{entity.Senha}' " +
                                    $"DataNasc = '{entity.DataNasc.ToString("dd/MM/yyyy")}', " +
                                    $"Genero = '{entity.Genero}', " +
                                    $"Celular = '{entity.Celular}', " +
@@ -133,6 +151,5 @@ namespace Fatec.Clinica.Dado
                                    $"WHERE Id = {id}");
             }
         }
-
     }
 }

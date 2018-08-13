@@ -108,6 +108,24 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
+        /// Método que obtêm o Id de um médico para realizar o login.
+        /// </summary>
+        /// <param name="email">Usado para selecionar o médico.</param>
+        /// <param name="senha">Usado para selecionar o médico.</param>
+        /// <returns></returns>
+        /// <remarks>Obtêm um paciente pelo Id do paciente.</remarks>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFoud</response>
+        [HttpGet]
+        [Route("Login/{senha}/{email}", Name = "MedicoGetLogin")]
+        [SwaggerResponse((int)HttpStatusCode.OK, typeof(Medico), nameof(HttpStatusCode.OK))]
+        [SwaggerResponse((int)HttpStatusCode.NotFound)]
+        public IActionResult GetLogin(string email, string senha)
+        {
+            return Ok(_medicoNegocio.Login(email, senha));
+        }
+
+        /// <summary>
         /// Método que insere um médico.
         /// </summary>
         /// <param name="input">Objeto com os dados do médico.</param>
