@@ -13,7 +13,10 @@
        [dbo].[Atendimento] (Table)
        [dbo].[Clinica] (Table)
        [dbo].[Consulta] (Table)
+<<<<<<< HEAD
        [dbo].[Endereco] (Table)
+=======
+>>>>>>> d15548bdbebed90e7220355a1c74de3169e0edbf
        [dbo].[Especialidade] (Table)
        [dbo].[Exame] (Table)
        [dbo].[HorariosConsulta] (Table)
@@ -23,7 +26,10 @@
        [dbo].[TipoExame] (Table)
        [dbo].[FK_Atendimento_Clinica] (Foreign Key)
        [dbo].[FK_Atendimento_Medico] (Foreign Key)
+<<<<<<< HEAD
        [dbo].[FK_Clinica_Endereco] (Foreign Key)
+=======
+>>>>>>> d15548bdbebed90e7220355a1c74de3169e0edbf
        [dbo].[FK_Consulta_Paciente] (Foreign Key)
        [dbo].[FK_Consulta_Atendimento] (Foreign Key)
        [dbo].[FK_Exame_TipoExame] (Foreign Key)
@@ -36,7 +42,10 @@
        [dbo].[ViewAtendimentos] (View)
        [dbo].[ViewClinicas] (View)
        [dbo].[ViewConsulta] (View)
+<<<<<<< HEAD
        [dbo].[ViewEnderecos] (View)
+=======
+>>>>>>> d15548bdbebed90e7220355a1c74de3169e0edbf
        [dbo].[ViewExame] (View)
        [dbo].[ViewHorariosConsulta] (View)
        [dbo].[ViewHorariosExame] (View)
