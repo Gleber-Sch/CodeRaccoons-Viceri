@@ -716,6 +716,16 @@
             <response code="200">OK</response>
             <response code="404">NotFoud</response>
         </member>
+        <member name="M:Fatec.Clinica.Api.Controllers.PacienteController.GetEmail(System.String)">
+            <summary>
+            Método que obtêm um Paciente.
+            </summary>
+            <param name="email">Usado para selecionar o paciente.</param>
+            <returns></returns>
+            <remarks>Obtêm um paciente pelo email do paciente.</remarks>
+            <response code="200">OK</response>
+            <response code="404">NotFoud</response>
+        </member>
         <member name="M:Fatec.Clinica.Api.Controllers.PacienteController.GetLogin(System.String,System.String)">
             <summary>
             Método que obtêm o Id do Paciente para realizar o Login.
