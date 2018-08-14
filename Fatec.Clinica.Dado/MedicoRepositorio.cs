@@ -79,10 +79,10 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var lista = connection.Query<Medico>($"SELECT M.Id, M.Nome, M.Cpf, M.Crm, M.CrmEstado," +
+                var lista = connection.Query<Medico>($"SELECT M.Id, M.Nome, M.Cpf, M.Crm, M.CrmEstado, " +
                                                      $" M.IdEspecialidade, M.Celular," +
-                                                     $" M.Email, M.DataNasc, M.StatusAtividade, M.Genero," +
-                                                     $" E.Nome As Especialidade, C.Estado, C.Cidade," +
+                                                     $" M.Email, M.DataNasc, M.StatusAtividade, M.Genero, " +
+                                                     $" E.Nome As Especialidade, C.Estado, C.Cidade, " +
                                                      $"C.Bairro, C.Logradouro, C.Numero, C.Complemento " +
                                                      $"FROM [Medico] M " +
                                                      $"JOIN [Especialidade] E ON M.IdEspecialidade = E.Id " +
