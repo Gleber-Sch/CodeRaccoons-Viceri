@@ -87,7 +87,7 @@ namespace Fatec.Clinica.Dado
                                                      $"FROM [Medico] M " +
                                                      $"JOIN [Especialidade] E ON M.IdEspecialidade = E.Id " +
                                                      $"JOIN [Atendimento] A ON M.Id = A.IdMedico " +
-                                                     $"JOIN [Clinica] C ON C.Id = A.IdClinica " +
+                                                     $"JOIN [Clinica] C ON C.Id = A.IdClinica" +
                                                      $"WHERE E.Id = {id}");
 
                 return lista;
@@ -132,6 +132,11 @@ namespace Fatec.Clinica.Dado
             }
         }
 
+        /// <summary>
+        /// Seleciona um médico do Database através do Email.
+        /// </summary>
+        /// <param name="email">Usado para buscar um médico no Database.</param>
+        /// <returns>Médico selecionado.</returns>
         public Medico SelecionarPorEmail(string email)
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))

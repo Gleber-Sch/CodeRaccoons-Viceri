@@ -80,14 +80,19 @@ namespace Fatec.Clinica.Dado
             }
         }
 
+        /// <summary>
+        /// Seleciona um paciente do Database através do Email.
+        /// </summary>
+        /// <param name="email">Usado para buscar um paciente no Database.</param>
+        /// <returns>Paciente selecionado.</returns>
         public Paciente SelecionarPorEmail(string email)
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 var obj = connection.QueryFirstOrDefault<Paciente>($"SELECT P.Id, P.Nome, P.Cpf, P.Celular," +
-                                                                 $"P.Email, P.Senha, P.DataNasc, P.Genero, P.TelefoneRes " +
-                                                                 $"FROM [Paciente] P " +
-                                                                 $"WHERE Email = '{email}'");
+                                                                   $"P.Email, P.Senha, P.DataNasc, P.Genero, P.TelefoneRes " +
+                                                                   $"FROM [Paciente] P " +
+                                                                   $"WHERE Email = '{email}'");
                 return obj;
             }
         }
