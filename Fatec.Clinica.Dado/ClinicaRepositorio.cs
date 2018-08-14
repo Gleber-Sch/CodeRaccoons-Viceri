@@ -76,6 +76,24 @@ namespace Fatec.Clinica.Dado
         }
 
         /// <summary>
+        /// Seleciona uma clinica do Database através do Email.
+        /// </summary>
+        /// <param name="email">Usado para buscar uma clínica no Database.</param>
+        /// <returns>Clínica selecionada.</returns>
+        public Clinicas SelecionarPorEmail(string email)
+        {
+            using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
+            {
+                var obj = connection.QueryFirstOrDefault<Clinicas>($"SELECT C.Id, C.Senha, C.Cnpj, C.StatusAtividade," +
+                                                                   $"C.TelefoneCom, C.Nome, C.Estado, C.Cidade, " +
+                                                                   $"C.Bairro, C.Logradouro, C.Numero, C.Complemento " +
+                                                                   $"FROM [Clinica] C " +
+                                                                   $"WHERE Email = '{email}'");
+                return obj;
+            }
+        }
+
+        /// <summary>
         /// Seleciona uma clinica do Database através do status de atividade, sendo TRUE para ativa e FALSE para inativa.
         /// </summary>
         /// <returns>Lista de clinicas.</returns>

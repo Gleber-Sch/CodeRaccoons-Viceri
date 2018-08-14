@@ -65,34 +65,59 @@
               
     <div id="consultaform" class="container">
 
-      <h1 class="cover-heading">Consulta</h1>
-      <p class="lead">
-        <form class="form-inline" id="form-paciente">
+        
+        <form id="regForm" action="">
 
-          <div class="form-row align-items-center">
-            <div class="col-auto my-1">
-              <label for="especialidade"></label>
-              <select name="especialidade" id="especialidade" class="form-control mr-sm-2">
-      
-              </select>
-            </div>
-            <!-- <div class="col-auto my-1">
-              <div class="form-group mr-sm-3">
-                <label for="inputPassword2" class="sr-only"></label>
-                <input type="text" class="form-control" id="inputPassword2" placeholder="Cidade">
-              </div>
-            </div> -->
-            <div class="col-auto my-1">
-              <button type="submit" class="btn btn-secondary">Submit</button>
-            </div>
-          </div>
-        </form></p>
+            <div style="text-align:center;margin-bottom:10px;">
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+              </div> 
 
-        <br></br>
-        <div id="con">
+            <h1>Register:</h1>
             
-        </div>
+            <!-- One "tab" for each step in the form: -->
+            <div class="tab">
+              <p><input placeholder="First name..." pattern="[A-Za-z]" oninput="this.className = ''"></p>
+              <p><input placeholder="Last name..." oninput="this.className = ''"></p>
+            </div>
+            
+            <div class="tab">
+              <p><input placeholder="E-mail..." oninput="this.className = ''"></p>
+              <p><input placeholder="Phone..." oninput="this.className = ''"></p>
+            </div>
+            
+            <div class="tab">Birthday:
+              <p><input placeholder="dd" oninput="this.className = ''"></p>
+              <p><input placeholder="mm" oninput="this.className = ''"></p>
+              <p><input placeholder="yyyy" oninput="this.className = ''"></p>
+            </div>
+            
+            <div class="tab">Login Info:
+              <p><input placeholder="Username..." oninput="this.className = ''"></p>
+              <p><input placeholder="Password..." oninput="this.className = ''"></p>
+            </div>
 
+            <div class="tab">Contact Info:
+                <p><input placeholder="E-mail..." oninput="this.className = ''"></p>
+                <p><input placeholder="Phone..." oninput="this.className = ''"></p>
+              </div>
+            
+            <div style="overflow:auto;">
+              <div style="float:right;">
+                <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+              </div>
+            </div>
+            
+            
+            
+            <!-- Circles which indicates the steps of the form: -->
+           
+            
+            </form>
     </div>
     <br>
     <hr>
@@ -102,7 +127,7 @@
       <div class="media-body">
         <h4 class="mt-0">Consultas Agendadas</h4>
         <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 120px;">
-        <div class="mt-5" id="Consultas"></div>
+        <div class="mt-5" id="medicos"></div>
       </div>
     </div>
     <br>
@@ -197,7 +222,6 @@
 
     <script src="paciente.js"></script>
     <script src="../../../js/indexJquery.js"></script>
-    <script src="pacienteAgendar.js"></script>
 </body>
 
 </html>
