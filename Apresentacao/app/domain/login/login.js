@@ -32,7 +32,7 @@ document.querySelector('.form-signin').addEventListener('submit', function(event
 
 function obterUsuario(obj)
 {
-    var request = new Request(api+ obj.email,
+    var request = new Request(api + obj.email,
         {
             method: 'GET',
             headers: new Headers(
