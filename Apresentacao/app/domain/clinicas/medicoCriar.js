@@ -5,10 +5,16 @@ var titulo = document.querySelector('#titulo-medico');
 var especialidade = document.querySelector('#especialidade');
 
 var elementosMedico = {
-    nome: document.querySelector('#nome'),
-    cpf: document.querySelector('#cpf'),
-    crm: document.querySelector('#crm'),
-    especialidade: document.querySelector('#especialidade')
+    Email: document.querySelector('#login-med'),
+    Senha: document.querySelector('#senha-med'),
+    Cpf: document.querySelector('#cpf-med'),
+    Crm: document.querySelector('#crm-med'),
+    CrmEstado: document.querySelector('#inputState'),
+    Nome: document.querySelector('#nome-med'),
+    IdEspecialidade: document.querySelector('#especialidade'),
+    DataNasc: document.querySelector('#datanasc-med'),
+    Celular: document.querySelector('#celular-med'),
+    Genero: document.querySelector('#inlineRadio')
 };
 
 var query = location.search.slice(1); // Pega as informações enviadas após o ponto de interrogação na URL
@@ -41,10 +47,16 @@ document.querySelector('#form-medico').addEventListener('submit', function (even
     event.preventDefault();
 
     var medico = {
-        nome: elementosMedico.nome.value,
-        cpf: elementosMedico.cpf.value,
-        crm: elementosMedico.crm.value,
-        idEspecialidade: parseInt(elementosMedico.especialidade.value)
+        Email: medico.Email.value,
+        Senha: medico.Senha.value,
+        Cpf: medico.Cpf.value,
+        Crm: medico.Crm.value,
+        CrmEstado: medico.CrmEstado.value,
+        Nome: medico.Nome.value,
+        IdEspecialidade: parseInt(medico.IdEspecialidade.value),
+        DataNasc: medico.DataNasc.value,
+        Celular: medico.Celular.value,
+        Genero: medico.Genero.value
     };
 
     if(data.id){
@@ -187,8 +199,13 @@ function templateEspecialidades(especialidades = [], id = null){
 }
 
 function atribuirValorAoFormulario(medico = {}) {
-    elementosMedico.nome.value = medico.nome || '';
-    elementosMedico.cpf.value = medico.cpf || '';
-    elementosMedico.crm.value = medico.crm || '';
-    elementosMedico.especialidade.value = medico.idEspecialidade || '';
+    elementosMedico.Email.value = medico.Email || '';
+    elementosMedico.Senha.value = medico.Senha || '';
+    elementosMedico.Cpf.value = medico.Cpf || '';
+    elementosMedico.medico.value = medico.medico || '';
+    elementosMedico.Nome.value = medico.nome || '';
+    elementosMedico.IdEspecialidade.value = medico.IdEspecialidade || '';
+    elementosMedico.DataNasc.value = medico.DataNasc || '';
+    elementosMedico.Celular.value = medico.Celular || '';
+    elementosMedico.Genero.value = medico.Genero || '';
 }
