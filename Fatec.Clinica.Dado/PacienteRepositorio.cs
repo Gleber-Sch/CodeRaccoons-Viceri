@@ -55,7 +55,7 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 var obj = connection.QueryFirstOrDefault<Paciente>($"SELECT P.Id, P.Nome, P.Cpf, P.Email, P.Senha, " +
-                                                                   $"P.DataNasc, P.Genero, P.Celular, P.TelefoneRes, " +
+                                                                   $"P.DataNasc, P.Genero, P.Celular, P.TelefoneRes " +
                                                                    $"FROM [Paciente] P " +
                                                                    $"WHERE P.Id = {id}");
 
