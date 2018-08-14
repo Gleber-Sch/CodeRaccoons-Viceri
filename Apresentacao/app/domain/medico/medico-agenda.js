@@ -93,6 +93,7 @@ function templateEspecialidades(clinicas = [], id = null){
     `;
 }
 
+var idmedico = localStorage.getItem("id");
 
 var ConsultaDisponivel =
 {
