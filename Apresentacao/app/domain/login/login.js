@@ -33,6 +33,19 @@ document.querySelector('.form-signin').addEventListener('submit', function(event
     obterUsuario(obj);
 });
 
+<<<<<<< HEAD
+function obterUsuario(obj)
+{
+    var request = new Request(api + obj.email,
+        {
+            method: 'GET',
+            headers: new Headers(
+                {
+                    'Content-Type': 'application/json'
+                }),
+                body: JSON.stringify(obj)
+        });
+=======
 function obterUsuario(objUsuario) {
     var request = new Request(api + objUsuario.email, {
         method: "GET",
@@ -40,6 +53,7 @@ function obterUsuario(objUsuario) {
             'Content-Type': 'application/json'
         })
     });
+>>>>>>> 8d855ba88ddc92f3e9b31b7e13ca3c389a089ad4
 
     fetch(request)
         .then(function (response) {
