@@ -22,18 +22,6 @@ C:\Users\Gleber_M\Desktop\Projeto VICERI\versionamento\meu v9\Fatec.Clinica.Dado
 C:\Users\Gleber_M\Desktop\Projeto VICERI\versionamento\meu v9\Fatec.Clinica.Dado\obj\Debug\netcoreapp2.0\Fatec.Clinica.Dado.csproj.CopyComplete
 C:\Users\Gleber_M\Desktop\Projeto VICERI\versionamento\meu v9\Fatec.Clinica.Dado\obj\Debug\netcoreapp2.0\Fatec.Clinica.Dado.dll
 C:\Users\Gleber_M\Desktop\Projeto VICERI\versionamento\meu v9\Fatec.Clinica.Dado\obj\Debug\netcoreapp2.0\Fatec.Clinica.Dado.pdb
-C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dado.deps.json
-C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dado.dll
-C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dado.pdb
-C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dominio.dll
-C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dominio.pdb
-C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\obj\Debug\netcoreapp2.0\Fatec.Clinica.Dado.csprojAssemblyReference.cache
-C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\obj\Debug\netcoreapp2.0\Fatec.Clinica.Dado.csproj.CoreCompileInputs.cache
-C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\obj\Debug\netcoreapp2.0\Fatec.Clinica.Dado.AssemblyInfoInputs.cache
-C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\obj\Debug\netcoreapp2.0\Fatec.Clinica.Dado.AssemblyInfo.cs
-C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\obj\Debug\netcoreapp2.0\Fatec.Clinica.Dado.csproj.CopyComplete
-C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\obj\Debug\netcoreapp2.0\Fatec.Clinica.Dado.dll
-C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\obj\Debug\netcoreapp2.0\Fatec.Clinica.Dado.pdb
 C:\Users\Gleber_M\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dado.deps.json
 C:\Users\Gleber_M\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dado.dll
 C:\Users\Gleber_M\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dado.pdb
@@ -46,3 +34,15 @@ C:\Users\Gleber_M\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\obj\De
 C:\Users\Gleber_M\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\obj\Debug\netcoreapp2.0\Fatec.Clinica.Dado.csproj.CopyComplete
 C:\Users\Gleber_M\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\obj\Debug\netcoreapp2.0\Fatec.Clinica.Dado.dll
 C:\Users\Gleber_M\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\obj\Debug\netcoreapp2.0\Fatec.Clinica.Dado.pdb
+C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dado.deps.json
+C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dado.dll
+C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dado.pdb
+C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dominio.dll
+C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\bin\Debug\netcoreapp2.0\Fatec.Clinica.Dominio.pdb
+C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\obj\Debug\netcoreapp2.0\Fatec.Clinica.Dado.csprojAssemblyReference.cache
+C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\obj\Debug\netcoreapp2.0\Fatec.Clinica.Dado.csproj.CoreCompileInputs.cache
+C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\obj\Debug\netcoreapp2.0\Fatec.Clinica.Dado.AssemblyInfoInputs.cache
+C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\obj\Debug\netcoreapp2.0\Fatec.Clinica.Dado.AssemblyInfo.cs
+C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\obj\Debug\netcoreapp2.0\Fatec.Clinica.Dado.csproj.CopyComplete
+C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\obj\Debug\netcoreapp2.0\Fatec.Clinica.Dado.dll
+C:\Users\Lucas Contesini\Documents\GitHub\CodeRaccoons-Viceri\Fatec.Clinica.Dado\obj\Debug\netcoreapp2.0\Fatec.Clinica.Dado.pdb
