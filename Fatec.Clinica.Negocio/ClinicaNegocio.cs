@@ -98,6 +98,23 @@ namespace Fatec.Clinica.Negocio
         }
 
         /// <summary>
+        /// Verifica se existe alguma clínica com o email indicado.
+        /// </summary>
+        /// <param name="email">Usado para buscar uma clínica no Database.</param>
+        /// <returns>Seleciona uma clínica ou gera uma exceção.</returns>
+        public Clinicas SelecionarPorEmail(string email)
+        {
+            var obj = _clinicaRepositorio.SelecionarPorEmail(email);
+
+            if (obj == null)
+            {
+                throw new NaoEncontradoException($"Não foi encontrado nenhum paciente com o Email: {email}");
+            }
+
+            return obj;
+        }
+
+        /// <summary>
         /// Verifica se o CNPJ não está cadastrado e se ele é válido, se existem campos obrigatórios
         /// sem serem preenchidos e se o telefone é válido. Antes de inserir uma clínica.
         /// </summary>

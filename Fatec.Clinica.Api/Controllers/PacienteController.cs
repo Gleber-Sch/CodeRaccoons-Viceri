@@ -74,7 +74,7 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que obtêm um Paciente.
+        /// Método que obtêm um paciente.
         /// </summary>
         /// <param name="email">Usado para selecionar o paciente.</param>
         /// <returns></returns>

@@ -61,7 +61,7 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que seleciona um Horario de Exame.
+        /// Método que seleciona uma Horario de Exame.
         /// </summary>
         /// <param name="dia">Usado para selecionar o Horario.</param>
         /// <returns></returns>

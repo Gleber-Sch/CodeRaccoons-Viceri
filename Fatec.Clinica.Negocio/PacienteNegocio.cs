@@ -31,6 +31,63 @@ namespace Fatec.Clinica.Negocio
             _pacienteRepositorio = new PacienteRepositorio();
         }
 
+         /// <summary>
+        /// Seleciona todas os Pacientes do Database.
+        /// </summary>
+        /// <returns>Lista de pacientes</returns>
+        public IEnumerable<Paciente> Selecionar()
+        {
+            return _pacienteRepositorio.Selecionar();
+        }
+
+        /// <summary>
+        /// Verifica se existe o paciente com o ID indicado.
+        /// </summary>
+        /// <param name="id">Usado para buscar um paciente no Database.</param>
+        /// <returns>Seleciona um paciente ou gera uma exceção.</returns>
+        public Paciente SelecionarPorId(int id)
+        {
+            var obj = _pacienteRepositorio.SelecionarPorId(id);
+
+            if (obj == null)
+                throw new NaoEncontradoException($"Não foi encontrado nenhum paciente com o ID: {id}");
+            return obj;
+        }
+
+        /// <summary>
+        /// Verifica se existe algum paciente com o CPF indicado.
+        /// </summary>
+        /// <param name="cpf">Usado para buscar um paciente no Database.</param>
+        /// <returns>Seleciona um paciente ou gera uma exceção.</returns>
+        public Paciente SelecionarPorCpf(string cpf)
+        {
+            var obj = _pacienteRepositorio.SelecionarPorCpf(cpf);
+
+            if (obj == null)
+            {
+                throw new NaoEncontradoException($"Não foi encontrado nenhum paciente com o CPF: {cpf}");
+            }
+
+            return obj;
+        }
+
+        /// <summary>
+        /// Verifica se existe algum paciente com o email indicado.
+        /// </summary>
+        /// <param name="email">Usado para buscar um paciente no Database.</param>
+        /// <returns>Seleciona um paciente ou gera uma exceção.</returns>
+        public Paciente SelecionarPorEmail(string email)
+        {
+            var obj = _pacienteRepositorio.SelecionarPorEmail(email);
+
+            if (obj == null)
+            {
+                throw new NaoEncontradoException($"Não foi encontrado nenhum paciente com o Email: {email}");
+            }
+
+            return obj;
+        }
+
         /// <summary>
         /// Verifica se existe campos vazios, se algum campo escede o tamanho do campo e se existe algum usuario
         /// com este email e senha.
@@ -61,52 +118,6 @@ namespace Fatec.Clinica.Negocio
             var id = obj.Id;
 
             return id;
-        }
-
-        /// <summary>
-        /// Seleciona todas os Pacientes do Database.
-        /// </summary>
-        /// <returns>Lista de pacientes</returns>
-        public IEnumerable<Paciente> Selecionar()
-        {
-            return _pacienteRepositorio.Selecionar();
-        }
-
-        /// <summary>
-        /// Verifica se existe o paciente com o ID indicado.
-        /// </summary>
-        /// <param name="id">Usado para buscar um paciente no Database.</param>
-        /// <returns>Seleciona um paciente ou gera uma exceção.</returns>
-        public Paciente SelecionarPorId(int id)
-        {
-            var obj = _pacienteRepositorio.SelecionarPorId(id);
-
-            if (obj == null)
-                throw new NaoEncontradoException($"Não foi encontrado nenhum paciente com o ID: {id}");
-            return obj;
-        }
-
-        /// <summary>
-        /// Verifica se existe o paciente com o CPF indicado.
-        /// </summary>
-        /// <param name="cpf">Usado para buscar um paciente no Database.</param>
-        /// <returns>Seleciona um paciente ou gera uma exceção.</returns>
-        public Paciente SelecionarPorCpf(string cpf)
-        {
-            var obj = _pacienteRepositorio.SelecionarPorCpf(cpf);
-
-            if (obj == null)
-                throw new NaoEncontradoException($"Não foi encontrado nenhum paciente com o CPF: {cpf}");
-            return obj;
-        }
-
-        public Paciente SelecionarPorEmail(string email)
-        {
-            var obj = _pacienteRepositorio.SelecionarPorEmail(email);
-
-            if (obj == null)
-                throw new NaoEncontradoException($"Não foi encontrado nenhum paciente com o Email: {email}");
-            return obj;
         }
 
         /// <summary>

@@ -72,7 +72,7 @@ namespace Fatec.Clinica.Api.Controllers
         [Route("CNPJ/{cnpj}", Name = "ClinicaGetCnpj")]
         [SwaggerResponse((int)HttpStatusCode.OK, typeof(Clinicas), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
-        public IActionResult Get(string cnpj)
+        public IActionResult GetCnpj(string cnpj)
         {
             return Ok(_clinicaNegocio.SelecionarPorCnpj(cnpj));
         }
@@ -93,6 +93,23 @@ namespace Fatec.Clinica.Api.Controllers
         public IActionResult GetLogin(string email, string senha)
         {
             return Ok(_clinicaNegocio.Login(email, senha));
+        }
+
+        /// <summary>
+        /// Método que obtêm um paciente.
+        /// </summary>
+        /// <param name="email">Usado para selecionar o paciente.</param>
+        /// <returns></returns>
+        /// <remarks>Obtêm um paciente pelo email do paciente.</remarks>
+        /// <response code="200">OK</response>
+        /// <response code="404">NotFoud</response>
+        [HttpGet]
+        [Route("Email/{email}", Name = "ClinicaGetEmail")]
+        [SwaggerResponse((int)HttpStatusCode.OK, typeof(Paciente), nameof(HttpStatusCode.OK))]
+        [SwaggerResponse((int)HttpStatusCode.NotFound)]
+        public IActionResult GetEmail(string email)
+        {
+            return Ok(_clinicaNegocio.SelecionarPorEmail(email));
         }
 
         /// <summary>
