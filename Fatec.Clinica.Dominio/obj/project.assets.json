@@ -670,11 +670,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Gleber_M\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\Fatec.Clinica.Dominio.csproj",
+      "projectUniqueName": "C:\\Users\\Gleber_M\\Documents\\Formação de Talentos Viceri\\Projeto final\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\Fatec.Clinica.Dominio.csproj",
       "projectName": "Fatec.Clinica.Dominio",
-      "projectPath": "C:\\Users\\Gleber_M\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\Fatec.Clinica.Dominio.csproj",
+      "projectPath": "C:\\Users\\Gleber_M\\Documents\\Formação de Talentos Viceri\\Projeto final\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\Fatec.Clinica.Dominio.csproj",
       "packagesPath": "C:\\Users\\Gleber_M\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Gleber_M\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\obj\\",
+      "outputPath": "C:\\Users\\Gleber_M\\Documents\\Formação de Talentos Viceri\\Projeto final\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

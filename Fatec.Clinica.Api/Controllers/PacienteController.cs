@@ -4,7 +4,7 @@ using Fatec.Clinica.Dominio;
 using Fatec.Clinica.Negocio;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Net;
-
+using Fatec.Clinica.Dominio.Dto;
 
 namespace Fatec.Clinica.Api.Controllers
 {
@@ -32,7 +32,7 @@ namespace Fatec.Clinica.Api.Controllers
         /// <response code="200">OK</response>
         /// <response code="404">NotFoud</response>
         [HttpGet]
-        [SwaggerResponse((int)HttpStatusCode.OK, typeof(Paciente), nameof(HttpStatusCode.OK))]
+        [SwaggerResponse((int)HttpStatusCode.OK, typeof(PacienteDto), nameof(HttpStatusCode.OK))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult Get()
         {

@@ -6,17 +6,17 @@ var login = {
 
 if(login.tipoUsuario.value == 'paciente')
 {
-    var api = 'http://localhost:53731/api/Paciente/Email/';
+    var api = 'http://localhost:53731/api/Paciente/Login/';
     var direciona ='../pacientes/paciente.html';
 }
 else if(login.usuario.value == 'medico')
 {
-    var api = 'http://localhost:53731/api/medico/Email/';
+    var api = 'http://localhost:53731/api/medico/Login/';
     var direciona ='../medico/medico.html';
 }
 else
 {
-    var api = 'http://localhost:53731/api/clinica/Email/';
+    var api = 'http://localhost:53731/api/clinica/Login/';
     var direciona ='../clinicas/clinica.html';
 }
 
@@ -24,8 +24,7 @@ document.querySelector('.form-signin').addEventListener('submit', function(event
 {
     event.preventDefault();
 
-    var obj = 
-    {
+    var obj = {    
         email: login.email.value,
         senha: login.senha.value
     };
@@ -33,8 +32,10 @@ document.querySelector('.form-signin').addEventListener('submit', function(event
     obterUsuario(obj);
 });
 
-function obterUsuario(objUsuario) {
-    var request = new Request(api + objUsuario.email, {
+function obterUsuario(objUsuario) 
+{
+    var request = new Request(api + objUsuario.senha +"&"+ objUsuario.email, 
+    {
         method: "GET",
         headers: new Headers({
             'Content-Type': 'application/json'
@@ -42,26 +43,29 @@ function obterUsuario(objUsuario) {
     });
 
     fetch(request)
-        .then(function (response) {
-            console.log(response);
-            if (response.status == 200) {
+        .then(function (response) 
+        {
+            //console.log(response);
+            if (response.status == 200) 
+            {
                 response.json()
-                .then(function(usuario){
-                    //console.log(usuario);
-                    if(usuario.senha == login.senha.value)
-                    {
-                        localStorage.setItem("id", usuario.id);
-                        window.location.href=direciona;
-                    }
+                .then(function(IdUsuario)
+                {
+                    //console.log(IdUsuario);
+                    sessionStorage.setItem('id', IdUsuario);
+                    window.location.href = direciona;
+                    //console.log(sessionStorage.getItem('id'));
                 });
+            } 
+            else
+            {
                 //console.log(response);
-            } else {
-                alert("Ocorreu um erro ao obter o usúario");
+                alert("Email ou senha inválidos!");
             }
         })
-        .catch(function (response) {
-            console.log(response);
+        .catch(function (response)
+        {
+            //console.log(response);
             alert("Desculpe, ocorreu um erro no servidor.");
         });
 }
-

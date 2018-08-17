@@ -11,16 +11,16 @@ namespace Fatec.Clinica.Negocio.Validacoes
         /// </summary>
         /// <param name="DataNasc">Usado para calcular a idade do usuário.</param>
         /// <returns>TRUE se o usuário for maior de idade e FALSE caso não seja.</returns>
-        public static bool Verificar(DateTime DataNasc)
+        public static bool Verificar(DateTime dataNasc)
         {
-            if (DateTime.Now.Year - DataNasc.Year > 18)
+              if (DateTime.Now.Year - dataNasc.Year > 18)
             {
                 return true;
             }
-            else if (DateTime.Now.Year - DataNasc.Year == 18 &&
-                    DateTime.Now.Month > DataNasc.Month ||
-                    DateTime.Now.Month == DataNasc.Month &&
-                    DateTime.Now.Day >= DataNasc.Day)
+            else if (DateTime.Now.Year - dataNasc.Year == 18 &&
+                     DateTime.Now.Month > dataNasc.Month ||
+                     DateTime.Now.Month == dataNasc.Month &&
+                     DateTime.Now.Day >= dataNasc.Day)
             {
                 return true;
             }

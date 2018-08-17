@@ -50,7 +50,10 @@ namespace Fatec.Clinica.Negocio
             var obj = _pacienteRepositorio.SelecionarPorId(id);
 
             if (obj == null)
+            {
                 throw new NaoEncontradoException($"Não foi encontrado nenhum paciente com o ID: {id}");
+            }
+            
             return obj;
         }
 
