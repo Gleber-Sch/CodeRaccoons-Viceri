@@ -1,7 +1,9 @@
 ﻿/*Cria view de HorariosExame*/
 
 CREATE VIEW ViewHorariosExame AS
-SELECT  He.Id, A.Id AS IdAtendimento, C.Nome AS NomeClinica, M.Nome AS NomeMedico,Tp.Id AS IdTipoExame, Tp.Nome AS NomeExame, He.Dia, He.Hora, He.Valor
+SELECT  He.Id, A.Id AS IdAtendimento, C.Nome AS NomeClinica,
+M.Nome AS NomeMedico,Tp.Id AS IdTipoExame, Tp.Nome AS NomeExame,
+He.Dia, He.Hora
 FROM [HorariosExame] He
 INNER JOIN [Atendimento] A  ON A.Id = He.IdAtendimento
 INNER JOIN [Clinica] C ON C.Id = A.IdClinica

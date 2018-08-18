@@ -13502,11 +13502,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Gleber_M\\Documents\\Formação de Talentos Viceri\\Projeto final\\CodeRaccoons-Viceri\\Fatec.Clinica.Api\\Fatec.Clinica.Api.csproj",
+      "projectUniqueName": "C:\\Users\\Gleber_M\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Api\\Fatec.Clinica.Api.csproj",
       "projectName": "Fatec.Clinica.Api",
-      "projectPath": "C:\\Users\\Gleber_M\\Documents\\Formação de Talentos Viceri\\Projeto final\\CodeRaccoons-Viceri\\Fatec.Clinica.Api\\Fatec.Clinica.Api.csproj",
+      "projectPath": "C:\\Users\\Gleber_M\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Api\\Fatec.Clinica.Api.csproj",
       "packagesPath": "C:\\Users\\Gleber_M\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Gleber_M\\Documents\\Formação de Talentos Viceri\\Projeto final\\CodeRaccoons-Viceri\\Fatec.Clinica.Api\\obj\\",
+      "outputPath": "C:\\Users\\Gleber_M\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13525,11 +13525,11 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\Gleber_M\\Documents\\Formação de Talentos Viceri\\Projeto final\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\Fatec.Clinica.Dominio.csproj": {
-              "projectPath": "C:\\Users\\Gleber_M\\Documents\\Formação de Talentos Viceri\\Projeto final\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\Fatec.Clinica.Dominio.csproj"
+            "C:\\Users\\Gleber_M\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\Fatec.Clinica.Dominio.csproj": {
+              "projectPath": "C:\\Users\\Gleber_M\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dominio\\Fatec.Clinica.Dominio.csproj"
             },
-            "C:\\Users\\Gleber_M\\Documents\\Formação de Talentos Viceri\\Projeto final\\CodeRaccoons-Viceri\\Fatec.Clinica.Negocio\\Fatec.Clinica.Negocio.csproj": {
-              "projectPath": "C:\\Users\\Gleber_M\\Documents\\Formação de Talentos Viceri\\Projeto final\\CodeRaccoons-Viceri\\Fatec.Clinica.Negocio\\Fatec.Clinica.Negocio.csproj"
+            "C:\\Users\\Gleber_M\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Negocio\\Fatec.Clinica.Negocio.csproj": {
+              "projectPath": "C:\\Users\\Gleber_M\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Negocio\\Fatec.Clinica.Negocio.csproj"
             }
           }
         }

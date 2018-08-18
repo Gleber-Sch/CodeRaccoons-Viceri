@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Fatec.Clinica.Dado;
 using Fatec.Clinica.Dominio;
+using Fatec.Clinica.Dominio.Dto;
 using Fatec.Clinica.Dominio.Excecoes;
 using Fatec.Clinica.Negocio.Abstracao;
 using Fatec.Clinica.Negocio.Validacoes;
@@ -11,7 +12,7 @@ namespace Fatec.Clinica.Negocio
     /// <summary>
     /// Regras de Negócio sobre o Médico
     /// </summary>
-    public class MedicoNegocio : INegocioBase<Medico>
+    public class MedicoNegocio
     {
         /// <summary>
         /// Declara o repositório do Médico.
@@ -84,6 +85,8 @@ namespace Fatec.Clinica.Negocio
             if (obj == null)
                 throw new NaoEncontradoException($"Não foi encontrado um médico com o ID: {id}");
 
+
+
             return obj;
         }
 
@@ -92,7 +95,7 @@ namespace Fatec.Clinica.Negocio
         /// </summary>
         /// <param name="id">Usado para buscar o ID da especialidade no Database.</param>
         /// <returns>Lista de médicos ou gera uma exceção.</returns>
-        public IEnumerable<Medico> SelecionarPorEspecialidade(int id)
+        public IEnumerable<MedicoDto> SelecionarPorEspecialidade(int id)
         {
             var lista = _medicoRepositorio.SelecionarPorEspecialidade(id);
 

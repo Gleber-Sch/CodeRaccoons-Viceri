@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using Dapper;
 using Fatec.Clinica.Dado.Configuracao;
-using Fatec.Clinica.Dado.Abstracao;
+using Fatec.Clinica.Dominio.Dto;
 
 namespace Fatec.Clinica.Dado
 {
     /// <summary>
     /// Funções de CRUD para o Médico.
     /// </summary>
-    public class MedicoRepositorio : IRepositorioBase<Medico>
+    public class MedicoRepositorio
     {
 
         /// <summary>
@@ -23,9 +23,9 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 var obj = connection.QueryFirstOrDefault<Medico>($"SELECT M.Id " +
-                                                                   $"FROM [Medico] M " +
-                                                                   $"WHERE M.Email = '{email}' " +
-                                                                   $"AND M.Senha = '{senha}'");
+                                                                 $"FROM [Medico] M " +
+                                                                 $"WHERE M.Email = '{email}' " +
+                                                                 $"AND M.Senha = '{senha}'");
 
                 return obj;
             }
@@ -40,11 +40,11 @@ namespace Fatec.Clinica.Dado
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
                 var lista = connection.Query<Medico>($"SELECT M.Id, M.Nome, M.Cpf, M.Crm, M.CrmEstado," +
-                                                     $" M.IdEspecialidade, M.Celular," +
-                                                     $" M.Email, M.DataNasc, M.StatusAtividade," +
-                                                     $" M.Genero , E.Nome As Especialidade " +
-                                                     $"FROM [Medico] M " +
-                                                     $"JOIN [Especialidade] E ON M.IdEspecialidade = E.Id");
+                                                        $" M.IdEspecialidade, M.Celular," +
+                                                        $" M.Email, M.DataNasc, M.StatusAtividade," +
+                                                        $" M.Genero , E.Nome As Especialidade " +
+                                                        $"FROM [Medico] M " +
+                                                        $"JOIN [Especialidade] E ON M.IdEspecialidade = E.Id");
                 return lista;
             }
         }
@@ -59,13 +59,14 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var obj = connection.QueryFirstOrDefault<Medico>($"SELECT M.Id,  M.Nome, M.Cpf, M.Crm, M.CrmEstado," +
-                                                                 $" M.IdEspecialidade, M.Celular," +
-                                                                 $" M.Email, M.DataNasc, M.StatusAtividade," +
-                                                                 $" M.Genero , E.Nome As Especialidade " +
-                                                                 $"FROM [Medico] M " +
-                                                                 $"JOIN [Especialidade] E ON M.IdEspecialidade = E.Id " +
-                                                                 $"WHERE M.Id = {id}");
+                var obj = connection.QueryFirstOrDefault<Medico>($"SELECT M.Id,  M.Nome, M.Cpf, M.Crm, M.CrmEstado, " +
+                                                                    $" M.IdEspecialidade, M.Celular, " +
+                                                                    $" M.Email, M.DataNasc, M.StatusAtividade, " +
+                                                                    $" M.Genero , E.Nome As Especialidade " +
+                                                                    $"FROM [Medico] M " +
+                                                                    $"JOIN [Especialidade] E ON M.IdEspecialidade = E.Id " +
+                                                                    $"WHERE M.Id = {id}");
+
                 return obj;
             }
         }
@@ -75,20 +76,17 @@ namespace Fatec.Clinica.Dado
         /// </summary>
         /// <param name="id">Usado para buscar o ID da especialidade.</param>
         /// <returns>Lista de médicos que possuem a especialidade indicado como parâmetro.</returns>
-        public IEnumerable<Medico> SelecionarPorEspecialidade(int id)
+        public IEnumerable<MedicoDto> SelecionarPorEspecialidade(int id)
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var lista = connection.Query<Medico>($"SELECT M.Id, M.Nome, M.Cpf, M.Crm, M.CrmEstado, " +
-                                                     $" M.IdEspecialidade, M.Celular," +
-                                                     $" M.Email, M.DataNasc, M.StatusAtividade, M.Genero, " +
-                                                     $" E.Nome As Especialidade, C.Estado, C.Cidade, " +
-                                                     $"C.Bairro, C.Logradouro, C.Numero, C.Complemento " +
-                                                     $"FROM [Medico] M " +
-                                                     $"JOIN [Especialidade] E ON M.IdEspecialidade = E.Id " +
-                                                     $"JOIN [Atendimento] A ON M.Id = A.IdMedico " +
-                                                     $"JOIN [Clinica] C ON C.Id = A.IdClinica" +
-                                                     $"WHERE E.Id = {id}");
+                var lista = connection.Query<MedicoDto>($"SELECT M.Id,  M.Nome, M.Cpf, M.Crm, M.CrmEstado, " +
+                                                        $"M.IdEspecialidade, M.Celular, " +
+                                                        $"M.Email, M.DataNasc, M.StatusAtividade, " +
+                                                        $"M.Genero , E.Nome As Especialidade " +
+                                                        $"FROM [Medico] M " +
+                                                        $"JOIN [Especialidade] E ON M.IdEspecialidade = E.Id " +
+                                                        $"WHERE M.IdEspecialidade = {id}");
 
                 return lista;
             }
@@ -103,12 +101,14 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var obj = connection.QueryFirstOrDefault<Medico>($"SELECT M.Id, M.Nome, M.Cpf, M.Crm, M.CrmEstado, M.IdEspecialidade," +
-                                                                 $" M.Celular, M.Email, M.DataNasc, M.StatusAtividade," +
-                                                                 $" M.Genero , E.Nome As Especialidade " +
-                                                                 $"FROM [Medico] M " +
-                                                                 $"JOIN [ESPECIALIDADE] E ON M.IdEspecialidade = E.Id " +
-                                                                 $"WHERE Crm = {crm}");
+                var obj = connection.QueryFirstOrDefault<Medico>($"SELECT M.Id,  M.Nome, M.Cpf, M.Crm, M.CrmEstado, " +
+                                                                    $"M.IdEspecialidade, M.Celular, " +
+                                                                    $"M.Email, M.DataNasc, M.StatusAtividade, " +
+                                                                    $"M.Genero , E.Nome As Especialidade " +
+                                                                    $"FROM [Medico] M " +
+                                                                    $"JOIN [Especialidade] E ON M.IdEspecialidade = E.Id " +
+                                                                    $"WHERE M.IdEspecialidade = {crm}");
+
                 return obj;
             }
         }
@@ -122,12 +122,14 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var obj = connection.QueryFirstOrDefault<Medico>($"SELECT M.Id, M.Nome, M.Cpf, M.Crm, M.CrmEstado, M.IdEspecialidade, " +
-                                                                 $"M.Celular, M.Email, M.DataNasc, M.StatusAtividade," +
-                                                                 $" M.Genero, E.Nome As Especialidade " +
-                                                                 $"FROM [Medico] M " +
-                                                                 $"JOIN [ESPECIALIDADE] E ON M.IdEspecialidade = E.Id " +
-                                                                 $"WHERE Cpf = '{cpf}'");
+                var obj = connection.QueryFirstOrDefault<Medico>($"SELECT M.Id,  M.Nome, M.Cpf, M.Crm, M.CrmEstado, " +
+                                                                    $"M.IdEspecialidade, M.Celular, " +
+                                                                    $"M.Email, M.DataNasc, M.StatusAtividade, " +
+                                                                    $"M.Genero , E.Nome As Especialidade " +
+                                                                    $"FROM [Medico] M " +
+                                                                    $"JOIN [Especialidade] E ON M.IdEspecialidade = E.Id " +
+                                                                    $"WHERE M.IdEspecialidade = '{cpf}'");
+
                 return obj;
             }
         }
@@ -141,12 +143,14 @@ namespace Fatec.Clinica.Dado
         {
             using (var connection = new SqlConnection(DbConnectionFactory.SQLConnectionString))
             {
-                var obj = connection.QueryFirstOrDefault<Medico>($"SELECT M.Id, M.Nome, M.Cpf, M.Crm, M.CrmEstado, " +
-                                                                 $"M.IdEspecialidade, M.Celular, M.Email, M.DataNasc, " +
-                                                                 $"M.StatusAtividade, M.Genero, E.Nome As Especialidade " +
-                                                                 $"FROM [Medico] M " +
-                                                                 $"JOIN [ESPECIALIDADE] E ON M.IdEspecialidade = E.Id " +
-                                                                 $"WHERE Email = '{email}'");
+                var obj = connection.QueryFirstOrDefault<Medico>($"SELECT M.Id,  M.Nome, M.Cpf, M.Crm, M.CrmEstado, " +
+                                                                    $"M.IdEspecialidade, M.Celular, " +
+                                                                    $"M.Email, M.DataNasc, M.StatusAtividade, " +
+                                                                    $"M.Genero , E.Nome As Especialidade " +
+                                                                    $"FROM [Medico] M " +
+                                                                    $"JOIN [Especialidade] E ON M.IdEspecialidade = E.Id " +
+                                                                    $"WHERE M.IdEspecialidade = {email}");
+
                 return obj;
             }
         }
@@ -167,7 +171,7 @@ namespace Fatec.Clinica.Dado
                                               $"VALUES ({entity.IdEspecialidade}," +
                                                      $"'{entity.Nome}', " +
                                                      $"'{entity.Cpf}', " +
-                                                     $"{entity.Crm}," +
+                                                     $" {entity.Crm}, " +
                                                      $"'{entity.CrmEstado}', " +
                                                      $"'{entity.Celular}', " +
                                                      $"'{entity.Email}', " +

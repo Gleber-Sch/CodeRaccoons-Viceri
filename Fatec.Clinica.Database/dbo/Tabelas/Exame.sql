@@ -4,6 +4,7 @@
 [IdAtendimento] INTEGER NOT NULL,
 [IdConsulta] INTEGER NOT NULL,
 [IdTipoExame] INTEGER NOT NULL,
+[IdValorExame] INTEGER NOT NULL,
 CONSTRAINT [FK_Exame_TipoExame] FOREIGN KEY(IdTipoExame) REFERENCES [TipoExame] ([Id]),
 CONSTRAINT [FK_Exame_Atendimento] FOREIGN KEY(IdAtendimento) REFERENCES [Atendimento] ([Id]),
 CONSTRAINT [FK_Exame_Consulta] FOREIGN KEY(IdConsulta) REFERENCES [Consulta] ([Id])

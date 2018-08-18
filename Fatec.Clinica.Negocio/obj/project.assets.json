@@ -2114,11 +2114,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Gleber_M\\Documents\\Formação de Talentos Viceri\\Projeto final\\CodeRaccoons-Viceri\\Fatec.Clinica.Negocio\\Fatec.Clinica.Negocio.csproj",
+      "projectUniqueName": "C:\\Users\\Gleber_M\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Negocio\\Fatec.Clinica.Negocio.csproj",
       "projectName": "Fatec.Clinica.Negocio",
-      "projectPath": "C:\\Users\\Gleber_M\\Documents\\Formação de Talentos Viceri\\Projeto final\\CodeRaccoons-Viceri\\Fatec.Clinica.Negocio\\Fatec.Clinica.Negocio.csproj",
+      "projectPath": "C:\\Users\\Gleber_M\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Negocio\\Fatec.Clinica.Negocio.csproj",
       "packagesPath": "C:\\Users\\Gleber_M\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Gleber_M\\Documents\\Formação de Talentos Viceri\\Projeto final\\CodeRaccoons-Viceri\\Fatec.Clinica.Negocio\\obj\\",
+      "outputPath": "C:\\Users\\Gleber_M\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Negocio\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -2137,8 +2137,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\Gleber_M\\Documents\\Formação de Talentos Viceri\\Projeto final\\CodeRaccoons-Viceri\\Fatec.Clinica.Dado\\Fatec.Clinica.Dado.csproj": {
-              "projectPath": "C:\\Users\\Gleber_M\\Documents\\Formação de Talentos Viceri\\Projeto final\\CodeRaccoons-Viceri\\Fatec.Clinica.Dado\\Fatec.Clinica.Dado.csproj"
+            "C:\\Users\\Gleber_M\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dado\\Fatec.Clinica.Dado.csproj": {
+              "projectPath": "C:\\Users\\Gleber_M\\Documents\\GitHub\\CodeRaccoons-Viceri\\Fatec.Clinica.Dado\\Fatec.Clinica.Dado.csproj"
             }
           }
         }
