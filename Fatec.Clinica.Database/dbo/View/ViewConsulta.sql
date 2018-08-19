@@ -4,7 +4,7 @@ Id do Paciente e Id do Médico */
 
 CREATE VIEW ViewConsulta AS
 SELECT C.Id, P.Id AS IdPaciente, P.Nome AS Paciente,
-M.Id AS IdMedico, M.Nome AS Medico,C.DataHora, C.Historico,
+M.Id AS IdMedico, M.Nome AS Medico, C.Historico,
 Cl.Id AS IdClinica, Cl.Nome AS Clinica, C.Nota
 FROM [Consulta] C
 JOIN [Atendimento] A ON C.IdAtendimento = A.Id

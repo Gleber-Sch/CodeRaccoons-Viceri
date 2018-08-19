@@ -164,7 +164,7 @@ namespace Fatec.Clinica.Negocio.Validacoes
         }
         #endregion
 
-        #region Verificar se existem campos vazios na inserção ou alteração de um HorarioExame
+        #region HorarioExame
         /// <summary>
         /// Verifica se os campos obrigátorios não foram preenchidos.
         /// </summary>
@@ -183,8 +183,7 @@ namespace Fatec.Clinica.Negocio.Validacoes
         }
         #endregion
 
-
-        #region Verificar se existem campos vazios na inserção ou alteração de um HorarioConsulta
+        #region HorarioConsulta
         /// <summary>
         /// Verifica se os campos obrigátorios não foram preenchidos.
         /// </summary>
@@ -198,6 +197,25 @@ namespace Fatec.Clinica.Negocio.Validacoes
             {
                 return true;
             }
+            return false;
+        }
+        #endregion
+
+        #region ValorConsulta
+        /// <summary>
+        /// Verifica se os campos obrigátorios foram preenchidos.
+        /// </summary>
+        /// <param name="entity">Objeto com os campos a serem verificados.</param>
+        /// <returns>True se os campos obrigátorios estiverem vazios ou False se não estiverem.</returns>
+        public static bool Verificar(ValorConsulta entity)
+        {
+            if (String.IsNullOrWhiteSpace(Convert.ToString(entity.IdClinica)) ||
+                String.IsNullOrWhiteSpace(Convert.ToString(entity.IdEspecialidade)) ||
+                String.IsNullOrWhiteSpace(Convert.ToString(entity.Valor)))
+            {
+                return true;
+            }
+
             return false;
         }
         #endregion

@@ -8,8 +8,6 @@ CREATE VIEW ViewExame AS
 SELECT E.Id, TE.Nome AS TipoDoExame, P.Id AS IdPaciente,
 P.Nome AS NomeDoPaciente, MedQueSolicitou.Id AS IdMedicoQueSolicitou,
 MedQueSolicitou.Nome AS SolicitadoPeloMedico,
-Co.DataHora AS DataHora_ExameSolicitado,
-E.DataHora AS DataHora_ExameRealizado,
 MedQueRealizou.Id AS IdMedicoQueRealizou, MedQueRealizou.Nome AS RealizadoPeloMedico,
 Cl.Id AS IdClinica, Cl.Nome AS RealizadoNaClinica
 FROM [Exame] E
