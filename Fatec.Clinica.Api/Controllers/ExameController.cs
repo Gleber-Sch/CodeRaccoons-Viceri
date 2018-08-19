@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
+﻿using System.Net;
 using Fatec.Clinica.Api.Model;
 using Fatec.Clinica.Dominio;
 using Fatec.Clinica.Negocio;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
@@ -30,7 +25,7 @@ namespace Fatec.Clinica.Api.Controllers
         }
 
         /// <summary>
-        /// Método que obtêm todas os exames.
+        /// Método que obtêm todas os valores de exames.
         /// </summary>
         /// <returns></returns>
         /// <response code="200">OK</response>
